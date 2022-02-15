@@ -13,7 +13,7 @@ public class FirstPersonController : MonoBehaviour
     // How fast the player turns, in degrees per second.
     public float SwivelSpeed;
 
-    private bool IsLookingAtComputer = false;
+    private bool CanInteract = true;
 
     private Camera MainCamera;
     private Quaternion DefaultAngle;
@@ -65,6 +65,24 @@ public class FirstPersonController : MonoBehaviour
         else if (SwivelRight && MainCamera.transform.rotation.eulerAngles.y < DefaultAngle.eulerAngles.y + MaxSwivel)
         {
             MainCamera.transform.Rotate(0, SwivelSpeed * Time.deltaTime, 0);
+        }
+
+        // Check if player clicked an interactable
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            RaycastHit clicked;
+            Ray mouseRay = MainCamera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(mouseRay, out clicked))
+            {
+                if (clicked.transform.gameObject.GetComponent<Interactable>() && CanInteract)
+                {
+                    print("Player clicked an interactable");
+                    clicked.transform.gameObject.GetComponent<Interactable>().OnClick();
+                }
+            }
+
         }
 
     }

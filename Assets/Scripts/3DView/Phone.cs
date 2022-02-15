@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public class Phone : Interactable
 {
     // Start is called before the first frame update
     void Start()
@@ -16,9 +16,9 @@ public class Interactable : MonoBehaviour
         
     }
 
-    public virtual void OnClick()
+    public override void OnClick()
     {
-
+        print("Phone was clicked");
     }
 
 }
