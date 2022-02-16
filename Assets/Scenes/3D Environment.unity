@@ -687,6 +687,7 @@ MonoBehaviour:
   MaxSwivel: 30
   SwivelControlMargin: 10
   SwivelSpeed: 20
+  ExitCameraLockMargin: 10
 --- !u!1 &1349506561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +1035,7 @@ GameObject:
   - component: {fileID: 1807582244}
   - component: {fileID: 1807582243}
   - component: {fileID: 1807582242}
+  - component: {fileID: 1807582245}
   m_Layer: 0
   m_Name: ComputerCanvas
   m_TagString: Untagged
@@ -1124,6 +1126,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &1807582245
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807582240}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2039091255
 GameObject:
   m_ObjectHideFlags: 0

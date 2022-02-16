@@ -35,6 +35,9 @@ public class FirstPersonController : MonoBehaviour
     private int ExitCameraLockMarginPixelsX;
     private int ExitCameraLockMarginPixelsY;
 
+    private Interactable Selection = null;
+    private bool TryingToExitCameraLock = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +85,7 @@ public class FirstPersonController : MonoBehaviour
                 MainCamera.transform.Rotate(0, SwivelSpeed * Time.deltaTime, 0);
             }
 
-            // Check if player clicked an interactable
+            // Begin a click
             if (Input.GetMouseButtonDown(0))
             {
 
@@ -93,10 +96,28 @@ public class FirstPersonController : MonoBehaviour
                 {
                     if (clicked.transform.gameObject.GetComponent<Interactable>())
                     {
-                        // Player clicked on an interactable
-                        clicked.transform.gameObject.GetComponent<Interactable>().OnClick();
+                        // Player started clicking on an interactable
+                        Selection = clicked.transform.gameObject.GetComponent<Interactable>();
                     }
                 }
+            }
+            // End a click
+            if (Input.GetMouseButtonUp(0))
+            {
+                RaycastHit clicked;
+                Ray mouseRay = MainCamera.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(mouseRay, out clicked))
+                {
+                    if (Selection != null && clicked.transform.gameObject.GetComponent<Interactable>() == Selection)
+                    {
+                        // Player clicked fully on a specific interactable
+                        Selection.OnClick();
+                        Selection = null;
+                    }
+                }
+
+                Selection = null;
             }
 
         }
@@ -115,10 +136,24 @@ public class FirstPersonController : MonoBehaviour
                     || Input.mousePosition.y < ExitCameraLockMarginPixelsY
                     || Input.mousePosition.y > Screen.height - ExitCameraLockMarginPixelsY)
                 {
-                    // Exit camera lock
-                    ReturnCameraToOriginalPositionRotation();
+                    TryingToExitCameraLock = true;
                 }
 
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (Input.mousePosition.x < ExitCameraLockMarginPixelsX
+                    || Input.mousePosition.x > Screen.width - ExitCameraLockMarginPixelsX
+                    || Input.mousePosition.y < ExitCameraLockMarginPixelsY
+                    || Input.mousePosition.y > Screen.height - ExitCameraLockMarginPixelsY)
+                {
+                    if (TryingToExitCameraLock)
+                    {
+                        ReturnCameraToOriginalPositionRotation();
+                    }
+                }
+                TryingToExitCameraLock = false;
             }
 
         }
