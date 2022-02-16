@@ -16,7 +16,7 @@ public class FirstPersonController : MonoBehaviour
     private bool CanInteract = true;
 
     private Camera MainCamera;
-    private Quaternion DefaultAngle;
+    private Quaternion DefaultRotation;
     private Vector3 DefaultPosition;
 
     private bool SwivelLeft = false;
@@ -28,7 +28,7 @@ public class FirstPersonController : MonoBehaviour
     {
 
         MainCamera = Camera.main;
-        DefaultAngle = MainCamera.transform.rotation;
+        DefaultRotation = MainCamera.transform.rotation;
         DefaultPosition = MainCamera.transform.position;
 
     }
@@ -37,53 +37,83 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
 
-        // Update the swivel control margin to the current screen size, in case screen size has changed
-        SwivelControlMarginPixels = Mathf.RoundToInt(Screen.width / 100.0f * SwivelControlMargin);
+        if (CanInteract)
+        {
 
-        // Check if player wants to swivel
-        if (Input.mousePosition.x < SwivelControlMarginPixels)
-        {
-            SwivelLeft = true;
-            SwivelRight = false;
-        }
-        else if (Input.mousePosition.x > Screen.width - SwivelControlMarginPixels)
-        {
-            SwivelRight = true;
-            SwivelLeft = false;
+            // Update the swivel control margin to the current screen size, in case screen size has changed
+            SwivelControlMarginPixels = Mathf.RoundToInt(Screen.width / 100.0f * SwivelControlMargin);
+
+            // Check if player wants to swivel
+            if (Input.mousePosition.x < SwivelControlMarginPixels)
+            {
+                SwivelLeft = true;
+                SwivelRight = false;
+            }
+            else if (Input.mousePosition.x > Screen.width - SwivelControlMarginPixels)
+            {
+                SwivelRight = true;
+                SwivelLeft = false;
+            }
+            else
+            {
+                SwivelLeft = false;
+                SwivelRight = false;
+            }
+
+            // Swivel if player wants to and is within swivel limits
+            if (SwivelLeft && MainCamera.transform.rotation.eulerAngles.y > DefaultRotation.eulerAngles.y - MaxSwivel)
+            {
+                MainCamera.transform.Rotate(0, -SwivelSpeed * Time.deltaTime, 0);
+            }
+            else if (SwivelRight && MainCamera.transform.rotation.eulerAngles.y < DefaultRotation.eulerAngles.y + MaxSwivel)
+            {
+                MainCamera.transform.Rotate(0, SwivelSpeed * Time.deltaTime, 0);
+            }
+
+            // Check if player clicked an interactable
+            if (Input.GetMouseButtonDown(0))
+            {
+
+                RaycastHit clicked;
+                Ray mouseRay = MainCamera.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(mouseRay, out clicked))
+                {
+                    if (clicked.transform.gameObject.GetComponent<Interactable>())
+                    {
+                        print("Player clicked an interactable");
+                        clicked.transform.gameObject.GetComponent<Interactable>().OnClick();
+                    }
+                }
+            }
+
         }
         else
         {
-            SwivelLeft = false;
-            SwivelRight = false;
-        }
 
-        // Swivel if player wants to and is within swivel limits
-        if (SwivelLeft && MainCamera.transform.rotation.eulerAngles.y > DefaultAngle.eulerAngles.y - MaxSwivel)
-        {
-            MainCamera.transform.Rotate(0, -SwivelSpeed * Time.deltaTime, 0);
-        }
-        else if (SwivelRight && MainCamera.transform.rotation.eulerAngles.y < DefaultAngle.eulerAngles.y + MaxSwivel)
-        {
-            MainCamera.transform.Rotate(0, SwivelSpeed * Time.deltaTime, 0);
-        }
-
-        // Check if player clicked an interactable
-        if (Input.GetMouseButtonDown(0))
-        {
-
-            RaycastHit clicked;
-            Ray mouseRay = MainCamera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(mouseRay, out clicked))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (clicked.transform.gameObject.GetComponent<Interactable>() && CanInteract)
-                {
-                    print("Player clicked an interactable");
-                    clicked.transform.gameObject.GetComponent<Interactable>().OnClick();
-                }
+                ReturnCameraToOriginalPositionRotation();
             }
 
         }
 
     }
+
+    public void PointCameraAt(Transform target, float offset)
+    {
+        MainCamera.transform.position = target.position;
+        MainCamera.transform.rotation = target.rotation;
+        MainCamera.transform.Rotate(0, 180, 0);
+        MainCamera.transform.Translate(0, 0, -offset, Space.Self);
+        CanInteract = false;
+    }
+
+    public void ReturnCameraToOriginalPositionRotation()
+    {
+        MainCamera.transform.position = DefaultPosition;
+        MainCamera.transform.rotation = DefaultRotation;
+        CanInteract = true;
+    }
+
 }
