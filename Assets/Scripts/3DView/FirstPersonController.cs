@@ -12,12 +12,22 @@ public class FirstPersonController : MonoBehaviour
     public float SwivelControlMargin = 10.0f;
     // How fast the player turns, in degrees per second.
     public float SwivelSpeed;
-
+    // Camera transition time
+    public float CameraTransitionTime = 0.8f;
+   
     private bool CanInteract = true;
+    private bool CameraIsMoving = false;
+    private float CameraMovingFor = 0.0f;
 
     private Camera MainCamera;
     private Quaternion DefaultRotation;
     private Vector3 DefaultPosition;
+    // Rotation and position when the camera last started moving
+    private Quaternion LastFixedRotation;
+    private Vector3 LastFixedPosition;
+    // Target rotation and position
+    private Quaternion TargetRotation;
+    private Vector3 TargetPosition;
 
     private bool SwivelLeft = false;
     private bool SwivelRight = false;
@@ -111,22 +121,48 @@ public class FirstPersonController : MonoBehaviour
 
         }
 
+
+        if (CameraIsMoving)
+        {
+            if (Vector3.Distance(MainCamera.transform.position, TargetPosition) < 0.001 || CameraMovingFor >= CameraTransitionTime)
+            {
+                MainCamera.transform.SetPositionAndRotation(TargetPosition, TargetRotation);
+                CameraIsMoving = false;
+            }
+            else
+            {
+                CameraMovingFor += Time.deltaTime;
+
+                MainCamera.transform.SetPositionAndRotation(Vector3.Lerp(LastFixedPosition, TargetPosition, CameraMovingFor / CameraTransitionTime), 
+                                                            Quaternion.Lerp(LastFixedRotation, TargetRotation, CameraMovingFor / CameraTransitionTime));
+            }
+        }
+
     }
 
     public void PointCameraAt(Transform target, float offset)
     {
-        MainCamera.transform.position = target.position;
-        MainCamera.transform.rotation = target.rotation;
-        MainCamera.transform.Rotate(0, 180, 0);
-        MainCamera.transform.Translate(0, 0, -offset, Space.Self);
+        StartMovingCamera(target.position + (target.rotation * (Vector3.back * offset)), target.rotation);
+
         CanInteract = false;
     }
 
     public void ReturnCameraToOriginalPositionRotation()
     {
-        MainCamera.transform.position = DefaultPosition;
-        MainCamera.transform.rotation = DefaultRotation;
+        StartMovingCamera(DefaultPosition, DefaultRotation);
+
         CanInteract = true;
     }
 
+    private void StartMovingCamera(Vector3 targetPos, Quaternion targetRot)
+    {
+        LastFixedPosition = MainCamera.transform.position;
+        LastFixedRotation = MainCamera.transform.rotation;
+
+        TargetPosition = targetPos;
+        TargetRotation = targetRot;
+
+        CameraIsMoving = true;
+        CameraMovingFor = 0.0f;
+    }
 }
