@@ -90,10 +90,23 @@ public class FirstPersonController : MonoBehaviour
         }
         else
         {
-
+            //When the player's view is locked, unlock it whenever the player clicks anywhere other than on an interactable
             if (Input.GetMouseButtonDown(0))
             {
-                ReturnCameraToOriginalPositionRotation();
+                RaycastHit clicked;
+                Ray mouseRay = MainCamera.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(mouseRay, out clicked))
+                {
+                    if (!clicked.transform.gameObject.GetComponent<Interactable>())
+                    {
+                        ReturnCameraToOriginalPositionRotation();
+                    }
+                }
+                else
+                {
+                    ReturnCameraToOriginalPositionRotation();
+                }
             }
 
         }
