@@ -15,6 +15,10 @@ public class FirstPersonController : MonoBehaviour
     [Tooltip("How close to the edge of the screen the player needs to click/tap" +
         " to exit a camera lock, in percentage of screen width or height, during locked camera mode.")]
     public float ExitCameraLockMargin = 10.0f;
+    [Tooltip("How long, in seconds, for the camera movement into or out of a lock to last.")]
+    public float CameraTransitionTime = 0.8f;
+
+
 
     private enum PlayerState
     {
@@ -26,9 +30,6 @@ public class FirstPersonController : MonoBehaviour
 
     private PlayerState CurrentState = PlayerState.FreeCamera;
 
-    // Camera transition time
-    public float CameraTransitionTime = 0.8f;
-   
     private float CameraMovingFor = 0.0f;
 
     private Camera MainCamera;
