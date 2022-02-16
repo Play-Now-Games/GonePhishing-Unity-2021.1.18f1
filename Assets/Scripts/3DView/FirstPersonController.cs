@@ -19,14 +19,27 @@ public class FirstPersonController : MonoBehaviour
     private enum PlayerState
     {
         FreeCamera,
+        CameraMovingIntoLock,
+        CameraReturningFromLock,
         LockCamera
     }
 
     private PlayerState CurrentState = PlayerState.FreeCamera;
 
+    // Camera transition time
+    public float CameraTransitionTime = 0.8f;
+   
+    private float CameraMovingFor = 0.0f;
+
     private Camera MainCamera;
     private Quaternion DefaultRotation;
     private Vector3 DefaultPosition;
+    // Rotation and position when the camera last started moving
+    private Quaternion LastFixedRotation;
+    private Vector3 LastFixedPosition;
+    // Target rotation and position
+    private Quaternion TargetRotation;
+    private Vector3 TargetPosition;
 
     private bool SwivelLeft = false;
     private bool SwivelRight = false;
@@ -176,7 +189,25 @@ public class FirstPersonController : MonoBehaviour
                     TryingToExitCameraLock = false;
                 }
             }
+        }
 
+        if (CurrentState == PlayerState.CameraMovingIntoLock || CurrentState == PlayerState.CameraReturningFromLock)
+        {
+            if (Vector3.Distance(MainCamera.transform.position, TargetPosition) < 0.001 || CameraMovingFor >= CameraTransitionTime)
+            {
+                MainCamera.transform.SetPositionAndRotation(TargetPosition, TargetRotation);
+                    if (CurrentState == PlayerState.CameraMovingIntoLock)
+                        CurrentState = PlayerState.LockCamera;
+                    else
+                        CurrentState = PlayerState.FreeCamera;
+            }
+            else
+            {
+                CameraMovingFor += Time.deltaTime;
+
+                MainCamera.transform.SetPositionAndRotation(Vector3.Lerp(LastFixedPosition, TargetPosition, CameraMovingFor / CameraTransitionTime), 
+                                                            Quaternion.Lerp(LastFixedRotation, TargetRotation, CameraMovingFor / CameraTransitionTime));
+            }
         }
 
     }
@@ -218,19 +249,15 @@ public class FirstPersonController : MonoBehaviour
 
     public void PointCameraAt(Transform target, float offset)
     {
-        MainCamera.transform.position = target.position;
-        MainCamera.transform.rotation = target.rotation;
-        MainCamera.transform.Translate(0, 0, -offset, Space.Self);
-
-        CurrentState = PlayerState.LockCamera;
+        StartMovingCamera(target.position + (target.rotation * (Vector3.back * offset)), target.rotation);
+        CurrentState = PlayerState.CameraMovingIntoLock;
     }
 
     public void ReturnCameraToOriginalPositionRotation()
     {
-        MainCamera.transform.position = DefaultPosition;
-        MainCamera.transform.rotation = DefaultRotation;
+        StartMovingCamera(DefaultPosition, DefaultRotation);
 
-        CurrentState = PlayerState.FreeCamera;
+        CurrentState = PlayerState.CameraReturningFromLock;
     }
 
     public bool CanPlayerInteract()
@@ -238,4 +265,14 @@ public class FirstPersonController : MonoBehaviour
         return CurrentState == PlayerState.FreeCamera;
     }
 
+    private void StartMovingCamera(Vector3 targetPos, Quaternion targetRot)
+    {
+        LastFixedPosition = MainCamera.transform.position;
+        LastFixedRotation = MainCamera.transform.rotation;
+
+        TargetPosition = targetPos;
+        TargetRotation = targetRot;
+
+        CameraMovingFor = 0.0f;
+    }
 }
