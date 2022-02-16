@@ -5,7 +5,11 @@ using UnityEngine;
 public class Computer : Interactable
 {
 
+    [Tooltip("A reference to the player (an object with a FirstPersonController script)." +
+        " If none is specified, the first object with the tag \"Player\" is used.")]
     public FirstPersonController Player;
+    [Tooltip("When the camera locks onto this computer, it will be this distance away," +
+        " in the computer's negative Z direction (opposite to the blue arrow in editor).")]
     public float CameraOffset;
 
     private CanvasGroup ComputerGui;

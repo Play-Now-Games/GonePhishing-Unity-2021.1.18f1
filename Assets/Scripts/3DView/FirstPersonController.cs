@@ -5,16 +5,15 @@ using UnityEngine;
 public class FirstPersonController : MonoBehaviour
 {
 
-    // Max amount the player can look left and right, in degrees.
+    [Tooltip("Max amount the player can turn left or right, in degrees, during free camera mode.")]
     public float MaxSwivel = 30.0f;
-    // How close to the edge of the screen the player needs to mouseover/tap to start turning,
-    // in % of screen width.
+    [Tooltip("How close to the edge of the screen the player needs to mouseover/tap" +
+        " to start turning, in percentage of screen width, during free camera mode.")]
     public float SwivelControlMargin = 10.0f;
-    // How fast the player turns, in degrees per second.
+    [Tooltip("How fast the player turns, in degrees per second, during free camera mode.")]
     public float SwivelSpeed;
-
-    // How close to the edge of the screen the player needs to click/tap to exit a camera lock,
-    // in % of screen width/height
+    [Tooltip("How close to the edge of the screen the player needs to click/tap" +
+        " to exit a camera lock, in percentage of screen width or height, during locked camera mode.")]
     public float ExitCameraLockMargin = 10.0f;
 
     private enum PlayerState
