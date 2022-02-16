@@ -197,16 +197,16 @@ public class FirstPersonController : MonoBehaviour
             if (Vector3.Distance(MainCamera.transform.position, TargetPosition) < 0.001 || CameraMovingFor >= CameraTransitionTime)
             {
                 MainCamera.transform.SetPositionAndRotation(TargetPosition, TargetRotation);
-                    if (CurrentState == PlayerState.CameraMovingIntoLock)
-                        CurrentState = PlayerState.LockCamera;
-                    else
-                        CurrentState = PlayerState.FreeCamera;
+                if (CurrentState == PlayerState.CameraMovingIntoLock)
+                    CurrentState = PlayerState.LockCamera;
+                else
+                    CurrentState = PlayerState.FreeCamera;
             }
             else
             {
                 CameraMovingFor += Time.deltaTime;
 
-                MainCamera.transform.SetPositionAndRotation(Vector3.Lerp(LastFixedPosition, TargetPosition, CameraMovingFor / CameraTransitionTime), 
+                MainCamera.transform.SetPositionAndRotation(Vector3.Lerp(LastFixedPosition, TargetPosition, CameraMovingFor / CameraTransitionTime),
                                                             Quaternion.Lerp(LastFixedRotation, TargetRotation, CameraMovingFor / CameraTransitionTime));
             }
         }

@@ -77,7 +77,6 @@ public class Main : MonoBehaviour
         StartUICreation();
     }
 
-
     private void StartUICreation()
     {
         #region Spawn Emails
