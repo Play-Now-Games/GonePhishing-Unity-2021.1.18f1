@@ -13,7 +13,17 @@ public class FirstPersonController : MonoBehaviour
     // How fast the player turns, in degrees per second.
     public float SwivelSpeed;
 
-    private bool CanInteract = true;
+    // How close to the edge of the screen the player needs to click/tap to exit a camera lock,
+    // in % of screen width/height
+    public float ExitCameraLockMargin = 10.0f;
+
+    private enum PlayerState
+    {
+        FreeCamera,
+        LockCamera
+    }
+
+    private PlayerState CurrentState = PlayerState.FreeCamera;
 
     private Camera MainCamera;
     private Quaternion DefaultRotation;
@@ -22,6 +32,9 @@ public class FirstPersonController : MonoBehaviour
     private bool SwivelLeft = false;
     private bool SwivelRight = false;
     private int SwivelControlMarginPixels;
+
+    private int ExitCameraLockMarginPixelsX;
+    private int ExitCameraLockMarginPixelsY;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +50,7 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
 
-        if (CanInteract)
+        if (CurrentState == PlayerState.FreeCamera)
         {
 
             // Update the swivel control margin to the current screen size, in case screen size has changed
@@ -81,7 +94,7 @@ public class FirstPersonController : MonoBehaviour
                 {
                     if (clicked.transform.gameObject.GetComponent<Interactable>())
                     {
-                        print("Player clicked an interactable");
+                        // Player clicked on an interactable
                         clicked.transform.gameObject.GetComponent<Interactable>().OnClick();
                     }
                 }
@@ -91,9 +104,22 @@ public class FirstPersonController : MonoBehaviour
         else
         {
 
+            ExitCameraLockMarginPixelsX = Mathf.RoundToInt(Screen.width / 100.0f * ExitCameraLockMargin);
+            ExitCameraLockMarginPixelsY = Mathf.RoundToInt(Screen.height / 100.0f * ExitCameraLockMargin);
+
             if (Input.GetMouseButtonDown(0))
             {
-                ReturnCameraToOriginalPositionRotation();
+                
+                // Check if player is trying to exit camera lock
+                if (Input.mousePosition.x < ExitCameraLockMarginPixelsX
+                    || Input.mousePosition.x > Screen.width - ExitCameraLockMarginPixelsX
+                    || Input.mousePosition.y < ExitCameraLockMarginPixelsY
+                    || Input.mousePosition.y > Screen.height - ExitCameraLockMarginPixelsY)
+                {
+                    // Exit camera lock
+                    ReturnCameraToOriginalPositionRotation();
+                }
+
             }
 
         }
@@ -104,16 +130,22 @@ public class FirstPersonController : MonoBehaviour
     {
         MainCamera.transform.position = target.position;
         MainCamera.transform.rotation = target.rotation;
-        MainCamera.transform.Rotate(0, 180, 0);
         MainCamera.transform.Translate(0, 0, -offset, Space.Self);
-        CanInteract = false;
+
+        CurrentState = PlayerState.LockCamera;
     }
 
     public void ReturnCameraToOriginalPositionRotation()
     {
         MainCamera.transform.position = DefaultPosition;
         MainCamera.transform.rotation = DefaultRotation;
-        CanInteract = true;
+
+        CurrentState = PlayerState.FreeCamera;
+    }
+
+    public bool CanPlayerInteract()
+    {
+        return CurrentState == PlayerState.FreeCamera;
     }
 
 }
