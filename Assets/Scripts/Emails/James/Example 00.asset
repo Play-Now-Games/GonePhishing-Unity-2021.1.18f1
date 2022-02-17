@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Example 00
   m_EditorClassIdentifier: 
   logo: {fileID: 0}
-  sender: GGGGG
-  tittle: aaaaa
-  greetings: bbbbb
-  content: ccccc
-  bye: ddddd
-  timeHour: 00
-  timeMin: 00
+  sender: AAAAA
+  tittle: BBBBB
+  greetings: CCCCC
+  content: DDDD
+  bye: EEEEE
+  timeHour: 01
+  timeMin: 01
+  isPhishing: 1

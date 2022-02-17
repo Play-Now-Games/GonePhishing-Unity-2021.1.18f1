@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 4052957693909787837}
   m_Layer: 0
   m_Name: EmailPrefab
-  m_TagString: Untagged
+  m_TagString: Email
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

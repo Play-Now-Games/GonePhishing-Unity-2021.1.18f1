@@ -6,7 +6,9 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "EmailsExample", menuName = "ScriptableObjects/Emails")]
 public class Email_Scriptable : ScriptableObject
 {
-    
+
+    public int ID;
+
     public Image logo;
     
     public string sender;
@@ -22,4 +24,6 @@ public class Email_Scriptable : ScriptableObject
     public string timeHour;
 
     public string timeMin;
+
+    public bool isPhishing;
 }

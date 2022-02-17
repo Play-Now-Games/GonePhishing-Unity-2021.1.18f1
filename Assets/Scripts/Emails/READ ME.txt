@@ -1,0 +1,11 @@
+Emails have a pretty simple struture.
+
+But, to work at its finest, YOU NEED to add an unique ID. This must happen on each Person/Day.
+IDs can repeat IF they are not in the same Person/Day.
+
+If the email is a Phishing one, SELECT the boolean as true when creating. 
+This boolean is used to verify in an optimal way which should do.
+
+If you have any question, Send me a message. 
+I tried to make this code as simple, and as organized as I could.
+Gabriel 'DiosMussolinos' Vergari 

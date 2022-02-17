@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
   m_Name: Example 01
   m_EditorClassIdentifier: 
+  ID: 1
   logo: {fileID: 0}
-  sender: 0000
-  tittle: 11111
-  greetings: 22222
-  content: 3333
-  bye: 4444
-  timeHour: 11
-  timeMin: 22
+  sender: 11111
+  tittle: 2222
+  greetings: 3333
+  content: 4444
+  bye: 5555
+  timeHour: 02
+  timeMin: 02
+  isPhishing: 0

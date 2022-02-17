@@ -22,25 +22,41 @@ public class EmailHolder : MonoBehaviour
 
     ///////// PRIVATE /////////
     private Main mainScript;
+    private EmailButtons answerButton;
+    private EmailButtons ignoreButton;
     ///////// PRIVATE /////////
 
 
     private void Start()
     {
-
         #region Email Related
+
         logo = holder.logo;
         sender.text = holder.sender;
         StartTittle();
         StartContent();
         timeHour.text = holder.timeHour;
         timeMin.text = holder.timeMin;
+
         #endregion
 
         #region Player Related
-        
+
         GameObject player = GameObject.Find("====Character/Camera====");
         mainScript = player.GetComponent<Main>();
+        
+        #endregion
+
+        #region Buttons Related
+        
+        //Answer
+        GameObject answer = GameObject.Find("=Answer=");
+        answerButton = answer.GetComponent<EmailButtons>();
+
+        //Refuse
+        GameObject refuse = GameObject.Find("=Refuse=");
+        ignoreButton = refuse.GetComponent<EmailButtons>();
+
         #endregion
     }
 
@@ -72,7 +88,7 @@ public class EmailHolder : MonoBehaviour
         {
             tittle.text = holder.tittle;
         }
-        
+
         #endregion
     }
 
@@ -110,6 +126,7 @@ public class EmailHolder : MonoBehaviour
 
     public void ClickEmail()
     {
+
         //Change the position
         //if active and deactivate, take 2 clicks to update the message at the first moment
         Vector3 newPos = new Vector3(mainScript.selected.transform.position.x, mainScript.selected.transform.position.y, 0);
@@ -117,11 +134,22 @@ public class EmailHolder : MonoBehaviour
         mainScript.selectedEmail = holder;
 
         ClickChangeInfo();
+
     }
 
     public void ClickChangeInfo()
     {
-        #region Get All Info And Change
+
+        #region Change Button References
+
+        answerButton.holderCopy = holder;
+
+        ignoreButton.holderCopy = holder;
+
+        #endregion
+
+        #region Get All Info And Change - IF's are mandatory to prevent crashes
+
         GameObject BodyLogo = GameObject.Find("=Body-Image/Logo=");
         if (BodyLogo)
         {
@@ -137,19 +165,19 @@ public class EmailHolder : MonoBehaviour
         if (BodyTittle)
         {
             Text Tittle = BodyTittle.GetComponent<Text>();
-            if(Tittle)
+            if (Tittle)
             {
                 Tittle.text = holder.tittle;
 
             }
-        }       
+        }
 
 
         GameObject BodyGreetins = GameObject.Find("=Body-Greetins=");
         if (BodyGreetins)
         {
             Text Greetings = BodyGreetins.GetComponent<Text>();
-            if(Greetings)
+            if (Greetings)
             {
                 Greetings.text = holder.greetings;
             }
@@ -159,7 +187,7 @@ public class EmailHolder : MonoBehaviour
         if (BodyContent)
         {
             Text Content = BodyContent.GetComponent<Text>();
-            if(Content)
+            if (Content)
             {
                 Content.text = holder.content;
             }
@@ -169,7 +197,7 @@ public class EmailHolder : MonoBehaviour
         if (BodyBye)
         {
             Text Bye = BodyBye.GetComponent<Text>();
-            if(Bye)
+            if (Bye)
             {
                 Bye.text = holder.bye;
             }
@@ -179,7 +207,7 @@ public class EmailHolder : MonoBehaviour
         if (BodyHour)
         {
             Text Hour = BodyHour.GetComponent<Text>();
-            if(Hour)
+            if (Hour)
             {
                 Hour.text = holder.timeHour;
             }
@@ -189,13 +217,13 @@ public class EmailHolder : MonoBehaviour
         if (BodyMin)
         {
             Text Min = BodyMin.GetComponent<Text>();
-            if(Min)
+            if (Min)
             {
                 Min.text = holder.timeMin;
             }
         }
 
         #endregion
+    
     }
-
 }

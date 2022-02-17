@@ -1,3 +1,4 @@
+﻿using System;
 using UnityEngine;
 
 public class Main : MonoBehaviour
@@ -5,25 +6,18 @@ public class Main : MonoBehaviour
 
     ///////// PUBLIC /////////
     public Email_Scriptable selectedEmail = null;
-
     public GameObject emailPrefab;
-
     public GameObject selected;
     public GameObject noEmail;
+
+    public int healthPoints;
+
+    public Email_Scriptable[] _totalEmails;
     ///////// PUBLIC /////////
 
     ///////// PRIVATES /////////
     [SerializeField]
     private int _phishingAmount;
-
-    [SerializeField]
-    private int _playerState = 0;
-
-    [SerializeField]
-    private int[] _emailOnTESTDONTDELETE;
-
-    [SerializeField]
-    private Email_Scriptable[] _totalEmails;
 
     [SerializeField]
     private Email_Scriptable[] _normalEmails;
@@ -35,40 +29,46 @@ public class Main : MonoBehaviour
     //Do its commands BEFORE the first frame
     private void Awake()
     {
+
         AwakeRandomizationEmail();
+    
     }
 
     private void AwakeRandomizationEmail()
     {
+
         #region Email Randomization
 
-        int proportion = _emailOnTESTDONTDELETE.Length / _phishingAmount;
+        int proportion = _totalEmails.Length / _phishingAmount;
 
-        for (int i = 0; i < _emailOnTESTDONTDELETE.Length; i++)
+        for (int i = 0; i < _totalEmails.Length; i++)
         {
             proportion--;
 
             if (proportion > 0)
             {
-                //Set the normal email
+                //Random Index from the Array
+                int randomIndex = UnityEngine.Random.Range(0, _normalEmails.Length);
 
-                //Change with the "ToDo:"
-                _emailOnTESTDONTDELETE[i] = 1;
-                //ToDo: _totalEmails[i] = _normalEmails[random.range(0, _normalEmails.lenght())]
-                //ToDo: Remove selected email and reorganize array
+                //Add it to the TOTAL array, and remove the previously selected
+                _totalEmails[i] = _normalEmails[randomIndex];
+                StartRemoveAt(ref _normalEmails, randomIndex);
             }
             else
             {
-                //Set the phishing email
+                int randomIndex = UnityEngine.Random.Range(0, _phishing.Length);
+                
+                //Add it to the TOTAL array, and remove the previously selected
+                _totalEmails[i] = _phishing[randomIndex];
+                StartRemoveAt(ref _phishing, randomIndex);
 
-                //Change with the "ToDo:"
-                _emailOnTESTDONTDELETE[i] = 999999999;
-                //ToDo:_totalEmails[i] = _phishing[random.range(0, _phishing.lenght())]
-                //ToDo: Remove selected email and reorganize array
-                proportion = _emailOnTESTDONTDELETE.Length / _phishingAmount;
+                //Return Proportion
+                proportion = _totalEmails.Length / _phishingAmount;
             }
         }
+        
         #endregion
+    
     }
 
     // Start is called before the first frame update
@@ -77,7 +77,7 @@ public class Main : MonoBehaviour
         StartUICreation();
     }
 
-    private void StartUICreation()
+    public void StartUICreation()
     {
         #region Spawn Emails
 
@@ -87,7 +87,7 @@ public class Main : MonoBehaviour
         //Vectors to spawn -- 110 is the 100 + offset
         Vector2 height = new Vector2(0, 110);
 
-        for (int i = 0; i < _totalEmails.Length; i++)
+        for (int i = 0; i < _totalEmails.Length - 1; i++)
         {
             //Email Pos Based on Pos in the array
             Vector2 Transfor = new Vector2(Content.transform.position.x - 25, Content.transform.position.y);
@@ -111,26 +111,167 @@ public class Main : MonoBehaviour
         #endregion
     }
 
+    public void StartRemoveAt<T>(ref T[] arr, int index)
+    {
+        #region Remove The Array Info
+
+        for (int i = index; i < arr.Length - 1; i++)
+        {
+            //Move elements to fill the gap
+            arr[i] = arr[i + 1];
+        }
+
+        //Remove the index
+        Array.Resize(ref arr, arr.Length - 1);
+
+        #endregion
+    }
+
     // Update is called once per frame
     void Update()
     {
-        #region Player State
-        switch (_playerState)
-        {
-            case 0:
-                //ToDo: Move Camera. Outside Computer
-                break;
-            case 1:
-                //ToDo: Move Mouse. Inside Computer
-                break;
-        }
-        #endregion
 
-        
-        if(selectedEmail)
+        #region Show email or Not
+
+        if (selectedEmail)
         {
+            //Turn Off the 
             noEmail.SetActive(false);
         }
-        
+        else
+        {
+            noEmail.SetActive(true);
+        }
+
+        #endregion
+
     }
+
+    ///////// GENERAL FUNCTIONS FOR THE GAME /////////
+    public void LoseHealth(int HpLost)
+    {
+        healthPoints -= HpLost;
+    }
+
+    public void DestroyAllEmails(GameObject[] EmailsOnScene)
+    {
+
+        #region Destroy it ALL
+
+        for (int j = 0; j < EmailsOnScene.Length; j++)
+        {
+            Destroy(EmailsOnScene[j]);
+        }
+
+        #endregion
+
+    }
+
+    public void AddNormalEmails()
+    {
+        #region Add Normal Emails
+
+        if (_normalEmails.Length > 0)
+        {
+            //Add Email From _NormalEmails
+            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_normalEmails[_normalEmails.Length - 1], _totalEmails);
+
+            //Update The Previous _NormalEmails Email From The Previous Selected Email
+            StartRemoveAt(ref _normalEmails, _normalEmails.Length - 1);
+
+            //Delete ALL emails on the scene
+            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
+            DestroyAllEmails(EmailsOnScene);
+
+            //ReCreate the UI with all the emails
+            StartUICreation();
+        }
+
+        #endregion
+    }
+
+    public void AddPhishingEmails()
+    {
+
+        #region Add Phishing Emails
+        
+        if (_phishing.Length > 0)
+        {
+
+            //Add Email From _NormalEmails
+            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_normalEmails[_normalEmails.Length - 1], _totalEmails);
+
+            //Update The Previous _NormalEmails Email From The Previous Selected Email
+            StartRemoveAt(ref _normalEmails, _normalEmails.Length - 1);
+
+            //Delete ALL emails on the scene
+            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
+            DestroyAllEmails(EmailsOnScene);
+
+            //ReCreate the UI with all the emails
+            StartUICreation();
+        
+        }
+        
+        #endregion
+    
+    }
+
+    public Array AddArrayAtStart(object o, Array oldArray)
+    {
+
+        #region Add 'Array Object' At The Start Of the array
+
+        Array NewArray = Array.CreateInstance(oldArray.GetType().GetElementType(), oldArray.Length + 1);
+
+        for(int i = 0; i < 0; ++i)
+        {
+            NewArray.SetValue(oldArray.GetValue(i), i);
+        }
+
+        for(int i = 0 + 1; i < oldArray.Length; ++i)
+        {
+            NewArray.SetValue(oldArray.GetValue(i - 1), i);
+        }
+
+        NewArray.SetValue(o, 0);
+
+        oldArray = NewArray;
+
+        return oldArray;
+
+        #endregion
+
+    }
+
+    ///////// GENERAL FUNCTIONS FOR THE GAME /////////
+
 }
+
+/*
+Yes, I'm workaholic, how did you noticed?
+⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⠛⠛⠋⠉⠈⠉⠉⠉⠉⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⡿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⢿⣿⣿⣿⣿
+⣿⣿⣿⣿⡏⣀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿
+⣿⣿⣿⢏⣴⣿⣷⠀⠀⠀⠀⠀⢾⣿⣿⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠈⣿⣿
+⣿⣿⣟⣾⣿⡟⠁⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣷⢢⠀⠀⠀⠀⠀⠀⢸⣿
+⣿⣿⣿⣿⣟⠀⡴⠄⠀⠀⠀⠀⠀⠀⠙⠻⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⣿
+⣿⣿⣿⠟⠻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠶⢴⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⣿
+⣿⣁⡀⠀⠀⢰⢠⣦⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⡄⠀⣴⣶⣿⡄⣿
+⣿⡋⠀⠀⠀⠎⢸⣿⡆⠀⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⠗⢘⣿⣟⠛⠿⣼
+⣿⣿⠋⢀⡌⢰⣿⡿⢿⡀⠀⠀⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⡇⠀⢸⣿⣿⣧⢀⣼
+⣿⣿⣷⢻⠄⠘⠛⠋⠛⠃⠀⠀⠀⠀⠀⢿⣧⠈⠉⠙⠛⠋⠀⠀⠀⣿⣿⣿⣿⣿
+⣿⣿⣧⠀⠈⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠟⠀⠀⠀⠀⢀⢃⠀⠀⢸⣿⣿⣿⣿
+⣿⣿⡿⠀⠴⢗⣠⣤⣴⡶⠶⠖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡸⠀⣿⣿⣿⣿
+⣿⣿⣿⡀⢠⣾⣿⠏⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠉⠀⣿⣿⣿⣿
+⣿⣿⣿⣧⠈⢹⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿
+⣿⣿⣿⣿⡄⠈⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⣾⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣦⣄⣀⣀⣀⣀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠙⣿⣿⡟⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⠁⠀⠀⠹⣿⠃⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢐⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⠿⠛⠉⠉⠁⠀⢻⣿⡇⠀⠀⠀⠀⠀⠀⢀⠈⣿⣿⡿⠉⠛⠛⠛⠉⠉
+⣿⡿⠋⠁⠀⠀⢀⣀⣠⡴⣸⣿⣇⡄⠀⠀⠀⠀⢀⡿⠄⠙⠛⠀⣀⣠⣤⣤⠄*/
