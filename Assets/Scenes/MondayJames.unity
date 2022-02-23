@@ -1831,18 +1831,8 @@ MonoBehaviour:
   emailPrefab: {fileID: 3628535780295621377, guid: 4369386051209ac4ba7286e455f62031, type: 3}
   selected: {fileID: 510906948}
   noEmail: {fileID: 556492375}
-  healthPoints: 5
+  healthPoints: 10000
   _totalEmails:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

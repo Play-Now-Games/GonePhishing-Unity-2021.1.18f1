@@ -150,6 +150,11 @@ public class Main : MonoBehaviour
 
         #endregion
 
+        if (_totalEmails.Length == 0)
+        {
+            EndGame(true);
+        }
+
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
