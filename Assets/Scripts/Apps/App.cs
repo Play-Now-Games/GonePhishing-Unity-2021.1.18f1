@@ -96,7 +96,12 @@ public class App : MonoBehaviour
             #region Resize Rects In "resizeWithApp"
             foreach (RectTransform rectTransform in resizeWithApp)
             {
-                rectTransform.sizeDelta = _transform.sizeDelta;
+                //Assumes topLeft-anchor
+                Vector2 newRectSize = _transform.sizeDelta;
+                newRectSize.x -= rectTransform.anchoredPosition.x * 2; //Treat x-compoent of position as offset from both edges
+                newRectSize.y += rectTransform.anchoredPosition.y; //Treat y as offset from top
+
+                rectTransform.sizeDelta = newRectSize;
             }
             #endregion
         }
