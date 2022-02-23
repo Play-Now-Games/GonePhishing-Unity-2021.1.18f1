@@ -28,6 +28,8 @@ public class App : MonoBehaviour
         _currentHightMaximised = _transform.rect.height;
         _minimised = false;
         _selected = false;
+
+        content.GetComponent<RectTransform>().sizeDelta = _transform.sizeDelta;
     }
 
     // Update is called once per frame
