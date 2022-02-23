@@ -72,18 +72,14 @@ public class AppManager : MonoBehaviour
 
                 }
             }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
-                foreach (RaycastResult result in results)
-                {
-                    App app;
-                    if (app = result.gameObject.GetComponent<App>())
-                    {
-                        app.OnRelease();
-                    }
+        }
 
-                }
+        if (Input.GetMouseButtonUp(0))
+        {
+            foreach (App app in apps)
+            {
+                app.OnRelease();
+
             }
         }
     }
