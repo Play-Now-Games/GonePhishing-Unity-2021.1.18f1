@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class DayTimer : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class DayTimer : MonoBehaviour
 
     public UnityEvent onTimeLimit;
 
+    public Text DigitalClockText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,7 @@ public class DayTimer : MonoBehaviour
     void Update()
     {
 
+        #region Increment time and check for time limit
         if (timing)
         {
             CurrentTime += Time.deltaTime;
@@ -46,7 +50,10 @@ public class DayTimer : MonoBehaviour
                 onTimeLimit.Invoke();
             }
         }
-        
+        #endregion
+
+        DigitalClockText.text = GetDigitalTimeAsString();
+
     }
 
     // Get current elapsed time as a digital time
