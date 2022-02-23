@@ -552,10 +552,6 @@ RectTransform:
   - {fileID: 142410003}
   - {fileID: 1627190826}
   - {fileID: 956391453}
-<<<<<<< Updated upstream
-=======
-  - {fileID: 872945508}
->>>>>>> Stashed changes
   - {fileID: 1547100550}
   m_Father: {fileID: 204520567}
   m_RootOrder: 1
@@ -2144,11 +2140,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 625655653534953411, guid: fae9d4932aa3a6c419ef00bfced532fa, type: 3}
       propertyPath: m_RootOrder
-<<<<<<< Updated upstream
       value: 3
-=======
-      value: 4
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 625655653534953411, guid: fae9d4932aa3a6c419ef00bfced532fa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2160,11 +2152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625655653534953411, guid: fae9d4932aa3a6c419ef00bfced532fa, type: 3}
       propertyPath: m_LocalPosition.z
-<<<<<<< Updated upstream
       value: 69.98512
-=======
-      value: 0
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 625655653534953411, guid: fae9d4932aa3a6c419ef00bfced532fa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2198,13 +2186,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pop_Up_01
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-=======
-    - target: {fileID: 1125964853130987750, guid: fae9d4932aa3a6c419ef00bfced532fa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
->>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fae9d4932aa3a6c419ef00bfced532fa, type: 3}
 --- !u!4 &1547100550 stripped
