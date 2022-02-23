@@ -8,9 +8,7 @@ public class DayTimer : MonoBehaviour
 {
 
     public float CurrentTime;
-
     public bool timing;
-
     [Tooltip("Time limit in real-world seconds.")]
     public float CurrentTimeLimit = 100.0f;
 
@@ -23,13 +21,14 @@ public class DayTimer : MonoBehaviour
 
     [Tooltip("What time of day the scene begins (just cosmetic).")]
     public DigitalTime StartTime;
-
     [Tooltip("How many in-game seconds pass per real-world second.")]
     public float Timescale = 60.0f;
+    [Tooltip("This text will be updated to match the start time + elapsed ingame time.")]
+    public Text DigitalClockText;
+    [Tooltip("When the clock text updates, it will be rounded DOWN to the nearest X ingame minutes.")]
+    public int RoundingAmount = 5;
 
     public UnityEvent onTimeLimit;
-
-    public Text DigitalClockText;
 
     // Start is called before the first frame update
     void Start()
@@ -70,9 +69,19 @@ public class DayTimer : MonoBehaviour
         return time;
     }
 
-    public string GetDigitalTimeAsString()
+    public DigitalTime GetRoundedDigitalTime()
     {
         DigitalTime time = GetDigitalTime();
+
+        int roundDifference = time.minutes % RoundingAmount;
+        time.minutes -= roundDifference;
+
+        return time;
+    }
+
+    public string GetDigitalTimeAsString()
+    {
+        DigitalTime time = GetRoundedDigitalTime();
 
         string hoursString = time.hours.ToString();
         if (hoursString.Length == 1)

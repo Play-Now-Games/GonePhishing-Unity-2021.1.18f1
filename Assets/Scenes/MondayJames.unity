@@ -2063,6 +2063,8 @@ MonoBehaviour:
     hours: 9
     minutes: 0
   Timescale: 300
+  DigitalClockText: {fileID: 1993123809}
+  RoundingAmount: 5
   onTimeLimit:
     m_PersistentCalls:
       m_Calls:
@@ -2078,7 +2080,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  DigitalClockText: {fileID: 1993123809}
 --- !u!1 &1086854308
 GameObject:
   m_ObjectHideFlags: 0
