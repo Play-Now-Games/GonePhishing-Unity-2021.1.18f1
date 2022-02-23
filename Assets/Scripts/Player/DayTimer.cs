@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DayTimer : MonoBehaviour
 {
 
     public float CurrentTime;
+
+    public bool timing;
 
     [Tooltip("Time limit in real-world seconds.")]
     public float CurrentTimeLimit = 100.0f;
@@ -23,6 +26,8 @@ public class DayTimer : MonoBehaviour
     [Tooltip("How many in-game seconds pass per real-world second.")]
     public float Timescale = 60.0f;
 
+    public UnityEvent onTimeLimit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +37,20 @@ public class DayTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CurrentTime += Time.deltaTime;
-        print(GetDigitalTimeAsString());
+
+        if (timing)
+        {
+            CurrentTime += Time.deltaTime;
+            if (CurrentTime >= CurrentTimeLimit)
+            {
+                onTimeLimit.Invoke();
+            }
+        }
+        
     }
 
     // Get current elapsed time as a digital time
-    DigitalTime GetDigitalTime()
+    public DigitalTime GetDigitalTime()
     {
         DigitalTime time = new DigitalTime();
 
@@ -50,7 +63,7 @@ public class DayTimer : MonoBehaviour
         return time;
     }
 
-    string GetDigitalTimeAsString()
+    public string GetDigitalTimeAsString()
     {
         DigitalTime time = GetDigitalTime();
 
@@ -63,6 +76,16 @@ public class DayTimer : MonoBehaviour
             minutesString = "0" + minutesString;
 
         return hoursString + ":" + minutesString;
+    }
+
+    public void StopTiming()
+    {
+        timing = false;
+    }
+
+    public void StartTiming()
+    {
+        timing = true;
     }
 
 }

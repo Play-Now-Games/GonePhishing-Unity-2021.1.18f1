@@ -1842,11 +1842,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentTime: 0
-  CurrentTimeLimit: 100
+  timing: 1
+  CurrentTimeLimit: 20
   StartTime:
-    hours: 0
+    hours: 9
     minutes: 0
   Timescale: 300
+  onTimeLimit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 963194231}
+        m_TargetAssemblyTypeName: DayTimer, Assembly-CSharp
+        m_MethodName: StopTiming
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1086854308
 GameObject:
   m_ObjectHideFlags: 0
