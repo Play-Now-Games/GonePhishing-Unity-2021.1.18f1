@@ -13,7 +13,6 @@ public class App : MonoBehaviour
 
     private RectTransform _transform;
     private float _currentHightMaximised;
-    private float _currentYPositionMaximised;
 
     private const float MINIMISED_HEIGHT = 45.0f;
 
@@ -27,7 +26,6 @@ public class App : MonoBehaviour
     {
         _transform = GetComponent<RectTransform>();
         _currentHightMaximised = _transform.rect.height;
-        _currentYPositionMaximised = _transform.anchoredPosition.y;
         _minimised = false;
         _selected = false;
     }
@@ -57,7 +55,7 @@ public class App : MonoBehaviour
             newRectSize.y = _currentHightMaximised;
             _transform.sizeDelta = newRectSize;
 
-            newPosition.y = _currentYPositionMaximised;
+            newPosition.y = _transform.anchoredPosition.y - ((_currentHightMaximised - MINIMISED_HEIGHT) / 2);
             _transform.anchoredPosition = newPosition;
 
             content.SetActive(true);
@@ -68,7 +66,7 @@ public class App : MonoBehaviour
             newRectSize.y = MINIMISED_HEIGHT;
             _transform.sizeDelta = newRectSize;
 
-            newPosition.y = _currentYPositionMaximised + ((_currentHightMaximised - MINIMISED_HEIGHT) / 2);
+            newPosition.y = _transform.anchoredPosition.y + ((_currentHightMaximised - MINIMISED_HEIGHT) / 2);
             _transform.anchoredPosition = newPosition;
 
             content.SetActive(false);
