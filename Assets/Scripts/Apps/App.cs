@@ -18,6 +18,8 @@ public class App : MonoBehaviour
     public float minimumWidth = 200;
     [Tooltip("Minimum height this App can be resized too.")]
     public float minimumHeight = 200;
+    [Tooltip("The size of the region in the Bottom-Right corner you need to click on to resize this App.")]
+    public float resizeClickAreaSize = 20;
 
     private RectTransform _transform;
     private float _currentHightMaximised;
@@ -71,6 +73,11 @@ public class App : MonoBehaviour
             newSize.x = Mathf.Max(minimumWidth, distanceFromTopLeft.x);
             newSize.y = Mathf.Max(minimumHeight, -distanceFromTopLeft.y);
 
+            if (_minimised)
+            {
+                newSize.y = MINIMISED_HEIGHT;
+            }
+
             _transform.sizeDelta = newSize;
 
             Vector2 newPos = topLeft;
@@ -78,9 +85,15 @@ public class App : MonoBehaviour
             newPos.y -= _transform.sizeDelta.y / 2;
 
             _transform.anchoredPosition = newPos;
+
+            if (!_minimised)
+            {
+                //update currentHeightMaximised
+                _currentHightMaximised = _transform.rect.height;
+            }
             #endregion
 
-            #region Resize Rects From "resizeWithApp"
+            #region Resize Rects In "resizeWithApp"
             foreach (RectTransform rectTransform in resizeWithApp)
             {
                 rectTransform.sizeDelta = _transform.sizeDelta;
@@ -131,7 +144,7 @@ public class App : MonoBehaviour
         _mouseOffsetOnClick = _transform.position - parentCanvas.transform.TransformPoint(mousePos);
 
         //if clicked on the buttom right corner
-        if (-_mouseOffsetOnClick.x > ((_transform.sizeDelta.x / 2) - 50) && _mouseOffsetOnClick.y > ((_transform.sizeDelta.y / 2) - 50))
+        if (-_mouseOffsetOnClick.x > ((_transform.sizeDelta.x / 2) - resizeClickAreaSize) && _mouseOffsetOnClick.y > ((_transform.sizeDelta.y / 2) - resizeClickAreaSize))
         {
             _currentState = SelectedState.Resizing;
         }
