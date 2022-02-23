@@ -33,6 +33,7 @@ public class DayTimer : MonoBehaviour
     void Update()
     {
         CurrentTime += Time.deltaTime;
+        print(GetDigitalTimeAsString());
     }
 
     // Get current elapsed time as a digital time
@@ -43,10 +44,25 @@ public class DayTimer : MonoBehaviour
         int inGameSeconds = Mathf.FloorToInt(CurrentTime * Timescale);
         int inGameMinutes = inGameSeconds / 60;
 
-        time.hours = inGameMinutes / 60;
-        time.minutes = inGameMinutes % 60;
+        time.hours = (inGameMinutes / 60 + StartTime.hours) % 24;
+        time.minutes = inGameMinutes % 60 + StartTime.minutes;
 
         return time;
+    }
+
+    string GetDigitalTimeAsString()
+    {
+        DigitalTime time = GetDigitalTime();
+
+        string hoursString = time.hours.ToString();
+        if (hoursString.Length == 1)
+            hoursString = "0" + hoursString;
+
+        string minutesString = time.minutes.ToString();
+        if (minutesString.Length == 1)
+            minutesString = "0" + minutesString;
+
+        return hoursString + ":" + minutesString;
     }
 
 }
