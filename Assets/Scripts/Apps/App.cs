@@ -22,7 +22,7 @@ public class App : MonoBehaviour
     private Vector2 _mouseOffsetOnClick;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         _transform = GetComponent<RectTransform>();
         _currentHightMaximised = _transform.rect.height;
@@ -33,7 +33,7 @@ public class App : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (_selected)
         {
