@@ -379,6 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 5648401167044197179}
+  parentCanvas: {fileID: 0}
 --- !u!1 &5640547433381885450
 GameObject:
   m_ObjectHideFlags: 0

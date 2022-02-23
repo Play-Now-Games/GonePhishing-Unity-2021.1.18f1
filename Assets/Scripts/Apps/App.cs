@@ -8,6 +8,8 @@ public class App : MonoBehaviour
 
     [Tooltip("Parent Object for everything that should dissapear when the App is minimised.")]
     public GameObject content;
+    [HideInInspector] //set by AppManager
+    public Canvas parentCanvas;
 
     private RectTransform _transform;
     private float _currentHightMaximised;
@@ -26,12 +28,25 @@ public class App : MonoBehaviour
         _currentHightMaximised = _transform.rect.height;
         _currentYPositionMaximised = _transform.anchoredPosition.y;
         minimised = false;
+        selected = true; //temporally true for testing
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if (selected)
+        //{
+        //    Vector2 offset = Vector2.zero;
+        //    if (!minimised)
+        //    {
+        //        //offset position to hold app my the top bar even when minimised
+        //        offset.y = -((_currentHightMaximised - MINIMISED_HEIGHT) / 2);
+        //    }
 
+        //    Vector2 pos;
+        //    RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out pos);
+        //    _transform.position = parentCanvas.transform.TransformPoint(pos + offset);
+        //}
     }
 
 
