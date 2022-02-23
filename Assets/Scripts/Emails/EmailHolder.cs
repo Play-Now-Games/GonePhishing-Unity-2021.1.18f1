@@ -130,7 +130,7 @@ public class EmailHolder : MonoBehaviour
 
         //Change the position
         //if active and deactivate, take 2 clicks to update the message at the first moment
-        Vector3 newPos = new Vector3(mainScript.selected.transform.position.x, mainScript.selected.transform.position.y, 0);
+        Vector3 newPos = new Vector3(mainScript.selected.transform.position.x, mainScript.selected.transform.position.y, 3);
         mainScript.selected.transform.position = newPos;
         mainScript.selectedEmail = holder;
 
