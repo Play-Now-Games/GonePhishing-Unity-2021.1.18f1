@@ -17,9 +17,10 @@ public class App : MonoBehaviour
 
     private const float MINIMISED_HEIGHT = 45.0f;
 
-    private bool minimised;
-    private bool selected;
+    private bool _minimised;
+    private bool _selected;
 
+    private Vector2 _mouseOffsetOnClick;
 
     // Start is called before the first frame update
     void Start()
@@ -27,28 +28,20 @@ public class App : MonoBehaviour
         _transform = GetComponent<RectTransform>();
         _currentHightMaximised = _transform.rect.height;
         _currentYPositionMaximised = _transform.anchoredPosition.y;
-        minimised = false;
-        selected = true; //temporally true for testing
+        _minimised = false;
+        _selected = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (selected)
-        //{
-        //    Vector2 offset = Vector2.zero;
-        //    if (!minimised)
-        //    {
-        //        //offset position to hold app my the top bar even when minimised
-        //        offset.y = -((_currentHightMaximised - MINIMISED_HEIGHT) / 2);
-        //    }
-
-        //    Vector2 pos;
-        //    RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out pos);
-        //    _transform.position = parentCanvas.transform.TransformPoint(pos + offset);
-        //}
+        if (_selected)
+        {
+            Vector2 pos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out pos);
+            _transform.position = parentCanvas.transform.TransformPoint(pos + _mouseOffsetOnClick);
+        }
     }
-
 
     public void ToggleMinimised()
     {
@@ -59,7 +52,7 @@ public class App : MonoBehaviour
         newPosition.x = _transform.anchoredPosition.x;
 
         //if minimised
-        if (minimised) //maximise
+        if (_minimised) //maximise
         {
             newRectSize.y = _currentHightMaximised;
             _transform.sizeDelta = newRectSize;
@@ -68,7 +61,7 @@ public class App : MonoBehaviour
             _transform.anchoredPosition = newPosition;
 
             content.SetActive(true);
-            minimised = false;
+            _minimised = false;
         }
         else //minimise
         {
@@ -79,17 +72,22 @@ public class App : MonoBehaviour
             _transform.anchoredPosition = newPosition;
 
             content.SetActive(false);
-            minimised = true;
+            _minimised = true;
         }
     }
 
     public void OnClick()
     {
-        selected = true;
+        _selected = true;
+
+        //Find mouseOffset so we can maintain it while draging
+        Vector2 mousePosOnClick;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePosOnClick);
+        _mouseOffsetOnClick = _transform.position - parentCanvas.transform.TransformPoint(mousePosOnClick);
     }
 
     public void OnRelease()
     {
-        selected = false;
+        _selected = false;
     }
 }
