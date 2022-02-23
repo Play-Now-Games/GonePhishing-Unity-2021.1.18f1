@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Main : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class Main : MonoBehaviour
     public int healthPoints;
 
     public Email_Scriptable[] _totalEmails;
+
+    public UnityEvent onGameEnd;
+    public UnityEvent onGameEndWin;
+    public UnityEvent onGameEndLoss;
     ///////// PUBLIC /////////
 
     ///////// PRIVATES /////////
@@ -151,6 +156,23 @@ public class Main : MonoBehaviour
     public void LoseHealth(int HpLost)
     {
         healthPoints -= HpLost;
+        if (healthPoints == 0)
+        {
+            EndGame(false);
+        }
+    }
+
+    public void EndGame(bool win)
+    {
+        onGameEnd.Invoke();
+        if (win)
+        {
+            onGameEndWin.Invoke();
+        }
+        else
+        {
+            onGameEndLoss.Invoke();
+        }
     }
 
     public void DestroyAllEmails(GameObject[] EmailsOnScene)
