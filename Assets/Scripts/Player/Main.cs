@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Gabriel 'DiosMussolinos' Vergari
+using System;
 using UnityEngine;
 
 public class Main : MonoBehaviour
@@ -24,6 +25,9 @@ public class Main : MonoBehaviour
 
     [SerializeField]
     private Email_Scriptable[] _phishing;
+
+    [SerializeField]
+    private GameObject[] _totalPopUps;
     ///////// PRIVATES /////////
 
     //Do its commands BEFORE the first frame
@@ -151,6 +155,12 @@ public class Main : MonoBehaviour
     public void LoseHealth(int HpLost)
     {
         healthPoints -= HpLost;
+
+        if (healthPoints < 0)
+        {
+            //ToDo: Losing Screen
+        }
+
     }
 
     public void DestroyAllEmails(GameObject[] EmailsOnScene)
@@ -242,6 +252,24 @@ public class Main : MonoBehaviour
 
         #endregion
 
+    }
+
+    public void DestroyPopUps(int popUpID)
+    {
+        GameObject[] PopUpsOnScene = GameObject.FindGameObjectsWithTag("PopUps");
+        
+        for (int i = 0; i < _totalPopUps.Length; i++)
+        {
+
+            PopUp_Holder PopUpScript = PopUpsOnScene[i].GetComponent<PopUp_Holder>();
+
+            if (popUpID == PopUpScript.ID)
+            {
+
+                Destroy(PopUpsOnScene[i]);
+            }
+        }
+        
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
