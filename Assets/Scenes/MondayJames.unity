@@ -1820,7 +1820,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _phishingAmount: 2
+  _phishingAmount: 10
   _normalEmails:
   - {fileID: 11400000, guid: 03bc0ae329a605246bb4f784abe8a8f7, type: 2}
   - {fileID: 11400000, guid: 03bc0ae329a605246bb4f784abe8a8f7, type: 2}

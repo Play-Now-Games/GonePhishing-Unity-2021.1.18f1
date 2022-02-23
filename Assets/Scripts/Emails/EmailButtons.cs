@@ -32,7 +32,7 @@ public class EmailButtons : MonoBehaviour
             GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
 
             //Search the Email on the Array of Emails
-            for (int i = 0; i < EmailsOnScene.Length - 1; i++)
+            for (int i = 0; i < EmailsOnScene.Length; i++)
             {
                 if (mainScript._totalEmails[i].ID == holderCopy.ID)
                 {
