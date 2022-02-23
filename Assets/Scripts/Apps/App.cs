@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class App : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class App : MonoBehaviour
 
     private const float MINIMISED_HEIGHT = 45.0f;
 
+    private bool minimised;
+    private bool selected;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +25,13 @@ public class App : MonoBehaviour
         _transform = GetComponent<RectTransform>();
         _currentHightMaximised = _transform.rect.height;
         _currentYPositionMaximised = _transform.anchoredPosition.y;
+        minimised = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -39,7 +44,7 @@ public class App : MonoBehaviour
         newPosition.x = _transform.anchoredPosition.x;
 
         //if minimised
-        if (_transform.rect.height == MINIMISED_HEIGHT) //maximise
+        if (minimised) //maximise
         {
             newRectSize.y = _currentHightMaximised;
             _transform.sizeDelta = newRectSize;
@@ -48,6 +53,7 @@ public class App : MonoBehaviour
             _transform.anchoredPosition = newPosition;
 
             content.SetActive(true);
+            minimised = false;
         }
         else //minimise
         {
@@ -58,6 +64,17 @@ public class App : MonoBehaviour
             _transform.anchoredPosition = newPosition;
 
             content.SetActive(false);
+            minimised = true;
         }
+    }
+
+    public void OnClick()
+    {
+        selected = true;
+    }
+
+    public void OnRelease()
+    {
+        selected = false;
     }
 }
