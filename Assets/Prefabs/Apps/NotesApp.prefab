@@ -80,7 +80,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: '- Note 1
 
-    -This is another Note'
+    - This is another Note'
 --- !u!1 &4007576604744143538
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 4015420168262154663}
   - component: {fileID: 6209202444533332117}
   m_Layer: 5
-  m_Name: Notes App
+  m_Name: NotesApp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

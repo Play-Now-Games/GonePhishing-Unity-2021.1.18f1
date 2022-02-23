@@ -3529,11 +3529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4015420168262154661, guid: f5e500b4e66d30f4d98d2135890dba7c, type: 3}
       propertyPath: m_Name
-      value: Notes App
-      objectReference: {fileID: 0}
-    - target: {fileID: 4015420168262154661, guid: f5e500b4e66d30f4d98d2135890dba7c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      value: NotesApp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5e500b4e66d30f4d98d2135890dba7c, type: 3}
