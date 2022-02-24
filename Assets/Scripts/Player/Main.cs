@@ -28,6 +28,8 @@ public class Main : MonoBehaviour
 
     [SerializeField]
     private GameObject[] _totalPopUps;
+
+    private float time = 5;
     ///////// PRIVATES /////////
 
     //Do its commands BEFORE the first frame
@@ -150,9 +152,53 @@ public class Main : MonoBehaviour
 
         #endregion
 
+        time -= Time.deltaTime;
+
+        if(time < 0)
+        {
+            SpawnPopUp();
+            time = 0.5f;
+        }
+
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
+
+    public void UICreation()
+    {
+        #region Spawn Emails
+
+        //Find By Name
+        GameObject Content = GameObject.Find("Content");
+
+        //Vectors to spawn -- 110 is the 100 + offset
+        Vector2 height = new Vector2(0, 110);
+
+        //-1 to work on
+        for (int i = 0; i < _totalEmails.Length - 1; i++)
+        {
+            //Email Pos Based on Pos in the array
+            Vector2 Transfor = new Vector2(Content.transform.position.x - 25, Content.transform.position.y);
+            Vector2 emailNewPos = Transfor - (height * i);
+
+            //Instantiate & Set Child
+            GameObject ChildObject = Instantiate(emailPrefab, emailNewPos, Quaternion.identity);
+            ChildObject.transform.parent = Content.transform;
+
+            //Add Scriptable Object Here
+            EmailHolder holder = ChildObject.GetComponent<EmailHolder>();
+            holder.holder = _totalEmails[i];
+        }
+        #endregion
+
+        #region Update Height - Scroll Bar
+
+        RectTransform RectT = Content.GetComponent<RectTransform>();
+        RectT.sizeDelta = new Vector2(RectT.sizeDelta.x, height.y * _totalEmails.Length);
+
+        #endregion
+    }
+
     public void LoseHealth(int HpLost)
     {
         healthPoints -= HpLost;
@@ -195,7 +241,7 @@ public class Main : MonoBehaviour
             DestroyAllEmails(EmailsOnScene);
 
             //ReCreate the UI with all the emails
-            StartUICreation();
+            UICreation();
         }
 
         #endregion
@@ -220,7 +266,7 @@ public class Main : MonoBehaviour
             DestroyAllEmails(EmailsOnScene);
 
             //ReCreate the UI with all the emails
-            StartUICreation();
+            UICreation();
         
         }
         
@@ -255,22 +301,72 @@ public class Main : MonoBehaviour
 
     }
 
+
+
+    public void SpawnPopUp()
+    {
+
+        //Random PopUp
+        int randomIndex = UnityEngine.Random.Range(0, _totalPopUps.Length);
+
+        //Can Spawn
+        bool CanSpawn = true;
+
+        //PopUpArray
+        GameObject[] Pops = GameObject.FindGameObjectsWithTag("PopUps");
+
+        #region Search For Repetitive PopUps On Scene
+        for (int i = 0; i < Pops.Length; i++)
+        {
+            CanSpawn = true;
+
+            PopUp_Holder HolderInScene = Pops[i].GetComponent<PopUp_Holder>();
+            PopUp_Holder ToSpawn = _totalPopUps[randomIndex].GetComponent<PopUp_Holder>();
+
+            if (HolderInScene.ID == ToSpawn.ID)
+            {
+                CanSpawn = false;
+                break;
+            }
+        }
+        #endregion
+
+
+        #region Spawn Unique PopUp
+        if (CanSpawn)
+        {
+            //Get Position
+            float x = UnityEngine.Random.Range(590, 1386);
+            float y = UnityEngine.Random.Range(146, 640);
+            float z = 6;
+            Vector3 popUpNewPos = new Vector3(x, y, z);
+
+            //Instantiate and select the instantiated as child of ...
+            GameObject PopUp = GameObject.Find("==PopUps==");
+            GameObject ChildObject = Instantiate(_totalPopUps[randomIndex], popUpNewPos, Quaternion.identity);
+            ChildObject.transform.parent = PopUp.transform;
+        }
+        #endregion
+
+    }
+
     public void DestroyPopUps(int popUpID)
     {
+        #region Destroy Pop-Ups
         GameObject[] PopUpsOnScene = GameObject.FindGameObjectsWithTag("PopUps");
-        
-        for (int i = 0; i < _totalPopUps.Length; i++)
+
+        for (int i = 0; i < _totalPopUps.Length - 1; i++)
         {
 
             PopUp_Holder PopUpScript = PopUpsOnScene[i].GetComponent<PopUp_Holder>();
 
             if (popUpID == PopUpScript.ID)
             {
-
                 Destroy(PopUpsOnScene[i]);
+                break;
             }
         }
-        
+        #endregion
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////

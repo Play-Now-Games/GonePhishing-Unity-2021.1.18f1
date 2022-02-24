@@ -23,4 +23,9 @@ public class PopUp_Holder : MonoBehaviour
         mainScript.DestroyPopUps(ID);
     }
 
+    public void GivePenality()
+    {
+        Debug.Log("GivePenality");
+    }
+
 }
