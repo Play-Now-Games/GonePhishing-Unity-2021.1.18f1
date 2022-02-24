@@ -126,6 +126,11 @@ public class App : MonoBehaviour
 
             content.SetActive(true);
             _minimised = false;
+
+            foreach (RectTransform rectTransform in resizeWithApp)
+            {
+                rectTransform.sizeDelta = newRectSize;
+            }
         }
         else //minimise
         {
@@ -137,6 +142,12 @@ public class App : MonoBehaviour
 
             content.SetActive(false);
             _minimised = true;
+
+
+            foreach (RectTransform rectTransform in resizeWithApp)
+            {
+                rectTransform.sizeDelta = newRectSize;
+            }
         }
     }
 
