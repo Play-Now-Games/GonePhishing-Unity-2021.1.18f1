@@ -44,6 +44,18 @@ public class NotesApp : App
         UpdateDisplay();
     }
 
+    public void AddNoteAt(string note, int index)
+    {
+        if (notes.Count > index)
+        {
+            notes.Add(note);
+        }
+        else
+        {
+            notes.Insert(index, note);
+        }
+    }
+
     public void RemoveNote(string note)
     {
         if (notes.Contains(note))
@@ -52,5 +64,17 @@ public class NotesApp : App
         }
 
         UpdateDisplay();
+    }
+
+    public void RemoveNoteAt(int index)
+    {
+        if (notes.Count >= index || index < 0)
+        {
+            //no note to remove
+        }
+        else
+        {
+            notes.RemoveAt(index);
+        }
     }
 }
