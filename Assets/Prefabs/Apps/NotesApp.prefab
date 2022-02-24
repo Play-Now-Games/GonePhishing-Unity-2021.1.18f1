@@ -429,6 +429,10 @@ MonoBehaviour:
   minimumWidth: 200
   minimumHeight: 200
   resizeClickAreaSize: 20
+  notes:
+  - '- Note 0'
+  - '- A different, and longer, note'
+  notesDisplay: {fileID: 244726626}
 --- !u!1 &4015420168780193667
 GameObject:
   m_ObjectHideFlags: 0
