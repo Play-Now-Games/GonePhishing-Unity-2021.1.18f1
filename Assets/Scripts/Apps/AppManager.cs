@@ -67,7 +67,13 @@ public class AppManager : MonoBehaviour
                     App app;
                     if (app = result.gameObject.GetComponent<App>())
                     {
+                        //set sibling index to place this app at the top of the sorting order
+                        result.gameObject.transform.SetSiblingIndex(apps.Length);
+
                         app.OnClick();
+
+                        //only select one app at a time
+                        break;
                     }
 
                 }
@@ -79,7 +85,6 @@ public class AppManager : MonoBehaviour
             foreach (App app in apps)
             {
                 app.OnRelease();
-
             }
         }
     }
