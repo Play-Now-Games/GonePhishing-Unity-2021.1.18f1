@@ -152,14 +152,6 @@ public class Main : MonoBehaviour
 
         #endregion
 
-        time -= Time.deltaTime;
-
-        if(time < 0)
-        {
-            SpawnPopUp();
-            time = 0.5f;
-        }
-
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
@@ -300,7 +292,6 @@ public class Main : MonoBehaviour
         #endregion
 
     }
-
 
 
     public void SpawnPopUp()
