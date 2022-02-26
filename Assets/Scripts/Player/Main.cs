@@ -152,6 +152,15 @@ public class Main : MonoBehaviour
 
         #endregion
 
+        /* TESTING
+        time -= Time.deltaTime;
+
+        if(time < 0)
+        {
+            SpawnPopUp();
+            time = 5;
+        }
+        */
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
