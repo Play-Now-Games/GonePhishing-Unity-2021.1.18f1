@@ -1,6 +1,7 @@
 ﻿//Gabriel 'DiosMussolinos' Vergari
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Main : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Main : MonoBehaviour
     public int healthPoints;
 
     public Email_Scriptable[] _totalEmails;
+
+    public UnityEvent onGameEnd;
+    public UnityEvent onGameEndWin;
+    public UnityEvent onGameEndLoss;
     ///////// PUBLIC /////////
 
     ///////// PRIVATES /////////
@@ -161,6 +166,12 @@ public class Main : MonoBehaviour
             time = 5;
         }
         */
+
+        if (_totalEmails.Length == 0)
+        {
+            EndGame(true);
+        }
+
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
@@ -204,11 +215,23 @@ public class Main : MonoBehaviour
     {
         healthPoints -= HpLost;
 
-        if (healthPoints < 0)
+        if (healthPoints >= 0)
         {
-            //ToDo: Losing Screen
+            EndGame(false);
         }
+    }
 
+    public void EndGame(bool win)
+    {
+        onGameEnd.Invoke();
+        if (win)
+        {
+            onGameEndWin.Invoke();
+        }
+        else
+        {
+            onGameEndLoss.Invoke();
+        }
     }
 
     public void DestroyAllEmails(GameObject[] EmailsOnScene)

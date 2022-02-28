@@ -18,17 +18,17 @@ public class FirstPersonController : MonoBehaviour
     [Tooltip("How long, in seconds, for the camera movement into or out of a lock to last.")]
     public float CameraTransitionTime = 0.8f;
 
-
-
     private enum PlayerState
     {
         FreeCamera,
         CameraMovingIntoLock,
         CameraReturningFromLock,
-        LockCamera
+        LockCamera,
+        DisableControl
     }
 
     private PlayerState CurrentState = PlayerState.FreeCamera;
+    private PlayerState ReturnState;
 
     private float CameraMovingFor = 0.0f;
 
@@ -151,7 +151,7 @@ public class FirstPersonController : MonoBehaviour
             }
 
         }
-        else
+        else if (CurrentState == PlayerState.LockCamera)
         {
 
             ExitCameraLockMarginPixelsX = Mathf.RoundToInt(Screen.width / 100.0f * ExitCameraLockMargin);
@@ -191,8 +191,7 @@ public class FirstPersonController : MonoBehaviour
                 }
             }
         }
-
-        if (CurrentState == PlayerState.CameraMovingIntoLock || CurrentState == PlayerState.CameraReturningFromLock)
+        else if (CurrentState == PlayerState.CameraMovingIntoLock || CurrentState == PlayerState.CameraReturningFromLock)
         {
             if (Vector3.Distance(MainCamera.transform.position, TargetPosition) < 0.001 || CameraMovingFor >= CameraTransitionTime)
             {
@@ -276,4 +275,16 @@ public class FirstPersonController : MonoBehaviour
 
         CameraMovingFor = 0.0f;
     }
+
+    public void DisableControl()
+    {
+        ReturnState = CurrentState;
+        CurrentState = PlayerState.DisableControl;
+    }
+
+    public void ReturnToPreviousStateAfterControlDisabled()
+    {
+        CurrentState = ReturnState;
+    }
+
 }
