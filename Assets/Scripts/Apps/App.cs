@@ -56,6 +56,34 @@ public class App : MonoBehaviour
             Vector2 mousePos;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePos);
             _transform.position = parentCanvas.transform.TransformPoint(mousePos + _mouseOffsetOnClick);
+
+
+            // Lock inside screen (parent canvas)
+            #region Keep within parent canvas
+            RectTransform parentCanvasRectTransform = parentCanvas.GetComponent<RectTransform>();
+
+            Vector2 newPos = _transform.anchoredPosition;
+
+            if (_transform.anchoredPosition.x < -((parentCanvasRectTransform.rect.width / 2) - (_transform.rect.width / 2)))
+            {
+                newPos.x = -((parentCanvasRectTransform.rect.width / 2) - (_transform.rect.width / 2));
+            }
+            else if (_transform.anchoredPosition.x > ((parentCanvasRectTransform.rect.width / 2) - (_transform.rect.width / 2)))
+            {
+                newPos.x = ((parentCanvasRectTransform.rect.width / 2) - (_transform.rect.width / 2));
+            }
+
+            if (_transform.anchoredPosition.y < -((parentCanvasRectTransform.rect.height / 2) - (_transform.rect.height / 2)))
+            {
+                newPos.y = -((parentCanvasRectTransform.rect.height / 2) - (_transform.rect.height / 2));
+            }
+            else if (_transform.anchoredPosition.y > ((parentCanvasRectTransform.rect.height / 2) - (_transform.rect.height / 2)))
+            {
+                newPos.y = ((parentCanvasRectTransform.rect.height / 2) - (_transform.rect.height / 2));
+            }
+
+            _transform.anchoredPosition = newPos;
+            #endregion
         }
         else if (_currentState == SelectedState.Resizing)
         {
