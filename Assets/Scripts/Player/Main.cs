@@ -29,7 +29,7 @@ public class Main : MonoBehaviour
     [SerializeField]
     private GameObject[] _totalPopUps;
 
-    private float time = 5;
+    //private float time = 5;
     ///////// PRIVATES /////////
 
     //Do its commands BEFORE the first frame
