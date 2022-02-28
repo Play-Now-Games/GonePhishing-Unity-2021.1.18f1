@@ -27,6 +27,10 @@ public class DayTimer : MonoBehaviour
     public Text DigitalClockText;
     [Tooltip("When the clock text updates, it will be rounded DOWN to the nearest X ingame minutes.")]
     public int RoundingAmount = 5;
+    [Tooltip("Prefab for a notification object that gets created when the time limit is changed.")]
+    public GameObject NotificationPrefab;
+    [Tooltip("The computer GUI object which notifications will appear above if the time limit is changed.")]
+    public GameObject ComputerClockObject;
 
     public UnityEvent onTimeLimit;
 
@@ -102,6 +106,33 @@ public class DayTimer : MonoBehaviour
     public void StartTiming()
     {
         timing = true;
+    }
+
+    // If the time limit needs to be changed, do it through this function to trigger a notification.  Amount is in real seconds.
+    public void AddOrSubtractToTimeLimit(float amount)
+    {
+        print("Adding to timelimit");
+        CurrentTimeLimit += amount;
+
+        int change = Mathf.FloorToInt((amount * Timescale) / 60);
+        string notifyText;
+        if (change > 0)
+        {
+            notifyText = "Your time limit has been extended by " + change + " minutes.";
+            DigitalClockNotification(notifyText);
+        }
+        else if (change < 0)
+        {
+            notifyText = "Your time limit has been reduced by " + (-change) + " minutes.";
+            DigitalClockNotification(notifyText);
+        }
+    }
+
+    void DigitalClockNotification(string text)
+    {
+        print("Creating notification");
+        GameObject notificationObject = Instantiate(NotificationPrefab, ComputerClockObject.transform);
+        notificationObject.GetComponentInChildren<Text>().text = text;
     }
 
 }
