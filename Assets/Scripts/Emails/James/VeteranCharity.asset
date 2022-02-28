@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   logo: {fileID: 0}
-  sender: 
-  tittle: 
-  greetings: 
-  content: 
-  bye: 
-  timeHour: 
-  timeMin: 
+  sender: Support For Soldiers
+  tittle: Newsletter #246
+  greetings: Hi James,
+  content: "Please see our latest newsletter below!  Click Here Support For Soldiers
+    has been providing practical support to bereaved families and former forces personnel
+    since it\u2019s foundation in 2004. "
+  bye: 'Thank you for your continued support, The Support For Soldiers team '
+  timeHour: 13
+  timeMin: 57
   isPhishing: 0

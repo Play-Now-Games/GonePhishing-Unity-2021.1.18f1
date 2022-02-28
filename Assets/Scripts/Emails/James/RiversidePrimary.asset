@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   logo: {fileID: 0}
-  sender: 
-  tittle: 
-  greetings: 
-  content: 
-  bye: 
-  timeHour: 
-  timeMin: 
+  sender: Steven Marsh
+  tittle: Assembly Talk
+  greetings: Dear Mr. Ferguson
+  content: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
+    love to have you talk to the kids about World War II and what your experiences
+    were. Down below we have a form that should provide more details about what would
+    be needed of you."
+  bye: Kind Regards, Steven Marsh Head Teacher Riverside Primary
+  timeHour: 10
+  timeMin: 11
   isPhishing: 0
