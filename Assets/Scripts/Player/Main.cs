@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Gabriel 'DiosMussolinos' Vergari
+using System;
 using UnityEngine;
 
 public class Main : MonoBehaviour
@@ -24,6 +25,9 @@ public class Main : MonoBehaviour
 
     [SerializeField]
     private Email_Scriptable[] _phishing;
+
+    [SerializeField]
+    private GameObject[] _totalPopUps;
     ///////// PRIVATES /////////
 
     //Do its commands BEFORE the first frame
@@ -87,7 +91,7 @@ public class Main : MonoBehaviour
         //Vectors to spawn -- 110 is the 100 + offset
         Vector2 height = new Vector2(0, 110);
 
-        for (int i = 0; i < _totalEmails.Length - 1; i++)
+        for (int i = 0; i < _totalEmails.Length; i++)
         {
             //Email Pos Based on Pos in the array
             Vector2 Transfor = new Vector2(Content.transform.position.x - 25, Content.transform.position.y);
@@ -127,6 +131,7 @@ public class Main : MonoBehaviour
         #endregion
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -151,6 +156,12 @@ public class Main : MonoBehaviour
     public void LoseHealth(int HpLost)
     {
         healthPoints -= HpLost;
+
+        if (healthPoints < 0)
+        {
+            //ToDo: Losing Screen
+        }
+
     }
 
     public void DestroyAllEmails(GameObject[] EmailsOnScene)
@@ -242,6 +253,24 @@ public class Main : MonoBehaviour
 
         #endregion
 
+    }
+
+    public void DestroyPopUps(int popUpID)
+    {
+        GameObject[] PopUpsOnScene = GameObject.FindGameObjectsWithTag("PopUps");
+        
+        for (int i = 0; i < _totalPopUps.Length; i++)
+        {
+
+            PopUp_Holder PopUpScript = PopUpsOnScene[i].GetComponent<PopUp_Holder>();
+
+            if (popUpID == PopUpScript.ID)
+            {
+
+                Destroy(PopUpsOnScene[i]);
+            }
+        }
+        
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
