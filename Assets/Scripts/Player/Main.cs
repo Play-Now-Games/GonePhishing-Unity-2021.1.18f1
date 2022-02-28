@@ -215,7 +215,7 @@ public class Main : MonoBehaviour
     {
         healthPoints -= HpLost;
 
-        if (healthPoints >= 0)
+        if (healthPoints <= 0)
         {
             EndGame(false);
         }

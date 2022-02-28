@@ -2323,7 +2323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holderCopy: {fileID: 0}
-  mainScript: {fileID: 0}
+  mainScript: {fileID: 1084311727}
 --- !u!1 &1357796991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3578,7 +3578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holderCopy: {fileID: 0}
-  mainScript: {fileID: 0}
+  mainScript: {fileID: 1084311727}
 --- !u!1 &2104837196
 GameObject:
   m_ObjectHideFlags: 0
