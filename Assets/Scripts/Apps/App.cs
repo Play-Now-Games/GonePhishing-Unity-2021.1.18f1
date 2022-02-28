@@ -97,9 +97,16 @@ public class App : MonoBehaviour
 
             Vector2 distanceFromTopLeft = mousePos - topLeft;
 
+            //Get the bottom right of the parent canvas in local space
+            RectTransform parentCanvasRectTransform = parentCanvas.GetComponent<RectTransform>();
+            Vector2 parentCanvasBottomRight = parentCanvasRectTransform.rect.size / 2;
+            parentCanvasBottomRight.y *= -1;
+
+            Vector2 maxDistanceFromTopLeft = parentCanvasBottomRight - topLeft;
+
             Vector2 newSize;
-            newSize.x = Mathf.Max(minimumWidth, distanceFromTopLeft.x);
-            newSize.y = Mathf.Max(minimumHeight, -distanceFromTopLeft.y);
+            newSize.x = Mathf.Max(minimumWidth, Mathf.Min(distanceFromTopLeft.x, maxDistanceFromTopLeft.x));
+            newSize.y = Mathf.Max(minimumHeight, Mathf.Min(-distanceFromTopLeft.y, -maxDistanceFromTopLeft.y));
 
             if (_minimised)
             {
