@@ -34,7 +34,7 @@ public class Main : MonoBehaviour
     [SerializeField]
     private GameObject[] _totalPopUps;
 
-    //private float time = 5;
+    private float time = 0.5f;
     ///////// PRIVATES /////////
 
     //Do its commands BEFORE the first frame
@@ -157,15 +157,15 @@ public class Main : MonoBehaviour
 
         #endregion
 
-        /* TESTING
+
         time -= Time.deltaTime;
 
         if(time < 0)
         {
             SpawnPopUp();
-            time = 5;
+            time = 0.5f;
         }
-        */
+        
 
         if (_totalEmails.Length == 0)
         {
@@ -329,6 +329,7 @@ public class Main : MonoBehaviour
     public void SpawnPopUp()
     {
 
+        #region Temporary Variables
         //Random PopUp
         int randomIndex = UnityEngine.Random.Range(0, _totalPopUps.Length);
 
@@ -337,6 +338,8 @@ public class Main : MonoBehaviour
 
         //PopUpArray
         GameObject[] Pops = GameObject.FindGameObjectsWithTag("PopUps");
+        #endregion
+
 
         #region Search For Repetitive PopUps On Scene
         for (int i = 0; i < Pops.Length; i++)
@@ -353,7 +356,7 @@ public class Main : MonoBehaviour
             }
         }
         #endregion
-
+        
 
         #region Spawn Unique PopUp
         if (CanSpawn)
