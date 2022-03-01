@@ -15,6 +15,8 @@ public class AppManager : MonoBehaviour
 
     private App[] apps;
 
+    private ClickManager clickManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,8 @@ public class AppManager : MonoBehaviour
         {
             app.parentCanvas = _parentCanvas;
         }
+
+        clickManager = new ClickManager();
     }
 
     // Update is called once per frame
@@ -40,52 +44,60 @@ public class AppManager : MonoBehaviour
     {
         if (_parentCanvasGroup.interactable)
         {
-            //Set up the new Pointer Event
-            _PointerEventData = new PointerEventData(_EventSystem);
-            //Set the Pointer Event Position to that of the mouse position
-            _PointerEventData.position = Input.mousePosition;
 
-            //Create a list of Raycast Results
-            List<RaycastResult> results = new List<RaycastResult>();
+            // Get all beginning or ending mouse clicks or touch "clicks"
+            List<Click> clicks = clickManager.GetClicks();
 
-            //Raycast using the Graphics Raycaster and mouse click position
-            _Raycaster.Raycast(_PointerEventData, results);
-
-
-            if (Input.GetMouseButtonDown(0))
+            for (int i = 0; i < clicks.Count; i++)
             {
 
-                //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
-                foreach (RaycastResult result in results)
+                //Set up the new Pointer Event
+                _PointerEventData = new PointerEventData(_EventSystem);
+                //Set the Pointer Event Position to that of the mouse position
+                _PointerEventData.position = clicks[i].position;
+
+                //Create a list of Raycast Results
+                List<RaycastResult> results = new List<RaycastResult>();
+
+                //Raycast using the Graphics Raycaster and mouse click position
+                _Raycaster.Raycast(_PointerEventData, results);
+
+                // Click is beginning
+                if (clicks[i].phase == Click.ClickPhase.Begin)
                 {
-                    if (result.gameObject.GetComponent<Button>())
+                    foreach (RaycastResult result in results)
                     {
-                        //buttons take priority
-                        break;
-                    }
+                        if (result.gameObject.GetComponent<Button>())
+                        {
+                            //buttons take priority
+                            break;
+                        }
 
-                    App app;
-                    if (app = result.gameObject.GetComponent<App>())
+                        App app;
+                        if (app = result.gameObject.GetComponent<App>())
+                        {
+                            //set sibling index to place this app at the top of the sorting order
+                            result.gameObject.transform.SetSiblingIndex(apps.Length);
+
+                            app.OnClick();
+
+                            //only select one app at a time
+                            break;
+                        }
+
+                    }
+                }
+                // Click is ending
+                if (clicks[i].phase == Click.ClickPhase.End)
+                {
+                    foreach (App app in apps)
                     {
-                        //set sibling index to place this app at the top of the sorting order
-                        result.gameObject.transform.SetSiblingIndex(apps.Length);
-
-                        app.OnClick();
-
-                        //only select one app at a time
-                        break;
+                        app.OnRelease();
                     }
-
                 }
             }
+
         }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            foreach (App app in apps)
-            {
-                app.OnRelease();
-            }
-        }
     }
 }
