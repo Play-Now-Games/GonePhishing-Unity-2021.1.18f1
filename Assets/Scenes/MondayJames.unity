@@ -1912,9 +1912,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9c8416f5d5fbd2848b690aabefc0f81a, type: 2}
   - {fileID: 11400000, guid: 71119951e7f375f44966ec1bb5baba48, type: 2}
   _totalPopUps:
+  - {fileID: 1125964853130987750, guid: 06f0d8be6e31f4f479a4cbf020ce192f, type: 3}
   - {fileID: 1125964853130987750, guid: bac5a7003b052f948a977d4a29580794, type: 3}
   - {fileID: 1125964853130987750, guid: 887afc407cebf3249970f18891396f92, type: 3}
-  - {fileID: 1125964853130987750, guid: 06f0d8be6e31f4f479a4cbf020ce192f, type: 3}
+  - {fileID: 1125964853130987750, guid: 4619df99aaf770e4cacb46a3374d87d5, type: 3}
 --- !u!114 &1084311728
 MonoBehaviour:
   m_ObjectHideFlags: 0
