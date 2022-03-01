@@ -35,6 +35,8 @@ public class App : MonoBehaviour
     }
 
     private SelectedState _currentState = SelectedState.NotSelected;
+    private bool _selectedByMouse;
+    private int _selectedByTouchID;
 
     private Vector2 _mouseOffsetOnClick;
 
@@ -186,13 +188,20 @@ public class App : MonoBehaviour
         }
     }
 
-    public void OnClick()
+    public void OnClick(Click.Type type, int touchID)
     {
         //Find mouse position in UI space
         Vector2 mousePos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePos);
         //Find mouseOffset so we can maintain it while draging
         _mouseOffsetOnClick = _transform.position - parentCanvas.transform.TransformPoint(mousePos);
+
+        if (type == Click.Type.Mouse)
+            _selectedByMouse = true;
+        else
+            _selectedByMouse = false;
+
+        _selectedByTouchID = touchID;
 
         //if clicked on the buttom right corner
         if (-_mouseOffsetOnClick.x > ((_transform.sizeDelta.x / 2) - resizeClickAreaSize) && _mouseOffsetOnClick.y > ((_transform.sizeDelta.y / 2) - resizeClickAreaSize))
@@ -207,8 +216,9 @@ public class App : MonoBehaviour
 
     }
 
-    public void OnRelease()
+    public void OnRelease(Click.Type type, int touchID)
     {
-        _currentState = SelectedState.NotSelected;
+        if ( (_selectedByMouse && type == Click.Type.Mouse) || (!_selectedByMouse && type == Click.Type.Touch && touchID == _selectedByTouchID))
+            _currentState = SelectedState.NotSelected;
     }
 }

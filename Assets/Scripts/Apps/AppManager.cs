@@ -79,7 +79,7 @@ public class AppManager : MonoBehaviour
                             //set sibling index to place this app at the top of the sorting order
                             result.gameObject.transform.SetSiblingIndex(apps.Length);
 
-                            app.OnClick();
+                            app.OnClick(clicks[i].type, clicks[i].touchID);
 
                             //only select one app at a time
                             break;
@@ -92,7 +92,7 @@ public class AppManager : MonoBehaviour
                 {
                     foreach (App app in apps)
                     {
-                        app.OnRelease();
+                        app.OnRelease(clicks[i].type, clicks[i].touchID);
                     }
                 }
             }
