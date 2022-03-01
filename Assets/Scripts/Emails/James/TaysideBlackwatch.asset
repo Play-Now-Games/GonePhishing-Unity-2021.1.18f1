@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 0
   logo: {fileID: 0}
   sender: Michael
+  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
   tittle: Help!?
   greetings: Dear James,
   content: Hi James its Michael from the Tayside Blackwatch division. I know it has

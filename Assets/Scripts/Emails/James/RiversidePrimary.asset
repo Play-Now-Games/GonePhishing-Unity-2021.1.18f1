@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 0
   logo: {fileID: 0}
   sender: Steven Marsh
+  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
   tittle: Assembly Talk
   greetings: Dear Mr. Ferguson
   content: "I am emailing you today on behalf of Riverside Primary School. We\u2019d

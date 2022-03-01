@@ -1,0 +1,11 @@
+ID - Must be Unique per day of the week.
+Logo - Sprite (2D and UI) Image
+Sender - "Name of the sender"
+Sender Adress - "Name of the sander" and Its adress 
+Tittle - Tittle of the Email
+Greetings - Email Greetings
+Content - Email Content
+Bye - Email Bye
+Time Hour - USELESS FOR NOW (01/03/2022)
+Time Min - USELESS FOR NOW (01/03/2022)
+Is Phoshing - Select true if is a phishing email

@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 0
   logo: {fileID: 0}
   sender: Support For Soldiers
+  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
   tittle: Newsletter #246
   greetings: Hi James,
   content: "Please see our latest newsletter below!  Click Here Support For Soldiers

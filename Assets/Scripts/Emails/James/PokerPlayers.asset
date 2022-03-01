@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 0
   logo: {fileID: 0}
   sender: Poker Players
+  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
   tittle: '(WARNING!) Amazing Deal! 24 Hours Only!!! '
   greetings: 'Hey Player, '
   content: "Don\u2019t miss out on this once in a lifetime deal!  Claim \xA31000

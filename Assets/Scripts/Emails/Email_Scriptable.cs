@@ -13,7 +13,9 @@ public class Email_Scriptable : ScriptableObject
     public Image logo;
     
     public string sender;
-    
+
+    public string senderAdress;
+
     public string tittle;
 
     public string greetings;

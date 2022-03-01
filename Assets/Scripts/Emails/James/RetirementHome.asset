@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 0
   logo: {fileID: 0}
   sender: Susan Miller
+  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
   tittle: Riverside Retirement Application
   greetings: Dear Mr. Ferguson
   content: 'We are writing to you today to inform you that you have been accepted
