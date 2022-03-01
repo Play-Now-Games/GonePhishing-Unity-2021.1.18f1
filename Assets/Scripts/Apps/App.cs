@@ -35,6 +35,8 @@ public class App : MonoBehaviour
     }
 
     private SelectedState _currentState = SelectedState.NotSelected;
+    private bool _selectedByMouse;
+    private int _selectedByTouchID;
 
     private Vector2 _mouseOffsetOnClick;
 
@@ -54,7 +56,27 @@ public class App : MonoBehaviour
         if (_currentState == SelectedState.Moving)
         {
             Vector2 mousePos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePos);
+            #region Get the correct mouse/touch position
+            if (_selectedByMouse)
+            {
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePos);
+            }
+            else
+            {
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+                    Touch touch = Input.GetTouch(i);
+                    if (touch.fingerId == _selectedByTouchID)
+                    {
+                        RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, touch.position, parentCanvas.worldCamera, out mousePos);
+                        break;
+                    }
+                }
+                Debug.LogError("Selected App's touch has stopped but the app is still selected.");
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePos);
+            }
+            #endregion
+
             _transform.position = parentCanvas.transform.TransformPoint(mousePos + _mouseOffsetOnClick);
 
 
@@ -93,7 +115,26 @@ public class App : MonoBehaviour
             topLeft.y += _transform.sizeDelta.y / 2;
 
             Vector2 mousePos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePos);
+            #region Get the correct mouse/touch position
+            if (_selectedByMouse)
+            {
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePos);
+            }
+            else
+            {
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+                    Touch touch = Input.GetTouch(i);
+                    if (touch.fingerId == _selectedByTouchID)
+                    {
+                        RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, touch.position, parentCanvas.worldCamera, out mousePos);
+                        break;
+                    }
+                }
+                Debug.LogError("Selected App's touch has stopped but the app is still selected.");
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePos);
+            }
+            #endregion
 
             Vector2 distanceFromTopLeft = mousePos - topLeft;
 
@@ -186,13 +227,21 @@ public class App : MonoBehaviour
         }
     }
 
-    public void OnClick()
+    public void OnClick(Click click)
     {
         //Find mouse position in UI space
         Vector2 mousePos;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePos);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, click.position, parentCanvas.worldCamera, out mousePos);
+
         //Find mouseOffset so we can maintain it while draging
         _mouseOffsetOnClick = _transform.position - parentCanvas.transform.TransformPoint(mousePos);
+
+        if (click.type == Click.Type.Mouse)
+            _selectedByMouse = true;
+        else
+            _selectedByMouse = false;
+
+        _selectedByTouchID = click.touchID;
 
         //if clicked on the buttom right corner
         if (-_mouseOffsetOnClick.x > ((_transform.sizeDelta.x / 2) - resizeClickAreaSize) && _mouseOffsetOnClick.y > ((_transform.sizeDelta.y / 2) - resizeClickAreaSize))
@@ -207,8 +256,9 @@ public class App : MonoBehaviour
 
     }
 
-    public void OnRelease()
+    public void OnRelease(Click click)
     {
-        _currentState = SelectedState.NotSelected;
+        if ( (_selectedByMouse && click.type == Click.Type.Mouse) || (!_selectedByMouse && click.type == Click.Type.Touch && click.touchID == _selectedByTouchID))
+            _currentState = SelectedState.NotSelected;
     }
 }
