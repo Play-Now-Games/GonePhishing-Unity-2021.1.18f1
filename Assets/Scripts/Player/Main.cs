@@ -13,12 +13,15 @@ public class Main : MonoBehaviour
     public GameObject noEmail;
 
     public int healthPoints;
+    public int maxHealthPoints;
 
     public Email_Scriptable[] _totalEmails;
 
     public UnityEvent onGameEnd;
     public UnityEvent onGameEndWin;
     public UnityEvent onGameEndLoss;
+
+    public UnityEvent healthUpdate;
     ///////// PUBLIC /////////
 
     ///////// PRIVATES /////////
@@ -215,10 +218,24 @@ public class Main : MonoBehaviour
     {
         healthPoints -= HpLost;
 
+        healthUpdate.Invoke();
+
         if (healthPoints <= 0)
         {
             EndGame(false);
         }
+    }
+
+    public void RestoreHealth(int HpRestored)
+    {
+
+        healthPoints += HpRestored;
+
+        if (healthPoints > maxHealthPoints)
+            healthPoints = maxHealthPoints;
+
+        healthUpdate.Invoke();
+
     }
 
     public void EndGame(bool win)

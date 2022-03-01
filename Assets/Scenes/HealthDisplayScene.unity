@@ -1826,7 +1826,11 @@ MonoBehaviour:
   selected: {fileID: 510906948}
   noEmail: {fileID: 556492375}
   healthPoints: 5
+  maxHealthPoints: 5
   _totalEmails:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1900,6 +1904,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  healthUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1923730991}
+        m_TargetAssemblyTypeName: HealthDisplay, Assembly-CSharp
+        m_MethodName: UpdateHealthSprite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _phishingAmount: 10
   _normalEmails:
   - {fileID: 11400000, guid: 03bc0ae329a605246bb4f784abe8a8f7, type: 2}
@@ -1912,11 +1931,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f2e38c25cd0380d45956c089ec371fec, type: 2}
   - {fileID: 11400000, guid: 9c8416f5d5fbd2848b690aabefc0f81a, type: 2}
   - {fileID: 11400000, guid: 71119951e7f375f44966ec1bb5baba48, type: 2}
+  - {fileID: 11400000, guid: 71119951e7f375f44966ec1bb5baba48, type: 2}
+  - {fileID: 11400000, guid: 71119951e7f375f44966ec1bb5baba48, type: 2}
+  - {fileID: 11400000, guid: 71119951e7f375f44966ec1bb5baba48, type: 2}
   _totalPopUps:
   - {fileID: 1125964853130987750, guid: 06f0d8be6e31f4f479a4cbf020ce192f, type: 3}
-  - {fileID: 1125964853130987750, guid: bac5a7003b052f948a977d4a29580794, type: 3}
-  - {fileID: 1125964853130987750, guid: 887afc407cebf3249970f18891396f92, type: 3}
-  - {fileID: 1125964853130987750, guid: 4619df99aaf770e4cacb46a3374d87d5, type: 3}
 --- !u!114 &1084311728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3260,6 +3279,7 @@ GameObject:
   - component: {fileID: 1923730988}
   - component: {fileID: 1923730990}
   - component: {fileID: 1923730989}
+  - component: {fileID: 1923730991}
   m_Layer: 5
   m_Name: ==HealthDisplay==
   m_TagString: Untagged
@@ -3324,6 +3344,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923730987}
   m_CullTransparentMesh: 1
+--- !u!114 &1923730991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923730987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2322c707d9428a74a84945fd162b359d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthStages:
+  - {fileID: 21300000, guid: 43192554df35b2f41ad6ccdd913fd0db, type: 3}
+  - {fileID: 21300000, guid: db0dab5b9a5f7454ea2b9365d652def9, type: 3}
+  - {fileID: 21300000, guid: 7e2c61544ceacd2469fe40b3ce005b3b, type: 3}
+  - {fileID: 21300000, guid: ce7158106d05d9f45a5741700763c115, type: 3}
+  - {fileID: 21300000, guid: f712aea89f1977f4ab05bccde43661bf, type: 3}
+  - {fileID: 21300000, guid: be40453ed76983344ae06166efb0ad56, type: 3}
+  MainScript: {fileID: 1084311727}
 --- !u!1 &1964153526
 GameObject:
   m_ObjectHideFlags: 0

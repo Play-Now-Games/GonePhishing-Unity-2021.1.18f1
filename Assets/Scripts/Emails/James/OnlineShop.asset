@@ -23,4 +23,4 @@ MonoBehaviour:
   bye: 'We look forward to you''re custom again.  Shopmarket Team '
   timeHour: 14
   timeMin: 23
-  isPhishing: 0
+  isPhishing: 1
