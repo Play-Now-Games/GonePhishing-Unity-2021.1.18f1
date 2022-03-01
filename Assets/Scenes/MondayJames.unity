@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.05481927, g: 0.048926435, b: 0.027265957, a: 1}
+  m_IndirectSpecularColor: {r: 0.4497924, g: 0.49985933, b: 0.57560474, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1791,6 +1791,8 @@ MonoBehaviour:
   Timescale: 300
   DigitalClockText: {fileID: 1681506345}
   RoundingAmount: 5
+  NotificationPrefab: {fileID: 5843612883177902684, guid: d36518dd21c22d3409cca79484e666c4, type: 3}
+  ComputerClockObject: {fileID: 173148545}
   onTimeLimit:
     m_PersistentCalls:
       m_Calls:
