@@ -9,8 +9,16 @@ public struct Click
         Begin,
         End
     }
+    public enum Type
+    {
+        Mouse,
+        Touch
+    }
+
     public Vector3 position;
     public ClickPhase phase;
+    public Type type;
+    public int touchID;
 }
 
 public class ClickManager
@@ -24,11 +32,21 @@ public class ClickManager
         for (int i = 0; i < Input.touchCount; i++)
         {
             Click touchClick = new Click();
-            if (Input.GetTouch(i).phase == TouchPhase.Began)
+
+            Touch touch = Input.GetTouch(i);
+
+            if (touch.phase == TouchPhase.Began)
                 touchClick.phase = Click.ClickPhase.Begin;
-            else if (Input.GetTouch(i).phase == TouchPhase.Ended)
+            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
                 touchClick.phase = Click.ClickPhase.End;
-            touchClick.position = Input.GetTouch(i).position;
+            else
+                break; //Discard touches that are not begining or ending
+
+            touchClick.type = Click.Type.Touch;
+            touchClick.touchID = touch.fingerId;
+
+            touchClick.position = touch.position;
+
             clicks.Add(touchClick);
         }
 
@@ -36,15 +54,25 @@ public class ClickManager
         if (Input.GetMouseButtonDown(0))
         {
             Click mouseClick = new Click();
+
             mouseClick.phase = Click.ClickPhase.Begin;
+
+            mouseClick.type = Click.Type.Mouse;
+
             mouseClick.position = Input.mousePosition;
+
             clicks.Add(mouseClick);
         }
         else if (Input.GetMouseButtonUp(0))
         {
             Click mouseClick = new Click();
+
             mouseClick.phase = Click.ClickPhase.End;
+
+            mouseClick.type = Click.Type.Mouse;
+
             mouseClick.position = Input.mousePosition;
+
             clicks.Add(mouseClick);
         }
 
