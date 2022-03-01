@@ -14,6 +14,7 @@ public class EmailHolder : MonoBehaviour
     //UI
     public Image logo;
     public Text sender;
+    public Text senderAddress;
     public Text tittle;
     public Text content;
     public Text timeHour;
@@ -36,9 +37,10 @@ public class EmailHolder : MonoBehaviour
         sender.text = holder.sender;
         StartTittle();
         StartContent();
+        /*
         timeHour.text = holder.timeHour;
         timeMin.text = holder.timeMin;
-
+        */
         #endregion
 
         #region Player Related
@@ -173,6 +175,16 @@ public class EmailHolder : MonoBehaviour
             }
         }
 
+        GameObject BodySenderAdress = GameObject.Find("=Body-SenderAdress=");
+        if (BodySenderAdress)
+        {
+            Text Tittle = BodySenderAdress.GetComponent<Text>();
+            if (Tittle)
+            {
+                Tittle.text = holder.senderAdress;
+
+            }
+        }
 
         GameObject BodyGreetins = GameObject.Find("=Body-Greetins=");
         if (BodyGreetins)

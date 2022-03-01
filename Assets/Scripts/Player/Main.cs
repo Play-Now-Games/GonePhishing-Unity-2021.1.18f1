@@ -1,6 +1,7 @@
 ﻿//Gabriel 'DiosMussolinos' Vergari
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Main : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Main : MonoBehaviour
     public int healthPoints;
 
     public Email_Scriptable[] _totalEmails;
+
+    public UnityEvent onGameEnd;
+    public UnityEvent onGameEndWin;
+    public UnityEvent onGameEndLoss;
     ///////// PUBLIC /////////
 
     ///////// PRIVATES /////////
@@ -152,15 +157,21 @@ public class Main : MonoBehaviour
 
         #endregion
 
-        /* TESTING
+
         time -= Time.deltaTime;
 
         if(time < 0)
         {
             SpawnPopUp();
-            time = 5;
+            time = 0.5f;
         }
-        */
+        
+
+        if (_totalEmails.Length == 0)
+        {
+            EndGame(true);
+        }
+
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
@@ -204,11 +215,23 @@ public class Main : MonoBehaviour
     {
         healthPoints -= HpLost;
 
-        if (healthPoints < 0)
+        if (healthPoints <= 0)
         {
-            //ToDo: Losing Screen
+            EndGame(false);
         }
+    }
 
+    public void EndGame(bool win)
+    {
+        onGameEnd.Invoke();
+        if (win)
+        {
+            onGameEndWin.Invoke();
+        }
+        else
+        {
+            onGameEndLoss.Invoke();
+        }
     }
 
     public void DestroyAllEmails(GameObject[] EmailsOnScene)
@@ -306,6 +329,7 @@ public class Main : MonoBehaviour
     public void SpawnPopUp()
     {
 
+        #region Temporary Variables
         //Random PopUp
         int randomIndex = UnityEngine.Random.Range(0, _totalPopUps.Length);
 
@@ -314,6 +338,8 @@ public class Main : MonoBehaviour
 
         //PopUpArray
         GameObject[] Pops = GameObject.FindGameObjectsWithTag("PopUps");
+        #endregion
+
 
         #region Search For Repetitive PopUps On Scene
         for (int i = 0; i < Pops.Length; i++)
@@ -330,7 +356,7 @@ public class Main : MonoBehaviour
             }
         }
         #endregion
-
+        
 
         #region Spawn Unique PopUp
         if (CanSpawn)
