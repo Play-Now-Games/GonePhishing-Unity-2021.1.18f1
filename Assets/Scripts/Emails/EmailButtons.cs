@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EmailButtons : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class EmailButtons : MonoBehaviour
     [SerializeField]
     private Main mainScript;
 
-    private bool emailSelected;
+    private Button button;
 
     private void Start()
     {
@@ -20,8 +21,22 @@ public class EmailButtons : MonoBehaviour
 
         GameObject player = GameObject.Find("====Character/Camera====");
         mainScript = player.GetComponent<Main>();
-        
+
         #endregion
+
+        button = this.GetComponent<Button>();
+    }
+
+    private void Update()
+    {
+        if (mainScript.selectedEmail)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
+        }
     }
 
     public void ClickAnswer()
