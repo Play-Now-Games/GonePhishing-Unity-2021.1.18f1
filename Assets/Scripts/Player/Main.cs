@@ -37,7 +37,7 @@ public class Main : MonoBehaviour
     [SerializeField]
     private GameObject[] _totalPopUps;
 
-    private float time = 0.5f;
+    //private float time = 5;
     ///////// PRIVATES /////////
 
     //Do its commands BEFORE the first frame
@@ -160,7 +160,7 @@ public class Main : MonoBehaviour
 
         #endregion
 
-
+        /*
         time -= Time.deltaTime;
 
         if(time < 0)
@@ -168,7 +168,7 @@ public class Main : MonoBehaviour
             SpawnPopUp();
             time = 0.5f;
         }
-        
+        */
 
         if (_totalEmails.Length == 0)
         {
