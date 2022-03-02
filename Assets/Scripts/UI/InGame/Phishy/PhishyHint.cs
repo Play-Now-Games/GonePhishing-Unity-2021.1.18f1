@@ -11,4 +11,8 @@ public class PhishyHint : ScriptableObject
 
     public bool IsEvil;
 
+    public float xPosition;
+
+    public float yPosition;
+
 }

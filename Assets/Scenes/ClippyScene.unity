@@ -2752,7 +2752,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 244979789874582185, guid: 8534708e135b6b04391068a8999d44d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 915b08ffafe65af48939f6cd002f9daf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2804,6 +2804,8 @@ MonoBehaviour:
   PraiseComments: []
   MockComments: []
   EmailResponseCommentChance: 0
+  DialogueBubble: {fileID: 3451908788116683739, guid: c183124bf67f29340a7c137894cc8ca5, type: 3}
+  testHint: {fileID: 11400000, guid: 6bb5c3d512c7c874596521a5bb0ec8b1, type: 2}
 --- !u!1 &1606875860
 GameObject:
   m_ObjectHideFlags: 0
