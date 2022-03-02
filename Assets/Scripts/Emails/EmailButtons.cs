@@ -129,47 +129,7 @@ public class EmailButtons : MonoBehaviour
         }
     }    
 
-            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
-
-            //Search the Email on the Array of Emails
-            for (int i = 0; i < EmailsOnScene.Length; i++)
-            {
-                if (mainScript._totalEmails[i].ID == holderCopy.ID)
-                {
-                    //Email.isPhishing == True
-                    if (holderCopy.isPhishing)
-                    {
-                        Debug.Log("Ignored the " + holderCopy);
-                        //Todo: Do the same on ClickAnwer(), BUT GIVE THE CORRECT FEEDBACK
-                    }
-                    else
-                    {
-                        Debug.Log("Ignored the " + holderCopy);
-                        //Todo: Do the same on ClickAnwer(), BUT GIVE THE CORRECT FEEDBACK
-
-                    }
-
-                    //Remove Array from the original Array
-                    mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
-
-                    //Destroy emails to Recreate in a new position
-                    mainScript.DestroyAllEmails(EmailsOnScene);
-
-                    //Restart the "Nothing Here"
-                    RestartNothingHere();
-
-                    //Recreate the emails
-                    mainScript.StartUICreation();
-
-                    //start animation
-                    mainScript.selectedAnimator.Animate(_position);
-
-                    break;
-                }
-            }
-        }
-    }   
-    
+                
 
     private void RestartNothingHere()
     {
