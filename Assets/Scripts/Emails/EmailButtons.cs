@@ -12,6 +12,8 @@ public class EmailButtons : MonoBehaviour
     [SerializeField]
     private Main mainScript;
 
+    private bool emailSelected;
+
     private void Start()
     {
         #region Player Related
@@ -24,64 +26,61 @@ public class EmailButtons : MonoBehaviour
 
     public void ClickAnswer()
     {
-
-        //Email.isPhishing == True
-        if (holderCopy.isPhishing)
+        if (mainScript.selectedEmail) //ignore clicks when no seslected email
         {
-
-            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
-
-            //Search the Email on the Array of Emails
-            for (int i = 0; i < EmailsOnScene.Length; i++)
+            //Email.isPhishing == True
+            if (holderCopy.isPhishing)
             {
-                if (mainScript._totalEmails[i].ID == holderCopy.ID)
+
+                GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
+
+                //Search the Email on the Array of Emails
+                for (int i = 0; i < EmailsOnScene.Length; i++)
                 {
-                    //Less Health Points
-                    mainScript.LoseHealth(1);
+                    if (mainScript._totalEmails[i].ID == holderCopy.ID)
+                    {
+                        //Less Health Points
+                        mainScript.LoseHealth(1);
 
-                    //Remove Array from the original Array
-                    mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
+                        //Remove Array from the original Array
+                        mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
 
-                    //Destroy emails to Recreate in a new position
-                    mainScript.DestroyAllEmails(EmailsOnScene);
+                        //Destroy emails to Recreate in a new position
+                        mainScript.DestroyAllEmails(EmailsOnScene);
 
-                    //Restart the "Nothing Here"
-                    RestartNothingHere();
+                        //Restart the "Nothing Here"
+                        RestartNothingHere();
 
-                    //Recreate the emails
-                    mainScript.StartUICreation();
+                        //Recreate the emails
+                        mainScript.StartUICreation();
 
-                    break;
+                        break;
+                    }
                 }
             }
-        }
-        else 
-        {
-            //ToDo: Do What the Team Decides
-        
+            else
+            {
+                //ToDo: Do What the Team Decides
+
+            }
         }
     }
 
 
     public void ClickIgnored()
     {
-        Debug.Log("Ignored the " + holderCopy);
-        //Todo: Do the same on ClickAnwer(), BUT GIVE THE CORRECT FEEDBACK
+        if (mainScript.selectedEmail) //ignore clicks when no seslected email
+        {
+            Debug.Log("Ignored the " + holderCopy);
+            //Todo: Do the same on ClickAnwer(), BUT GIVE THE CORRECT FEEDBACK
+        }
     }    
 
     private void RestartNothingHere()
     {
-
-        #region Return the screen for the main one -> Set Active didn't work here.
-
-        //Restart Position Text
-        Vector3 newPos = new Vector3(mainScript.selected.transform.position.x, mainScript.selected.transform.position.y, -5000);
-        mainScript.selected.transform.position = newPos;
+        //SetActive Issue fixed
 
         //Restart Nothing Here
-        mainScript.selectedEmail = null;
-
-        #endregion
-    
+        mainScript.selectedEmail = null; //Main will set selected to inactive when selectedEmail is null 
     }
 }

@@ -152,10 +152,12 @@ public class Main : MonoBehaviour
         {
             //Turn Off the 
             noEmail.SetActive(false);
+            selected.SetActive(true);
         }
         else
         {
             noEmail.SetActive(true);
+            selected.SetActive(false);
         }
 
         #endregion
