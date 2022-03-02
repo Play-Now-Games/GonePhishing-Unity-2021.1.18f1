@@ -10,15 +10,20 @@ public class Main : MonoBehaviour
     public Email_Scriptable selectedEmail = null;
     public GameObject emailPrefab;
     public GameObject selected;
+    [HideInInspector]
+    public SelectedAnimator selectedAnimator;
     public GameObject noEmail;
 
     public int healthPoints;
+    public int maxHealthPoints;
 
     public Email_Scriptable[] _totalEmails;
 
     public UnityEvent onGameEnd;
     public UnityEvent onGameEndWin;
     public UnityEvent onGameEndLoss;
+
+    public UnityEvent healthUpdate;
     ///////// PUBLIC /////////
 
     ///////// PRIVATES /////////
@@ -91,6 +96,8 @@ public class Main : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        selectedAnimator = selected.GetComponent<SelectedAnimator>();
+
         StartUICreation();
     }
 
@@ -153,12 +160,13 @@ public class Main : MonoBehaviour
 
         if (selectedEmail)
         {
-            //Turn Off the 
             noEmail.SetActive(false);
+            selected.SetActive(true);
         }
-        else
+        else if(!selectedAnimator.isAnimating) //don't change while animating
         {
             noEmail.SetActive(true);
+            selected.SetActive(false);
         }
 
         #endregion
@@ -225,6 +233,8 @@ public class Main : MonoBehaviour
     {
         healthPoints -= HpLost;
 
+        healthUpdate.Invoke();
+
         if (healthPoints <= 0)
         {
             EndGame(false);
@@ -255,6 +265,18 @@ public class Main : MonoBehaviour
     public void StrikeZero()
     {
         _strike = 0;
+    }
+
+    public void RestoreHealth(int HpRestored)
+    {
+
+        healthPoints += HpRestored;
+
+        if (healthPoints > maxHealthPoints)
+            healthPoints = maxHealthPoints;
+
+        healthUpdate.Invoke();
+
     }
 
     public void EndGame(bool win)

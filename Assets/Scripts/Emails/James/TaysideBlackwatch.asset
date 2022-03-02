@@ -25,4 +25,4 @@ MonoBehaviour:
   bye: Thanks, Michael
   timeHour: 05
   timeMin: 55
-  isPhishing: 0
+  isPhishing: 1

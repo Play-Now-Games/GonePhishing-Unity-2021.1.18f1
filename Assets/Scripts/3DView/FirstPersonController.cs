@@ -52,16 +52,7 @@ public class FirstPersonController : MonoBehaviour
     private Interactable Selection = null;
     private bool TryingToExitCameraLock = false;
 
-    private struct Click
-    {
-        public enum ClickPhase
-        {
-            Begin,
-            End
-        }
-        public Vector3 position;
-        public ClickPhase phase;
-    }
+    private ClickManager clickManager;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +62,7 @@ public class FirstPersonController : MonoBehaviour
         DefaultRotation = MainCamera.transform.rotation;
         DefaultPosition = MainCamera.transform.position;
 
+        clickManager = new ClickManager();
     }
 
     // Update is called once per frame
@@ -111,7 +103,7 @@ public class FirstPersonController : MonoBehaviour
             }
 
             // Get all beginning or ending mouse clicks or touch "clicks"
-            List<Click> clicks = GetClicks();
+            List<Click> clicks = clickManager.GetClicks();
 
             for (int i = 0; i < clicks.Count; i++)
             {
@@ -157,7 +149,7 @@ public class FirstPersonController : MonoBehaviour
             ExitCameraLockMarginPixelsX = Mathf.RoundToInt(Screen.width / 100.0f * ExitCameraLockMargin);
             ExitCameraLockMarginPixelsY = Mathf.RoundToInt(Screen.height / 100.0f * ExitCameraLockMargin);
 
-            List<Click> clicks = GetClicks();
+            List<Click> clicks = clickManager.GetClicks();
 
             for (int i = 0; i < clicks.Count; i++)
             {
@@ -210,41 +202,6 @@ public class FirstPersonController : MonoBehaviour
             }
         }
 
-    }
-
-    private List<Click> GetClicks()
-    {
-        List<Click> clicks = new List<Click>();
-
-        // Get touch clicks
-        for (int i = 0; i < Input.touchCount; i++)
-        {
-            Click touchClick = new Click();
-            if (Input.GetTouch(i).phase == TouchPhase.Began)
-                touchClick.phase = Click.ClickPhase.Begin;
-            else if (Input.GetTouch(i).phase == TouchPhase.Ended)
-                touchClick.phase = Click.ClickPhase.End;
-            touchClick.position = Input.GetTouch(i).position;
-            clicks.Add(touchClick);
-        }
-
-        // Get mouse clicks
-        if (Input.GetMouseButtonDown(0))
-        {
-            Click mouseClick = new Click();
-            mouseClick.phase = Click.ClickPhase.Begin;
-            mouseClick.position = Input.mousePosition;
-            clicks.Add(mouseClick);
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            Click mouseClick = new Click();
-            mouseClick.phase = Click.ClickPhase.End;
-            mouseClick.position = Input.mousePosition;
-            clicks.Add(mouseClick);
-        }
-
-        return clicks;
     }
 
     public void PointCameraAt(Transform target, float offset)

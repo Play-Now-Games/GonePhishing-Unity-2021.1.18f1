@@ -24,4 +24,4 @@ MonoBehaviour:
   bye: 'Thank you for your continued support, The Support For Soldiers team '
   timeHour: 13
   timeMin: 57
-  isPhishing: 0
+  isPhishing: 1
