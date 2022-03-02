@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
   m_Name: PokerPlayers
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   logo: {fileID: 0}
   sender: Poker Players
-  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
+  senderAdress: <Phishing@aaaaa.com>
   tittle: '(WARNING!) Amazing Deal! 24 Hours Only!!! '
   greetings: 'Hey Player, '
   content: "Don\u2019t miss out on this once in a lifetime deal!  Claim \xA31000
@@ -23,4 +23,4 @@ MonoBehaviour:
   bye: 
   timeHour: 12
   timeMin: 00
-  isPhishing: 0
+  isPhishing: 1

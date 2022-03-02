@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
   m_Name: VeteranCharity
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 6
   logo: {fileID: 0}
   sender: Support For Soldiers
-  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
+  senderAdress: <Normal@aaaaa.com>
   tittle: Newsletter #246
   greetings: Hi James,
   content: "Please see our latest newsletter below!  Click Here Support For Soldiers
