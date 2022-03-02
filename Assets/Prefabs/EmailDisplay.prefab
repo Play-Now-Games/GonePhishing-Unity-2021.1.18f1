@@ -246,6 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1043601924469315747}
+  - component: {fileID: 226404394}
   m_Layer: 0
   m_Name: EmailDisplay
   m_TagString: Untagged
@@ -260,7 +261,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043601924469315746}
-  m_LocalRotation: {x: -7.275956e-12, y: 4.6566118e-10, z: 5.954347e-12, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -281,6 +282,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &226404394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043601924469315746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac58f2ad458ae34eae0211ff5698c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1043601924556553199
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +399,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043601924733641867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0000000848}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0002920891}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1043601924469315747}
@@ -394,8 +407,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -288.87988, y: 294.02}
-  m_SizeDelta: {x: 112.2402, y: 107.9623}
+  m_AnchoredPosition: {x: -288.87994, y: 294.02}
+  m_SizeDelta: {x: 112.240204, y: 107.96231}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1043601924733641870
 CanvasRenderer:

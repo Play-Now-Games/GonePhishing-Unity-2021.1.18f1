@@ -10,6 +10,8 @@ public class Main : MonoBehaviour
     public Email_Scriptable selectedEmail = null;
     public GameObject emailPrefab;
     public GameObject selected;
+    [HideInInspector]
+    public SelectedAnimator selectedAnimator;
     public GameObject noEmail;
 
     public int healthPoints;
@@ -88,6 +90,8 @@ public class Main : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        selectedAnimator = selected.GetComponent<SelectedAnimator>();
+
         StartUICreation();
     }
 
@@ -150,11 +154,10 @@ public class Main : MonoBehaviour
 
         if (selectedEmail)
         {
-            //Turn Off the 
             noEmail.SetActive(false);
             selected.SetActive(true);
         }
-        else
+        else if(!selectedAnimator.isAnimating) //don't change while animating
         {
             noEmail.SetActive(true);
             selected.SetActive(false);

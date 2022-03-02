@@ -13,7 +13,8 @@ public class EmailButtons : MonoBehaviour
     [SerializeField]
     private Main mainScript;
 
-    private Button button;
+    private Button _button;
+    private Vector2 _position;
 
     private void Start()
     {
@@ -24,18 +25,19 @@ public class EmailButtons : MonoBehaviour
 
         #endregion
 
-        button = this.GetComponent<Button>();
+        _button = this.GetComponent<Button>();
+        _position = this.gameObject.GetComponent<RectTransform>().anchoredPosition;
     }
 
     private void Update()
     {
         if (mainScript.selectedEmail)
         {
-            button.interactable = true;
+            _button.interactable = true;
         }
         else
         {
-            button.interactable = false;
+            _button.interactable = false;
         }
     }
 
@@ -43,40 +45,43 @@ public class EmailButtons : MonoBehaviour
     {
         if (mainScript.selectedEmail) //ignore clicks when no seslected email
         {
-            //Email.isPhishing == True
-            if (holderCopy.isPhishing)
+
+            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
+
+            //Search the Email on the Array of Emails
+            for (int i = 0; i < EmailsOnScene.Length; i++)
             {
-
-                GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
-
-                //Search the Email on the Array of Emails
-                for (int i = 0; i < EmailsOnScene.Length; i++)
+                if (mainScript._totalEmails[i].ID == holderCopy.ID)
                 {
-                    if (mainScript._totalEmails[i].ID == holderCopy.ID)
+                    //Email.isPhishing == True
+                    if (holderCopy.isPhishing)
                     {
                         //Less Health Points
                         mainScript.LoseHealth(1);
-
-                        //Remove Array from the original Array
-                        mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
-
-                        //Destroy emails to Recreate in a new position
-                        mainScript.DestroyAllEmails(EmailsOnScene);
-
-                        //Restart the "Nothing Here"
-                        RestartNothingHere();
-
-                        //Recreate the emails
-                        mainScript.StartUICreation();
-
-                        break;
                     }
-                }
-            }
-            else
-            {
-                //ToDo: Do What the Team Decides
+                    else
+                    {
+                        //ToDo: Do What the Team Decides
 
+                    }
+
+                    //Remove Array from the original Array
+                    mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
+
+                    //Destroy emails to Recreate in a new position
+                    mainScript.DestroyAllEmails(EmailsOnScene);
+
+                    //Restart the "Nothing Here"
+                    RestartNothingHere();
+
+                    //Recreate the emails
+                    mainScript.StartUICreation();
+
+                    //start animation
+                    mainScript.selectedAnimator.Animate(_position);
+
+                    break;
+                }
             }
         }
     }
@@ -86,10 +91,48 @@ public class EmailButtons : MonoBehaviour
     {
         if (mainScript.selectedEmail) //ignore clicks when no seslected email
         {
-            Debug.Log("Ignored the " + holderCopy);
-            //Todo: Do the same on ClickAnwer(), BUT GIVE THE CORRECT FEEDBACK
+
+            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
+
+            //Search the Email on the Array of Emails
+            for (int i = 0; i < EmailsOnScene.Length; i++)
+            {
+                if (mainScript._totalEmails[i].ID == holderCopy.ID)
+                {
+                    //Email.isPhishing == True
+                    if (holderCopy.isPhishing)
+                    {
+                        Debug.Log("Ignored the " + holderCopy);
+                        //Todo: Do the same on ClickAnwer(), BUT GIVE THE CORRECT FEEDBACK
+                    }
+                    else
+                    {
+                        Debug.Log("Ignored the " + holderCopy);
+                        //Todo: Do the same on ClickAnwer(), BUT GIVE THE CORRECT FEEDBACK
+
+                    }
+
+                    //Remove Array from the original Array
+                    mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
+
+                    //Destroy emails to Recreate in a new position
+                    mainScript.DestroyAllEmails(EmailsOnScene);
+
+                    //Restart the "Nothing Here"
+                    RestartNothingHere();
+
+                    //Recreate the emails
+                    mainScript.StartUICreation();
+
+                    //start animation
+                    mainScript.selectedAnimator.Animate(_position);
+
+                    break;
+                }
+            }
         }
-    }    
+    }   
+    
 
     private void RestartNothingHere()
     {
