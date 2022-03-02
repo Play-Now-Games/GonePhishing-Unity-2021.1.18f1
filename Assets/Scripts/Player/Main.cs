@@ -171,10 +171,8 @@ public class Main : MonoBehaviour
 
         #endregion
 
-
         #region PopUps Spawn
         
-
         time -= Time.deltaTime;
 
         if(time < 0)
