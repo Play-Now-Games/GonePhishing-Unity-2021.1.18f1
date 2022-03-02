@@ -14,6 +14,7 @@ public class EmailHolder : MonoBehaviour
     //UI
     public Image logo;
     public Text sender;
+    public Text senderAddress;
     public Text tittle;
     public Text content;
     public Text timeHour;
@@ -36,9 +37,10 @@ public class EmailHolder : MonoBehaviour
         sender.text = holder.sender;
         StartTittle();
         StartContent();
+        /*
         timeHour.text = holder.timeHour;
         timeMin.text = holder.timeMin;
-
+        */
         #endregion
 
         #region Player Related
@@ -127,11 +129,10 @@ public class EmailHolder : MonoBehaviour
 
     public void ClickEmail()
     {
+        //SetActive Issue fixed
+        //make sure email is active so it can be updated
+        mainScript.selected.SetActive(true);
 
-        //Change the position
-        //if active and deactivate, take 2 clicks to update the message at the first moment
-        Vector3 newPos = new Vector3(mainScript.selected.transform.position.x, mainScript.selected.transform.position.y, 3);
-        mainScript.selected.transform.position = newPos;
         mainScript.selectedEmail = holder;
 
         ClickChangeInfo();
@@ -173,6 +174,16 @@ public class EmailHolder : MonoBehaviour
             }
         }
 
+        GameObject BodySenderAdress = GameObject.Find("=Body-SenderAdress=");
+        if (BodySenderAdress)
+        {
+            Text Tittle = BodySenderAdress.GetComponent<Text>();
+            if (Tittle)
+            {
+                Tittle.text = holder.senderAdress;
+
+            }
+        }
 
         GameObject BodyGreetins = GameObject.Find("=Body-Greetins=");
         if (BodyGreetins)

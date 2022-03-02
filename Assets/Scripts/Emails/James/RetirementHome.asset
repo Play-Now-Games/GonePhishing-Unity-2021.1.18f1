@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
+  m_Name: RetirementHome
+  m_EditorClassIdentifier: 
+  ID: 0
+  logo: {fileID: 0}
+  sender: Susan Miller
+  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
+  tittle: Riverside Retirement Application
+  greetings: Dear Mr. Ferguson
+  content: 'We are writing to you today to inform you that you have been accepted
+    into Riverside Retirement Home. We do need a few details off you first before
+    we can begin the moving in stage. Below is a link to a form we will need you
+    to sign and provide details. We are excited to be providing all your needs in
+    the future. '
+  bye: Kind Regards, Susan Millar Riverside Retirement Manager
+  timeHour: 08
+  timeMin: 15
+  isPhishing: 1

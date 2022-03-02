@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
+  m_Name: PokerPlayers
+  m_EditorClassIdentifier: 
+  ID: 0
+  logo: {fileID: 0}
+  sender: Poker Players
+  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
+  tittle: '(WARNING!) Amazing Deal! 24 Hours Only!!! '
+  greetings: 'Hey Player, '
+  content: "Don\u2019t miss out on this once in a lifetime deal!  Claim \xA31000
+    worth of FREE chips NOW!! Promotion ends in 24 hours. "
+  bye: 
+  timeHour: 12
+  timeMin: 00
+  isPhishing: 1
