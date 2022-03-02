@@ -3143,7 +3143,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 385, y: 277}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 192, y: 108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1923730989
 MonoBehaviour:
@@ -3165,7 +3165,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: be40453ed76983344ae06166efb0ad56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e723ecde13a8f774fbb70e1bd804744d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3196,12 +3196,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthStages:
-  - {fileID: 21300000, guid: 43192554df35b2f41ad6ccdd913fd0db, type: 3}
-  - {fileID: 21300000, guid: db0dab5b9a5f7454ea2b9365d652def9, type: 3}
-  - {fileID: 21300000, guid: 7e2c61544ceacd2469fe40b3ce005b3b, type: 3}
-  - {fileID: 21300000, guid: ce7158106d05d9f45a5741700763c115, type: 3}
-  - {fileID: 21300000, guid: f712aea89f1977f4ab05bccde43661bf, type: 3}
-  - {fileID: 21300000, guid: be40453ed76983344ae06166efb0ad56, type: 3}
+  - {fileID: 21300000, guid: 6b1d5671d8ae44848bd01eb246d09adf, type: 3}
+  - {fileID: 21300000, guid: f69e48010ba3bfc41aadba3fbd393bcc, type: 3}
+  - {fileID: 21300000, guid: 12088f25980ef8b4eb805651f8de01af, type: 3}
+  - {fileID: 21300000, guid: 9e8947428d8ac634181b568e1f9bcefb, type: 3}
+  - {fileID: 21300000, guid: fa4fde625a8a3b14696993e6b8bb687b, type: 3}
+  - {fileID: 21300000, guid: e723ecde13a8f774fbb70e1bd804744d, type: 3}
   MainScript: {fileID: 1084311727}
 --- !u!1 &1964153526
 GameObject:
