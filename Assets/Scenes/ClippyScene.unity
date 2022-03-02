@@ -2739,7 +2739,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533797917}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2802,10 +2802,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PraiseComments: []
-  MockComments: []
-  EmailResponseCommentChance: 0
+  MockComments:
+  - It looks like you're trying to do a terrible job.  Would you like some help with
+    that?
+  EmailResponseCommentChance: 100
+  EmailResponseCommentPosition: {x: -50, y: -230}
   DialogueBubble: {fileID: 3451908788116683739, guid: c183124bf67f29340a7c137894cc8ca5, type: 3}
-  testHint: {fileID: 11400000, guid: 6bb5c3d512c7c874596521a5bb0ec8b1, type: 2}
 --- !u!1 &1606875860
 GameObject:
   m_ObjectHideFlags: 0

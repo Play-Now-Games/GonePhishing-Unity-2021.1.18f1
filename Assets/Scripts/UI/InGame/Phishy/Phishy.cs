@@ -7,20 +7,18 @@ using UnityEngine.EventSystems;
 public class Phishy : MonoBehaviour, IPointerClickHandler
 {
 
-    [SerializeField]
     [Tooltip("Comments Phishy will give when praising the player.")]
     public string[] PraiseComments;
-    [SerializeField]
     [Tooltip("Comments Phishy will give when mocking the player.")]
     public string[] MockComments;
     [Tooltip("Chance Phishy will make a comment when the player responds to an email.")]
     [Range(0, 100)]
     public float EmailResponseCommentChance;
+    [Tooltip("Position on the screen where Phishy will appear when commenting on the player's email responses.")]
+    public Vector2 EmailResponseCommentPosition;
 
     [Tooltip("An object that Phishy creates when talking, which displays text.")]
     public GameObject DialogueBubble;
-
-    public PhishyHint testHint;
 
     // List of hints that Phishy has given already, and won't be repeated.
     private List<PhishyHint> _givenHints = new List<PhishyHint>();
@@ -33,8 +31,6 @@ public class Phishy : MonoBehaviour, IPointerClickHandler
     private Image _phishySprite;
     // Reference to Phishy's animation system
     private Animator _phishyAnimator;
-    // Reference to the canvas that contains Phishy
-    private RectTransform _phishyCanvas;
     // Reference to the dialogue bubble
     private GameObject _dialogueBubble;
 
@@ -43,24 +39,23 @@ public class Phishy : MonoBehaviour, IPointerClickHandler
     {
         _phishySprite = gameObject.GetComponent<Image>();
         _phishyAnimator = gameObject.GetComponent<Animator>();
-        _phishyCanvas = gameObject.GetComponentInParent<Canvas>().gameObject.GetComponent<RectTransform>();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        // Debug testing thingy: press P to make phishy show up at a random location
-        if (Input.GetKeyDown(KeyCode.P))
+        if (_phishyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hidden"))
         {
-            TriggerPhishyHint(testHint);
+            _phishySprite.enabled = false;
         }
 
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        AdvanceDialogueBubble();
+        if (gameObject.GetComponentInParent<CanvasGroup>().interactable)
+            AdvanceDialogueBubble();
     }
 
     private void PhishyAppears(float x, float y)
@@ -81,16 +76,14 @@ public class Phishy : MonoBehaviour, IPointerClickHandler
     private void PhishyDisappears()
     {
 
-        // Show animation of phishy disappearing
-
-        // Hide sprite
+        _phishyAnimator.Play("Disappear");
 
     }
 
-    private void CreateDialogueBubble(string text)
+    private void CreateDialogueBubble()
     {
         _dialogueBubble = Instantiate(DialogueBubble, transform);
-        _dialogueBubble.GetComponentInChildren<Text>().text = text;
+        _dialogueBubble.GetComponentInChildren<Text>().text = _currentHint.HintText[_currentHintText];
     }
 
     public void AdvanceDialogueBubble()
@@ -102,6 +95,7 @@ public class Phishy : MonoBehaviour, IPointerClickHandler
         if (_currentHintText >= _currentHint.HintText.Length)
         {
             Destroy(_dialogueBubble);
+            PhishyDisappears();
         }
         #endregion
         #region If dialogue bubble continues
@@ -131,7 +125,7 @@ public class Phishy : MonoBehaviour, IPointerClickHandler
 
         _currentHint = hint;
         _currentHintText = 0;
-        CreateDialogueBubble(hint.HintText[0]);
+        CreateDialogueBubble();
 
         #endregion
 
@@ -143,7 +137,35 @@ public class Phishy : MonoBehaviour, IPointerClickHandler
     public void TriggerPhishyComment(bool isEvil)
     {
 
+        if (Random.Range(0, 100.0f) <= EmailResponseCommentChance)
+        {
+            #region Create the comment
 
+            PhishyHint comment = ScriptableObject.CreateInstance<PhishyHint>();
+            comment.IsEvil = isEvil;
+            comment.HintText = new string[1];
+            if (isEvil)
+            {
+                comment.HintText[0] = MockComments[Random.Range(0, MockComments.Length - 1)];
+            }
+            else
+            {
+                comment.HintText[0] = PraiseComments[Random.Range(0, MockComments.Length - 1)];
+            }
+
+            #endregion
+
+            #region Display the comment
+
+            _phishyAnimator.SetBool("IsEvil", comment.IsEvil);
+            PhishyAppears(EmailResponseCommentPosition.x, EmailResponseCommentPosition.y);
+
+            _currentHint = comment;
+            _currentHintText = 0;
+            CreateDialogueBubble();
+
+            #endregion
+        }
 
     }
 

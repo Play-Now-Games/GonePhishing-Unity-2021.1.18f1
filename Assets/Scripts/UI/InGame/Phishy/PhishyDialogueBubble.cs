@@ -5,20 +5,9 @@ using UnityEngine.EventSystems;
 
 public class PhishyDialogueBubble : MonoBehaviour, IPointerClickHandler
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
-        GetComponentInParent<Phishy>().AdvanceDialogueBubble();
+        if(gameObject.GetComponentInParent<CanvasGroup>().interactable)
+            GetComponentInParent<Phishy>().AdvanceDialogueBubble();
     }
 }
