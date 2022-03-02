@@ -121,7 +121,7 @@ public class EmailButtons : MonoBehaviour
                     mainScript.StartUICreation();
 
                     //start animation
-                    //mainScript.selectedAnimator.Animate(_position);
+                    mainScript.selectedAnimator.Animate(_position);
 
                     break;
                 }
