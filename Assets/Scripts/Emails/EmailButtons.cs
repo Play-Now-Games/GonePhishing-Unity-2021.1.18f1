@@ -152,6 +152,18 @@ public class EmailButtons : MonoBehaviour
         #region Bad feedBack
         mainScript.LoseHealth(1);
         mainScript.LoseMoney(200);
+
+        int rand = UnityEngine.Random.Range(0, 2);
+
+        if(rand == 0)
+        {
+            mainScript.AddNormalEmails();
+        }
+        else
+        {
+            mainScript.AddPhishingEmails();
+        }
+
         #endregion
     }
 }
