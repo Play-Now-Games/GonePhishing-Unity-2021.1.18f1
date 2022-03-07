@@ -222,6 +222,11 @@ public class FirstPersonController : MonoBehaviour
         return CurrentState == PlayerState.FreeCamera;
     }
 
+    public bool IsPlayerCameraLocked()
+    {
+        return CurrentState == PlayerState.LockCamera;
+    }
+
     private void StartMovingCamera(Vector3 targetPos, Quaternion targetRot)
     {
         LastFixedPosition = MainCamera.transform.position;
