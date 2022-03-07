@@ -224,7 +224,11 @@ public class FirstPersonController : MonoBehaviour
 
     public bool IsPlayerCameraLocked()
     {
-        return CurrentState == PlayerState.LockCamera;
+        if (CurrentState == PlayerState.LockCamera || CurrentState == PlayerState.CameraMovingIntoLock)
+        {
+            return true;
+        }
+        return false;
     }
 
     private void StartMovingCamera(Vector3 targetPos, Quaternion targetRot)

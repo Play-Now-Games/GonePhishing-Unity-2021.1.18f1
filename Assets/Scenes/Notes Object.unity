@@ -3698,72 +3698,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 651115851}
     - target: {fileID: 3042521155946065484, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: _whenSelected
-      value: 
-      objectReference: {fileID: 651115851}
-    - target: {fileID: 4335316279038570864, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_RenderMode
-      value: 2
+      propertyPath: notes.Array.size
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 4451960114953903739, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
+    - target: {fileID: 3042521155946065484, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
+      propertyPath: notes.Array.data[0]
+      value: -Note
       objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
+    - target: {fileID: 3042521155946065484, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
+      propertyPath: notes.Array.data[1]
+      value: -Another note?
       objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.10691672
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.10691672
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.10691672
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -38.635002
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.6948351
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.6948351
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.13116485
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.13116485
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 4.028812
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276980083731816649, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -9.418737
+    - target: {fileID: 3042521155946065484, guid: ce18209c17eee004499016ae12c78a1e, type: 3}
+      propertyPath: notes.Array.data[2]
+      value: -Three notes? This is an outrage!!!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce18209c17eee004499016ae12c78a1e, type: 3}

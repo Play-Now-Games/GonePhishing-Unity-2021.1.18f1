@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 432126259028383031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.51}
-  m_LocalScale: {x: 0.0025, y: 0.0025, z: 0}
+  m_LocalScale: {x: 0.0025, y: 0.0025, z: 0.0025}
   m_Children:
   - {fileID: 5938296090776802779}
   m_Father: {fileID: 2926596989556947682}
@@ -127,14 +127,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561383124488804093}
-  m_LocalRotation: {x: 0.6867251, y: 0.16854876, z: -0.16854876, w: 0.6867251}
-  m_LocalPosition: {x: 1800, y: -310, z: -520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 120, y: 160.00002, z: 20}
   m_Children:
   - {fileID: 7276980083731816649}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 27.58, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &508388245090586696
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -211,11 +211,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  CameraOffset: 500
-  Notes:
-  - -Note
-  - -Another Note!
-  - -Three notes? That can't be!
+  CameraOffset: 250
+  notes: []
+  pickupTime: 0.8
+  _whenHeld: {fileID: 0}
 --- !u!1 &5547400889080723285
 GameObject:
   m_ObjectHideFlags: 0

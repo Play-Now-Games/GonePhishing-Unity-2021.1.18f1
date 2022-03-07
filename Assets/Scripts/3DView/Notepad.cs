@@ -123,6 +123,13 @@ public class Notepad : Interactable
                                           Quaternion.Lerp(_heldRotation, _restingRotation, _movingFor / pickupTime));
             }
         }
+
+        if (!Player.IsPlayerCameraLocked() && _currentState == NotepadState.Held)
+        {
+            Player.ReturnCameraToOriginalPositionRotation();
+            _currentState = NotepadState.MovingToRest;
+            _movingFor = 0.0f;
+        }
     }
 
     public override void OnClick()
@@ -131,13 +138,6 @@ public class Notepad : Interactable
         {
             Player.PointCameraAt(_whenHeld, CameraOffset);
             _currentState = NotepadState.MovingToHeld;
-            _movingFor = 0.0f;
-        }
-        else if (_currentState == NotepadState.Held)
-        {
-
-            Player.ReturnCameraToOriginalPositionRotation();
-            _currentState = NotepadState.MovingToRest;
             _movingFor = 0.0f;
         }
     }
