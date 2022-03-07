@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EmailGenerator : MonoBehaviour
 {
-    public List<Email> outputEmails;
+    public List<Email_Scriptable> outputEmails;
 
     public string firstName, lastName, title, senderName;
 
@@ -34,15 +34,15 @@ public class EmailGenerator : MonoBehaviour
 
     public void GenerateEmail()
     {
-        Email email = ScriptableObject.CreateInstance<Email>();
+        Email_Scriptable email = ScriptableObject.CreateInstance<Email_Scriptable>();
 
         // Add text //
         //greeting
-        email.text += AddNames(greetings[Random.Range(0, greetings.Length)]) + "\n\n";
+        email.greetings = AddNames(greetings[Random.Range(0, greetings.Length)]);
         //body
-        email.text += AddNames(bodies[Random.Range(0, bodies.Length)]) + "\n\n";
+        email.content = AddNames(bodies[Random.Range(0, bodies.Length)]);
         //signoff
-        email.text += AddNames(signoffs[Random.Range(0, signoffs.Length)]);
+        email.bye = AddNames(signoffs[Random.Range(0, signoffs.Length)]);
 
         outputEmails.Add(email);
     }
