@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,16 +13,38 @@ public class Notepad : Interactable
     public float CameraOffset;
 
     [Tooltip("List of notes to be displayed on game start.")]
-    public List<string> Notes;
+    public List<string> notes;
 
 
+    [Tooltip("How long, in seconds, does it take to pickup the notepad")]
+    public float pickupTime = 0.8f;
+
+    private enum NotepadState
+    {
+        Resting,
+        Held,
+        MovingToHeld,
+        MovingToRest
+    }
+
+    private NotepadState _currentState = NotepadState.Resting;
+    private float _movingFor = 0.0f;
 
     private Text _notesDisplay;
+
+
+    //Resting position and location, assumed to be the same as inital position/rotation
+    private Vector3 _restingPosition;
+    private Quaternion _restingRotation;
+    [SerializeField]
+    private Transform _whenHeld;
+    private Vector3 _heldPosition;
+    private Quaternion _heldRotation;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        #region Try to find unset components
         if (Player == null)
         {
             try
@@ -36,6 +57,16 @@ public class Notepad : Interactable
             }
         }
 
+        // link the camera to the notpad canvas
+        try
+        {
+            GetComponentInChildren<Canvas>().worldCamera = Player.GetComponent<Camera>();
+        }
+        catch
+        {
+            Debug.LogError("Player lacks camera component or notepad lacks Canvas.");
+        }
+
         try
         {
             _notesDisplay = GetComponentInChildren<Text>();
@@ -44,27 +75,79 @@ public class Notepad : Interactable
         {
             Debug.LogError("Notepad has no text component!");
         }
+        #endregion
 
 
         UpdateDisplay();
+
+        _restingPosition = transform.position;
+        _restingRotation = transform.rotation;
+        _heldPosition = _whenHeld.position;
+        _heldRotation = _whenHeld.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_currentState == NotepadState.MovingToHeld)
+        {
+            _movingFor += Time.deltaTime;
 
+            if (Vector3.Distance(transform.position, _heldPosition) < 0.001 || _movingFor >= pickupTime)
+            {
+                transform.SetPositionAndRotation(_heldPosition, _heldRotation);
+                _movingFor = 0.0f;
+                _currentState = NotepadState.Held;
+            }
+            else
+            {
+
+                transform.SetPositionAndRotation(Vector3.Lerp(_restingPosition, _heldPosition, _movingFor / pickupTime),
+                                          Quaternion.Lerp(_restingRotation, _heldRotation, _movingFor / pickupTime));
+            }
+        }
+        else if (_currentState == NotepadState.MovingToRest)
+        {
+            _movingFor += Time.deltaTime;
+
+            if (Vector3.Distance(transform.position, _restingPosition) < 0.001 || _movingFor >= pickupTime)
+            {
+                transform.SetPositionAndRotation(_restingPosition, _restingRotation);
+                _movingFor = 0.0f;
+                _currentState = NotepadState.Resting;
+            }
+            else
+            {
+
+                transform.SetPositionAndRotation(Vector3.Lerp(_heldPosition, _restingPosition, _movingFor / pickupTime),
+                                          Quaternion.Lerp(_heldRotation, _restingRotation, _movingFor / pickupTime));
+            }
+        }
     }
 
     public override void OnClick()
     {
-        Player.PointCameraAt(transform, CameraOffset);
+        if (_currentState == NotepadState.Resting)
+        {
+            Player.PointCameraAt(_whenHeld, CameraOffset);
+            _currentState = NotepadState.MovingToHeld;
+            _movingFor = 0.0f;
+        }
+        else if (_currentState == NotepadState.Held)
+        {
+
+            Player.ReturnCameraToOriginalPositionRotation();
+            _currentState = NotepadState.MovingToRest;
+            _movingFor = 0.0f;
+        }
     }
+
 
     public void UpdateDisplay()
     {
         string newDisplay = "";
 
-        foreach (string note in Notes)
+        foreach (string note in notes)
         {
             newDisplay += note + "\n";
         }
@@ -73,30 +156,31 @@ public class Notepad : Interactable
     }
 
 
+    #region Add and Remove note functions
     public void AddNote(string note)
     {
-        Notes.Add(note);
+        notes.Add(note);
 
         UpdateDisplay();
     }
 
     public void AddNoteAt(string note, int index)
     {
-        if (Notes.Count > index)
+        if (notes.Count > index)
         {
-            Notes.Add(note);
+            notes.Add(note);
         }
         else
         {
-            Notes.Insert(index, note);
+            notes.Insert(index, note);
         }
     }
 
     public void RemoveNote(string note)
     {
-        if (Notes.Contains(note))
+        if (notes.Contains(note))
         {
-            Notes.Remove(note);
+            notes.Remove(note);
         }
 
         UpdateDisplay();
@@ -104,13 +188,14 @@ public class Notepad : Interactable
 
     public void RemoveNoteAt(int index)
     {
-        if (Notes.Count >= index || index < 0)
+        if (notes.Count >= index || index < 0)
         {
             //no note to remove
         }
         else
         {
-            Notes.RemoveAt(index);
+            notes.RemoveAt(index);
         }
     }
+    #endregion
 }
