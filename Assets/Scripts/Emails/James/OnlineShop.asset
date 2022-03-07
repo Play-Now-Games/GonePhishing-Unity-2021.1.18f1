@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 0
   logo: {fileID: 0}
   sender: Shopmarket
-  senderAdress: Shopmarket <aaaaaaaaaaaa@aaaaa.com>
+  senderAdress: Shopmarket <Phishing@aaaaa.com>
   tittle: Order Confirmation #396-158-274
   greetings: 'Dear j.ferguson@woohoo.com, '
   content: 'Order Number #396-158-304 thank you for shopping with us today ! Please

@@ -39,7 +39,13 @@ public class Main : MonoBehaviour
     [SerializeField]
     private GameObject[] _totalPopUps;
 
-    //private float time = 5;
+    [SerializeField]
+    private int _strike = 0;
+
+    private float time = 5;
+    private float popUpLimiter = 0;
+    [SerializeField]
+    private int currency = 0;
     ///////// PRIVATES /////////
 
     //Do its commands BEFORE the first frame
@@ -165,15 +171,17 @@ public class Main : MonoBehaviour
 
         #endregion
 
-        /*
+        #region PopUps Spawn
+        
         time -= Time.deltaTime;
 
         if(time < 0)
         {
             SpawnPopUp();
-            time = 0.5f;
+            time = 5;
         }
-        */
+
+        #endregion
 
         if (_totalEmails.Length == 0)
         {
@@ -229,6 +237,32 @@ public class Main : MonoBehaviour
         {
             EndGame(false);
         }
+
+        popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
+    }
+
+    public void GainHealth(int HpGain)
+    {
+        if(healthPoints < 5)
+        {
+            healthPoints += HpGain;
+        }
+    }
+
+    public void StrikeAdd(int value)
+    {
+        _strike++;
+
+        if(_strike >= 3)
+        {
+            GainHealth(1);
+            StrikeZero();
+        }
+    }
+
+    public void StrikeZero()
+    {
+        _strike = 0;
     }
 
     public void RestoreHealth(int HpRestored)
@@ -253,6 +287,21 @@ public class Main : MonoBehaviour
         else
         {
             onGameEndLoss.Invoke();
+        }
+    }
+
+    public void GiveMoney(int value)
+    {
+        currency += value;
+    }
+
+    public void LoseMoney(int value)
+    {
+        currency -= value;
+
+        if (currency < 0)
+        {
+            currency = 0;
         }
     }
 
@@ -289,6 +338,13 @@ public class Main : MonoBehaviour
             //ReCreate the UI with all the emails
             UICreation();
         }
+        else
+        {
+            if(_phishing.Length > 0)
+            {
+                AddPhishingEmails();
+            }
+        }
 
         #endregion
     }
@@ -314,6 +370,13 @@ public class Main : MonoBehaviour
             //ReCreate the UI with all the emails
             UICreation();
         
+        }
+        else
+        {
+            if (_normalEmails.Length > 0)
+            {
+                AddNormalEmails();
+            }
         }
         
         #endregion
@@ -362,37 +425,37 @@ public class Main : MonoBehaviour
         GameObject[] Pops = GameObject.FindGameObjectsWithTag("PopUps");
         #endregion
 
-
         #region Search For Repetitive PopUps On Scene
-        for (int i = 0; i < Pops.Length; i++)
+
+        if(Pops.Length < (int)popUpLimiter)
         {
-            CanSpawn = true;
-
-            PopUp_Holder HolderInScene = Pops[i].GetComponent<PopUp_Holder>();
-            PopUp_Holder ToSpawn = _totalPopUps[randomIndex].GetComponent<PopUp_Holder>();
-
-            if (HolderInScene.ID == ToSpawn.ID)
+            for (int i = 0; i < Pops.Length; i++)
             {
-                CanSpawn = false;
-                break;
+                CanSpawn = true;
+
+                PopUp_Holder HolderInScene = Pops[i].GetComponent<PopUp_Holder>();
+                PopUp_Holder ToSpawn = _totalPopUps[randomIndex].GetComponent<PopUp_Holder>();
+
+                if (HolderInScene.ID == ToSpawn.ID)
+                {
+                    CanSpawn = false;
+                    break;
+                }
             }
-        }
-        #endregion
-        
+            
+            if (CanSpawn)
+            {
+                //Get Position
+                float x = UnityEngine.Random.Range(590, 1386);
+                float y = UnityEngine.Random.Range(146, 640);
+                float z = 6;
+                Vector3 popUpNewPos = new Vector3(x, y, z);
 
-        #region Spawn Unique PopUp
-        if (CanSpawn)
-        {
-            //Get Position
-            float x = UnityEngine.Random.Range(590, 1386);
-            float y = UnityEngine.Random.Range(146, 640);
-            float z = 6;
-            Vector3 popUpNewPos = new Vector3(x, y, z);
-
-            //Instantiate and select the instantiated as child of ...
-            GameObject PopUp = GameObject.Find("==PopUps==");
-            GameObject ChildObject = Instantiate(_totalPopUps[randomIndex], popUpNewPos, Quaternion.identity);
-            ChildObject.transform.parent = PopUp.transform;
+                //Instantiate and select the instantiated as child of ...
+                GameObject PopUp = GameObject.Find("==PopUps==");
+                GameObject ChildObject = Instantiate(_totalPopUps[randomIndex], popUpNewPos, Quaternion.identity);
+                ChildObject.transform.parent = PopUp.transform;
+            }
         }
         #endregion
 
@@ -418,6 +481,7 @@ public class Main : MonoBehaviour
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
+
 
 }
 

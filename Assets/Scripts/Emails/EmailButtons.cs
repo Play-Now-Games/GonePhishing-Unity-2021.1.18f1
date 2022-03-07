@@ -56,13 +56,11 @@ public class EmailButtons : MonoBehaviour
                     //Email.isPhishing == True
                     if (holderCopy.isPhishing)
                     {
-                        //Less Health Points
-                        mainScript.LoseHealth(1);
+                        BadFeedBack();
                     }
                     else
                     {
-                        //ToDo: Do What the Team Decides
-
+                        GoodFeedBack();
                     }
 
                     //Remove Array from the original Array
@@ -89,6 +87,7 @@ public class EmailButtons : MonoBehaviour
 
     public void ClickIgnored()
     {
+
         if (mainScript.selectedEmail) //ignore clicks when no seslected email
         {
 
@@ -100,16 +99,13 @@ public class EmailButtons : MonoBehaviour
                 if (mainScript._totalEmails[i].ID == holderCopy.ID)
                 {
                     //Email.isPhishing == True
-                    if (holderCopy.isPhishing)
+                    if (!holderCopy.isPhishing)
                     {
-                        Debug.Log("Ignored the " + holderCopy);
-                        //Todo: Do the same on ClickAnwer(), BUT GIVE THE CORRECT FEEDBACK
+                        BadFeedBack();
                     }
                     else
                     {
-                        Debug.Log("Ignored the " + holderCopy);
-                        //Todo: Do the same on ClickAnwer(), BUT GIVE THE CORRECT FEEDBACK
-
+                        GoodFeedBack();
                     }
 
                     //Remove Array from the original Array
@@ -131,8 +127,9 @@ public class EmailButtons : MonoBehaviour
                 }
             }
         }
-    }   
-    
+    }    
+
+                
 
     private void RestartNothingHere()
     {
@@ -140,5 +137,33 @@ public class EmailButtons : MonoBehaviour
 
         //Restart Nothing Here
         mainScript.selectedEmail = null; //Main will set selected to inactive when selectedEmail is null 
+    }
+
+    private void GoodFeedBack()
+    {
+        #region Good Feeback
+        mainScript.StrikeAdd(1);
+        mainScript.GiveMoney(100);
+        #endregion
+    }
+
+    private void BadFeedBack()
+    {
+        #region Bad feedBack
+        mainScript.LoseHealth(1);
+        mainScript.LoseMoney(200);
+
+        int rand = UnityEngine.Random.Range(0, 2);
+
+        if(rand == 0)
+        {
+            mainScript.AddNormalEmails();
+        }
+        else
+        {
+            mainScript.AddPhishingEmails();
+        }
+
+        #endregion
     }
 }

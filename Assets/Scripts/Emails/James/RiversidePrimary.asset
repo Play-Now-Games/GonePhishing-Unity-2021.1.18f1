@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
   m_Name: RiversidePrimary
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 3
   logo: {fileID: 0}
   sender: Steven Marsh
-  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
+  senderAdress: <Normal@aaaaa.com>
   tittle: Assembly Talk
   greetings: Dear Mr. Ferguson
   content: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
@@ -25,4 +25,4 @@ MonoBehaviour:
   bye: Kind Regards, Steven Marsh Head Teacher Riverside Primary
   timeHour: 10
   timeMin: 11
-  isPhishing: 1
+  isPhishing: 0

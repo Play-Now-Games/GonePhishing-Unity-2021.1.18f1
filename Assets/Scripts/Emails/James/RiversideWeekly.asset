@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
   m_Name: RiversideWeekly
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 4
   logo: {fileID: 0}
   sender: Patricia Monroe
-  senderAdress: <aaaaaaaaaaaa@aaaaa.com>
+  senderAdress: <Normal@aaaaa.com>
   tittle: Payment Issue
   greetings: Dear Customer,
   content: "I am emailing you from the Riverside Weekly. We have seen you have been
@@ -29,4 +29,4 @@ MonoBehaviour:
   bye: Kind Regards, Patricia Monroe Manager
   timeHour: 07
   timeMin: 36
-  isPhishing: 1
+  isPhishing: 0
