@@ -32,9 +32,11 @@ public class EmailGenerator : MonoBehaviour
         }
     }
 
-    public void GenerateEmail()
+    public void GenerateEmail(bool isPhishing = false)
     {
         Email_Scriptable email = ScriptableObject.CreateInstance<Email_Scriptable>();
+
+        email.sender = senderName;
 
         // Add text //
         //greeting
@@ -43,6 +45,8 @@ public class EmailGenerator : MonoBehaviour
         email.content = AddNames(bodies[Random.Range(0, bodies.Length)]);
         //signoff
         email.bye = AddNames(signoffs[Random.Range(0, signoffs.Length)]);
+
+        email.isPhishing = isPhishing;
 
         outputEmails.Add(email);
     }
