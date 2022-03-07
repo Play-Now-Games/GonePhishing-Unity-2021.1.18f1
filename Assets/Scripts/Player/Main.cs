@@ -246,6 +246,7 @@ public class Main : MonoBehaviour
         if(healthPoints < 5)
         {
             healthPoints += HpGain;
+            popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
         }
     }
 
