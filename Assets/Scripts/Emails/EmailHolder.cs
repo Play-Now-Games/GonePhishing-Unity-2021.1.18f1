@@ -131,16 +131,18 @@ public class EmailHolder : MonoBehaviour
 
     public void ClickEmail()
     {
-        //SetActive Issue fixed
-        //make sure email is active so it can be updated
-        mainScript.selected.SetActive(true);
+        if(!mainScript.dayEnded)
+        {
+            //SetActive Issue fixed
+            //make sure email is active so it can be updated
+            mainScript.selected.SetActive(true);
 
-        mainScript.selectedEmail = holder;
+            mainScript.selectedEmail = holder;
 
-        ClickChangeInfo();
+            ClickChangeInfo();
 
-        _audioScript.PlayClick();
-
+            _audioScript.PlayClick();
+        }
     }
 
     public void ClickChangeInfo()

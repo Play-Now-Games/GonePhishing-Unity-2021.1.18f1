@@ -24,6 +24,9 @@ public class Main : MonoBehaviour
     public UnityEvent onGameEndLoss;
 
     public UnityEvent healthUpdate;
+
+    [HideInInspector]
+    public bool dayEnded = false;
     ///////// PUBLIC /////////
 
     ///////// PRIVATES /////////
@@ -179,7 +182,7 @@ public class Main : MonoBehaviour
         
         time -= Time.deltaTime;
 
-        if(time < 0)
+        if((time < 0) && (!dayEnded))
         {
             SpawnPopUp();
             time = 5;
@@ -189,6 +192,7 @@ public class Main : MonoBehaviour
 
         if (_totalEmails.Length == 1)
         {
+            dayEnded = true;
             EndGame(true);
         }
 
@@ -233,6 +237,7 @@ public class Main : MonoBehaviour
 
     public void LoseHealth(int HpLost)
     {
+        #region HP Related
         healthPoints -= HpLost;
 
         healthUpdate.Invoke();
@@ -242,20 +247,26 @@ public class Main : MonoBehaviour
             EndGame(false);
         }
 
+        //PopUpFormula
         popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
+
+        #endregion 
     }
 
     public void GainHealth(int HpGain)
     {
-        if(healthPoints < 5)
+        #region HP Related
+        if (healthPoints < 5)
         {
             healthPoints += HpGain;
             popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
         }
+        #endregion
     }
 
     public void StrikeAdd(int value)
     {
+        #region Strikes
         _strike++;
 
         if(_strike >= 3)
@@ -263,6 +274,7 @@ public class Main : MonoBehaviour
             GainHealth(1);
             StrikeZero();
         }
+        #endregion
     }
 
     public void StrikeZero()
@@ -272,14 +284,14 @@ public class Main : MonoBehaviour
 
     public void RestoreHealth(int HpRestored)
     {
-
+        #region HP Related
         healthPoints += HpRestored;
 
         if (healthPoints > maxHealthPoints)
             healthPoints = maxHealthPoints;
 
         healthUpdate.Invoke();
-
+        #endregion
     }
 
     public void EndGame(bool win)
@@ -337,6 +349,8 @@ public class Main : MonoBehaviour
             //Update The Previous _NormalEmails Email From The Previous Selected Email
             StartRemoveAt(ref _normalEmails, 0);
 
+            UICreation();
+
         }
         else
         {
@@ -362,7 +376,8 @@ public class Main : MonoBehaviour
 
             //Update The Previous _NormalEmails Email From The Previous Selected Email
             StartRemoveAt(ref _phishing, 0);
-       
+
+            UICreation();
         }
         else
         {
