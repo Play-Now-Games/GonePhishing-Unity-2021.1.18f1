@@ -547,7 +547,7 @@ MonoBehaviour:
   osObject: {fileID: 882452893}
   warningObject: {fileID: 963682932}
   MainMenuObject: {fileID: 1073056866}
-  constAdd: 0.5
+  fadeSpeed: 90
   angle: 0
   _waitTime: 2
   _waitTimeInit: 2
@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e56e5489f5df84db6e875b675f5f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: MondayJames
+  levelName: MondayJames-WebGLBugfix
 --- !u!1 &1680986160
 GameObject:
   m_ObjectHideFlags: 0
