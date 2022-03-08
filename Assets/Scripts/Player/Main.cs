@@ -150,9 +150,10 @@ public class Main : MonoBehaviour
             arr[i] = arr[i + 1];
         }
 
+        Debug.Log("a");
+        
         //Remove the index
         Array.Resize(ref arr, arr.Length - 1);
-
         #endregion
     }
 
@@ -188,7 +189,7 @@ public class Main : MonoBehaviour
 
         #endregion
 
-        if (_totalEmails.Length == 0)
+        if (_totalEmails.Length == 1)
         {
             EndGame(true);
         }
@@ -331,18 +332,13 @@ public class Main : MonoBehaviour
 
         if (_normalEmails.Length > 0)
         {
+
             //Add Email From _NormalEmails
-            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_normalEmails[0], _totalEmails);
+            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_totalEmails[0], _totalEmails);
             
             //Update The Previous _NormalEmails Email From The Previous Selected Email
             StartRemoveAt(ref _normalEmails, 0);
 
-            //Delete ALL emails on the scene
-            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
-            DestroyAllEmails(EmailsOnScene);
-
-            //ReCreate the UI with all the emails
-            UICreation();
         }
         else
         {
@@ -364,18 +360,11 @@ public class Main : MonoBehaviour
         {
 
             //Add Email From _phishing
-            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_phishing[_phishing.Length - 1], _totalEmails);
+            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_normalEmails[_normalEmails.Length - 1], _totalEmails);
 
             //Update The Previous _NormalEmails Email From The Previous Selected Email
-            StartRemoveAt(ref _normalEmails, _normalEmails.Length - 1);
-
-            //Delete ALL emails on the scene
-            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
-            DestroyAllEmails(EmailsOnScene);
-
-            //ReCreate the UI with all the emails
-            UICreation();
-        
+            StartRemoveAt(ref _phishing, 0);
+       
         }
         else
         {
@@ -389,12 +378,12 @@ public class Main : MonoBehaviour
     
     }
 
-    // PROBLEM HERE!!
+
     public Array AddArrayAtStart(object o, Array oldArray)
     {
 
         #region Add 'Array Object' At The Start Of the array
-       
+
         Array NewArray = Array.CreateInstance(oldArray.GetType().GetElementType(), oldArray.Length + 1);
 
         for (int i = 0; i < 0; ++i)
@@ -414,8 +403,8 @@ public class Main : MonoBehaviour
         return oldArray;
 
         #endregion
+    
     }
-    // PROBLEM HERE!!
 
 
     public void SpawnPopUp()
@@ -434,7 +423,7 @@ public class Main : MonoBehaviour
 
         #region Search For Repetitive PopUps On Scene
 
-        if(Pops.Length < (int)popUpLimiter)
+        if ((Pops.Length < (int)popUpLimiter) && (_totalEmails.Length != 1))
         {
             for (int i = 0; i < Pops.Length; i++)
             {
@@ -469,6 +458,7 @@ public class Main : MonoBehaviour
             }
         }
         #endregion
+
     }
 
     public void DestroyPopUps(int popUpID)

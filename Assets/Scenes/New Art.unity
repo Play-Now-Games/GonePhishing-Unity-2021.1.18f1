@@ -1813,7 +1813,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _phishingAmount: 1
+  _phishingAmount: 2
   _normalEmails:
   - {fileID: 11400000, guid: 71119951e7f375f44966ec1bb5baba48, type: 2}
   - {fileID: 11400000, guid: 846412dbc12a0ab40bc8d286598ed748, type: 2}

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
   m_Name: Shopmarket
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 4
   logo: {fileID: 0}
   sender: Shopmarket
-  senderAdress: Shopmarket <orderss@shopmarket.com>
+  senderAdress: Shopmarket PH <orderss@shopmarket.com>
   tittle: Order Confirmation #396-158-274
   greetings: 'Dear j.ferguson@phishmail.com, '
   content: 'Order Number #396-158-304 thank you for shopping with us today ! Please

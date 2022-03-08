@@ -43,10 +43,6 @@ public class EmailHolder : MonoBehaviour
         sender.text = holder.sender;
         StartTittle();
         StartContent();
-        /*
-        timeHour.text = holder.timeHour;
-        timeMin.text = holder.timeMin;
-        */
         #endregion
 
         #region Player Related
