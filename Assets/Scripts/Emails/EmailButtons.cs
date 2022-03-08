@@ -72,11 +72,14 @@ public class EmailButtons : MonoBehaviour
                     //Restart the "Nothing Here"
                     RestartNothingHere();
 
-                    //Recreate the emails
-                    mainScript.StartUICreation();
+                    //UI Creation
+                    mainScript.UICreation();
 
                     //start animation
                     mainScript.selectedAnimator.Animate(_position);
+
+                    
+                    Debug.Log("aa");
 
                     break;
                 }
@@ -98,7 +101,6 @@ public class EmailButtons : MonoBehaviour
             {
                 if (mainScript._totalEmails[i].ID == holderCopy.ID)
                 {
-
                     //Email.isPhishing == True
                     if (!holderCopy.isPhishing)
                     {
@@ -118,19 +120,20 @@ public class EmailButtons : MonoBehaviour
                     //Restart the "Nothing Here"
                     RestartNothingHere();
 
-                    //Recreate the emails
-                    mainScript.StartUICreation();
+                    mainScript.UICreation();
 
                     //start animation
                     mainScript.selectedAnimator.Animate(_position);
+
+                    Debug.Log("aa");
 
                     break;
                 }
             }
         }
-    }    
+    }
 
-                
+
 
     private void RestartNothingHere()
     {
@@ -145,6 +148,7 @@ public class EmailButtons : MonoBehaviour
         #region Good Feeback
         mainScript.StrikeAdd(1);
         mainScript.GiveMoney(100);
+
         #endregion
     }
 
@@ -154,10 +158,9 @@ public class EmailButtons : MonoBehaviour
         mainScript.LoseHealth(1);
         mainScript.LoseMoney(200);
 
-       
         int rand = UnityEngine.Random.Range(0, 2);
 
-        if(rand == 0)
+        if (rand == 0)
         {
             mainScript.AddNormalEmails();
         }
@@ -165,7 +168,7 @@ public class EmailButtons : MonoBehaviour
         {
             mainScript.AddPhishingEmails();
         }
-        
+
         #endregion
     }
 }

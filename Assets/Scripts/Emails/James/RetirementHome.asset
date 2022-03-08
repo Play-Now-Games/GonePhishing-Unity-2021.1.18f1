@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
   m_Name: RetirementHome
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 1
   logo: {fileID: 0}
   sender: Susan Miller
-  senderAdress: Susan Miller <application@retireriverside.com>
+  senderAdress: Susan Miller  PH <application@retireriverside.com>
   tittle: Riverside Retirement Application
   greetings: Dear Mr. Ferguson
   content: 'We are writing to you today to inform you that you have been accepted
