@@ -45,40 +45,40 @@ public class EmailButtons : MonoBehaviour
     {
         if (mainScript.selectedEmail) //ignore clicks when no seslected email
         {
-
-            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
-
-            //Search the Email on the Array of Emails
-            for (int i = 0; i < EmailsOnScene.Length; i++)
+            if (!mainScript.dayEnded)
             {
-                if (mainScript._totalEmails[i].ID == holderCopy.ID)
+
+                GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
+
+                //Search the Email on the Array of Emails
+                for (int i = 0; i < EmailsOnScene.Length; i++)
                 {
-                    //Email.isPhishing == True
-                    if (holderCopy.isPhishing)
+                    if (mainScript._totalEmails[i].ID == holderCopy.ID)
                     {
-                        BadFeedBack();
+                        //Remove Array from the original Array
+                        mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
+
+                        //Destroy emails to Recreate in a new position
+                        mainScript.DestroyAllEmails(EmailsOnScene);
+
+                        //Restart the "Nothing Here"
+                        RestartNothingHere();
+
+                        //start animation
+                        mainScript.selectedAnimator.Animate(_position);
+
+                        //Email.isPhishing == True
+                        if (holderCopy.isPhishing)
+                        {
+                            BadFeedBack();
+                        }
+                        else
+                        {
+                            GoodFeedBack();
+                        }
+
+                        break;
                     }
-                    else
-                    {
-                        GoodFeedBack();
-                    }
-
-                    //Remove Array from the original Array
-                    mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
-
-                    //Destroy emails to Recreate in a new position
-                    mainScript.DestroyAllEmails(EmailsOnScene);
-
-                    //Restart the "Nothing Here"
-                    RestartNothingHere();
-
-                    //Recreate the emails
-                    mainScript.StartUICreation();
-
-                    //start animation
-                    mainScript.selectedAnimator.Animate(_position);
-
-                    break;
                 }
             }
         }
@@ -87,53 +87,51 @@ public class EmailButtons : MonoBehaviour
 
     public void ClickIgnored()
     {
-
         if (mainScript.selectedEmail) //ignore clicks when no seslected email
         {
-
-            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
-
-            //Search the Email on the Array of Emails
-            for (int i = 0; i < EmailsOnScene.Length; i++)
+            if(!mainScript.dayEnded)
             {
-                if (mainScript._totalEmails[i].ID == holderCopy.ID)
+                GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
+
+                //Search the Email on the Array of Emails
+                for (int i = 0; i < EmailsOnScene.Length; i++)
                 {
-                    //Email.isPhishing == True
-                    if (!holderCopy.isPhishing)
+                    if (mainScript._totalEmails[i].ID == holderCopy.ID)
                     {
-                        BadFeedBack();
+
+                        //Remove Array from the original Array
+                        mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
+
+                        //Destroy emails to Recreate in a new position
+                        mainScript.DestroyAllEmails(EmailsOnScene);
+
+                        //Restart the "Nothing Here"
+                        RestartNothingHere();
+
+                        //start animation
+                        mainScript.selectedAnimator.Animate(_position);
+
+                        //Email.isPhishing == True
+                        if (!holderCopy.isPhishing)
+                        {
+                            BadFeedBack();
+                        }
+                        else
+                        {
+                            GoodFeedBack();
+                        }
+
+                        break;
                     }
-                    else
-                    {
-                        GoodFeedBack();
-                    }
-
-                    //Remove Array from the original Array
-                    mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
-
-                    //Destroy emails to Recreate in a new position
-                    mainScript.DestroyAllEmails(EmailsOnScene);
-
-                    //Restart the "Nothing Here"
-                    RestartNothingHere();
-
-                    //Recreate the emails
-                    mainScript.StartUICreation();
-
-                    //start animation
-                    mainScript.selectedAnimator.Animate(_position);
-
-                    break;
                 }
             }
         }
-    }    
+    }
 
-                
+
 
     private void RestartNothingHere()
     {
-        //SetActive Issue fixed
 
         //Restart Nothing Here
         mainScript.selectedEmail = null; //Main will set selected to inactive when selectedEmail is null 
@@ -144,6 +142,8 @@ public class EmailButtons : MonoBehaviour
         #region Good Feeback
         mainScript.StrikeAdd(1);
         mainScript.GiveMoney(100);
+        //UI Creation
+        mainScript.UICreation();
         #endregion
     }
 
@@ -155,7 +155,7 @@ public class EmailButtons : MonoBehaviour
 
         int rand = UnityEngine.Random.Range(0, 2);
 
-        if(rand == 0)
+        if (rand == 0)
         {
             mainScript.AddNormalEmails();
         }
@@ -167,3 +167,11 @@ public class EmailButtons : MonoBehaviour
         #endregion
     }
 }
+
+
+/*
+"Sometime you want to end a project, find a job. Some other times, bugs remove the whole level of sanity that you have.
+I wrote most of this code, and I don't understand where the bug is. How am i? Dude, a grave never felt so confortable"
+ 
+- Adding email, the bug that made me ask eveything about my life >:(
+ */

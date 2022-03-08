@@ -15,13 +15,13 @@ MonoBehaviour:
   ID: 6
   logo: {fileID: 0}
   sender: Support For Soldiers
-  senderAdress: <Normal@aaaaa.com>
+  senderAdress: Support For Soldiers NL <news@supportforsoldiers.com>
   tittle: Newsletter #246
   greetings: Hi James,
-  content: "Please see our latest newsletter below!  Click Here Support For Soldiers
-    has been providing practical support to bereaved families and former forces personnel
-    since it\u2019s foundation in 2004. "
-  bye: 'Thank you for your continued support, The Support For Soldiers team '
+  content: "Please see our latest newsletter below! Support For Soldiers has been
+    providing practical support to bereaved families and former forces personnel
+    since it\u2019s foundation in 2004. Thank you for your continued support!"
+  bye: Click Here
   timeHour: 13
   timeMin: 57
   isPhishing: 0

@@ -24,6 +24,9 @@ public class Main : MonoBehaviour
     public UnityEvent onGameEndLoss;
 
     public UnityEvent healthUpdate;
+
+    [HideInInspector]
+    public bool dayEnded = false;
     ///////// PUBLIC /////////
 
     ///////// PRIVATES /////////
@@ -46,11 +49,16 @@ public class Main : MonoBehaviour
     private float popUpLimiter = 0;
     [SerializeField]
     private int currency = 0;
+
+    private SoundsHolder _audioScript;
     ///////// PRIVATES /////////
 
     //Do its commands BEFORE the first frame
     private void Awake()
     {
+        //GetAudio Source
+        GameObject speakers = GameObject.FindGameObjectWithTag("Speakers");
+        _audioScript = speakers.GetComponent<SoundsHolder>();
 
         AwakeRandomizationEmail();
     
@@ -144,10 +152,9 @@ public class Main : MonoBehaviour
             //Move elements to fill the gap
             arr[i] = arr[i + 1];
         }
-
+        
         //Remove the index
         Array.Resize(ref arr, arr.Length - 1);
-
         #endregion
     }
 
@@ -175,7 +182,7 @@ public class Main : MonoBehaviour
         
         time -= Time.deltaTime;
 
-        if(time < 0)
+        if((time < 0) && (!dayEnded))
         {
             SpawnPopUp();
             time = 5;
@@ -183,8 +190,9 @@ public class Main : MonoBehaviour
 
         #endregion
 
-        if (_totalEmails.Length == 0)
+        if (_totalEmails.Length == 1)
         {
+            dayEnded = true;
             EndGame(true);
         }
 
@@ -229,6 +237,7 @@ public class Main : MonoBehaviour
 
     public void LoseHealth(int HpLost)
     {
+        #region HP Related
         healthPoints -= HpLost;
 
         healthUpdate.Invoke();
@@ -238,19 +247,26 @@ public class Main : MonoBehaviour
             EndGame(false);
         }
 
+        //PopUpFormula
         popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
+
+        #endregion 
     }
 
     public void GainHealth(int HpGain)
     {
-        if(healthPoints < 5)
+        #region HP Related
+        if (healthPoints < 5)
         {
             healthPoints += HpGain;
+            popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
         }
+        #endregion
     }
 
     public void StrikeAdd(int value)
     {
+        #region Strikes
         _strike++;
 
         if(_strike >= 3)
@@ -258,6 +274,7 @@ public class Main : MonoBehaviour
             GainHealth(1);
             StrikeZero();
         }
+        #endregion
     }
 
     public void StrikeZero()
@@ -267,14 +284,14 @@ public class Main : MonoBehaviour
 
     public void RestoreHealth(int HpRestored)
     {
-
+        #region HP Related
         healthPoints += HpRestored;
 
         if (healthPoints > maxHealthPoints)
             healthPoints = maxHealthPoints;
 
         healthUpdate.Invoke();
-
+        #endregion
     }
 
     public void EndGame(bool win)
@@ -310,9 +327,9 @@ public class Main : MonoBehaviour
 
         #region Destroy it ALL
 
-        for (int j = 0; j < EmailsOnScene.Length; j++)
+        for (int i = 0; i < EmailsOnScene.Length; i++)
         {
-            Destroy(EmailsOnScene[j]);
+            Destroy(EmailsOnScene[i]);
         }
 
         #endregion
@@ -325,18 +342,15 @@ public class Main : MonoBehaviour
 
         if (_normalEmails.Length > 0)
         {
+
             //Add Email From _NormalEmails
-            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_normalEmails[_normalEmails.Length - 1], _totalEmails);
-
+            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_totalEmails[0], _totalEmails);
+            
             //Update The Previous _NormalEmails Email From The Previous Selected Email
-            StartRemoveAt(ref _normalEmails, _normalEmails.Length - 1);
+            StartRemoveAt(ref _normalEmails, 0);
 
-            //Delete ALL emails on the scene
-            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
-            DestroyAllEmails(EmailsOnScene);
-
-            //ReCreate the UI with all the emails
             UICreation();
+
         }
         else
         {
@@ -357,19 +371,13 @@ public class Main : MonoBehaviour
         if (_phishing.Length > 0)
         {
 
-            //Add Email From _NormalEmails
+            //Add Email From _phishing
             _totalEmails = (Email_Scriptable[])AddArrayAtStart(_normalEmails[_normalEmails.Length - 1], _totalEmails);
 
             //Update The Previous _NormalEmails Email From The Previous Selected Email
-            StartRemoveAt(ref _normalEmails, _normalEmails.Length - 1);
+            StartRemoveAt(ref _phishing, 0);
 
-            //Delete ALL emails on the scene
-            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
-            DestroyAllEmails(EmailsOnScene);
-
-            //ReCreate the UI with all the emails
             UICreation();
-        
         }
         else
         {
@@ -383,6 +391,7 @@ public class Main : MonoBehaviour
     
     }
 
+
     public Array AddArrayAtStart(object o, Array oldArray)
     {
 
@@ -390,12 +399,12 @@ public class Main : MonoBehaviour
 
         Array NewArray = Array.CreateInstance(oldArray.GetType().GetElementType(), oldArray.Length + 1);
 
-        for(int i = 0; i < 0; ++i)
+        for (int i = 0; i < 0; ++i)
         {
             NewArray.SetValue(oldArray.GetValue(i), i);
         }
 
-        for(int i = 0 + 1; i < oldArray.Length; ++i)
+        for (int i = 0 + 1; i < oldArray.Length; ++i)
         {
             NewArray.SetValue(oldArray.GetValue(i - 1), i);
         }
@@ -407,7 +416,7 @@ public class Main : MonoBehaviour
         return oldArray;
 
         #endregion
-
+    
     }
 
 
@@ -427,7 +436,7 @@ public class Main : MonoBehaviour
 
         #region Search For Repetitive PopUps On Scene
 
-        if(Pops.Length < (int)popUpLimiter)
+        if ((Pops.Length < (int)popUpLimiter) && (_totalEmails.Length != 1))
         {
             for (int i = 0; i < Pops.Length; i++)
             {
@@ -448,13 +457,17 @@ public class Main : MonoBehaviour
                 //Get Position
                 float x = UnityEngine.Random.Range(590, 1386);
                 float y = UnityEngine.Random.Range(146, 640);
-                float z = 6;
+                float z = 0;
                 Vector3 popUpNewPos = new Vector3(x, y, z);
 
                 //Instantiate and select the instantiated as child of ...
                 GameObject PopUp = GameObject.Find("==PopUps==");
                 GameObject ChildObject = Instantiate(_totalPopUps[randomIndex], popUpNewPos, Quaternion.identity);
                 ChildObject.transform.parent = PopUp.transform;
+
+                #region Play Sound
+                _audioScript.PlaySpawnPop();
+                #endregion
             }
         }
         #endregion
@@ -478,10 +491,13 @@ public class Main : MonoBehaviour
             }
         }
         #endregion
+
+        #region Play Sounds
+        _audioScript.PlayDestroyPop();
+        #endregion
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
-
 
 }
 
