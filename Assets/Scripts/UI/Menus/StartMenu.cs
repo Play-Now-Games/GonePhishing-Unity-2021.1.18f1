@@ -122,6 +122,8 @@ public class StartMenu : MonoBehaviour
         {
             angle = 0;
             _state = 4;
+            AlphaLogo.a = 0;
+            CompanyLogo.color = AlphaLogo;
         }
     }
 
@@ -190,6 +192,9 @@ public class StartMenu : MonoBehaviour
         {
             angle = 0;
             _state = 7;
+            AlphaLogo.a = 0;
+            OsText.color = AlphaLogo;
+            OsLogo.color = AlphaLogo;
         }
     }
 
@@ -258,6 +263,9 @@ public class StartMenu : MonoBehaviour
         {
             angle = 0;
             _state = 10;
+            AlphaLogo.a = 0;
+            WarningLogo.color = AlphaLogo;
+            WarningText.color = AlphaLogo;
         }
 
     }
