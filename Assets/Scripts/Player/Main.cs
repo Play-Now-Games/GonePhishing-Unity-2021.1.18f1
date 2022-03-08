@@ -442,7 +442,7 @@ public class Main : MonoBehaviour
                 //Get Position
                 float x = UnityEngine.Random.Range(590, 1386);
                 float y = UnityEngine.Random.Range(146, 640);
-                float z = 6;
+                float z = 0;
                 Vector3 popUpNewPos = new Vector3(x, y, z);
 
                 //Instantiate and select the instantiated as child of ...

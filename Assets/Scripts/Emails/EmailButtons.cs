@@ -73,7 +73,7 @@ public class EmailButtons : MonoBehaviour
                     RestartNothingHere();
 
                     //UI Creation
-                    mainScript.StartUICreation();
+                    mainScript.UICreation();
 
                     //start animation
                     mainScript.selectedAnimator.Animate(_position);
@@ -118,7 +118,7 @@ public class EmailButtons : MonoBehaviour
                     //Restart the "Nothing Here"
                     RestartNothingHere();
 
-                    mainScript.StartUICreation();
+                    mainScript.UICreation();
 
                     //start animation
                     mainScript.selectedAnimator.Animate(_position);
