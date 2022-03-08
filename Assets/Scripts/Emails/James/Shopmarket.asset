@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
-  m_Name: OnlineShop
+  m_Name: Shopmarket
   m_EditorClassIdentifier: 
   ID: 0
   logo: {fileID: 0}
   sender: Shopmarket
-  senderAdress: Shopmarket <Phishing@aaaaa.com>
+  senderAdress: Shopmarket <orderss@shopmarket.com>
   tittle: Order Confirmation #396-158-274
-  greetings: 'Dear j.ferguson@woohoo.com, '
+  greetings: 'Dear j.ferguson@phishmail.com, '
   content: 'Order Number #396-158-304 thank you for shopping with us today ! Please
-    see a summary of you''re order below. '
-  bye: 'We look forward to you''re custom again.  Shopmarket Team '
+    see a summary of your order below. '
+  bye: 'We look forward to your custom again.  Shopmarket Team '
   timeHour: 14
   timeMin: 23
   isPhishing: 1

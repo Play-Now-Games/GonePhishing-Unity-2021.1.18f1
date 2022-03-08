@@ -547,7 +547,7 @@ MonoBehaviour:
   osObject: {fileID: 882452893}
   warningObject: {fileID: 963682932}
   MainMenuObject: {fileID: 1073056866}
-  constAdd: 0.5
+  fadeSpeed: 90
   angle: 0
   _waitTime: 2
   _waitTimeInit: 2
