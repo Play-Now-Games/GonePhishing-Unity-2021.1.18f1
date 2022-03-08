@@ -73,14 +73,12 @@ public class EmailButtons : MonoBehaviour
                     RestartNothingHere();
 
                     //UI Creation
-                    mainScript.UICreation();
+                    mainScript.StartUICreation();
 
                     //start animation
                     mainScript.selectedAnimator.Animate(_position);
 
-                    
-                    Debug.Log("aa");
-
+                   
                     break;
                 }
             }
@@ -120,12 +118,10 @@ public class EmailButtons : MonoBehaviour
                     //Restart the "Nothing Here"
                     RestartNothingHere();
 
-                    mainScript.UICreation();
+                    mainScript.StartUICreation();
 
                     //start animation
                     mainScript.selectedAnimator.Animate(_position);
-
-                    Debug.Log("aa");
 
                     break;
                 }

@@ -149,8 +149,6 @@ public class Main : MonoBehaviour
             //Move elements to fill the gap
             arr[i] = arr[i + 1];
         }
-
-        Debug.Log("a");
         
         //Remove the index
         Array.Resize(ref arr, arr.Length - 1);
