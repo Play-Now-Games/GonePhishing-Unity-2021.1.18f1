@@ -26,11 +26,17 @@ public class EmailHolder : MonoBehaviour
     private Main mainScript;
     private EmailButtons answerButton;
     private EmailButtons ignoreButton;
+
+    private SoundsHolder _audioScript;
     ///////// PRIVATE /////////
 
 
     private void Start()
     {
+        //GetAudio Source
+        GameObject speakers = GameObject.FindGameObjectWithTag("Speakers");
+        _audioScript = speakers.GetComponent<SoundsHolder>();
+
         #region Email Related
 
         logo = holder.logo;
@@ -136,6 +142,8 @@ public class EmailHolder : MonoBehaviour
         mainScript.selectedEmail = holder;
 
         ClickChangeInfo();
+
+        _audioScript.PlayClick();
 
     }
 

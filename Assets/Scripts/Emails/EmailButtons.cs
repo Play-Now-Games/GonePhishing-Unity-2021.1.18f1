@@ -98,6 +98,7 @@ public class EmailButtons : MonoBehaviour
             {
                 if (mainScript._totalEmails[i].ID == holderCopy.ID)
                 {
+
                     //Email.isPhishing == True
                     if (!holderCopy.isPhishing)
                     {
@@ -153,6 +154,7 @@ public class EmailButtons : MonoBehaviour
         mainScript.LoseHealth(1);
         mainScript.LoseMoney(200);
 
+       
         int rand = UnityEngine.Random.Range(0, 2);
 
         if(rand == 0)
@@ -163,7 +165,7 @@ public class EmailButtons : MonoBehaviour
         {
             mainScript.AddPhishingEmails();
         }
-
+        
         #endregion
     }
 }

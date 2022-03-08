@@ -46,11 +46,16 @@ public class Main : MonoBehaviour
     private float popUpLimiter = 0;
     [SerializeField]
     private int currency = 0;
+
+    private SoundsHolder _audioScript;
     ///////// PRIVATES /////////
 
     //Do its commands BEFORE the first frame
     private void Awake()
     {
+        //GetAudio Source
+        GameObject speakers = GameObject.FindGameObjectWithTag("Speakers");
+        _audioScript = speakers.GetComponent<SoundsHolder>();
 
         AwakeRandomizationEmail();
     
@@ -311,9 +316,9 @@ public class Main : MonoBehaviour
 
         #region Destroy it ALL
 
-        for (int j = 0; j < EmailsOnScene.Length; j++)
+        for (int i = 0; i < EmailsOnScene.Length; i++)
         {
-            Destroy(EmailsOnScene[j]);
+            Destroy(EmailsOnScene[i]);
         }
 
         #endregion
@@ -327,10 +332,10 @@ public class Main : MonoBehaviour
         if (_normalEmails.Length > 0)
         {
             //Add Email From _NormalEmails
-            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_normalEmails[_normalEmails.Length - 1], _totalEmails);
-
+            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_normalEmails[0], _totalEmails);
+            
             //Update The Previous _NormalEmails Email From The Previous Selected Email
-            StartRemoveAt(ref _normalEmails, _normalEmails.Length - 1);
+            StartRemoveAt(ref _normalEmails, 0);
 
             //Delete ALL emails on the scene
             GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
@@ -358,8 +363,8 @@ public class Main : MonoBehaviour
         if (_phishing.Length > 0)
         {
 
-            //Add Email From _NormalEmails
-            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_normalEmails[_normalEmails.Length - 1], _totalEmails);
+            //Add Email From _phishing
+            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_phishing[_phishing.Length - 1], _totalEmails);
 
             //Update The Previous _NormalEmails Email From The Previous Selected Email
             StartRemoveAt(ref _normalEmails, _normalEmails.Length - 1);
@@ -384,19 +389,20 @@ public class Main : MonoBehaviour
     
     }
 
+    // PROBLEM HERE!!
     public Array AddArrayAtStart(object o, Array oldArray)
     {
 
         #region Add 'Array Object' At The Start Of the array
-
+       
         Array NewArray = Array.CreateInstance(oldArray.GetType().GetElementType(), oldArray.Length + 1);
 
-        for(int i = 0; i < 0; ++i)
+        for (int i = 0; i < 0; ++i)
         {
             NewArray.SetValue(oldArray.GetValue(i), i);
         }
 
-        for(int i = 0 + 1; i < oldArray.Length; ++i)
+        for (int i = 0 + 1; i < oldArray.Length; ++i)
         {
             NewArray.SetValue(oldArray.GetValue(i - 1), i);
         }
@@ -408,8 +414,8 @@ public class Main : MonoBehaviour
         return oldArray;
 
         #endregion
-
     }
+    // PROBLEM HERE!!
 
 
     public void SpawnPopUp()
@@ -456,10 +462,13 @@ public class Main : MonoBehaviour
                 GameObject PopUp = GameObject.Find("==PopUps==");
                 GameObject ChildObject = Instantiate(_totalPopUps[randomIndex], popUpNewPos, Quaternion.identity);
                 ChildObject.transform.parent = PopUp.transform;
+
+                #region Play Sound
+                _audioScript.PlaySpawnPop();
+                #endregion
             }
         }
         #endregion
-
     }
 
     public void DestroyPopUps(int popUpID)
@@ -479,10 +488,13 @@ public class Main : MonoBehaviour
             }
         }
         #endregion
+
+        #region Play Sounds
+        _audioScript.PlayDestroyPop();
+        #endregion
     }
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
-
 
 }
 
