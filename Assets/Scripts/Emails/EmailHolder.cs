@@ -12,6 +12,10 @@ public class EmailHolder : MonoBehaviour
     public Email_Scriptable holder;
 
     //UI
+    public Image backgound;
+    public Sprite backgroundWhenSelected;
+    public Sprite backgroundWhenUnselected;
+
     public Image logo;
     public Text sender;
     public Text senderAddress;
@@ -140,6 +144,25 @@ public class EmailHolder : MonoBehaviour
         ClickChangeInfo();
 
         _audioScript.PlayClick();
+
+        ClickUpdateBackground();
+    }
+
+    private void ClickUpdateBackground()
+    {
+        //Find all emails and set to unselected
+        GameObject emailHolderParent = GameObject.Find("Content");
+
+        EmailHolder[] emails = emailHolderParent.GetComponentsInChildren<EmailHolder>();
+
+        foreach (EmailHolder email in emails)
+        {
+            email.backgound.sprite = email.backgroundWhenUnselected;
+        }
+
+
+        //Set this email to selected
+        backgound.sprite = backgroundWhenSelected;
 
     }
 

@@ -232,6 +232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holder: {fileID: 0}
+  backgound: {fileID: 8663539519642405060}
+  backgroundWhenSelected: {fileID: 21300000, guid: 5a9bc7a91ab4ad0469af7813038474fe, type: 3}
+  backgroundWhenUnselected: {fileID: 21300000, guid: e2fb5c9e0a061684fbe0d82ed501cd72, type: 3}
   logo: {fileID: 3365812697951965444}
   sender: {fileID: 6046019675027196589}
   senderAddress: {fileID: 0}
