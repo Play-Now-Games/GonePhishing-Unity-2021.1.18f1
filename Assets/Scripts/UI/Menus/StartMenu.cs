@@ -14,10 +14,12 @@ public class StartMenu : MonoBehaviour
     public GameObject warningObject;
     public GameObject MainMenuObject;
 
-    public float constAdd;
+    public float fadeSpeed;
     public float angle = 0;
 
+    [HideInInspector]
     public float _waitTime = 2;
+
     public float _waitTimeInit = 2;
     ////// PUBLIC /////////
 
@@ -83,7 +85,7 @@ public class StartMenu : MonoBehaviour
         AlphaLogo.a = Mathf.Sin(rad);
         CompanyLogo.color = AlphaLogo;
 
-        angle += constAdd;
+        angle += fadeSpeed * Time.deltaTime;
 
         if(angle > 90)
         {
@@ -97,7 +99,7 @@ public class StartMenu : MonoBehaviour
 
         if(_waitTime < 0)
         {
-            _waitTime = 2;
+            _waitTime = _waitTimeInit;
             _state = 3;
         }
     }
@@ -114,12 +116,14 @@ public class StartMenu : MonoBehaviour
         CompanyLogo.color = AlphaLogo;
 
 
-        angle += constAdd;
+        angle += fadeSpeed * Time.deltaTime;
 
         if(angle > 180)
         {
             angle = 0;
             _state = 4;
+            AlphaLogo.a = 0;
+            CompanyLogo.color = AlphaLogo;
         }
     }
 
@@ -143,7 +147,7 @@ public class StartMenu : MonoBehaviour
         AlphaOSText.a = Mathf.Sin(rad2);
         OsText.color = AlphaOSText;
 
-        angle += constAdd;
+        angle += fadeSpeed * Time.deltaTime;
 
         if (angle > 90)
         {
@@ -157,7 +161,7 @@ public class StartMenu : MonoBehaviour
 
         if (_waitTime < 0)
         {
-            _waitTime = 2;
+            _waitTime = _waitTimeInit;
             _state = 6;
         }
     }
@@ -182,12 +186,15 @@ public class StartMenu : MonoBehaviour
         AlphaOSText.a = Mathf.Sin(rad2);
         OsText.color = AlphaOSText;
 
-        angle += constAdd;
+        angle += fadeSpeed * Time.deltaTime;
 
         if (angle > 180)
         {
             angle = 0;
             _state = 7;
+            AlphaLogo.a = 0;
+            OsText.color = AlphaLogo;
+            OsLogo.color = AlphaLogo;
         }
     }
 
@@ -211,7 +218,7 @@ public class StartMenu : MonoBehaviour
         AlphaWarningText.a = Mathf.Sin(rad2);
         WarningText.color = AlphaWarningText;
 
-        angle += constAdd;
+        angle += fadeSpeed * Time.deltaTime;
 
         if (angle > 90)
         {
@@ -225,7 +232,7 @@ public class StartMenu : MonoBehaviour
 
         if (_waitTime < 0)
         {
-            _waitTime = 2;
+            _waitTime = _waitTimeInit;
             _state = 9;
         }
     }
@@ -250,12 +257,15 @@ public class StartMenu : MonoBehaviour
         AlphaWarningText.a = Mathf.Sin(rad2);
         WarningText.color = AlphaWarningText;
 
-        angle += constAdd;
+        angle += fadeSpeed * Time.deltaTime;
 
         if (angle > 180)
         {
             angle = 0;
             _state = 10;
+            AlphaLogo.a = 0;
+            WarningLogo.color = AlphaLogo;
+            WarningText.color = AlphaLogo;
         }
 
     }

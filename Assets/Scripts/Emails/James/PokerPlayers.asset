@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   logo: {fileID: 0}
-  sender: Poker Players
-  senderAdress: <Phishing@aaaaa.com>
+  sender: PokerPlayers.com
+  senderAdress: PokerPlayers.com <promotions@pokerpiayers.com>
   tittle: '(WARNING!) Amazing Deal! 24 Hours Only!!! '
   greetings: 'Hey Player, '
   content: "Don\u2019t miss out on this once in a lifetime deal!  Claim \xA31000
     worth of FREE chips NOW!! Promotion ends in 24 hours. "
-  bye: 
+  bye: CLICK HERE to Claim!
   timeHour: 12
   timeMin: 00
   isPhishing: 1

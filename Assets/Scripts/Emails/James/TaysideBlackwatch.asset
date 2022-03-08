@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 5
   logo: {fileID: 0}
   sender: Michael
-  senderAdress: <Normal@aaaaa.com>
+  senderAdress: Michael <michael@phishmail.com>
   tittle: Help!?
   greetings: Dear James,
   content: Hi James its Michael from the Tayside Blackwatch division. I know it has
@@ -25,4 +25,4 @@ MonoBehaviour:
   bye: Thanks, Michael
   timeHour: 05
   timeMin: 55
-  isPhishing: 0
+  isPhishing: 1
