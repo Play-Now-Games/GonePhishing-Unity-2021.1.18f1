@@ -106,7 +106,7 @@ public class Main : MonoBehaviour
     {
         selectedAnimator = selected.GetComponent<SelectedAnimator>();
 
-        StartUICreation();
+        UICreation();
     }
 
     public void StartUICreation()
@@ -349,7 +349,7 @@ public class Main : MonoBehaviour
             //Update The Previous _NormalEmails Email From The Previous Selected Email
             StartRemoveAt(ref _normalEmails, 0);
 
-            UICreation();
+            //UICreation();
 
         }
         else
@@ -377,7 +377,7 @@ public class Main : MonoBehaviour
             //Update The Previous _NormalEmails Email From The Previous Selected Email
             StartRemoveAt(ref _phishing, 0);
 
-            UICreation();
+            //UICreation();
         }
         else
         {

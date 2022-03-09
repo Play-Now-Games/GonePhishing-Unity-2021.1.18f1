@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RiversideWeekly
   m_EditorClassIdentifier: 
   ID: 3
-  logo: {fileID: 0}
+  logo: {fileID: 21300000, guid: 6c95796d28d04d14e9bcd8f6a9865b5b, type: 3}
   sender: Patricia Monroe
   senderAdress: Patricia Monroe NL <p.monroe@riversideweekly.com>
   tittle: Payment Issue

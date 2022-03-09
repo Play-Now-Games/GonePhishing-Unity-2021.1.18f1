@@ -1730,6 +1730,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  dayEnded: 0
   _phishingAmount: 1
   _normalEmails:
   - {fileID: 11400000, guid: 71119951e7f375f44966ec1bb5baba48, type: 2}
@@ -2827,7 +2828,7 @@ MonoBehaviour:
   - Oops... Maybe you'll get the next one. Notice that I used the word 'maybe'.
   - 'HAHAHAHAHAHAHAHA!!!!!!!! '
   - LOL!
-  EmailResponseCommentChance: 100
+  EmailResponseCommentChance: 20.9
   EmailResponseCommentPosition: {x: -50, y: -230}
   DialogueBubble: {fileID: 3451908788116683739, guid: 1f6198ea86aa6004b977fc60e45a8fb9, type: 3}
 --- !u!95 &1831297700

@@ -43,7 +43,11 @@ public class EmailHolder : MonoBehaviour
 
         #region Email Related
 
-        logo = holder.logo;
+        if (holder.logo)
+        {
+            logo.sprite = holder.logo;
+            logo.enabled = true;
+        }
         sender.text = holder.sender;
         StartTittle();
         StartContent();
@@ -187,7 +191,7 @@ public class EmailHolder : MonoBehaviour
             Image Logo = BodyLogo.GetComponent<Image>();
             if (Logo)
             {
-                Logo = holder.logo;
+                Logo.sprite = holder.logo;
             }
         }
 
