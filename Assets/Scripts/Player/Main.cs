@@ -106,7 +106,7 @@ public class Main : MonoBehaviour
     {
         selectedAnimator = selected.GetComponent<SelectedAnimator>();
 
-        StartUICreation();
+        UICreation();
     }
 
     public void StartUICreation()
