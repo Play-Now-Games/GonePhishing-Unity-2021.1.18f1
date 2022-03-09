@@ -319,7 +319,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1610366605}
   m_Direction: 2
   m_Value: -0.0000074460186
-  m_Size: 0.81484735
+  m_Size: 0.8148493
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2306,7 +2306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a40256ff9a54b4bb287cf2c39e3d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSwivel: 7
+  MaxSwivel: 6
   SwivelControlMargin: 5
   SwivelSpeed: 30
   ExitCameraLockMargin: 5
