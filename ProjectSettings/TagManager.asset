@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Email
   - PopUps
+  - Speakers
   layers:
   - Default
   - TransparentFX

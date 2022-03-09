@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EmailButtons : MonoBehaviour
 {
@@ -12,76 +13,171 @@ public class EmailButtons : MonoBehaviour
     [SerializeField]
     private Main mainScript;
 
+    private Button _button;
+    private Vector2 _position;
+
+    public Phishy phishy;
     private void Start()
     {
         #region Player Related
 
         GameObject player = GameObject.Find("====Character/Camera====");
         mainScript = player.GetComponent<Main>();
-        
+
         #endregion
+
+        _button = this.GetComponent<Button>();
+        _position = this.gameObject.GetComponent<RectTransform>().anchoredPosition;
+    }
+
+    private void Update()
+    {
+        if (mainScript.selectedEmail)
+        {
+            _button.interactable = true;
+        }
+        else
+        {
+            _button.interactable = false;
+        }
     }
 
     public void ClickAnswer()
     {
-
-        //Email.isPhishing == True
-        if (holderCopy.isPhishing)
+        if (mainScript.selectedEmail) //ignore clicks when no seslected email
         {
-
-            GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
-
-            //Search the Email on the Array of Emails
-            for (int i = 0; i < EmailsOnScene.Length; i++)
+            if (!mainScript.dayEnded)
             {
-                if (mainScript._totalEmails[i].ID == holderCopy.ID)
+
+                GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
+
+                //Search the Email on the Array of Emails
+                for (int i = 0; i < EmailsOnScene.Length; i++)
                 {
-                    //Less Health Points
-                    mainScript.LoseHealth(1);
+                    if (mainScript._totalEmails[i].ID == holderCopy.ID)
+                    {
+                        //Remove Array from the original Array
+                        mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
 
-                    //Remove Array from the original Array
-                    mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
+                        //Destroy emails to Recreate in a new position
+                        mainScript.DestroyAllEmails(EmailsOnScene);
 
-                    //Destroy emails to Recreate in a new position
-                    mainScript.DestroyAllEmails(EmailsOnScene);
+                        //Restart the "Nothing Here"
+                        RestartNothingHere();
 
-                    //Restart the "Nothing Here"
-                    RestartNothingHere();
+                        //start animation
+                        mainScript.selectedAnimator.Animate(_position);
 
-                    //Recreate the emails
-                    mainScript.StartUICreation();
+                        //Email.isPhishing == True
+                        if (holderCopy.isPhishing)
+                        {
+                            BadFeedBack();
+                        }
+                        else
+                        {
+                            GoodFeedBack();
+                        }
 
-                    break;
+                        break;
+                    }
                 }
             }
-        }
-        else 
-        {
-            //ToDo: Do What the Team Decides
-        
         }
     }
 
 
     public void ClickIgnored()
     {
-        Debug.Log("Ignored the " + holderCopy);
-        //Todo: Do the same on ClickAnwer(), BUT GIVE THE CORRECT FEEDBACK
-    }    
+        if (mainScript.selectedEmail) //ignore clicks when no seslected email
+        {
+            if(!mainScript.dayEnded)
+            {
+                GameObject[] EmailsOnScene = GameObject.FindGameObjectsWithTag("Email");
+
+                //Search the Email on the Array of Emails
+                for (int i = 0; i < EmailsOnScene.Length; i++)
+                {
+                    if (mainScript._totalEmails[i].ID == holderCopy.ID)
+                    {
+
+                        //Remove Array from the original Array
+                        mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
+
+                        //Destroy emails to Recreate in a new position
+                        mainScript.DestroyAllEmails(EmailsOnScene);
+
+                        //Restart the "Nothing Here"
+                        RestartNothingHere();
+
+                        //start animation
+                        mainScript.selectedAnimator.Animate(_position);
+
+                        //Email.isPhishing == True
+                        if (!holderCopy.isPhishing)
+                        {
+                            BadFeedBack();
+                        }
+                        else
+                        {
+                            GoodFeedBack();
+                        }
+
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+
 
     private void RestartNothingHere()
     {
 
-        #region Return the screen for the main one -> Set Active didn't work here.
-
-        //Restart Position Text
-        Vector3 newPos = new Vector3(mainScript.selected.transform.position.x, mainScript.selected.transform.position.y, -5000);
-        mainScript.selected.transform.position = newPos;
-
         //Restart Nothing Here
-        mainScript.selectedEmail = null;
+        mainScript.selectedEmail = null; //Main will set selected to inactive when selectedEmail is null 
+    }
+
+    private void GoodFeedBack()
+    {
+        #region Good Feeback
+        mainScript.StrikeAdd(1);
+        mainScript.GiveMoney(100);
+        //UI Creation
+        mainScript.UICreation();
+        phishy.TriggerPhishyComment(false);
+        #endregion
+    }
+
+    private void BadFeedBack()
+    {
+        #region Bad feedBack
+        mainScript.LoseHealth(1);
+        mainScript.LoseMoney(200);
+
+        int rand = UnityEngine.Random.Range(0, 2);
+
+        if (rand == 0)
+        {
+            mainScript.AddNormalEmails();
+        }
+        else
+        {
+            mainScript.AddPhishingEmails();
+        }
+
+        mainScript.UICreation();
+
+        phishy.TriggerPhishyComment(true);
 
         #endregion
-    
     }
 }
+
+
+/*
+"Sometime you want to end a project, find a job. Some other times, bugs remove the whole level of sanity that you have.
+I wrote most of this code, and I don't understand where the bug is. How am i? Dude, a grave never felt so confortable"
+ 
+- Adding email, the bug that made me ask eveything about my life >:(
+ */

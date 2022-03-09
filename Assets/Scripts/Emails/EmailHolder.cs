@@ -12,8 +12,13 @@ public class EmailHolder : MonoBehaviour
     public Email_Scriptable holder;
 
     //UI
+    public Image backgound;
+    public Sprite backgroundWhenSelected;
+    public Sprite backgroundWhenUnselected;
+
     public Image logo;
     public Text sender;
+    public Text senderAddress;
     public Text tittle;
     public Text content;
     public Text timeHour;
@@ -25,20 +30,27 @@ public class EmailHolder : MonoBehaviour
     private Main mainScript;
     private EmailButtons answerButton;
     private EmailButtons ignoreButton;
+
+    private SoundsHolder _audioScript;
     ///////// PRIVATE /////////
 
 
     private void Start()
     {
+        //GetAudio Source
+        GameObject speakers = GameObject.FindGameObjectWithTag("Speakers");
+        _audioScript = speakers.GetComponent<SoundsHolder>();
+
         #region Email Related
 
-        logo = holder.logo;
+        if (holder.logo)
+        {
+            logo.sprite = holder.logo;
+            logo.enabled = true;
+        }
         sender.text = holder.sender;
         StartTittle();
         StartContent();
-        timeHour.text = holder.timeHour;
-        timeMin.text = holder.timeMin;
-
         #endregion
 
         #region Player Related
@@ -127,15 +139,37 @@ public class EmailHolder : MonoBehaviour
 
     public void ClickEmail()
     {
+        if(!mainScript.dayEnded)
+        {
+            //SetActive Issue fixed
+            //make sure email is active so it can be updated
+            mainScript.selected.SetActive(true);
 
-        //Change the position
-        //if active and deactivate, take 2 clicks to update the message at the first moment
-        Vector3 newPos = new Vector3(mainScript.selected.transform.position.x, mainScript.selected.transform.position.y, 3);
-        mainScript.selected.transform.position = newPos;
-        mainScript.selectedEmail = holder;
+            mainScript.selectedEmail = holder;
 
-        ClickChangeInfo();
+            ClickChangeInfo();
 
+            _audioScript.PlayClick();
+
+            ClickUpdateBackground();
+        }
+    }
+
+    private void ClickUpdateBackground()
+    {
+        //Find all emails and set to unselected
+        GameObject emailHolderParent = GameObject.Find("Content");
+
+        EmailHolder[] emails = emailHolderParent.GetComponentsInChildren<EmailHolder>();
+
+        foreach (EmailHolder email in emails)
+        {
+            email.backgound.sprite = email.backgroundWhenUnselected;
+        }
+
+
+        //Set this email to selected
+        backgound.sprite = backgroundWhenSelected;
     }
 
     public void ClickChangeInfo()
@@ -157,7 +191,7 @@ public class EmailHolder : MonoBehaviour
             Image Logo = BodyLogo.GetComponent<Image>();
             if (Logo)
             {
-                Logo = holder.logo;
+                Logo.sprite = holder.logo;
             }
         }
 
@@ -173,6 +207,16 @@ public class EmailHolder : MonoBehaviour
             }
         }
 
+        GameObject BodySenderAdress = GameObject.Find("=Body-SenderAdress=");
+        if (BodySenderAdress)
+        {
+            Text Tittle = BodySenderAdress.GetComponent<Text>();
+            if (Tittle)
+            {
+                Tittle.text = holder.senderAdress;
+
+            }
+        }
 
         GameObject BodyGreetins = GameObject.Find("=Body-Greetins=");
         if (BodyGreetins)
