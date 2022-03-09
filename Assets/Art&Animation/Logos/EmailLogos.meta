@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scenes/AveryBranch.unity.meta
+guid: ea7fb3a9078bb2f4185b271f8e2119ab
+=======
 guid: 7c3a99228be669347937dcba12ede9e3
 folderAsset: yes
+>>>>>>> staging:Assets/Art&Animation/Logos/EmailLogos.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
