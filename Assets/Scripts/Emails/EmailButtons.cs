@@ -16,6 +16,7 @@ public class EmailButtons : MonoBehaviour
     private Button _button;
     private Vector2 _position;
 
+    public Phishy phishy;
     private void Start()
     {
         #region Player Related
@@ -144,6 +145,7 @@ public class EmailButtons : MonoBehaviour
         mainScript.GiveMoney(100);
         //UI Creation
         mainScript.UICreation();
+        phishy.TriggerPhishyComment(false);
         #endregion
     }
 
@@ -163,6 +165,10 @@ public class EmailButtons : MonoBehaviour
         {
             mainScript.AddPhishingEmails();
         }
+
+        mainScript.UICreation();
+
+        phishy.TriggerPhishyComment(true);
 
         #endregion
     }

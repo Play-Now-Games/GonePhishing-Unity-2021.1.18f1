@@ -42,7 +42,7 @@ public class Phishy : MonoBehaviour, IPointerClickHandler
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
 
         if (_phishyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Hidden"))
@@ -137,34 +137,38 @@ public class Phishy : MonoBehaviour, IPointerClickHandler
     public void TriggerPhishyComment(bool isEvil)
     {
 
-        if (Random.Range(0, 100.0f) <= EmailResponseCommentChance)
-        {
-            #region Create the comment
+        if (_phishySprite.enabled == false) {
 
-            PhishyHint comment = ScriptableObject.CreateInstance<PhishyHint>();
-            comment.IsEvil = isEvil;
-            comment.HintText = new string[1];
-            if (isEvil)
+            if (Random.Range(0, 100.0f) <= EmailResponseCommentChance)
             {
-                comment.HintText[0] = MockComments[Random.Range(0, MockComments.Length - 1)];
+                #region Create the comment
+
+                PhishyHint comment = ScriptableObject.CreateInstance<PhishyHint>();
+                comment.IsEvil = isEvil;
+                comment.HintText = new string[1];
+                if (isEvil)
+                {
+                    comment.HintText[0] = MockComments[Random.Range(0, MockComments.Length - 1)];
+                }
+                else
+                {
+                    comment.HintText[0] = PraiseComments[Random.Range(0, MockComments.Length - 1)];
+                }
+
+                #endregion
+
+                #region Display the comment
+
+                _phishyAnimator.SetBool("IsEvil", comment.IsEvil);
+                PhishyAppears(EmailResponseCommentPosition.x, EmailResponseCommentPosition.y);
+
+                _currentHint = comment;
+                _currentHintText = 0;
+                CreateDialogueBubble();
+
+                #endregion
             }
-            else
-            {
-                comment.HintText[0] = PraiseComments[Random.Range(0, MockComments.Length - 1)];
-            }
 
-            #endregion
-
-            #region Display the comment
-
-            _phishyAnimator.SetBool("IsEvil", comment.IsEvil);
-            PhishyAppears(EmailResponseCommentPosition.x, EmailResponseCommentPosition.y);
-
-            _currentHint = comment;
-            _currentHintText = 0;
-            CreateDialogueBubble();
-
-            #endregion
         }
 
     }
