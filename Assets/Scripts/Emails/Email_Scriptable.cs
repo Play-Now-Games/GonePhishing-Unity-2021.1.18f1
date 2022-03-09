@@ -10,7 +10,7 @@ public class Email_Scriptable : ScriptableObject
 
     public int ID;
 
-    public Image logo;
+    public Sprite logo;
     
     public string sender;
 

@@ -16,7 +16,7 @@ public class EmailHolder : MonoBehaviour
     public Sprite backgroundWhenSelected;
     public Sprite backgroundWhenUnselected;
 
-    public Image logo;
+    public Sprite logo;
     public Text sender;
     public Text senderAddress;
     public Text tittle;
@@ -187,7 +187,7 @@ public class EmailHolder : MonoBehaviour
             Image Logo = BodyLogo.GetComponent<Image>();
             if (Logo)
             {
-                Logo = holder.logo;
+                Logo.sprite = holder.logo;
             }
         }
 
