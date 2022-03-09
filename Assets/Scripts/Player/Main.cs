@@ -50,6 +50,8 @@ public class Main : MonoBehaviour
     [SerializeField]
     private int currency = 0;
 
+    private DayTimer _time;
+
     private SoundsHolder _audioScript;
     ///////// PRIVATES /////////
 
@@ -61,7 +63,10 @@ public class Main : MonoBehaviour
         _audioScript = speakers.GetComponent<SoundsHolder>();
 
         AwakeRandomizationEmail();
-    
+
+        _time = GetComponent<DayTimer>();
+
+
     }
 
     private void AwakeRandomizationEmail()
@@ -192,8 +197,11 @@ public class Main : MonoBehaviour
 
         if (_totalEmails.Length == 1)
         {
-            dayEnded = true;
-            EndGame(true);
+            if(_time.CurrentTime < _time.CurrentTimeLimit)
+            {
+                dayEnded = true;
+                EndGame(true);
+            }
         }
 
     }
