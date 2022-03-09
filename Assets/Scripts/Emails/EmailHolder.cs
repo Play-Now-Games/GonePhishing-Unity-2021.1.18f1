@@ -16,7 +16,7 @@ public class EmailHolder : MonoBehaviour
     public Sprite backgroundWhenSelected;
     public Sprite backgroundWhenUnselected;
 
-    public Sprite logo;
+    public Image logo;
     public Text sender;
     public Text senderAddress;
     public Text tittle;
@@ -43,7 +43,11 @@ public class EmailHolder : MonoBehaviour
 
         #region Email Related
 
-        logo = holder.logo;
+        if (holder.logo)
+        {
+            logo.sprite = holder.logo;
+            logo.enabled = true;
+        }
         sender.text = holder.sender;
         StartTittle();
         StartContent();
