@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TaysideBlackwatch
   m_EditorClassIdentifier: 
   ID: 5
-  logo: {fileID: 0}
+  logo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
   sender: Michael
-  senderAdress: Michael PH <michael@phishmail.com>
+  senderAdress: Michael <michael@phishmail.com>
   tittle: Help!?
   greetings: Dear James,
   content: Hi James its Michael from the Tayside Blackwatch division. I know it has
