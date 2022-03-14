@@ -6,7 +6,10 @@ public class ScoreSystem : MonoBehaviour
 {
 
     public float Score { get; private set; }
+    public uint Stars { get; private set; }
 
+    [SerializeField]
+    private float _maxTimeBonus;
     [SerializeField]
     private float _2StarScoreThreshold;
     [SerializeField]
@@ -16,17 +19,8 @@ public class ScoreSystem : MonoBehaviour
     private float _multiplier = 1.0f;
     private bool _isPerfect = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private DayTimer _timer;
 
     public void AddScore(float amount)
     {
@@ -58,6 +52,39 @@ public class ScoreSystem : MonoBehaviour
         _streak = 0;
         _multiplier = 1.0f;
         _isPerfect = false;
+    }
+
+    float CalculateTimeBonus()
+    {
+        return (_maxTimeBonus / (_timer.CurrentTimeLimit * _timer.CurrentTimeLimit))
+            * ((_timer.CurrentTime - _timer.CurrentTimeLimit) * (_timer.CurrentTime - _timer.CurrentTimeLimit));
+    }
+
+    void CalculateFinalScore()
+    {
+        Score *= CalculateTimeBonus();
+
+        #region Give stars
+        Stars = 0;
+
+        if (Score >= _3StarScoreThreshold)
+        {
+            Stars = 3;
+        }
+        else if (Score >= _2StarScoreThreshold)
+        {
+            Stars = 2;
+        }
+        else
+        {
+            Stars = 1;
+        }
+
+        if (_isPerfect)
+        {
+            Stars++;
+        }
+        #endregion
     }
 
 }
