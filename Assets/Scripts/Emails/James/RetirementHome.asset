@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: RetirementHome
   m_EditorClassIdentifier: 
   ID: 1
-  logo: {fileID: 0}
-  sender: Susan Miller
-  senderAdress: Susan Miller  PH <application@retireriverside.com>
-  tittle: Riverside Retirement Application
-  greetings: Dear Mr. Ferguson
+  logo: {fileID: 21300000, guid: 64702ed66a9c0584880a5dbee579c624, type: 3}
+  sender: Riverside Retirement Home
+  senderAdress: Riverside Retirement Home <application@retireriverside.net>
+  tittle: Application
+  greetings: Dear Mr. Ferguson,
   content: 'We are writing to you today to inform you that you have been accepted
     into Riverside Retirement Home. We do need a few details off you first before
     we can begin the moving in stage. Below is a link to a form we will need you
@@ -26,4 +26,4 @@ MonoBehaviour:
   bye: Kind Regards, Susan Millar, Riverside Retirement Manager
   timeHour: 08
   timeMin: 15
-  isPhishing: 1
+  isPhishing: 0

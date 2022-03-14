@@ -50,6 +50,12 @@ public class Main : MonoBehaviour
     [SerializeField]
     private int currency = 0;
 
+
+    private DayTimer _time;
+
+    private HealthDisplay _healthDisplay;
+
+
     private SoundsHolder _audioScript;
     ///////// PRIVATES /////////
 
@@ -60,8 +66,15 @@ public class Main : MonoBehaviour
         GameObject speakers = GameObject.FindGameObjectWithTag("Speakers");
         _audioScript = speakers.GetComponent<SoundsHolder>();
 
+        //Get HealthDisplay
+        GameObject health = GameObject.FindGameObjectWithTag("HealthDisplay");
+        _healthDisplay = health.GetComponent<HealthDisplay>();
+
         AwakeRandomizationEmail();
-    
+
+        _time = GetComponent<DayTimer>();
+
+
     }
 
     private void AwakeRandomizationEmail()
@@ -106,42 +119,9 @@ public class Main : MonoBehaviour
     {
         selectedAnimator = selected.GetComponent<SelectedAnimator>();
 
-        StartUICreation();
+        UICreation();
     }
 
-    public void StartUICreation()
-    {
-        #region Spawn Emails
-
-        //Find By Name
-        GameObject Content = GameObject.Find("Content");
-
-        //Vectors to spawn -- 110 is the 100 + offset
-        Vector2 height = new Vector2(0, 110);
-
-        for (int i = 0; i < _totalEmails.Length; i++)
-        {
-            //Email Pos Based on Pos in the array
-            Vector2 Transfor = new Vector2(Content.transform.position.x - 25, Content.transform.position.y);
-            Vector2 emailNewPos = Transfor - (height * i);
-
-            //Instantiate & Set Child
-            GameObject ChildObject = Instantiate(emailPrefab, emailNewPos, Quaternion.identity);
-            ChildObject.transform.parent = Content.transform;
-
-            //Add Scriptable Object Here
-            EmailHolder holder = ChildObject.GetComponent<EmailHolder>();
-            holder.holder = _totalEmails[i];
-        }
-        #endregion
-
-        #region Update Height - Scroll Bar
-
-        RectTransform RectT = Content.GetComponent<RectTransform>();
-        RectT.sizeDelta = new Vector2(RectT.sizeDelta.x, height.y * _totalEmails.Length);
-
-        #endregion
-    }
 
     public void StartRemoveAt<T>(ref T[] arr, int index)
     {
@@ -157,7 +137,6 @@ public class Main : MonoBehaviour
         Array.Resize(ref arr, arr.Length - 1);
         #endregion
     }
-
 
     // Update is called once per frame
     void Update()
@@ -192,8 +171,11 @@ public class Main : MonoBehaviour
 
         if (_totalEmails.Length == 1)
         {
-            dayEnded = true;
-            EndGame(true);
+            if(_time.CurrentTime < _time.CurrentTimeLimit)
+            {
+                dayEnded = true;
+                EndGame(true);
+            }
         }
 
     }
@@ -250,7 +232,13 @@ public class Main : MonoBehaviour
         //PopUpFormula
         popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
 
-        #endregion 
+        #endregion
+
+
+        #region Call Animation
+        _healthDisplay.toAnimate = true;
+        #endregion
+
     }
 
     public void GainHealth(int HpGain)
@@ -349,7 +337,7 @@ public class Main : MonoBehaviour
             //Update The Previous _NormalEmails Email From The Previous Selected Email
             StartRemoveAt(ref _normalEmails, 0);
 
-            UICreation();
+            //UICreation();
 
         }
         else
@@ -377,7 +365,7 @@ public class Main : MonoBehaviour
             //Update The Previous _NormalEmails Email From The Previous Selected Email
             StartRemoveAt(ref _phishing, 0);
 
-            UICreation();
+            //UICreation();
         }
         else
         {

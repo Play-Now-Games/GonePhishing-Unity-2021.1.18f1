@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: RiversidePrimary
   m_EditorClassIdentifier: 
   ID: 2
-  logo: {fileID: 0}
+  logo: {fileID: 21300000, guid: 6964440b1fde7f9438fbd249505ecef1, type: 3}
   sender: Steven Marsh
-  senderAdress: Steven Marsh NL <headoffice@riversideprimary.ac.uk>
+  senderAdress: Steven Marsh <headoffice@riversideprimary.org>
   tittle: Assembly Talk
   greetings: Dear Mr. Ferguson
   content: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
