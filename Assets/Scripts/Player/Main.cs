@@ -169,7 +169,7 @@ public class Main : MonoBehaviour
 
         #endregion
 
-        if (_totalEmails.Length == 1)
+        if (_totalEmails.Length == 1 && !dayEnded)
         {
             if(_time.CurrentTime < _time.CurrentTimeLimit)
             {

@@ -16,7 +16,10 @@ public class EmailButtons : MonoBehaviour
     private Button _button;
     private Vector2 _position;
 
-    public Phishy phishy;
+    [SerializeField]
+    private Phishy phishy;
+    [SerializeField]
+    private ScoreSystem score;
     private void Start()
     {
         #region Player Related
@@ -146,6 +149,8 @@ public class EmailButtons : MonoBehaviour
         //UI Creation
         mainScript.UICreation();
         phishy.TriggerPhishyComment(false);
+        score.AddScore(100);
+        score.ScoreMultiplierStreakAdd();
         #endregion
     }
 
@@ -169,6 +174,7 @@ public class EmailButtons : MonoBehaviour
         mainScript.UICreation();
 
         phishy.TriggerPhishyComment(true);
+        score.ScoreMultiplierStreakReset();
 
         #endregion
     }

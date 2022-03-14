@@ -56,11 +56,12 @@ public class ScoreSystem : MonoBehaviour
 
     float CalculateTimeBonus()
     {
-        return (_maxTimeBonus / (_timer.CurrentTimeLimit * _timer.CurrentTimeLimit))
-            * ((_timer.CurrentTime - _timer.CurrentTimeLimit) * (_timer.CurrentTime - _timer.CurrentTimeLimit));
+        return ((_maxTimeBonus - 1)
+            / (_timer.CurrentTimeLimit * _timer.CurrentTimeLimit)
+            * ((_timer.CurrentTime - _timer.CurrentTimeLimit) * (_timer.CurrentTime - _timer.CurrentTimeLimit))) + 1;
     }
 
-    void CalculateFinalScore()
+    public void CalculateFinalScore()
     {
         Score *= CalculateTimeBonus();
 
