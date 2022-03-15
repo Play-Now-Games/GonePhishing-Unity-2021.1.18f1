@@ -9,18 +9,31 @@ public class ScoreSystem : MonoBehaviour
     public uint Stars { get; private set; }
 
     [SerializeField]
+    [Tooltip("The initial time bonus before it drops off.")]
     private float _maxTimeBonus;
     [SerializeField]
+    [Tooltip("How much score the player needs to earn 2 initial stars, if they fail to earn 3.")]
     private float _2StarScoreThreshold;
     [SerializeField]
+    [Tooltip("How much score the player needs to earn all 3 initial stars.")]
     private float _3StarScoreThreshold;
 
     private uint _streak = 0;
     private float _multiplier = 1.0f;
+
     private bool _isPerfect = true;
 
     [SerializeField]
+    [Tooltip("Reference to the timer object.")]
     private DayTimer _timer;
+
+    void Start()
+    {
+        if (_timer == null)
+        {
+            Debug.LogWarning("No timer assigned to a ScoreSystem!");
+        }
+    }
 
     public void AddScore(float amount)
     {
