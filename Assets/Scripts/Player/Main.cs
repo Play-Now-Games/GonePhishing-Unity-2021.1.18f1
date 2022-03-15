@@ -190,7 +190,7 @@ public class Main : MonoBehaviour
         GameObject Content = GameObject.Find("Content");
 
         //Vectors to spawn -- 110 is the 100 + offset
-        Vector2 height = new Vector2(0, 110);
+        Vector2 height = new Vector2(0, 2.5f);
 
         //-1 to work on
         for (int i = 0; i < _totalEmails.Length - 1; i++)
@@ -200,7 +200,7 @@ public class Main : MonoBehaviour
             Vector2 emailNewPos = Transfor - (height * i);
 
             //Instantiate & Set Child
-            GameObject ChildObject = Instantiate(emailPrefab, emailNewPos, Quaternion.identity);
+            GameObject ChildObject = Instantiate(emailPrefab, new Vector3(emailNewPos.x, emailNewPos.y, 0), Quaternion.identity);
             ChildObject.transform.parent = Content.transform;
 
             //Add Scriptable Object Here
@@ -442,10 +442,12 @@ public class Main : MonoBehaviour
             
             if (CanSpawn)
             {
+                
                 //Get Position
-                float x = UnityEngine.Random.Range(590, 1386);
-                float y = UnityEngine.Random.Range(146, 640);
-                float z = 0;
+                float x = UnityEngine.Random.Range(105, 128);
+                float y = UnityEngine.Random.Range(-383, -367);
+                float z = 583.3f;
+                
                 Vector3 popUpNewPos = new Vector3(x, y, z);
 
                 //Instantiate and select the instantiated as child of ...
