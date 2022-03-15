@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
   m_Name: VeteranCharity
   m_EditorClassIdentifier: 
-  ID: 6
+  ID: 7
   logo: {fileID: 21300000, guid: 5c66844ae1a11c44998a9135b4ef9636, type: 3}
   sender: Support Our Soldiers
   senderAdress: Support Our Soldiers <news@supportoursoldiers.com>
