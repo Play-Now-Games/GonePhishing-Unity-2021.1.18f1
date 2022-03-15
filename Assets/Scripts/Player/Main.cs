@@ -196,7 +196,7 @@ public class Main : MonoBehaviour
         for (int i = 0; i < _totalEmails.Length - 1; i++)
         {
             //Email Pos Based on Pos in the array
-            Vector2 Transfor = new Vector2(Content.transform.position.x - 25, Content.transform.position.y);
+            Vector2 Transfor = new Vector2(Content.transform.position.x - 15, Content.transform.position.y);
             Vector2 emailNewPos = Transfor - (height * i);
 
             //Instantiate & Set Child
