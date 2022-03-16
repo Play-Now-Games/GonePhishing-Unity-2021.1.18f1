@@ -8,6 +8,7 @@ TagManager:
   - PopUps
   - Speakers
   - HealthDisplay
+  - Canvas
   layers:
   - Default
   - TransparentFX
