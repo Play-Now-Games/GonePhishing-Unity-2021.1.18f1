@@ -856,8 +856,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emailInterface: {fileID: 196765049}
-  generators:
+  personalEmailGenerators:
   - {fileID: 11400000, guid: 392e86462d7594540886617274061c1f, type: 2}
+  corporateEmailGenerators: []
 --- !u!81 &1084311729
 AudioListener:
   m_ObjectHideFlags: 0
