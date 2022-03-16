@@ -207,7 +207,6 @@ RectTransform:
   - {fileID: 2011894480}
   - {fileID: 1705627857}
   - {fileID: 1752289307}
-  - {fileID: 338702883}
   m_Father: {fileID: 807470816}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -232,131 +231,6 @@ MonoBehaviour:
   emailPrefab: {fileID: 3628535780295621377, guid: d28e42dacbbfee549bdb024f8f6309e9, type: 3}
   selected: {fileID: 1304303438}
   emails: []
---- !u!1 &338702882
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 338702883}
-  - component: {fileID: 338702887}
-  - component: {fileID: 338702886}
-  - component: {fileID: 338702885}
-  - component: {fileID: 338702884}
-  m_Layer: 5
-  m_Name: ==Phishy==
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &338702883
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338702882}
-  m_LocalRotation: {x: -0, y: -0, z: 8.4703254e-22, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50.09964}
-  m_LocalScale: {x: 2.12766, y: 2.1276596, z: 1}
-  m_Children: []
-  m_Father: {fileID: 196765048}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2318.3257, y: 818.1675}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &338702884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338702882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fda8b0209fdcdf4fb571459a97355b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PraiseComments:
-  - 'It looks like you''re doing a great job. Keep it up! '
-  - 'It looks as if you''re getting the hang of this. Well done! '
-  - 'It looks like you don''t need my help. Keep going! '
-  - 'Excellent work! '
-  - Good job!
-  MockComments:
-  - It looks like you're trying to do a terrible job.  Would you like some help with
-    that?
-  - 'It looks like you''ve fell for a phishing email. Would you like me to play the
-    game for you? '
-  - Oops... Maybe you'll get the next one. Notice that I said maybe.
-  - 'HAHAHAHAHAHAHAHA!!!!!!!! '
-  - LOL!
-  EmailResponseCommentChance: 20
-  EmailResponseCommentPosition: {x: -50, y: -230}
-  DialogueBubble: {fileID: 3451908788116683739, guid: 1f6198ea86aa6004b977fc60e45a8fb9, type: 3}
---- !u!95 &338702885
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338702882}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fd0e1c4d8f7e6bf40a1015ca7e0fc886, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &338702886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338702882}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 915b08ffafe65af48939f6cd002f9daf, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &338702887
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 338702882}
-  m_CullTransparentMesh: 1
 --- !u!1 &391414650
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,20 +856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emailInterface: {fileID: 196765049}
-  firstName: Jadzia
-  lastName: Dax
-  title: Captain
-  senderName: Ezri
-  greetings:
-  - Hello #firstName,
-  - To #title #lastName,
-  bodies:
-  - This is the one email body.
-  - This is another.
-  signoffs:
-  - 'All the best,
-
-    #senderName'
+  generators:
+  - {fileID: 11400000, guid: 392e86462d7594540886617274061c1f, type: 2}
 --- !u!81 &1084311729
 AudioListener:
   m_ObjectHideFlags: 0

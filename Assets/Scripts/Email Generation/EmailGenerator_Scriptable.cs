@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmailGenerator : MonoBehaviour
+[CreateAssetMenu(fileName = "Generator", menuName = "ScriptableObjects/EmailGenerator")]
+public class EmailGenerator_Scriptable : ScriptableObject
 {
-    public EmailGenerationTestInterface emailInterface;
-
     public string firstName, lastName, title, senderName;
 
     [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
-    //[TextArea]
     public string[] greetings;
     [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
     [TextArea]
@@ -18,21 +16,7 @@ public class EmailGenerator : MonoBehaviour
     [TextArea]
     public string[] signoffs;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            emailInterface.AddEmail(GenerateEmail());
-        }
-    }
-
-    public Email_Scriptable GenerateEmail(bool isPhishing = false)
+    public Email_Scriptable GenerateEmail(bool isPhishing, int phishingDifficulty)
     {
         Email_Scriptable email = ScriptableObject.CreateInstance<Email_Scriptable>();
 
