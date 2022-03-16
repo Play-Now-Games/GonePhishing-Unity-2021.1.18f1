@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EmailGenerator : MonoBehaviour
 {
-    public List<Email_Scriptable> outputEmails;
+    public EmailGenerationTestInterface emailInterface;
 
     public string firstName, lastName, title, senderName;
 
@@ -28,15 +28,17 @@ public class EmailGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GenerateEmail();
+            emailInterface.AddEmail(GenerateEmail());
         }
     }
 
-    public void GenerateEmail(bool isPhishing = false)
+    public Email_Scriptable GenerateEmail(bool isPhishing = false)
     {
         Email_Scriptable email = ScriptableObject.CreateInstance<Email_Scriptable>();
 
         email.sender = senderName;
+
+        email.tittle = "Placeholder Title";
 
         // Add text //
         //greeting
@@ -48,7 +50,7 @@ public class EmailGenerator : MonoBehaviour
 
         email.isPhishing = isPhishing;
 
-        outputEmails.Add(email);
+        return email;
     }
 
     private string AddNames(string s)
