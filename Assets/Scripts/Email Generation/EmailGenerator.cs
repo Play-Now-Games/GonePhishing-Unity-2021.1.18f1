@@ -23,6 +23,27 @@ public class EmailGenerator : MonoBehaviour
         }
     }
 
+    //for button based testing
+    public void GenerateRealEmailButton()
+    {
+        emailInterface.AddEmail(GenerateEmail());
+    }
+    //for button based testing
+    public void GenerateFakeEasyEmailButton()
+    {
+        emailInterface.AddEmail(GenerateEmail(true, 1));
+    }
+    //for button based testing
+    public void GenerateFakeMediumEmailButton()
+    {
+        emailInterface.AddEmail(GenerateEmail(true, 2));
+    }
+    //for button based testing
+    public void GenerateFakeHardEmailButton()
+    {
+        emailInterface.AddEmail(GenerateEmail(true, 3));
+    }
+
     //Generate an email fully at random from avalibe generators
     public Email_Scriptable GenerateEmail(bool isPhishing = false, int phishingDifficulty = 0)
     {
@@ -36,6 +57,32 @@ public class EmailGenerator : MonoBehaviour
         {
             return corporateEmailGenerators[generatorIndex - personalEmailGenerators.Length].GenerateEmail(isPhishing, phishingDifficulty);
         }
+    }
+
+    public Email_Scriptable GeneratePersonalEmail(bool isPhishing = false, int phishingDifficulty = 0)
+    {
+        int generatorIndex = Random.Range(0, personalEmailGenerators.Length);
+            
+        return personalEmailGenerators[generatorIndex].GenerateEmail(isPhishing, phishingDifficulty);
+    }
+    public Email_Scriptable GeneratePersonalEmail(int byIndex, bool isPhishing = false, int phishingDifficulty = 0)
+    {
+        byIndex = Mathf.Max(0, Mathf.Min(byIndex, personalEmailGenerators.Length - 1));
+
+        return personalEmailGenerators[byIndex].GenerateEmail(isPhishing, phishingDifficulty);
+    }
+
+    public Email_Scriptable GenerateCorporateEmail(bool isPhishing = false, int phishingDifficulty = 0)
+    {
+        int generatorIndex = Random.Range(0, corporateEmailGenerators.Length);
+
+        return corporateEmailGenerators[generatorIndex].GenerateEmail(isPhishing, phishingDifficulty);
+    }
+    public Email_Scriptable GenerateCorporateEmail(int byIndex, bool isPhishing = false, int phishingDifficulty = 0)
+    {
+        byIndex = Mathf.Max(0, Mathf.Min(byIndex, corporateEmailGenerators.Length - 1));
+
+        return corporateEmailGenerators[byIndex].GenerateEmail(isPhishing, phishingDifficulty);
     }
 
 }

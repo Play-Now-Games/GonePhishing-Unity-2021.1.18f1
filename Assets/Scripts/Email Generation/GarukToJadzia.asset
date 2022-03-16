@@ -16,12 +16,26 @@ MonoBehaviour:
   lastName: Dax
   title: Lieutenant
   senderName: Garuk
+  logo: {fileID: 21300000, guid: 6964440b1fde7f9438fbd249505ecef1, type: 3}
+  fakeLogo: {fileID: 21300000, guid: 676620acd7b4cc140be2a1f8f6db5cf9, type: 3}
+  veryFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
   greetings:
   - Hey #firstName!
   - Dear #title #lastName,
+  fakeGreetings:
+  - Hello Officer,
+  - Hello Officer,
+  veryFakeGreetings:
+  - Hello [STARFLEET INDIVIDUAL],
   bodies:
   - This the the content of an email.
   - This the the content of another email.
+  faintlyFakeBodies:
+  - This is hardly fake!
+  fakeBodies:
+  - This is fake...
+  veryFakeBodies:
+  - This is SUPER fake!
   signoffs:
   - 'All due respect,
 
@@ -29,3 +43,7 @@ MonoBehaviour:
   - 'Thanks,
 
     #senderName'
+  fakeSignoffs:
+  - Please respond with haste!
+  veryFakeSignoffs:
+  - Giv us your password plz!
