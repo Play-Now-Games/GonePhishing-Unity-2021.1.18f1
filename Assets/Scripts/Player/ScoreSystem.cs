@@ -18,7 +18,8 @@ public class ScoreSystem : MonoBehaviour
     [Tooltip("How much score the player needs to earn all 3 initial stars.")]
     private float _3StarScoreThreshold;
 
-    private uint _streak = 0;
+    [HideInInspector]
+    public uint streak = 0;
     private float _multiplier = 1.0f;
 
     private bool _isPerfect = true;
@@ -42,9 +43,9 @@ public class ScoreSystem : MonoBehaviour
 
     public void ScoreMultiplierStreakAdd()
     {
-        _streak++;
+        streak++;
         #region Adjust multiplier
-        switch (_streak)
+        switch (streak)
         {
             case 0:
             case 1:
@@ -62,7 +63,7 @@ public class ScoreSystem : MonoBehaviour
 
     public void ScoreMultiplierStreakReset()
     {
-        _streak = 0;
+        streak = 0;
         _multiplier = 1.0f;
         _isPerfect = false;
     }

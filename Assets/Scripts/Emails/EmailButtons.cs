@@ -27,6 +27,8 @@ public class EmailButtons : MonoBehaviour
         GameObject player = GameObject.Find("====Character/Camera====");
         mainScript = player.GetComponent<Main>();
 
+        score = player.GetComponent<ScoreSystem>();
+
         #endregion
 
         _button = this.GetComponent<Button>();
@@ -47,6 +49,7 @@ public class EmailButtons : MonoBehaviour
 
     public void ClickAnswer()
     {
+        #region Click Ãnswer Button
         if (mainScript.selectedEmail) //ignore clicks when no seslected email
         {
             if (!mainScript.dayEnded)
@@ -57,10 +60,10 @@ public class EmailButtons : MonoBehaviour
                 //Search the Email on the Array of Emails
                 for (int i = 0; i < EmailsOnScene.Length; i++)
                 {
-                    if (mainScript._totalEmails[i].ID == holderCopy.ID)
+                    if (mainScript.totalEmails[i].ID == holderCopy.ID)
                     {
                         //Remove Array from the original Array
-                        mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
+                        mainScript.StartRemoveAt(ref mainScript.totalEmails, i);
 
                         //Destroy emails to Recreate in a new position
                         mainScript.DestroyAllEmails(EmailsOnScene);
@@ -86,11 +89,13 @@ public class EmailButtons : MonoBehaviour
                 }
             }
         }
+        #endregion
     }
 
 
     public void ClickIgnored()
     {
+        #region Click Ignore Button
         if (mainScript.selectedEmail) //ignore clicks when no seslected email
         {
             if(!mainScript.dayEnded)
@@ -100,11 +105,11 @@ public class EmailButtons : MonoBehaviour
                 //Search the Email on the Array of Emails
                 for (int i = 0; i < EmailsOnScene.Length; i++)
                 {
-                    if (mainScript._totalEmails[i].ID == holderCopy.ID)
+                    if (mainScript.totalEmails[i].ID == holderCopy.ID)
                     {
 
                         //Remove Array from the original Array
-                        mainScript.StartRemoveAt(ref mainScript._totalEmails, i);
+                        mainScript.StartRemoveAt(ref mainScript.totalEmails, i);
 
                         //Destroy emails to Recreate in a new position
                         mainScript.DestroyAllEmails(EmailsOnScene);
@@ -130,6 +135,7 @@ public class EmailButtons : MonoBehaviour
                 }
             }
         }
+        #endregion
     }
 
 
@@ -161,16 +167,30 @@ public class EmailButtons : MonoBehaviour
         mainScript.LoseMoney(200);
 
         int rand = UnityEngine.Random.Range(0, 2);
-
-        if (rand == 0)
+        
+        if (rand == 0 && mainScript.normalEmails.Length > 0)
         {
             mainScript.AddNormalEmails();
         }
         else
         {
-            mainScript.AddPhishingEmails();
+            switch (score.streak)
+            {
+                case 0:
+                    mainScript.AddPhishingEmails(mainScript.easyPhishing);
+                    break;
+                case 1:
+                    mainScript.AddPhishingEmails(mainScript.easyPhishing);
+                    break;
+                case 2:
+                    mainScript.AddPhishingEmails(mainScript.mediumPhishing);
+                    break;
+                case 3:
+                    mainScript.AddPhishingEmails(mainScript.hardPhishing);
+                    break;
+            }
         }
-
+        
         mainScript.UICreation();
 
         phishy.TriggerPhishyComment(true);
