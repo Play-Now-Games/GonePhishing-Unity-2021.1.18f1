@@ -26,15 +26,20 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
     [Space(10)]
 
+    public bool reuseBodies = false;
     [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
     [TextArea]
     public string[] bodies;
+    private string[] _unusedBodies;
     [TextArea]
     public string[] faintlyFakeBodies;
+    private string[] _unusedFaintlyFakeBodies;
     [TextArea]
     public string[] fakeBodies;
+    private string[] _unusedFakeBodies;
     [TextArea]
     public string[] veryFakeBodies;
+    private string[] _unusedVeryFakeBodies;
 
     [Space(10)]
 
@@ -99,6 +104,14 @@ public class EmailGenerator_Scriptable : ScriptableObject
         }
 
         return email;
+    }
+
+    public void ResetBodies()
+    {
+        _unusedBodies = bodies;
+        _unusedFaintlyFakeBodies = faintlyFakeBodies;
+        _unusedFakeBodies = fakeBodies;
+        _unusedVeryFakeBodies = veryFakeBodies;
     }
 
     private void SetNames (bool isPhishing, int phishingDifficulty)
@@ -258,16 +271,20 @@ public class EmailGenerator_Scriptable : ScriptableObject
         email.tittle = "Placeholder Title";
 
 
-        if (bodies.Length > 0)
+        if (reuseBodies)
         {
-            int index = Random.Range(0, bodies.Length);
-            email.content = AddNames(bodies[index]);
+            email.content = AddNames(bodies[Random.Range(0, bodies.Length)]);
+        }
+        else if (_unusedBodies.Length > 0)
+        {
+            int index = Random.Range(0, _unusedBodies.Length);
+            email.content = AddNames(_unusedBodies[index]);
 
-            StartRemoveAt(ref bodies, index);
+            StartRemoveAt(ref _unusedBodies, index);
         }
         else
         {
-            Debug.LogError("Trying to generate an email without a suitable body.");
+            Debug.Log("Trying to generate an email without a suitable body.");
         }
 
         
@@ -290,16 +307,20 @@ public class EmailGenerator_Scriptable : ScriptableObject
         email.tittle = "Placeholder Title";
 
 
-        if (veryFakeBodies.Length > 0)
+        if (reuseBodies)
         {
-            int index = Random.Range(0, veryFakeBodies.Length);
-            email.content = AddNames(veryFakeBodies[index]);
+            email.content = AddNames(veryFakeBodies[Random.Range(0, veryFakeBodies.Length)]);
+        }
+        else if (_unusedVeryFakeBodies.Length > 0)
+        {
+            int index = Random.Range(0, _unusedVeryFakeBodies.Length);
+            email.content = AddNames(_unusedVeryFakeBodies[index]);
 
-            StartRemoveAt(ref veryFakeBodies, index);
+            StartRemoveAt(ref _unusedVeryFakeBodies, index);
         }
         else
         {
-            Debug.LogError("Trying to generate an email without a suitable body.");
+            Debug.Log("Trying to generate an email without a suitable body.");
         }
 
 
@@ -343,16 +364,20 @@ public class EmailGenerator_Scriptable : ScriptableObject
         email.tittle = "Placeholder Title";
 
 
-        if (fakeBodies.Length > 0)
+        if (reuseBodies)
         {
-            int index = Random.Range(0, fakeBodies.Length);
-            email.content = AddNames(fakeBodies[index]);
+            email.content = AddNames(fakeBodies[Random.Range(0, fakeBodies.Length)]);
+        }
+        else if (_unusedFakeBodies.Length > 0)
+        {
+            int index = Random.Range(0, _unusedFakeBodies.Length);
+            email.content = AddNames(_unusedFakeBodies[index]);
 
-            StartRemoveAt(ref fakeBodies, index);
+            StartRemoveAt(ref _unusedFakeBodies, index);
         }
         else
         {
-            Debug.LogError("Trying to generate an email without a suitable body.");
+            Debug.Log("Trying to generate an email without a suitable body.");
         }
 
 
@@ -411,17 +436,20 @@ public class EmailGenerator_Scriptable : ScriptableObject
         email.tittle = "Placeholder Title";
 
 
-
-        if (faintlyFakeBodies.Length > 0)
+        if (reuseBodies)
         {
-            int index = Random.Range(0, faintlyFakeBodies.Length);
-            email.content = AddNames(faintlyFakeBodies[index]);
+            email.content = AddNames(faintlyFakeBodies[Random.Range(0, faintlyFakeBodies.Length)]);
+        }
+        else if (_unusedFaintlyFakeBodies.Length > 0)
+        {
+            int index = Random.Range(0, _unusedFaintlyFakeBodies.Length);
+            email.content = AddNames(_unusedFaintlyFakeBodies[index]);
 
-            StartRemoveAt(ref faintlyFakeBodies, index);
+            StartRemoveAt(ref _unusedFaintlyFakeBodies, index);
         }
         else
         {
-            Debug.LogError("Trying to generate an email without a suitable body.");
+            Debug.Log("Trying to generate an email without a suitable body.");
         }
 
 
@@ -469,7 +497,6 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
         return output;
     }
-
 
     private void StartRemoveAt<T>(ref T[] arr, int index)
     {

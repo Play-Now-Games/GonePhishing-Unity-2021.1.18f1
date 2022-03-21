@@ -12,21 +12,21 @@ public class Email_Scriptable : ScriptableObject
 
     public Sprite logo = null;
     
-    public string sender;
+    public string sender = "";
 
-    public string senderAdress;
+    public string senderAdress = "";
 
-    public string tittle;
+    public string tittle = "" ;
 
-    public string greetings;
+    public string greetings = "";
 
-    public string content;
+    public string content = "";
 
-    public string bye;
+    public string bye = "";
 
-    public string timeHour;
+    public string timeHour = "";
 
-    public string timeMin;
+    public string timeMin = "";
 
     public bool isPhishing;
 }

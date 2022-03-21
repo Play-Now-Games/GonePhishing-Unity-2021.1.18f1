@@ -12,6 +12,14 @@ public class EmailGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        foreach (EmailGenerator_Scriptable gen in personalEmailGenerators)
+        {
+            gen.ResetBodies();
+        }
+        foreach (EmailGenerator_Scriptable gen in corporateEmailGenerators)
+        {
+            gen.ResetBodies();
+        }
     }
 
     // Update is called once per frame
