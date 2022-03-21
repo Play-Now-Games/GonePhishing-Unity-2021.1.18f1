@@ -114,6 +114,52 @@ public class EmailGenerator_Scriptable : ScriptableObject
         _unusedVeryFakeBodies = veryFakeBodies;
     }
 
+    public bool CanGenerate(bool isPhishing, int phishingDifficulty)
+    {
+        if (reuseBodies)
+        {
+            return true;
+        }
+
+        if (!isPhishing)
+        {
+            if (_unusedBodies.Length > 0)
+            {
+                return true;
+            }    
+        }
+        else
+        {
+            switch (phishingDifficulty)
+            {
+                case 1:
+                    if (_unusedVeryFakeBodies.Length > 0)
+                    {
+                        return true;
+                    }
+                    break;
+                case 2:
+                    if (_unusedFakeBodies.Length > 0)
+                    {
+                        return true;
+                    }
+                    break;
+                case 3:
+                    if (_unusedFaintlyFakeBodies.Length > 0)
+                    {
+                        return true;
+                    }
+                    break;
+                default:
+                    Debug.LogError("Invalid phishing difficulty: " + phishingDifficulty);
+                    break;
+            }
+
+        }
+
+        return false;
+    }
+
     private void SetNames (bool isPhishing, int phishingDifficulty)
     {
         if (!isPhishing)
@@ -299,7 +345,6 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
         email.isPhishing = false;
     }
-
     private void GenerateFakeEasy(ref Email_Scriptable email)
     {
         email.sender = _senderName;
@@ -356,7 +401,6 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
         email.isPhishing = true;
     }
-
     private void GenerateFakeMedium(ref Email_Scriptable email)
     {
         email.sender = _senderName;
@@ -428,7 +472,6 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
         email.isPhishing = true;
     }
-
     private void GenerateFakeHard(ref Email_Scriptable email)
     {
         email.sender = _senderName;
