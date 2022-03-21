@@ -50,22 +50,22 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
     [SerializeField]
     [Tooltip("Chance of slightly fake components showing up in Hard Phishing Emails")]
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 0.5f)]
     private float _hardPhishingFaintlyFakeChance = 0.1f;
 
     [SerializeField]
     [Tooltip("Chance of real-appearing components showing up in Medium Phishing Emails")]
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 0.5f)]
     private float _mediumPhishingRealChance = 0.1f;
 
     [SerializeField]
     [Tooltip("Chance of very fake components showing up in Medium Phishing Emails")]
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 0.5f)]
     private float _mediumPhishingVeryFakeChance = 0.1f;
 
     [SerializeField]
     [Tooltip("Chance of only slightly fake components showing up in Easy Phishing Emails")]
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 0.5f)]
     private float _easyPhishingFaintlyFakeChance = 0.2f;
 
     public Email_Scriptable GenerateEmail(bool isPhishing, int phishingDifficulty)
@@ -253,76 +253,170 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
     private void GenerateReal(ref Email_Scriptable email)
     {
-        email.logo = logo;
-
         email.sender = _senderName;
-
+         
         email.tittle = "Placeholder Title";
 
-        // Add text //
-        //greeting
-        email.greetings = AddNames(greetings[Random.Range(0, greetings.Length)]);
-        //body
+
+
         email.content = AddNames(bodies[Random.Range(0, bodies.Length)]);
-        //signoff
+
+        
+
+        email.greetings = AddNames(greetings[Random.Range(0, greetings.Length)]);
+
         email.bye = AddNames(signoffs[Random.Range(0, signoffs.Length)]);
+
+        email.logo = logo;
+
+
 
         email.isPhishing = false;
     }
 
     private void GenerateFakeEasy(ref Email_Scriptable email)
     {
-        email.logo = veryFakeLogo;
-
         email.sender = _senderName;
 
         email.tittle = "Placeholder Title";
 
-        // Add text //
-        //greeting
-        email.greetings = AddNames(veryFakeGreetings[Random.Range(0, veryFakeGreetings.Length)]);
-        //body
+
+
         email.content = AddNames(veryFakeBodies[Random.Range(0, veryFakeBodies.Length)]);
-        //signoff
-        email.bye = AddNames(veryFakeSignoffs[Random.Range(0, veryFakeSignoffs.Length)]);
+
+
+
+        if (Random.Range(0, 1.0f) < _easyPhishingFaintlyFakeChance)
+        {
+            email.greetings = AddNames(fakeGreetings[Random.Range(0, fakeGreetings.Length)]);
+        }
+        else
+        {
+            email.greetings = AddNames(veryFakeGreetings[Random.Range(0, veryFakeGreetings.Length)]);
+        }
+
+        if (Random.Range(0, 1.0f) < _easyPhishingFaintlyFakeChance)
+        {
+            email.bye = AddNames(fakeSignoffs[Random.Range(0, fakeSignoffs.Length)]);
+        }
+        else
+        {
+            email.bye = AddNames(veryFakeSignoffs[Random.Range(0, veryFakeSignoffs.Length)]);
+        }
+
+        if (Random.Range(0, 1.0f) < _easyPhishingFaintlyFakeChance)
+        {
+            email.logo = fakeLogo;
+        }
+        else
+        {
+            email.logo = veryFakeLogo;
+        }
+
+
 
         email.isPhishing = true;
     }
 
     private void GenerateFakeMedium(ref Email_Scriptable email)
     {
-        email.logo = fakeLogo;
-
         email.sender = _senderName;
 
         email.tittle = "Placeholder Title";
 
-        // Add text //
-        //greeting
-        email.greetings = AddNames(fakeGreetings[Random.Range(0, fakeGreetings.Length)]);
-        //body
+
+
         email.content = AddNames(fakeBodies[Random.Range(0, fakeBodies.Length)]);
-        //signoff
-        email.bye = AddNames(fakeSignoffs[Random.Range(0, fakeSignoffs.Length)]);
+
+
+
+        float greetingRand = Random.Range(0, 1.0f);
+        if (greetingRand < _mediumPhishingRealChance)
+        {
+            email.greetings = AddNames(greetings[Random.Range(0, greetings.Length)]);
+        }
+        else if (greetingRand < _mediumPhishingRealChance + _mediumPhishingVeryFakeChance)
+        {
+            email.greetings = AddNames(veryFakeGreetings[Random.Range(0, veryFakeGreetings.Length)]);
+        }
+        else
+        {
+            email.greetings = AddNames(fakeGreetings[Random.Range(0, fakeGreetings.Length)]);
+        }
+
+        float signoffRand = Random.Range(0, 1.0f);
+        if (signoffRand < _mediumPhishingRealChance)
+        {
+            email.bye = AddNames(signoffs[Random.Range(0, signoffs.Length)]);
+        }
+        else if (signoffRand < _mediumPhishingRealChance + _mediumPhishingVeryFakeChance)
+        {
+            email.bye = AddNames(veryFakeSignoffs[Random.Range(0, veryFakeSignoffs.Length)]);
+        }
+        else
+        {
+            email.bye = AddNames(fakeSignoffs[Random.Range(0, fakeSignoffs.Length)]);
+        }
+
+        float logoRand = Random.Range(0, 1.0f);
+        if (logoRand < _mediumPhishingRealChance)
+        {
+            email.logo = logo;
+        }
+        else if (logoRand < _mediumPhishingRealChance + _mediumPhishingVeryFakeChance)
+        {
+            email.logo = veryFakeLogo;
+        }
+        else
+        {
+            email.logo = fakeLogo;
+        }
+
+
 
         email.isPhishing = true;
     }
 
     private void GenerateFakeHard(ref Email_Scriptable email)
     {
-        email.logo = logo;
-
         email.sender = _senderName;
 
         email.tittle = "Placeholder Title";
 
-        // Add text //
-        //greeting
-        email.greetings = AddNames(greetings[Random.Range(0, greetings.Length)]);
-        //body
+
+
         email.content = AddNames(faintlyFakeBodies[Random.Range(0, faintlyFakeBodies.Length)]);
-        //signoff
-        email.bye = AddNames(signoffs[Random.Range(0, signoffs.Length)]);
+
+
+
+        if (Random.Range(0, 1.0f) < _hardPhishingFaintlyFakeChance)
+        {
+            email.greetings = AddNames(fakeGreetings[Random.Range(0, fakeGreetings.Length)]);
+        }
+        else
+        {
+            email.greetings = AddNames(greetings[Random.Range(0, greetings.Length)]);
+        }
+
+        if (Random.Range(0, 1.0f) < _hardPhishingFaintlyFakeChance)
+        {
+            email.bye = AddNames(fakeSignoffs[Random.Range(0, fakeSignoffs.Length)]);
+        }
+        else
+        {
+            email.bye = AddNames(signoffs[Random.Range(0, signoffs.Length)]);
+        }
+
+        if (Random.Range(0, 1.0f) < _hardPhishingFaintlyFakeChance)
+        {
+            email.logo = fakeLogo;
+        }
+        else
+        {
+            email.logo = logo;
+        }
+
+
 
         email.isPhishing = true;
     }
