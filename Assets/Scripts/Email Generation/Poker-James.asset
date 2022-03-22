@@ -16,16 +16,20 @@ MonoBehaviour:
   lastName: Ferguson
   title: Mr
   senderName: PokerPlayers
+  senderAddress: <promotions@pokerplays.com>
   faintlyFakeFirstNames: []
   faintlyFakeLastNames: []
   faintlyFakeTitles: []
   faintlyFakeSenderNames:
   - PokerPayz
+  faintlyFakeSenderAddress:
+  - <promotions@pokerpayz.com>
   fakeFirstNames: []
   fakeLastNames: []
   fakeTitles: []
   fakeSenderNames:
   - PokerScams
+  fakeSenderAddress: []
   logo: {fileID: 21300000, guid: 17b61ad236362304ea529128dc815ed4, type: 3}
   fakeLogo: {fileID: 21300000, guid: 907db53ecf6ae154789a35494ee27007, type: 3}
   veryFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
@@ -34,7 +38,7 @@ MonoBehaviour:
   fakeGreetings:
   - Hey Player,
   veryFakeGreetings: []
-  reuseBodies: 1
+  reuseBodies: 0
   bodies:
   - From the 11th - 14th March, be sure to log in and try out our new 'High Rollers'
     event where any earnings you win will be doubled!

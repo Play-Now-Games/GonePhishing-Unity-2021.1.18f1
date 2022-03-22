@@ -24,22 +24,30 @@ public class EmailGenerator_Scriptable : ScriptableObject
     public string[] fakeGreetings;
     public string[] veryFakeGreetings;
 
+    [System.Serializable]
+    public class EmailBodyAndTitle
+    {
+        public string title;
+        [TextArea]
+        public string body;
+    }
+
     [Space(10)]
 
     public bool reuseBodies = false;
     [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
-    [TextArea]
-    public string[] bodies;
-    private string[] _unusedBodies;
-    [TextArea]
-    public string[] faintlyFakeBodies;
-    private string[] _unusedFaintlyFakeBodies;
-    [TextArea]
-    public string[] fakeBodies;
-    private string[] _unusedFakeBodies;
-    [TextArea]
-    public string[] veryFakeBodies;
-    private string[] _unusedVeryFakeBodies;
+
+    public List<EmailBodyAndTitle> bodies;
+    private List<EmailBodyAndTitle> _unusedBodies;
+
+    public List<EmailBodyAndTitle> faintlyFakeBodies;
+    private List<EmailBodyAndTitle> _unusedFaintlyFakeBodies;
+
+    public List<EmailBodyAndTitle> fakeBodies;
+    private List<EmailBodyAndTitle> _unusedFakeBodies;
+
+    public List<EmailBodyAndTitle> veryFakeBodies;
+    private List<EmailBodyAndTitle> _unusedVeryFakeBodies;
 
     [Space(10)]
 
@@ -108,10 +116,10 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
     public void ResetBodies()
     {
-        _unusedBodies = bodies;
-        _unusedFaintlyFakeBodies = faintlyFakeBodies;
-        _unusedFakeBodies = fakeBodies;
-        _unusedVeryFakeBodies = veryFakeBodies;
+        _unusedBodies = new List<EmailBodyAndTitle>(bodies);
+        _unusedFaintlyFakeBodies = new List<EmailBodyAndTitle>(faintlyFakeBodies);
+        _unusedFakeBodies = new List<EmailBodyAndTitle>(fakeBodies);
+        _unusedVeryFakeBodies = new List<EmailBodyAndTitle>(veryFakeBodies);
     }
 
     public bool CanGenerate(bool isPhishing, int phishingDifficulty)
@@ -123,7 +131,7 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
         if (!isPhishing)
         {
-            if (_unusedBodies.Length > 0)
+            if (_unusedBodies.Count > 0)
             {
                 return true;
             }    
@@ -133,19 +141,19 @@ public class EmailGenerator_Scriptable : ScriptableObject
             switch (phishingDifficulty)
             {
                 case 1:
-                    if (_unusedVeryFakeBodies.Length > 0)
+                    if (_unusedVeryFakeBodies.Count > 0)
                     {
                         return true;
                     }
                     break;
                 case 2:
-                    if (_unusedFakeBodies.Length > 0)
+                    if (_unusedFakeBodies.Count > 0)
                     {
                         return true;
                     }
                     break;
                 case 3:
-                    if (_unusedFaintlyFakeBodies.Length > 0)
+                    if (_unusedFaintlyFakeBodies.Count > 0)
                     {
                         return true;
                     }
@@ -348,14 +356,17 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
         if (reuseBodies)
         {
-            email.content = AddNames(bodies[Random.Range(0, bodies.Length)]);
+            int index = Random.Range(0, bodies.Count);
+            email.content = AddNames(bodies[index].body);
+            email.tittle = bodies[index].title;
         }
-        else if (_unusedBodies.Length > 0)
+        else if (_unusedBodies.Count > 0)
         {
-            int index = Random.Range(0, _unusedBodies.Length);
-            email.content = AddNames(_unusedBodies[index]);
+            int index = Random.Range(0, _unusedBodies.Count);
+            email.content = AddNames(_unusedBodies[index].body);
+            email.tittle = _unusedBodies[index].title;
 
-            StartRemoveAt(ref _unusedBodies, index);
+            _unusedBodies.RemoveAt(index);
         }
         else
         {
@@ -385,14 +396,17 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
         if (reuseBodies)
         {
-            email.content = AddNames(veryFakeBodies[Random.Range(0, veryFakeBodies.Length)]);
+            int index = Random.Range(0, veryFakeBodies.Count);
+            email.content = AddNames(veryFakeBodies[Random.Range(0, veryFakeBodies.Count)].body);
+            email.tittle = veryFakeBodies[index].title;
         }
-        else if (_unusedVeryFakeBodies.Length > 0)
+        else if (_unusedVeryFakeBodies.Count > 0)
         {
-            int index = Random.Range(0, _unusedVeryFakeBodies.Length);
-            email.content = AddNames(_unusedVeryFakeBodies[index]);
+            int index = Random.Range(0, _unusedVeryFakeBodies.Count);
+            email.content = AddNames(_unusedVeryFakeBodies[index].body);
+            email.tittle = _unusedVeryFakeBodies[index].title;
 
-            StartRemoveAt(ref _unusedVeryFakeBodies, index);
+            _unusedVeryFakeBodies.RemoveAt(index);
         }
         else
         {
@@ -443,14 +457,17 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
         if (reuseBodies)
         {
-            email.content = AddNames(fakeBodies[Random.Range(0, fakeBodies.Length)]);
+            int index = Random.Range(0, fakeBodies.Count);
+            email.content = AddNames(fakeBodies[Random.Range(0, fakeBodies.Count)].body);
+            email.tittle = fakeBodies[index].title;
         }
-        else if (_unusedFakeBodies.Length > 0)
+        else if (_unusedFakeBodies.Count > 0)
         {
-            int index = Random.Range(0, _unusedFakeBodies.Length);
-            email.content = AddNames(_unusedFakeBodies[index]);
+            int index = Random.Range(0, _unusedFakeBodies.Count);
+            email.content = AddNames(_unusedFakeBodies[index].body);
+            email.tittle = _unusedFakeBodies[index].title;
 
-            StartRemoveAt(ref _unusedFakeBodies, index);
+            _unusedFakeBodies.RemoveAt(index);
         }
         else
         {
@@ -516,14 +533,17 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
         if (reuseBodies)
         {
-            email.content = AddNames(faintlyFakeBodies[Random.Range(0, faintlyFakeBodies.Length)]);
+            int index = Random.Range(0, faintlyFakeBodies.Count);
+            email.content = AddNames(faintlyFakeBodies[Random.Range(0, faintlyFakeBodies.Count)].body);
+            email.tittle = faintlyFakeBodies[index].title;
         }
-        else if (_unusedFaintlyFakeBodies.Length > 0)
+        else if (_unusedFaintlyFakeBodies.Count > 0)
         {
-            int index = Random.Range(0, _unusedFaintlyFakeBodies.Length);
-            email.content = AddNames(_unusedFaintlyFakeBodies[index]);
+            int index = Random.Range(0, _unusedFaintlyFakeBodies.Count);
+            email.content = AddNames(_unusedFaintlyFakeBodies[index].body);
+            email.tittle = _unusedFaintlyFakeBodies[index].title;
 
-            StartRemoveAt(ref _unusedFaintlyFakeBodies, index);
+            _unusedFaintlyFakeBodies.RemoveAt(index);
         }
         else
         {
