@@ -16,6 +16,25 @@ MonoBehaviour:
   lastName: Dax
   title: Lieutenant
   senderName: Garuk
+  faintlyFakeFirstNames:
+  - Ezri
+  - Curzon
+  faintlyFakeLastNames:
+  - of Trill
+  faintlyFakeTitles:
+  - Commander
+  - Mx
+  faintlyFakeSenderNames:
+  - Dukut
+  fakeFirstNames:
+  - Sisko
+  fakeLastNames:
+  - Applebe
+  fakeTitles:
+  - Mr
+  - Nagus
+  fakeSenderNames:
+  - Janeway
   logo: {fileID: 21300000, guid: 6964440b1fde7f9438fbd249505ecef1, type: 3}
   fakeLogo: {fileID: 21300000, guid: 676620acd7b4cc140be2a1f8f6db5cf9, type: 3}
   veryFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
@@ -23,15 +42,14 @@ MonoBehaviour:
   - Hey #firstName!
   - Dear #title #lastName,
   fakeGreetings:
-  - Hello Officer,
-  - Hello Officer,
+  - Hello #title,
   veryFakeGreetings:
-  - Hello [STARFLEET INDIVIDUAL],
+  - Hello #title #firstName #lastName,
+  reuseBodies: 0
   bodies:
-  - This the the content of an email.
-  - This the the content of another email.
+  - This actually isn't fake.
   faintlyFakeBodies:
-  - This is hardly fake!
+  - Is this fake?
   fakeBodies:
   - This is fake...
   veryFakeBodies:
@@ -44,6 +62,14 @@ MonoBehaviour:
 
     #senderName'
   fakeSignoffs:
-  - Please respond with haste!
+  - 'Please respond with haste!
+
+    #senderName'
   veryFakeSignoffs:
-  - Giv us your password plz!
+  - 'Giv us your password plz!
+
+    #senderName'
+  _hardPhishingFaintlyFakeChance: 0.1
+  _mediumPhishingRealChance: 0.1
+  _mediumPhishingVeryFakeChance: 0.1
+  _easyPhishingFaintlyFakeChance: 0.2

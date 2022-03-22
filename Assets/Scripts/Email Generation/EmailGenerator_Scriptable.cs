@@ -5,11 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Generator", menuName = "ScriptableObjects/EmailGenerator")]
 public class EmailGenerator_Scriptable : ScriptableObject
 {
-    public string firstName, lastName, title, senderName;
-    public string[] faintlyFakeFirstNames, faintlyFakeLastNames, faintlyFakeTitles, faintlyFakeSenderNames;
-    public string[] fakeFirstNames, fakeLastNames, fakeTitles, fakeSenderNames;
+    public string firstName, lastName, title, senderName, senderAddress;
+    public string[] faintlyFakeFirstNames, faintlyFakeLastNames, faintlyFakeTitles, faintlyFakeSenderNames, faintlyFakeSenderAddress;
+    public string[] fakeFirstNames, fakeLastNames, fakeTitles, fakeSenderNames, fakeSenderAddress;
 
-    private string _firstName, _lastName, _title, _senderName;
+    private string _firstName, _lastName, _title, _senderName, _senderAddress;
 
     [Space(10)]
 
@@ -193,6 +193,7 @@ public class EmailGenerator_Scriptable : ScriptableObject
         _lastName = lastName;
         _title = title;
         _senderName = senderName;
+        _senderAddress = senderAddress;
     }
     private void SetNamesEasy()
     {
@@ -260,6 +261,22 @@ public class EmailGenerator_Scriptable : ScriptableObject
                 _senderName = senderName;
             }
         }
+
+        if (fakeSenderAddress.Length > 0)
+        {
+            _senderAddress = fakeSenderAddress[Random.Range(0, fakeSenderAddress.Length)];
+        }
+        else
+        {
+            if (faintlyFakeSenderAddress.Length > 0)
+            {
+                _senderAddress = faintlyFakeSenderAddress[Random.Range(0, faintlyFakeSenderAddress.Length)];
+            }
+            else
+            {
+                _senderAddress = senderAddress;
+            }
+        }
         #endregion
     }
     private void SetNamesMedium()
@@ -300,6 +317,15 @@ public class EmailGenerator_Scriptable : ScriptableObject
         {
             _senderName = senderName;
         }
+
+        if (faintlyFakeSenderAddress.Length > 0)
+        {
+            _senderAddress = faintlyFakeSenderAddress[Random.Range(0, faintlyFakeSenderAddress.Length)];
+        }
+        else
+        {
+            _senderAddress = senderAddress;
+        }
         #endregion
     }
     private void SetNamesHard()
@@ -308,11 +334,14 @@ public class EmailGenerator_Scriptable : ScriptableObject
         _lastName = lastName;
         _title = title;
         _senderName = senderName;
+        _senderAddress = senderAddress;
     }
 
     private void GenerateReal(ref Email_Scriptable email)
     {
         email.sender = _senderName;
+
+        email.senderAdress = _senderAddress;
          
         email.tittle = "Placeholder Title";
 
@@ -348,6 +377,8 @@ public class EmailGenerator_Scriptable : ScriptableObject
     private void GenerateFakeEasy(ref Email_Scriptable email)
     {
         email.sender = _senderName;
+
+        email.senderAdress = _senderAddress;
 
         email.tittle = "Placeholder Title";
 
@@ -404,6 +435,8 @@ public class EmailGenerator_Scriptable : ScriptableObject
     private void GenerateFakeMedium(ref Email_Scriptable email)
     {
         email.sender = _senderName;
+
+        email.senderAdress = _senderAddress;
 
         email.tittle = "Placeholder Title";
 
@@ -475,6 +508,8 @@ public class EmailGenerator_Scriptable : ScriptableObject
     private void GenerateFakeHard(ref Email_Scriptable email)
     {
         email.sender = _senderName;
+
+        email.senderAdress = _senderAddress;
 
         email.tittle = "Placeholder Title";
 
