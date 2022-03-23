@@ -29,4 +29,7 @@ public class Email_Scriptable : ScriptableObject
     public string timeMin;
 
     public bool isPhishing;
+
+    [Tooltip("Write here the difficulty desired for this email, being 1 = EASY, 2 = MEDIUM, OR 3 = HARD")]
+    public int difficulty;
 }

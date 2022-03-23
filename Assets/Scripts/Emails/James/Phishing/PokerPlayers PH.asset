@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
   m_Name: PokerPlayers PH
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 1
   logo: {fileID: 21300000, guid: 907db53ecf6ae154789a35494ee27007, type: 3}
   sender: PokerPlays.com
   senderAdress: PokerPlays.com <promotions@pokerpiays.com>
@@ -24,3 +24,4 @@ MonoBehaviour:
   timeHour: 12
   timeMin: 00
   isPhishing: 1
+  difficulty: 

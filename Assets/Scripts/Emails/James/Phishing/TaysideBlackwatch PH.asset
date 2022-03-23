@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
-  m_Name: TaysideBlackwatch
+  m_Name: TaysideBlackwatch PH
   m_EditorClassIdentifier: 
-  ID: 5
+  ID: 6
   logo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
   sender: Michael
   senderAdress: Michael <michael@phishmail.com>
@@ -26,3 +26,4 @@ MonoBehaviour:
   timeHour: 05
   timeMin: 55
   isPhishing: 1
+  difficulty: 
