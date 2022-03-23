@@ -318,8 +318,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1610366606}
   m_HandleRect: {fileID: 1610366605}
   m_Direction: 2
-  m_Value: -0.0000063823013
-  m_Size: 0.8141595
+  m_Value: -0.0000013296461
+  m_Size: 0.8148493
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2196,14 +2196,33 @@ MonoBehaviour:
   noEmail: {fileID: 30029625}
   healthPoints: 5
   maxHealthPoints: 5
-  _totalEmails:
+  totalEmails:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  phishingAmount: 2
+  normalEmails:
+  - {fileID: 11400000, guid: ff1fe0864fb9ae14d8ab19e5d47414f4, type: 2}
+  - {fileID: 11400000, guid: 9c8416f5d5fbd2848b690aabefc0f81a, type: 2}
+  - {fileID: 11400000, guid: 71119951e7f375f44966ec1bb5baba48, type: 2}
+  - {fileID: 11400000, guid: 856fe5a109833504f9f94dfc8aaa58b5, type: 2}
+  easyPhishing:
+  - {fileID: 11400000, guid: f2e38c25cd0380d45956c089ec371fec, type: 2}
+  - {fileID: 11400000, guid: 846412dbc12a0ab40bc8d286598ed748, type: 2}
+  - {fileID: 11400000, guid: d3f018a1d8d220f49aede341684577fe, type: 2}
+  - {fileID: 11400000, guid: 15b64dafbcea4e846a6a4740cad23a6e, type: 2}
+  mediumPhishing:
+  - {fileID: 11400000, guid: 846412dbc12a0ab40bc8d286598ed748, type: 2}
+  - {fileID: 11400000, guid: f2e38c25cd0380d45956c089ec371fec, type: 2}
+  - {fileID: 11400000, guid: d3f018a1d8d220f49aede341684577fe, type: 2}
+  - {fileID: 11400000, guid: 15b64dafbcea4e846a6a4740cad23a6e, type: 2}
+  hardPhishing:
+  - {fileID: 11400000, guid: 15b64dafbcea4e846a6a4740cad23a6e, type: 2}
+  - {fileID: 11400000, guid: 846412dbc12a0ab40bc8d286598ed748, type: 2}
+  - {fileID: 11400000, guid: d3f018a1d8d220f49aede341684577fe, type: 2}
+  - {fileID: 11400000, guid: f2e38c25cd0380d45956c089ec371fec, type: 2}
   onGameEnd:
     m_PersistentCalls:
       m_Calls:
@@ -2289,16 +2308,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   dayEnded: 0
-  _phishingAmount: 3
-  _normalEmails:
-  - {fileID: 11400000, guid: 71119951e7f375f44966ec1bb5baba48, type: 2}
-  - {fileID: 11400000, guid: 846412dbc12a0ab40bc8d286598ed748, type: 2}
-  - {fileID: 11400000, guid: 15b64dafbcea4e846a6a4740cad23a6e, type: 2}
-  - {fileID: 11400000, guid: 856fe5a109833504f9f94dfc8aaa58b5, type: 2}
-  _phishing:
-  - {fileID: 11400000, guid: d3f018a1d8d220f49aede341684577fe, type: 2}
-  - {fileID: 11400000, guid: f2e38c25cd0380d45956c089ec371fec, type: 2}
-  - {fileID: 11400000, guid: 9c8416f5d5fbd2848b690aabefc0f81a, type: 2}
   _totalPopUps:
   - {fileID: 1125964853130987750, guid: 06f0d8be6e31f4f479a4cbf020ce192f, type: 3}
   - {fileID: 1125964853130987750, guid: bac5a7003b052f948a977d4a29580794, type: 3}
@@ -2531,7 +2540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00011479401, y: 114.758995}
+  m_AnchoredPosition: {x: -0.00011479401, y: 114.7584}
   m_SizeDelta: {x: -3.1789536, y: 619.81}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1161477149
@@ -3295,6 +3304,7 @@ MonoBehaviour:
   _maxTimeBonus: 5
   _2StarScoreThreshold: 1000
   _3StarScoreThreshold: 2000
+  streak: 0
   _timer: {fileID: 1084311726}
 --- !u!4 &1349994977
 Transform:

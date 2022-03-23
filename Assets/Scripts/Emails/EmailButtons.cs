@@ -27,8 +27,6 @@ public class EmailButtons : MonoBehaviour
         GameObject player = GameObject.Find("====Character/Camera====");
         mainScript = player.GetComponent<Main>();
 
-        score = player.GetComponent<ScoreSystem>();
-
         #endregion
 
         _button = this.GetComponent<Button>();

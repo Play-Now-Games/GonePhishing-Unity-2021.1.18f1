@@ -21,12 +21,13 @@ public class ScoreSystem : MonoBehaviour
     [HideInInspector]
     public uint streak = 0;
     private float _multiplier = 1.0f;
-
     private bool _isPerfect = true;
 
     [SerializeField]
     [Tooltip("Reference to the timer object.")]
     private DayTimer _timer;
+
+    private bool _finished = false;
 
     void Start()
     {
@@ -100,6 +101,22 @@ public class ScoreSystem : MonoBehaviour
             Stars++;
         }
         #endregion
+
+        _finished = true;
+    }
+
+    void OnGUI()
+    {
+        if (_finished)
+        {
+            GUI.Label(new Rect(0, 0, 100, 50), "Time bonus: x" + CalculateTimeBonus());
+            GUI.Label(new Rect(0, 50, 100, 50), "Final score: " + Score);
+            GUI.Label(new Rect(0, 100, 100, 50), Stars + " stars");
+        }
+        else
+        {
+            GUI.Label(new Rect(0, 0, 100, 50), "Score: " + Score);
+        }
     }
 
 }
