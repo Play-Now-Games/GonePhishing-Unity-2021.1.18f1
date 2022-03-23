@@ -111,11 +111,13 @@ public class ScoreSystem : MonoBehaviour
         {
             GUI.Label(new Rect(0, 0, 100, 50), "Time bonus: x" + CalculateTimeBonus());
             GUI.Label(new Rect(0, 50, 100, 50), "Final score: " + Score);
-            GUI.Label(new Rect(0, 100, 100, 50), Stars + " stars");
+            GUI.Label(new Rect(0, 100, 100, 50), "Perfect bonus: " + _isPerfect);
+            GUI.Label(new Rect(0, 150, 100, 50), Stars + " stars out of 4");
         }
         else
         {
             GUI.Label(new Rect(0, 0, 100, 50), "Score: " + Score);
+            GUI.Label(new Rect(0, 50, 100, 50), "Multiplier: x" + _multiplier);
         }
     }
 

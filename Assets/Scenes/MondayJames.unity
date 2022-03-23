@@ -2067,7 +2067,15 @@ MonoBehaviour:
   noEmail: {fileID: 30029625}
   healthPoints: 5
   maxHealthPoints: 5
-  totalEmails: []
+  totalEmails:
+  - {fileID: 11400000, guid: 15b64dafbcea4e846a6a4740cad23a6e, type: 2}
+  - {fileID: 11400000, guid: f2e38c25cd0380d45956c089ec371fec, type: 2}
+  - {fileID: 11400000, guid: d3f018a1d8d220f49aede341684577fe, type: 2}
+  - {fileID: 11400000, guid: 71119951e7f375f44966ec1bb5baba48, type: 2}
+  - {fileID: 11400000, guid: 856fe5a109833504f9f94dfc8aaa58b5, type: 2}
+  - {fileID: 11400000, guid: 846412dbc12a0ab40bc8d286598ed748, type: 2}
+  - {fileID: 11400000, guid: 9c8416f5d5fbd2848b690aabefc0f81a, type: 2}
+  - {fileID: 11400000, guid: 9c8416f5d5fbd2848b690aabefc0f81a, type: 2}
   phishingAmount: 0
   normalEmails: []
   easyPhishing: []
@@ -2091,6 +2099,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1084311728}
         m_TargetAssemblyTypeName: FirstPersonController, Assembly-CSharp
         m_MethodName: DisableControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1828199967}
+        m_TargetAssemblyTypeName: ScoreSystem, Assembly-CSharp
+        m_MethodName: CalculateFinalScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2378,7 +2398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00017783885, y: 264.4428}
+  m_AnchoredPosition: {x: -0.00017783885, y: 264.44156}
   m_SizeDelta: {x: -3.18, y: 1317.6}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1161477149
@@ -4176,7 +4196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828199966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -170.91357, y: 102.29753, z: -2476.2805}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

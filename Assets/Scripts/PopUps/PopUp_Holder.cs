@@ -17,7 +17,8 @@ public class PopUp_Holder : MonoBehaviour
     {
         GameObject player = GameObject.Find("====Character/Camera====");
         mainScript = player.GetComponent<Main>();
-        score = player.GetComponent<ScoreSystem>();
+        GameObject scoreObject = GameObject.Find("====Score====");
+        score = scoreObject.GetComponent<ScoreSystem>();
     }
 
     public void DeletePopUp()
