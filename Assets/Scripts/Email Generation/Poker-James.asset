@@ -17,21 +17,23 @@ MonoBehaviour:
   title: Mr
   senderName: PokerPlayers
   senderAddress: <promotions@pokerplays.com>
-  faintlyFakeFirstNames: []
-  faintlyFakeLastNames: []
-  faintlyFakeTitles: []
-  faintlyFakeSenderNames:
+  mediumFakeFirstNames: []
+  mediumFakeLastNames: []
+  mediumFakeTitles: []
+  mediumFakeSenderNames:
   - PokerPayz
-  faintlyFakeSenderAddress: []
-  fakeFirstNames: []
-  fakeLastNames: []
-  fakeTitles: []
-  fakeSenderNames:
+  mediumFakeSenderAddress:
+  - <promotions@pokerpayz.com>
+  easyFakeFirstNames: []
+  easyFakeLastNames: []
+  easyFakeTitles: []
+  easyFakeSenderNames:
+  - <promotions@pokerscams.com>
+  easyFakeSenderAddress:
   - PokerScams
-  fakeSenderAddress: []
   logo: {fileID: 21300000, guid: 17b61ad236362304ea529128dc815ed4, type: 3}
-  fakeLogo: {fileID: 21300000, guid: 907db53ecf6ae154789a35494ee27007, type: 3}
-  veryFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 907db53ecf6ae154789a35494ee27007, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
   greetings:
   - Hey #firstName,
   fakeGreetings:
@@ -43,21 +45,19 @@ MonoBehaviour:
   - title: In-Game Event!
     body: From the 11th - 14th March, be sure to log in and try out our new 'High
       Rollers' event where any earnings you win will be doubled!
-  faintlyFakeBodies: []
-  fakeBodies:
+  hardFakeBodies: []
+  mediumFakeBodies:
   - title: '(WARNING!) Amazing Deal! 24 Hours Only!!! '
     body: "Don\u2019t miss out on this once in a lifetime deal! Claim \xA31000 worth
       of FREE chips NOW!! "
-  veryFakeBodies: []
+  easyFakeBodies: []
   signoffs:
   - We look forward to seeing you at our tables!
-  fakeSignoffs:
+  mediumFakeSignoffs:
   - CLICK HERE to Claim! Promotion ends in 24 hours.
-  veryFakeSignoffs:
-  - 'Thank you for paticipating in this scam,
-
-    #senderName'
-  _hardPhishingFaintlyFakeChance: 0.1
-  _mediumPhishingRealChance: 0.1
-  _mediumPhishingVeryFakeChance: 0.1
-  _easyPhishingFaintlyFakeChance: 0.2
+  easyFakeSignoffs:
+  - CLICK HERE to Claim! Promotion ends in 24 hours.
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2

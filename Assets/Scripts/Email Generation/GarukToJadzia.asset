@@ -17,30 +17,24 @@ MonoBehaviour:
   title: Lieutenant
   senderName: Garuk
   senderAddress: garuk@cardasia.aq
-  faintlyFakeFirstNames:
-  - Ezri
+  mediumFakeFirstNames:
   - Curzon
-  faintlyFakeLastNames:
-  - of Trill
-  faintlyFakeTitles:
+  - Ezri
+  mediumFakeLastNames: []
+  mediumFakeTitles:
   - Commander
-  - Mx
-  faintlyFakeSenderNames:
-  - Dukut
-  faintlyFakeSenderAddress: []
-  fakeFirstNames:
-  - Sisko
-  fakeLastNames:
-  - Applebe
-  fakeTitles:
-  - Mr
-  - Nagus
-  fakeSenderNames:
+  mediumFakeSenderNames: []
+  mediumFakeSenderAddress: []
+  easyFakeFirstNames:
   - Janeway
-  fakeSenderAddress: []
+  easyFakeLastNames: []
+  easyFakeTitles:
+  - Mr
+  easyFakeSenderNames: []
+  easyFakeSenderAddress: []
   logo: {fileID: 21300000, guid: 6964440b1fde7f9438fbd249505ecef1, type: 3}
-  fakeLogo: {fileID: 21300000, guid: 676620acd7b4cc140be2a1f8f6db5cf9, type: 3}
-  veryFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 676620acd7b4cc140be2a1f8f6db5cf9, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
   greetings:
   - Hey #firstName!
   - Dear #title #lastName,
@@ -52,15 +46,15 @@ MonoBehaviour:
   bodies:
   - title: Real Email
     body: This email is real!
-  faintlyFakeBodies:
-  - title: Almost Real
-    body: This email is real for sure?
-  fakeBodies:
+  hardFakeBodies:
+  - title: Almost Real Email
+    body: This is real, totally real (not really though).
+  mediumFakeBodies:
   - title: Fake email
-    body: This is fake
-  veryFakeBodies:
-  - title: aN eMaIl!!?
-    body: Ahh, SUPER fake this is!
+    body: Ok, this one is fake.
+  easyFakeBodies:
+  - title: SUPER fake email
+    body: This one is SUPER fake.
   signoffs:
   - 'All due respect,
 
@@ -68,15 +62,15 @@ MonoBehaviour:
   - 'Thanks,
 
     #senderName'
-  fakeSignoffs:
-  - 'Please respond with haste!
+  mediumFakeSignoffs:
+  - 'Fake signoff,
 
     #senderName'
-  veryFakeSignoffs:
-  - 'Giv us your password plz!
+  easyFakeSignoffs:
+  - 'SUPER fake signoff,
 
     #senderName'
-  _hardPhishingFaintlyFakeChance: 0.1
-  _mediumPhishingRealChance: 0.1
-  _mediumPhishingVeryFakeChance: 0.1
-  _easyPhishingFaintlyFakeChance: 0.2
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2
