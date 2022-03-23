@@ -122,47 +122,83 @@ public class EmailGenerator_Scriptable : ScriptableObject
         }
     }
 
-    public bool CanGenerate(bool isPhishing, int phishingDifficulty)
+    public bool CanGenerate(bool isPhishing = false, int phishingDifficulty = 0)
     {
         if (reuseBodies)
         {
-            return true;
-        }
-
-        if (!isPhishing)
-        {
-            if (_unusedBodies.Count > 0)
+            if (!isPhishing)
             {
-                return true;
-            }    
+                if (bodies.Count > 0)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                switch (phishingDifficulty)
+                {
+                    case 1:
+                        if (veryFakeBodies.Count > 0)
+                        {
+                            return true;
+                        }
+                        break;
+                    case 2:
+                        if (fakeBodies.Count > 0)
+                        {
+                            return true;
+                        }
+                        break;
+                    case 3:
+                        if (faintlyFakeBodies.Count > 0)
+                        {
+                            return true;
+                        }
+                        break;
+                    default:
+                        Debug.LogError("Invalid phishing difficulty: " + phishingDifficulty);
+                        break;
+                }
+
+            }
         }
         else
         {
-            switch (phishingDifficulty)
+            if (!isPhishing)
             {
-                case 1:
-                    if (_unusedVeryFakeBodies.Count > 0)
-                    {
-                        return true;
-                    }
-                    break;
-                case 2:
-                    if (_unusedFakeBodies.Count > 0)
-                    {
-                        return true;
-                    }
-                    break;
-                case 3:
-                    if (_unusedFaintlyFakeBodies.Count > 0)
-                    {
-                        return true;
-                    }
-                    break;
-                default:
-                    Debug.LogError("Invalid phishing difficulty: " + phishingDifficulty);
-                    break;
+                if (_unusedBodies.Count > 0)
+                {
+                    return true;
+                }
             }
+            else
+            {
+                switch (phishingDifficulty)
+                {
+                    case 1:
+                        if (_unusedVeryFakeBodies.Count > 0)
+                        {
+                            return true;
+                        }
+                        break;
+                    case 2:
+                        if (_unusedFakeBodies.Count > 0)
+                        {
+                            return true;
+                        }
+                        break;
+                    case 3:
+                        if (_unusedFaintlyFakeBodies.Count > 0)
+                        {
+                            return true;
+                        }
+                        break;
+                    default:
+                        Debug.LogError("Invalid phishing difficulty: " + phishingDifficulty);
+                        break;
+                }
 
+            }
         }
 
         return false;
@@ -354,7 +390,7 @@ public class EmailGenerator_Scriptable : ScriptableObject
         email.tittle = "Placeholder Title";
 
 
-        if (reuseBodies)
+        if (reuseBodies && bodies.Count > 0)
         {
             int index = Random.Range(0, bodies.Count);
             email.content = AddNames(bodies[index].body);
@@ -394,7 +430,7 @@ public class EmailGenerator_Scriptable : ScriptableObject
         email.tittle = "Placeholder Title";
 
 
-        if (reuseBodies)
+        if (reuseBodies && veryFakeBodies.Count > 0)
         {
             int index = Random.Range(0, veryFakeBodies.Count);
             email.content = AddNames(veryFakeBodies[Random.Range(0, veryFakeBodies.Count)].body);
@@ -455,7 +491,7 @@ public class EmailGenerator_Scriptable : ScriptableObject
         email.tittle = "Placeholder Title";
 
 
-        if (reuseBodies)
+        if (reuseBodies && fakeBodies.Count > 0)
         {
             int index = Random.Range(0, fakeBodies.Count);
             email.content = AddNames(fakeBodies[Random.Range(0, fakeBodies.Count)].body);
@@ -531,7 +567,7 @@ public class EmailGenerator_Scriptable : ScriptableObject
         email.tittle = "Placeholder Title";
 
 
-        if (reuseBodies)
+        if (reuseBodies && faintlyFakeBodies.Count > 0)
         {
             int index = Random.Range(0, faintlyFakeBodies.Count);
             email.content = AddNames(faintlyFakeBodies[Random.Range(0, faintlyFakeBodies.Count)].body);

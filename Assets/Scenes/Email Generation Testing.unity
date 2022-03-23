@@ -2178,6 +2178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emailInterface: {fileID: 196765049}
+  blankNoEmailToGenerate: {fileID: 11400000, guid: b940671a80fbe394ab3d3b2ca20a56fe, type: 2}
   personalEmailGenerators:
   - {fileID: 11400000, guid: 392e86462d7594540886617274061c1f, type: 2}
   corporateEmailGenerators:

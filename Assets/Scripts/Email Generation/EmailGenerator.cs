@@ -6,8 +6,16 @@ public class EmailGenerator : MonoBehaviour
 {
     public EmailGenerationTestInterface emailInterface;
 
+    public Email_Scriptable blankNoEmailToGenerate;
+
     public EmailGenerator_Scriptable[] personalEmailGenerators;
     public EmailGenerator_Scriptable[] corporateEmailGenerators;
+
+    private List<int> validRealGenerators = new List<int>();
+    private List<int> validFakeEasyGenerators = new List<int>();
+    private List<int> validFakeMediumGenerators = new List<int>();
+    private List<int> validFakeHardGenerators = new List<int>();
+    private int totalGeneratorsLength;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +28,16 @@ public class EmailGenerator : MonoBehaviour
         {
             gen.ResetBodies();
         }
+
+        totalGeneratorsLength = personalEmailGenerators.Length + corporateEmailGenerators.Length;
+        //fill validGenerators with reference to every generator at every type
+        for (int i = 0; i < totalGeneratorsLength; i++)
+        {
+            validRealGenerators.Add(i);
+            validFakeEasyGenerators.Add(i);
+            validFakeMediumGenerators.Add(i);
+            validFakeHardGenerators.Add(i);
+        }
     }
 
     // Update is called once per frame
@@ -27,7 +45,8 @@ public class EmailGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            emailInterface.AddEmail(GenerateEmail());
+            GenerateEmail(out Email_Scriptable email);
+            emailInterface.AddEmail(email);
         }
     }
 
@@ -36,11 +55,13 @@ public class EmailGenerator : MonoBehaviour
     {
         if (type == 0)
         {
-            emailInterface.AddEmail(GenerateEmail());
+            GenerateEmail(out Email_Scriptable email);
+            emailInterface.AddEmail(email);
         }
         else if (type > 0 && type <=3)
         {
-            emailInterface.AddEmail(GenerateEmail(true, type));
+            GenerateEmail(out Email_Scriptable email, true, type);
+            emailInterface.AddEmail(email);
         }
         else
         {
@@ -52,11 +73,13 @@ public class EmailGenerator : MonoBehaviour
     {
         if (type == 0)
         {
-            emailInterface.AddEmail(GeneratePersonalEmail());
+            GeneratePersonalEmail(out Email_Scriptable email);
+            emailInterface.AddEmail(email);
         }
         else if (type > 0 && type <= 3)
         {
-            emailInterface.AddEmail(GeneratePersonalEmail(true, type));
+            GeneratePersonalEmail(out Email_Scriptable email, true, type);
+            emailInterface.AddEmail(email);
         }
         else
         {
@@ -68,11 +91,13 @@ public class EmailGenerator : MonoBehaviour
     {
         if (type == 0)
         {
-            emailInterface.AddEmail(GenerateCorporateEmail());
+            GenerateCorporateEmail(out Email_Scriptable email);
+            emailInterface.AddEmail(email);
         }
         else if (type > 0 && type <= 3)
         {
-            emailInterface.AddEmail(GenerateCorporateEmail(true, type));
+            GenerateCorporateEmail(out Email_Scriptable email, true, type);
+            emailInterface.AddEmail(email);
         }
         else
         {
@@ -82,25 +107,129 @@ public class EmailGenerator : MonoBehaviour
 
 
     //Generate an email fully at random from avalibe generators
-    public Email_Scriptable GenerateEmail(bool isPhishing = false, int phishingDifficulty = 0)
+    public bool GenerateEmail(out Email_Scriptable email, bool isPhishing = false, int phishingDifficulty = 0)
     {
-        int generatorIndex = Random.Range(0, personalEmailGenerators.Length + corporateEmailGenerators.Length);
+        for (int i = 0; i < 10; i ++)
+        {
+            List<int> validGeneratorsThisDifficulty = new List<int>();
 
-        if (generatorIndex < personalEmailGenerators.Length)
-        {
-            return personalEmailGenerators[generatorIndex].GenerateEmail(isPhishing, phishingDifficulty);
+            switch (phishingDifficulty)
+            {
+                case 0:
+                    validGeneratorsThisDifficulty = validRealGenerators;
+                    break;
+                case 1:
+                    validGeneratorsThisDifficulty = validFakeEasyGenerators;
+                    break;
+                case 2:
+                    validGeneratorsThisDifficulty = validFakeMediumGenerators;
+                    break;
+                case 3:
+                    validGeneratorsThisDifficulty = validFakeHardGenerators;
+                    break;
+                default:
+                    break;
+            }
+
+            int generatorIndex;
+            if (validGeneratorsThisDifficulty.Count > 0)
+            {
+                generatorIndex = validGeneratorsThisDifficulty[Random.Range(0, validGeneratorsThisDifficulty.Count)];
+            }
+            else
+            {
+                email = blankNoEmailToGenerate;
+                return false;
+            }
+
+            if (generatorIndex < personalEmailGenerators.Length)
+            {
+                if (personalEmailGenerators[generatorIndex].CanGenerate(isPhishing, phishingDifficulty))
+                {
+                    email = personalEmailGenerators[generatorIndex].GenerateEmail(isPhishing, phishingDifficulty);
+                    return true;
+                }
+                else
+                {
+                    validGeneratorsThisDifficulty.Remove(generatorIndex);
+                }
+            }
+            else
+            {
+                if (corporateEmailGenerators[generatorIndex - personalEmailGenerators.Length].CanGenerate(isPhishing, phishingDifficulty))
+                {
+                    email = corporateEmailGenerators[generatorIndex - personalEmailGenerators.Length].GenerateEmail(isPhishing, phishingDifficulty);
+                    return true;
+                }
+                else
+                {
+                    validGeneratorsThisDifficulty.Remove(generatorIndex);
+                }
+            }
         }
-        else
-        {
-            return corporateEmailGenerators[generatorIndex - personalEmailGenerators.Length].GenerateEmail(isPhishing, phishingDifficulty);
-        }
+
+        email = blankNoEmailToGenerate;
+        return false;
     }
 
-    public Email_Scriptable GeneratePersonalEmail(bool isPhishing = false, int phishingDifficulty = 0)
+    public bool GeneratePersonalEmail(out Email_Scriptable email, bool isPhishing = false, int phishingDifficulty = 0)
     {
-        int generatorIndex = Random.Range(0, personalEmailGenerators.Length);
-            
-        return personalEmailGenerators[generatorIndex].GenerateEmail(isPhishing, phishingDifficulty);
+        for (int i = 0; i < 10; i++)
+        {
+            List<int> validGeneratorsThisDifficulty = new List<int>();
+
+            switch (phishingDifficulty)
+            {
+                case 0:
+                    validGeneratorsThisDifficulty = validRealGenerators;
+                    break;
+                case 1:
+                    validGeneratorsThisDifficulty = validFakeEasyGenerators;
+                    break;
+                case 2:
+                    validGeneratorsThisDifficulty = validFakeMediumGenerators;
+                    break;
+                case 3:
+                    validGeneratorsThisDifficulty = validFakeHardGenerators;
+                    break;
+                default:
+                    break;
+            }
+
+            int firstCorporateGenerator = validGeneratorsThisDifficulty.Count;
+            for (int j = personalEmailGenerators.Length; j < totalGeneratorsLength; j++)
+            {
+                if (validGeneratorsThisDifficulty.Contains(j))
+                {
+                    firstCorporateGenerator = validGeneratorsThisDifficulty.IndexOf(j);
+                    break;
+                }
+            }
+
+            int generatorIndex;
+            if (firstCorporateGenerator > 0)
+            {
+                generatorIndex = validGeneratorsThisDifficulty[Random.Range(0, firstCorporateGenerator)];
+            }
+            else
+            {
+                email = blankNoEmailToGenerate;
+                return false;
+            }
+
+            if (personalEmailGenerators[generatorIndex].CanGenerate(isPhishing, phishingDifficulty))
+            {
+                email = personalEmailGenerators[generatorIndex].GenerateEmail(isPhishing, phishingDifficulty);
+                return true;
+            }
+            else
+            {
+                validGeneratorsThisDifficulty.Remove(generatorIndex);
+            }
+        }
+
+        email = blankNoEmailToGenerate;
+        return false;
     }
     public Email_Scriptable GeneratePersonalEmail(int byIndex, bool isPhishing = false, int phishingDifficulty = 0)
     {
@@ -109,11 +238,64 @@ public class EmailGenerator : MonoBehaviour
         return personalEmailGenerators[byIndex].GenerateEmail(isPhishing, phishingDifficulty);
     }
 
-    public Email_Scriptable GenerateCorporateEmail(bool isPhishing = false, int phishingDifficulty = 0)
+    public bool GenerateCorporateEmail(out Email_Scriptable email, bool isPhishing = false, int phishingDifficulty = 0)
     {
-        int generatorIndex = Random.Range(0, corporateEmailGenerators.Length);
+        for (int i = 0; i < 10; i++)
+        {
+            List<int> validGeneratorsThisDifficulty = new List<int>();
 
-        return corporateEmailGenerators[generatorIndex].GenerateEmail(isPhishing, phishingDifficulty);
+            switch (phishingDifficulty)
+            {
+                case 0:
+                    validGeneratorsThisDifficulty = validRealGenerators;
+                    break;
+                case 1:
+                    validGeneratorsThisDifficulty = validFakeEasyGenerators;
+                    break;
+                case 2:
+                    validGeneratorsThisDifficulty = validFakeMediumGenerators;
+                    break;
+                case 3:
+                    validGeneratorsThisDifficulty = validFakeHardGenerators;
+                    break;
+                default:
+                    break;
+            }
+
+            int firstCorporateGenerator = validGeneratorsThisDifficulty.Count;
+            for (int j = personalEmailGenerators.Length; j < totalGeneratorsLength; j++)
+            {
+                if (validGeneratorsThisDifficulty.Contains(j))
+                {
+                    firstCorporateGenerator = validGeneratorsThisDifficulty.IndexOf(j);
+                    break;
+                }
+            }
+
+            int generatorIndex;
+            if (validGeneratorsThisDifficulty.Count > firstCorporateGenerator)
+            {
+                generatorIndex = validGeneratorsThisDifficulty[Random.Range(firstCorporateGenerator, validGeneratorsThisDifficulty.Count)];
+            }
+            else
+            {
+                email = blankNoEmailToGenerate;
+                return false;
+            }
+
+            if (corporateEmailGenerators[generatorIndex - personalEmailGenerators.Length].CanGenerate(isPhishing, phishingDifficulty))
+            {
+                email = corporateEmailGenerators[generatorIndex - personalEmailGenerators.Length].GenerateEmail(isPhishing, phishingDifficulty);
+                return true;
+            }
+            else
+            {
+                validGeneratorsThisDifficulty.Remove(generatorIndex);
+            }
+        }
+
+        email = blankNoEmailToGenerate;
+        return false;
     }
     public Email_Scriptable GenerateCorporateEmail(int byIndex, bool isPhishing = false, int phishingDifficulty = 0)
     {
