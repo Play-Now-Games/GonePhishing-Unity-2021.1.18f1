@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Generator", menuName = "ScriptableObjects/EmailGenerator")]
 public class EmailGenerator_Scriptable : ScriptableObject
 {
+    [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
     public string firstName, lastName, title, senderName, senderAddress;
     public string[] mediumFakeFirstNames, mediumFakeLastNames, mediumFakeTitles, mediumFakeSenderNames, mediumFakeSenderAddress;
     public string[] easyFakeFirstNames, easyFakeLastNames, easyFakeTitles, easyFakeSenderNames, easyFakeSenderAddress;
@@ -19,7 +20,6 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
     [Space(10)]
 
-    [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
     public string[] greetings;
     public string[] fakeGreetings;
     public string[] veryFakeGreetings;
