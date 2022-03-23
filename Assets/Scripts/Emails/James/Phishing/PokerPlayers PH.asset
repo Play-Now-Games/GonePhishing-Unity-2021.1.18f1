@@ -24,3 +24,4 @@ MonoBehaviour:
   timeHour: 12
   timeMin: 00
   isPhishing: 1
+  difficulty: 

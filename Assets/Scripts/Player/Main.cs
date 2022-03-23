@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
@@ -17,7 +18,15 @@ public class Main : MonoBehaviour
     public int healthPoints;
     public int maxHealthPoints;
 
-    public Email_Scriptable[] _totalEmails;
+    public Email_Scriptable[] totalEmails;
+
+    public int phishingAmount;
+
+    public Email_Scriptable[] normalEmails;
+    //To Do: Delete _phishing
+    public Email_Scriptable[] easyPhishing;
+    public Email_Scriptable[] mediumPhishing;
+    public Email_Scriptable[] hardPhishing;
 
     public UnityEvent onGameEnd;
     public UnityEvent onGameEndWin;
@@ -31,15 +40,6 @@ public class Main : MonoBehaviour
 
     ///////// PRIVATES /////////
     [SerializeField]
-    private int _phishingAmount;
-
-    [SerializeField]
-    private Email_Scriptable[] _normalEmails;
-
-    [SerializeField]
-    private Email_Scriptable[] _phishing;
-
-    [SerializeField]
     private GameObject[] _totalPopUps;
 
     [SerializeField]
@@ -49,7 +49,6 @@ public class Main : MonoBehaviour
     private float popUpLimiter = 0;
     [SerializeField]
     private int currency = 0;
-
 
     private DayTimer _time;
 
@@ -70,7 +69,11 @@ public class Main : MonoBehaviour
         GameObject health = GameObject.FindGameObjectWithTag("HealthDisplay");
         _healthDisplay = health.GetComponent<HealthDisplay>();
 
-        AwakeRandomizationEmail();
+        //Scene ID James = 1
+        if (SceneManager.GetActiveScene().buildIndex != 1)
+        {
+            AwakeRandomizationEmail();
+        }
 
         _time = GetComponent<DayTimer>();
 
@@ -79,39 +82,62 @@ public class Main : MonoBehaviour
 
     private void AwakeRandomizationEmail()
     {
-
         #region Email Randomization
 
-        int proportion = _totalEmails.Length / _phishingAmount;
+        int proportion = totalEmails.Length / phishingAmount;
 
-        for (int i = 0; i < _totalEmails.Length; i++)
+        for (int i = 0; i < totalEmails.Length; i++)
         {
             proportion--;
 
             if (proportion > 0)
             {
+                #region Add Normal Email
                 //Random Index from the Array
-                int randomIndex = UnityEngine.Random.Range(0, _normalEmails.Length);
+                int randomIndex = UnityEngine.Random.Range(0, normalEmails.Length);
 
                 //Add it to the TOTAL array, and remove the previously selected
-                _totalEmails[i] = _normalEmails[randomIndex];
-                StartRemoveAt(ref _normalEmails, randomIndex);
+                totalEmails[i] = normalEmails[randomIndex];
+                StartRemoveAt(ref normalEmails, randomIndex);
+                #endregion
             }
             else
             {
-                int randomIndex = UnityEngine.Random.Range(0, _phishing.Length);
-                
-                //Add it to the TOTAL array, and remove the previously selected
-                _totalEmails[i] = _phishing[randomIndex];
-                StartRemoveAt(ref _phishing, randomIndex);
+
+                int randomIndex = UnityEngine.Random.Range(0, 3);
+
+                switch(randomIndex)
+                {
+                    case 1:
+                        AwakeAddEmail(easyPhishing, i);
+                        break;
+                    case 2:
+                        AwakeAddEmail(mediumPhishing, i);
+                        break;
+                    case 3:
+                        AwakeAddEmail(hardPhishing, i);
+                        break;
+                }
 
                 //Return Proportion
-                proportion = _totalEmails.Length / _phishingAmount;
+                proportion = totalEmails.Length / phishingAmount;
             }
         }
-        
+
         #endregion
-    
+    }
+
+    private void AwakeAddEmail(Email_Scriptable[] originalArray, int i)
+    {
+        if (originalArray.Length > 0)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, originalArray.Length);
+
+            //Add it to the TOTAL array, and remove the previously selected
+            totalEmails[i] = originalArray[randomIndex];
+            StartRemoveAt(ref originalArray, randomIndex);
+        }
+
     }
 
     // Start is called before the first frame update
@@ -126,7 +152,6 @@ public class Main : MonoBehaviour
     public void StartRemoveAt<T>(ref T[] arr, int index)
     {
         #region Remove The Array Info
-
         for (int i = index; i < arr.Length - 1; i++)
         {
             //Move elements to fill the gap
@@ -169,7 +194,7 @@ public class Main : MonoBehaviour
 
         #endregion
 
-        if (_totalEmails.Length == 1)
+        if (totalEmails.Length == 1 && !dayEnded)
         {
             if(_time.CurrentTime < _time.CurrentTimeLimit)
             {
@@ -193,7 +218,7 @@ public class Main : MonoBehaviour
         Vector2 height = new Vector2(0, 2.5f);
 
         //-1 to work on
-        for (int i = 0; i < _totalEmails.Length - 1; i++)
+        for (int i = 0; i < totalEmails.Length - 1; i++)
         {
             //Email Pos Based on Pos in the array
             Vector2 Transfor = new Vector2(Content.transform.position.x - 15, Content.transform.position.y);
@@ -205,17 +230,18 @@ public class Main : MonoBehaviour
 
             //Add Scriptable Object Here
             EmailHolder holder = ChildObject.GetComponent<EmailHolder>();
-            holder.holder = _totalEmails[i];
+            holder.holder = totalEmails[i];
         }
         #endregion
 
         #region Update Height - Scroll Bar
 
         RectTransform RectT = Content.GetComponent<RectTransform>();
-        RectT.sizeDelta = new Vector2(RectT.sizeDelta.x, height.y * _totalEmails.Length);
+        RectT.sizeDelta = new Vector2(RectT.sizeDelta.x, height.y * totalEmails.Length);
 
         #endregion
     }
+
 
     public void LoseHealth(int HpLost)
     {
@@ -328,57 +354,57 @@ public class Main : MonoBehaviour
     {
         #region Add Normal Emails
 
-        if (_normalEmails.Length > 0)
+        if (normalEmails.Length > 0)
         {
 
             //Add Email From _NormalEmails
-            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_totalEmails[0], _totalEmails);
+            totalEmails = (Email_Scriptable[])AddArrayAtStart(normalEmails[0], totalEmails);
             
             //Update The Previous _NormalEmails Email From The Previous Selected Email
-            StartRemoveAt(ref _normalEmails, 0);
+            StartRemoveAt(ref normalEmails, 0);
 
             //UICreation();
 
-        }
-        else
-        {
-            if(_phishing.Length > 0)
-            {
-                AddPhishingEmails();
-            }
         }
 
         #endregion
     }
 
-    public void AddPhishingEmails()
+    public void AddPhishingEmails(Email_Scriptable[] originalArray)
     {
 
         #region Add Phishing Emails
-        
-        if (_phishing.Length > 0)
+
+        if (originalArray.Length > 0)
         {
 
             //Add Email From _phishing
-            _totalEmails = (Email_Scriptable[])AddArrayAtStart(_normalEmails[_normalEmails.Length - 1], _totalEmails);
+            totalEmails = (Email_Scriptable[])AddArrayAtStart(originalArray[0], totalEmails);
+            
+            switch(originalArray[0].difficulty)
+            {
+                case 1:
+                    StartRemoveAt(ref easyPhishing, 0);
+                    break;
+                case 2:
+                    StartRemoveAt(ref mediumPhishing, 0);
+                    break;
+                case 3:
+                    StartRemoveAt(ref hardPhishing, 0);
+                    break;
 
-            //Update The Previous _NormalEmails Email From The Previous Selected Email
-            StartRemoveAt(ref _phishing, 0);
-
-            //UICreation();
+            }            
         }
         else
         {
-            if (_normalEmails.Length > 0)
+            if (normalEmails.Length > 0)
             {
                 AddNormalEmails();
             }
         }
-        
         #endregion
-    
-    }
 
+    }
 
     public Array AddArrayAtStart(object o, Array oldArray)
     {
@@ -424,7 +450,7 @@ public class Main : MonoBehaviour
 
         #region Search For Repetitive PopUps On Scene
 
-        if ((Pops.Length < (int)popUpLimiter) && (_totalEmails.Length != 1))
+        if ((Pops.Length < (int)popUpLimiter) && (totalEmails.Length != 1))
         {
             for (int i = 0; i < Pops.Length; i++)
             {

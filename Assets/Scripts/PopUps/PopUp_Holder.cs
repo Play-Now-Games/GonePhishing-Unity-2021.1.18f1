@@ -10,22 +10,26 @@ public class PopUp_Holder : MonoBehaviour
 
     ///////// PRIVATE /////////
     private Main mainScript;
+    private ScoreSystem score;
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject player = GameObject.Find("====Character/Camera====");
         mainScript = player.GetComponent<Main>();
+        score = player.GetComponent<ScoreSystem>();
     }
 
     public void DeletePopUp()
     {
         mainScript.DestroyPopUps(ID);
+        score.AddScore(10);
     }
 
     public void GivePenality()
     {
         Debug.Log("GivePenality");
+        score.ScoreMultiplierStreakReset();
     }
 
 }
