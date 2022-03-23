@@ -31,26 +31,55 @@ public class EmailGenerator : MonoBehaviour
         }
     }
 
-    //for button based testing
-    public void GenerateRealEmailButton()
+    // type: 0 = real, 1-3 = phishing with difficulty 1-3
+    public void GenerateEmailButton(int type)
     {
-        emailInterface.AddEmail(GenerateEmail());
+        if (type == 0)
+        {
+            emailInterface.AddEmail(GenerateEmail());
+        }
+        else if (type > 0 && type <=3)
+        {
+            emailInterface.AddEmail(GenerateEmail(true, type));
+        }
+        else
+        {
+            Debug.LogError("Invalid email type.");
+        }
     }
-    //for button based testing
-    public void GenerateFakeEasyEmailButton()
+
+    public void GeneratePersonalEmailButton(int type)
     {
-        emailInterface.AddEmail(GenerateEmail(true, 1));
+        if (type == 0)
+        {
+            emailInterface.AddEmail(GeneratePersonalEmail());
+        }
+        else if (type > 0 && type <= 3)
+        {
+            emailInterface.AddEmail(GeneratePersonalEmail(true, type));
+        }
+        else
+        {
+            Debug.LogError("Invalid email type.");
+        }
     }
-    //for button based testing
-    public void GenerateFakeMediumEmailButton()
+
+    public void GenerateCorporateEmailButton(int type)
     {
-        emailInterface.AddEmail(GenerateEmail(true, 2));
+        if (type == 0)
+        {
+            emailInterface.AddEmail(GenerateCorporateEmail());
+        }
+        else if (type > 0 && type <= 3)
+        {
+            emailInterface.AddEmail(GenerateCorporateEmail(true, type));
+        }
+        else
+        {
+            Debug.LogError("Invalid email type.");
+        }
     }
-    //for button based testing
-    public void GenerateFakeHardEmailButton()
-    {
-        emailInterface.AddEmail(GenerateEmail(true, 3));
-    }
+
 
     //Generate an email fully at random from avalibe generators
     public Email_Scriptable GenerateEmail(bool isPhishing = false, int phishingDifficulty = 0)

@@ -50,13 +50,17 @@ MonoBehaviour:
   - Hello #title #firstName #lastName,
   reuseBodies: 0
   bodies:
-  - This actually isn't fake.
+  - title: Real Email
+    body: This email is real!
   faintlyFakeBodies:
-  - Is this fake?
+  - title: Almost Real
+    body: This email is real for sure?
   fakeBodies:
-  - This is fake...
+  - title: Fake email
+    body: This is fake
   veryFakeBodies:
-  - This is SUPER fake!
+  - title: aN eMaIl!!?
+    body: Ahh, SUPER fake this is!
   signoffs:
   - 'All due respect,
 

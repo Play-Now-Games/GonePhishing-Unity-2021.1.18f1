@@ -35,8 +35,6 @@ public class EmailGenerator_Scriptable : ScriptableObject
     [Space(10)]
 
     public bool reuseBodies = false;
-    [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
-
     public List<EmailBodyAndTitle> bodies;
     private List<EmailBodyAndTitle> _unusedBodies;
 
@@ -51,7 +49,6 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
     [Space(10)]
 
-    [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
     [TextArea]
     public string[] signoffs;
     [TextArea]
@@ -116,10 +113,13 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
     public void ResetBodies()
     {
-        _unusedBodies = new List<EmailBodyAndTitle>(bodies);
-        _unusedFaintlyFakeBodies = new List<EmailBodyAndTitle>(faintlyFakeBodies);
-        _unusedFakeBodies = new List<EmailBodyAndTitle>(fakeBodies);
-        _unusedVeryFakeBodies = new List<EmailBodyAndTitle>(veryFakeBodies);
+        if (!reuseBodies)
+        {
+            _unusedBodies = new List<EmailBodyAndTitle>(bodies);
+            _unusedFaintlyFakeBodies = new List<EmailBodyAndTitle>(faintlyFakeBodies);
+            _unusedFakeBodies = new List<EmailBodyAndTitle>(fakeBodies);
+            _unusedVeryFakeBodies = new List<EmailBodyAndTitle>(veryFakeBodies);
+        }
     }
 
     public bool CanGenerate(bool isPhishing, int phishingDifficulty)

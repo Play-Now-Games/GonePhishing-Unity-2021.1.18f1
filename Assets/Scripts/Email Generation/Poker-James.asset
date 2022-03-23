@@ -22,8 +22,7 @@ MonoBehaviour:
   faintlyFakeTitles: []
   faintlyFakeSenderNames:
   - PokerPayz
-  faintlyFakeSenderAddress:
-  - <promotions@pokerpayz.com>
+  faintlyFakeSenderAddress: []
   fakeFirstNames: []
   fakeLastNames: []
   fakeTitles: []
@@ -37,21 +36,27 @@ MonoBehaviour:
   - Hey #firstName,
   fakeGreetings:
   - Hey Player,
-  veryFakeGreetings: []
+  veryFakeGreetings:
+  - Hello gulible target,
   reuseBodies: 0
   bodies:
-  - From the 11th - 14th March, be sure to log in and try out our new 'High Rollers'
-    event where any earnings you win will be doubled!
+  - title: In-Game Event!
+    body: From the 11th - 14th March, be sure to log in and try out our new 'High
+      Rollers' event where any earnings you win will be doubled!
   faintlyFakeBodies: []
   fakeBodies:
-  - "Don\u2019t miss out on this once in a lifetime deal! Claim \xA31000 worth of
-    FREE chips NOW!! "
+  - title: '(WARNING!) Amazing Deal! 24 Hours Only!!! '
+    body: "Don\u2019t miss out on this once in a lifetime deal! Claim \xA31000 worth
+      of FREE chips NOW!! "
   veryFakeBodies: []
   signoffs:
   - We look forward to seeing you at our tables!
   fakeSignoffs:
   - CLICK HERE to Claim! Promotion ends in 24 hours.
-  veryFakeSignoffs: []
+  veryFakeSignoffs:
+  - 'Thank you for paticipating in this scam,
+
+    #senderName'
   _hardPhishingFaintlyFakeChance: 0.1
   _mediumPhishingRealChance: 0.1
   _mediumPhishingVeryFakeChance: 0.1
