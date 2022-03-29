@@ -372,6 +372,8 @@ public class Main : MonoBehaviour
                     break;
 
             }
+
+            _audioScript.PlayBadFeedback();
         }
         #endregion
 

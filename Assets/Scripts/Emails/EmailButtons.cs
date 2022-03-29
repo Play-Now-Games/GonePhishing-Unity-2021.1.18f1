@@ -182,6 +182,7 @@ public class EmailButtons : MonoBehaviour
         }
         else
         {
+            //Play Feedback sound is on the AddEmail Functions
             switch (score.streak)
             {
                 case 0:
@@ -203,7 +204,6 @@ public class EmailButtons : MonoBehaviour
 
         phishy.TriggerPhishyComment(true);
         score.ScoreMultiplierStreakReset();
-        _soundsHolder.PlayBadFeedback();
         #endregion
     }
 }
