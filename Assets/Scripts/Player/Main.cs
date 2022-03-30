@@ -207,42 +207,9 @@ public class Main : MonoBehaviour
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
 
-    public void UICreation()
-    {
-        #region Spawn Emails
-
-        //Find By Name
-        GameObject Content = GameObject.Find("Content");
-
-        //Vectors to spawn -- 110 is the 100 + offset
-        Vector2 height = new Vector2(0, 2.5f);
-
-        //-1 to work on
-        for (int i = 0; i < totalEmails.Length - 1; i++)
-        {
-            //Email Pos Based on Pos in the array
-            Vector2 Transfor = new Vector2(Content.transform.position.x - 15, Content.transform.position.y);
-            Vector2 emailNewPos = Transfor - (height * i);
-
-            //Instantiate & Set Child
-            GameObject ChildObject = Instantiate(emailPrefab, new Vector3(emailNewPos.x, emailNewPos.y, 0), Quaternion.identity);
-            ChildObject.transform.parent = Content.transform;
-
-            //Add Scriptable Object Here
-            EmailHolder holder = ChildObject.GetComponent<EmailHolder>();
-            holder.holder = totalEmails[i];
-        }
-        #endregion
-
-        #region Update Height - Scroll Bar
-
-        RectTransform RectT = Content.GetComponent<RectTransform>();
-        RectT.sizeDelta = new Vector2(RectT.sizeDelta.x, height.y * totalEmails.Length);
-
-        #endregion
-    }
 
 
+    #region HP Related Functions
     public void LoseHealth(int HpLost)
     {
         #region HP Related
@@ -307,20 +274,9 @@ public class Main : MonoBehaviour
         healthUpdate.Invoke();
         #endregion
     }
+    #endregion
 
-    public void EndGame(bool win)
-    {
-        onGameEnd.Invoke();
-        if (win)
-        {
-            onGameEndWin.Invoke();
-        }
-        else
-        {
-            onGameEndLoss.Invoke();
-        }
-    }
-
+    #region Money Related Functions
     public void GiveMoney(int value)
     {
         currency += value;
@@ -334,6 +290,45 @@ public class Main : MonoBehaviour
         {
             currency = 0;
         }
+    }
+    #endregion
+
+
+    #region Email Related Functions
+
+    public void UICreation()
+    {
+        #region Spawn Emails
+
+        //Find By Name
+        GameObject Content = GameObject.Find("Content");
+
+        //Vectors to spawn -- 110 is the 100 + offset
+        Vector2 height = new Vector2(0, 2.5f);
+
+        //-1 to work on
+        for (int i = 0; i < totalEmails.Length - 1; i++)
+        {
+            //Email Pos Based on Pos in the array
+            Vector2 Transfor = new Vector2(Content.transform.position.x - 15, Content.transform.position.y);
+            Vector2 emailNewPos = Transfor - (height * i);
+
+            //Instantiate & Set Child
+            GameObject ChildObject = Instantiate(emailPrefab, new Vector3(emailNewPos.x, emailNewPos.y, 0), Quaternion.identity);
+            ChildObject.transform.parent = Content.transform;
+
+            //Add Scriptable Object Here
+            EmailHolder holder = ChildObject.GetComponent<EmailHolder>();
+            holder.holder = totalEmails[i];
+        }
+        #endregion
+
+        #region Update Height - Scroll Bar
+
+        RectTransform RectT = Content.GetComponent<RectTransform>();
+        RectT.sizeDelta = new Vector2(RectT.sizeDelta.x, height.y * totalEmails.Length);
+
+        #endregion
     }
 
     public void DestroyAllEmails(GameObject[] EmailsOnScene)
@@ -350,27 +345,7 @@ public class Main : MonoBehaviour
 
     }
 
-    public void AddNormalEmails()
-    {
-        #region Add Normal Emails
-
-        if (normalEmails.Length > 0)
-        {
-
-            //Add Email From _NormalEmails
-            totalEmails = (Email_Scriptable[])AddArrayAtStart(normalEmails[0], totalEmails);
-            
-            //Update The Previous _NormalEmails Email From The Previous Selected Email
-            StartRemoveAt(ref normalEmails, 0);
-
-            //UICreation();
-
-        }
-
-        #endregion
-    }
-
-    public void AddPhishingEmails(Email_Scriptable[] originalArray)
+    public void AddEmails(Email_Scriptable[] originalArray)
     {
 
         #region Add Phishing Emails
@@ -380,9 +355,12 @@ public class Main : MonoBehaviour
 
             //Add Email From _phishing
             totalEmails = (Email_Scriptable[])AddArrayAtStart(originalArray[0], totalEmails);
-            
-            switch(originalArray[0].difficulty)
+
+            switch (originalArray[0].difficulty)
             {
+                case 0:
+                    StartRemoveAt(ref normalEmails, 0);
+                    break;
                 case 1:
                     StartRemoveAt(ref easyPhishing, 0);
                     break;
@@ -393,14 +371,9 @@ public class Main : MonoBehaviour
                     StartRemoveAt(ref hardPhishing, 0);
                     break;
 
-            }            
-        }
-        else
-        {
-            if (normalEmails.Length > 0)
-            {
-                AddNormalEmails();
             }
+
+            _audioScript.PlayBadFeedback();
         }
         #endregion
 
@@ -432,8 +405,10 @@ public class Main : MonoBehaviour
         #endregion
     
     }
+    #endregion
 
 
+    #region POP-UP Related Functions
     public void SpawnPopUp()
     {
 
@@ -512,7 +487,21 @@ public class Main : MonoBehaviour
         _audioScript.PlayDestroyPop();
         #endregion
     }
+    #endregion
 
+
+    public void EndGame(bool win)
+    {
+        onGameEnd.Invoke();
+        if (win)
+        {
+            onGameEndWin.Invoke();
+        }
+        else
+        {
+            onGameEndLoss.Invoke();
+        }
+    }
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
 
 }

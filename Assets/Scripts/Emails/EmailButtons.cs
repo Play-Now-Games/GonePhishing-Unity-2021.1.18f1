@@ -12,6 +12,7 @@ public class EmailButtons : MonoBehaviour
 
     [SerializeField]
     private Main mainScript;
+    private SoundsHolder _soundsHolder;
 
     private Button _button;
     private Vector2 _position;
@@ -20,6 +21,7 @@ public class EmailButtons : MonoBehaviour
     private Phishy phishy;
     [SerializeField]
     private ScoreSystem score;
+
     private void Start()
     {
         #region Player Related
@@ -27,7 +29,12 @@ public class EmailButtons : MonoBehaviour
         GameObject player = GameObject.Find("====Character/Camera====");
         mainScript = player.GetComponent<Main>();
 
+
+        GameObject soundHolder = GameObject.FindGameObjectWithTag("Speakers");
+        _soundsHolder = soundHolder.GetComponent<SoundsHolder>();
+
         #endregion
+
 
         _button = this.GetComponent<Button>();
         _position = this.gameObject.GetComponent<RectTransform>().anchoredPosition;
@@ -150,6 +157,9 @@ public class EmailButtons : MonoBehaviour
         #region Good Feeback
         mainScript.StrikeAdd(1);
         mainScript.GiveMoney(100);
+
+        _soundsHolder.PlayGoodFeedback();
+
         //UI Creation
         mainScript.UICreation();
         phishy.TriggerPhishyComment(false);
@@ -168,23 +178,24 @@ public class EmailButtons : MonoBehaviour
         
         if (rand == 0 && mainScript.normalEmails.Length > 0)
         {
-            mainScript.AddNormalEmails();
+            mainScript.AddEmails(mainScript.normalEmails);
         }
         else
         {
+            //Play Feedback sound is on the AddEmail Functions
             switch (score.streak)
             {
                 case 0:
-                    mainScript.AddPhishingEmails(mainScript.easyPhishing);
+                    mainScript.AddEmails(mainScript.easyPhishing);
                     break;
                 case 1:
-                    mainScript.AddPhishingEmails(mainScript.easyPhishing);
+                    mainScript.AddEmails(mainScript.easyPhishing);
                     break;
                 case 2:
-                    mainScript.AddPhishingEmails(mainScript.mediumPhishing);
+                    mainScript.AddEmails(mainScript.mediumPhishing);
                     break;
                 case 3:
-                    mainScript.AddPhishingEmails(mainScript.hardPhishing);
+                    mainScript.AddEmails(mainScript.hardPhishing);
                     break;
             }
         }
@@ -193,7 +204,6 @@ public class EmailButtons : MonoBehaviour
 
         phishy.TriggerPhishyComment(true);
         score.ScoreMultiplierStreakReset();
-
         #endregion
     }
 }

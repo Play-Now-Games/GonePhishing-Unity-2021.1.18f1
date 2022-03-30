@@ -13,6 +13,12 @@ public class SoundsHolder : MonoBehaviour
     private AudioClip[] _spawnPopUps;
 
     [SerializeField]
+    private AudioClip _backFeedback;
+
+    [SerializeField]
+    private AudioClip _goodFeedback;
+
+    [SerializeField]
     private AudioClip[] _destroyPopUps;
 
     [SerializeField]
@@ -39,6 +45,18 @@ public class SoundsHolder : MonoBehaviour
     {
         _leftSide.PlayOneShot(_click);
         _rightSide.PlayOneShot(_click);
+    }
+
+    public void PlayBadFeedback()
+    {
+        _leftSide.PlayOneShot(_backFeedback);
+        _rightSide.PlayOneShot(_backFeedback);
+    }
+
+    public void PlayGoodFeedback()
+    {
+        _leftSide.PlayOneShot(_goodFeedback);
+        _rightSide.PlayOneShot(_goodFeedback);
     }
 
     public void PlaySpawnPop()
