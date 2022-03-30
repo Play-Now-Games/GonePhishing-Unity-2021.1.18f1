@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
-  m_Name: RiversideWeekly
+  m_Name: RiversideWeekly PH
   m_EditorClassIdentifier: 
   ID: 4
   logo: {fileID: 21300000, guid: 6c95796d28d04d14e9bcd8f6a9865b5b, type: 3}
@@ -30,3 +30,4 @@ MonoBehaviour:
   timeHour: 07
   timeMin: 36
   isPhishing: 1
+  difficulty: 1
