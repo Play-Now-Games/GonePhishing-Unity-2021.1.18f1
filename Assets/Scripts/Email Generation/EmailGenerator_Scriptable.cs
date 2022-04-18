@@ -7,6 +7,7 @@ public class EmailGenerator_Scriptable : ScriptableObject
 {
     [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
     public string firstName, lastName, title, senderName, senderAddress;
+    public string[] hardFakeSenderAddress;
     public string[] mediumFakeFirstNames, mediumFakeLastNames, mediumFakeTitles, mediumFakeSenderNames, mediumFakeSenderAddress;
     public string[] easyFakeFirstNames, easyFakeLastNames, easyFakeTitles, easyFakeSenderNames, easyFakeSenderAddress;
 
@@ -318,7 +319,14 @@ public class EmailGenerator_Scriptable : ScriptableObject
             }
             else
             {
-                _senderAddress = senderAddress;
+                if (hardFakeSenderAddress.Length > 0)
+                {
+                    _senderAddress = hardFakeSenderAddress[Random.Range(0, hardFakeSenderAddress.Length)];
+                }
+                else
+                {
+                    _senderAddress = senderAddress;
+                }
             }
         }
         #endregion
@@ -368,7 +376,14 @@ public class EmailGenerator_Scriptable : ScriptableObject
         }
         else
         {
-            _senderAddress = senderAddress;
+            if (hardFakeSenderAddress.Length > 0)
+            {
+                _senderAddress = hardFakeSenderAddress[Random.Range(0, hardFakeSenderAddress.Length)];
+            }
+            else
+            {
+                _senderAddress = senderAddress;
+            }
         }
         #endregion
     }
@@ -378,7 +393,15 @@ public class EmailGenerator_Scriptable : ScriptableObject
         _lastName = lastName;
         _title = title;
         _senderName = senderName;
-        _senderAddress = senderAddress;
+
+        if (hardFakeSenderAddress.Length > 0)
+        {
+            _senderAddress = hardFakeSenderAddress[Random.Range(0, hardFakeSenderAddress.Length)];
+        }
+        else
+        {
+            _senderAddress = senderAddress;
+        }
     }
 
     private void GenerateReal(ref Email_Scriptable email)
