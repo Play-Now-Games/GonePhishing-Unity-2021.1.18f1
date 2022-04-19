@@ -77,7 +77,7 @@ MonoBehaviour:
   - 'Stephen Marsh
 
     Head Teacher, Riverside Primary School'
-  _chanceOfMediumInHard: 0
-  _chanceOfHardInMedium: 0
-  _chanceOfEasyInMedium: 0
-  _chanceOfMediumInEasy: 0
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2

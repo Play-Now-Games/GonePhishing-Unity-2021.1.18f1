@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class Main : MonoBehaviour
 {
@@ -186,8 +187,9 @@ public class Main : MonoBehaviour
         {
             GenerateEmail(true, 3);
         }
-    }
 
+        ShuffleEmails(ref totalEmails);
+    }
 
     public void StartRemoveAt<T>(ref T[] arr, int index)
     {
@@ -428,7 +430,7 @@ public class Main : MonoBehaviour
         else
         {
             //Trying to generate too many emails
-            Debug.LogError("Trying to generate too many emails. Phishing-Type: " + phishing + "   Difficulty: " + difficulty);
+            Debug.LogWarning("Trying to generate too many emails. Phishing-Type: " + phishing + "   Difficulty: " + difficulty);
         }
     }
 
@@ -457,6 +459,19 @@ public class Main : MonoBehaviour
 
         #endregion
     
+    }
+
+    public void ShuffleEmails(ref Email_Scriptable[] array)
+    {
+        // Knuth shuffle algorithm
+        // -1 to avoid messing with last email in list which is not used
+        for (int i = 0; i < array.Length - 1; i++)
+        {
+            Email_Scriptable temp = array[i];
+            int r = Random.Range(i, array.Length - 1);
+            array[i] = array[r];
+            array[r] = temp;
+        }
     }
     #endregion
 
