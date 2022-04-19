@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927fd1f77c7439b47ae6a8ee50e71a98, type: 3}
+  m_Name: MichaelTaysideBlackwatch
+  m_EditorClassIdentifier: 
+  firstName: James
+  lastName: Ferguson
+  title: Mr.
+  senderName: Michael
+  senderAddress: Michael <michael@phishmail.com>
+  hardFakeSenderAddress: []
+  mediumFakeFirstNames: []
+  mediumFakeLastNames: []
+  mediumFakeTitles: []
+  mediumFakeSenderNames: []
+  mediumFakeSenderAddress: []
+  easyFakeFirstNames: []
+  easyFakeLastNames: []
+  easyFakeTitles: []
+  easyFakeSenderNames: []
+  easyFakeSenderAddress: []
+  logo: {fileID: 21300000, guid: 5d9e781595ca22e4c9815384de591483, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
+  greetings:
+  - Dear James,
+  fakeGreetings:
+  - Hi old friend,
+  veryFakeGreetings:
+  - Hey fellow veteran,
+  - Hey old freind,
+  reuseBodies: 0
+  bodies:
+  - title: Help!?
+    body: its Michael from the Tayside Blackwatch division. I know it has been a
+      while but I was wondering if you could lend I some money as my wifes has dies
+      and im all alone now. Any donation would be fantastic, there is a link below
+      about where and how to sent the money.
+  hardFakeBodies:
+  - title: Help!?
+    body: Hi James its Michael from the Tayside Blackwatch division. I know it has
+      been a while but I was wondering if you could lend I some money as my wifes
+      has dies and im all alone now. Any donation would be fantastic, there is a
+      link below about where and how to sent the money.
+  mediumFakeBodies:
+  - title: Help!?
+    body: Hi James its Michael from the Tayside Blackwatch division. I know it has
+      been a while but I was wondering if you could lend I some money as my wifes
+      has dies and im all alone now. Any donation would be fantastic, there is a
+      link below about where and how to sent the money.
+  easyFakeBodies:
+  - title: Help!?
+    body: Hi James its Michael from the Tayside Blackwatch division. I know it has
+      been a while but I was wondering if you could lend I some money as my wifes
+      has dies and im all alone now. Any donation would be fantastic, there is a
+      link below about where and how to sent the money.
+  signoffs:
+  - Thanks, Mike
+  mediumFakeSignoffs:
+  - Thanks, Michael
+  easyFakeSignoffs:
+  - Thanks, your old best friend Michael
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2

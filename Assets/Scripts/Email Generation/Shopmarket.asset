@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927fd1f77c7439b47ae6a8ee50e71a98, type: 3}
+  m_Name: Shopmarket
+  m_EditorClassIdentifier: 
+  firstName: James
+  lastName: Ferguson
+  title: Mr.
+  senderName: Shopmarket
+  senderAddress: Shopmarket <orders@shopmarket.co.uk>
+  hardFakeSenderAddress:
+  - Shopmarket <orderreciept@shopmarket.co.uk>
+  mediumFakeFirstNames: []
+  mediumFakeLastNames: []
+  mediumFakeTitles: []
+  mediumFakeSenderNames: []
+  mediumFakeSenderAddress: []
+  easyFakeFirstNames: []
+  easyFakeLastNames: []
+  easyFakeTitles: []
+  easyFakeSenderNames: []
+  easyFakeSenderAddress:
+  - Shopmarket <orders@shopmeerkat.co.uk>
+  logo: {fileID: 0}
+  mediumFakeLogo: {fileID: 0}
+  easyFakeLogo: {fileID: 0}
+  greetings: []
+  fakeGreetings: []
+  veryFakeGreetings: []
+  reuseBodies: 0
+  bodies:
+  - title: Order Confirmation #396-158-274
+    body: "Order Number #396-158-274 thank you for shopping with us today! Please
+      see a summary of your order below. Total price: \xA3269.84"
+  hardFakeBodies:
+  - title: Order Confirmation #396-158-274
+    body: "Order Number #396-158-274 thank you for shopping with us today! Please
+      see a summary of your order below. Total price: \xA3269.84"
+  mediumFakeBodies:
+  - title: Order Confirmation #396-158-274
+    body: "Order Number #396-158-274 thank you for shopping with us today! Please
+      see a summary of your order below. Total price: \xA3269.84"
+  easyFakeBodies:
+  - title: Order Confirmation #396-158-274
+    body: "Order Number #396-158-274 thank you for shopping with us today! Please
+      see a summary of your order below. Total price: \xA3269.84"
+  signoffs:
+  - "You have until 11/03/22 to make changes or cancel your order. If you would like
+    to, please click HERE. \n\nShopmarket Team "
+  mediumFakeSignoffs:
+  - "You have until 11/03/22 to make changes or cancel your order. If you would like
+    to, please click HERE. \n\nShopmarket Team "
+  easyFakeSignoffs:
+  - "You have until 11/03/22 to make changes or cancel your order. If you would like
+    to, please click HERE. \n\nShopmarket Team "
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2

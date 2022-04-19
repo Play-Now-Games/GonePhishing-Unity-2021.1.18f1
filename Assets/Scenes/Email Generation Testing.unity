@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 391414652}
   m_HandleRect: {fileID: 391414651}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0.99999946
   m_Size: 0.81484944
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2180,7 +2180,7 @@ MonoBehaviour:
   emailInterface: {fileID: 196765049}
   blankNoEmailToGenerate: {fileID: 11400000, guid: b940671a80fbe394ab3d3b2ca20a56fe, type: 2}
   personalEmailGenerators:
-  - {fileID: 11400000, guid: 392e86462d7594540886617274061c1f, type: 2}
+  - {fileID: 11400000, guid: b1a18905c4c6aff4783d085e86ed438a, type: 2}
   corporateEmailGenerators:
   - {fileID: 11400000, guid: accc8a8464793d54ca431612bfd308bf, type: 2}
 --- !u!81 &1084311729

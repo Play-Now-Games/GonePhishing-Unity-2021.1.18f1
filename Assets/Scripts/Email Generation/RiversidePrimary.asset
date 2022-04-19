@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927fd1f77c7439b47ae6a8ee50e71a98, type: 3}
+  m_Name: RiversidePrimary
+  m_EditorClassIdentifier: 
+  firstName: James
+  lastName: Ferguson
+  title: Mr
+  senderName: Steven Marsh
+  senderAddress: Steven Marsh <headoffice@riversideprimaryschool.org>
+  hardFakeSenderAddress:
+  - Steven Marsh <headoffice@riversideprimaryschool.com>
+  mediumFakeFirstNames: []
+  mediumFakeLastNames: []
+  mediumFakeTitles: []
+  mediumFakeSenderNames: []
+  mediumFakeSenderAddress:
+  - Steven Marsh <headoffice@riversideprimary.org>
+  easyFakeFirstNames: []
+  easyFakeLastNames: []
+  easyFakeTitles: []
+  easyFakeSenderNames: []
+  easyFakeSenderAddress:
+  - Stephen Marsh <headteacher@rlversldeprlmaryscho0l.com>
+  logo: {fileID: 21300000, guid: 6964440b1fde7f9438fbd249505ecef1, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 6964440b1fde7f9438fbd249505ecef1, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 676620acd7b4cc140be2a1f8f6db5cf9, type: 3}
+  greetings:
+  - Dear Mr Ferguson,
+  fakeGreetings:
+  - Hi there,
+  veryFakeGreetings:
+  - Hi j.ferguson@phishmail.com,
+  reuseBodies: 0
+  bodies:
+  - title: Assembly Talk
+    body: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
+      love to have you talk to the kids about World War II and what your experiences
+      were. Down below we have a form that should provide more details about what
+      would be needed of you."
+  hardFakeBodies:
+  - title: Assembly Talk
+    body: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
+      love to have you talk to the kids about World War II and what your experiences
+      were. Down below we have a form that should provide more details about what
+      would be needed of you."
+  mediumFakeBodies:
+  - title: Assembly Talk
+    body: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
+      love to have you talk to the kids about World War II and what your experiences
+      were. Down below we have a form that should provide more details about what
+      would be needed of you.\n\nDownload Form - PDF"
+  easyFakeBodies:
+  - title: Assembly Talk
+    body: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
+      love to have you talk to the kids about World War II and what your experiences
+      were. Down below we have a form that should provide more details about what
+      would be needed of you.\n\nform.pdf.exe"
+  signoffs:
+  - 'Kind Regards, Steven Marsh
+
+    Head Teacher, Riverside Primary School'
+  mediumFakeSignoffs:
+  - 'Kind Regards, Steven Marsh
+
+    Head Teacher, Riverside Primary School'
+  easyFakeSignoffs:
+  - 'Stephen Marsh
+
+    Head Teacher, Riverside Primary School'
+  _chanceOfMediumInHard: 0
+  _chanceOfHardInMedium: 0
+  _chanceOfEasyInMedium: 0
+  _chanceOfMediumInEasy: 0
