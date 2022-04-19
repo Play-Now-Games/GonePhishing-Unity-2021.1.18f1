@@ -17,6 +17,8 @@ MonoBehaviour:
   title: Lieutenant
   senderName: Garuk
   senderAddress: garuk@cardasia.aq
+  hardFakeSenderAddress:
+  - garuk@federation.aq
   mediumFakeFirstNames:
   - Curzon
   - Ezri

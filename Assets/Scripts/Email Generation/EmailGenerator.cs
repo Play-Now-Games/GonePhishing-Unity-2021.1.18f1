@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EmailGenerator : MonoBehaviour
 {
+    //for the test scene
     public EmailGenerationTestInterface emailInterface;
 
     public Email_Scriptable blankNoEmailToGenerate;
@@ -18,7 +19,7 @@ public class EmailGenerator : MonoBehaviour
     private int totalGeneratorsLength;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         foreach (EmailGenerator_Scriptable gen in personalEmailGenerators)
         {
@@ -50,6 +51,7 @@ public class EmailGenerator : MonoBehaviour
         }
     }
 
+    // Button functions for test scene
     // type: 0 = real, 1-3 = phishing with difficulty 1-3
     public void GenerateEmailButton(int type)
     {
@@ -109,7 +111,7 @@ public class EmailGenerator : MonoBehaviour
     //Generate an email fully at random from avalibe generators
     public bool GenerateEmail(out Email_Scriptable email, bool isPhishing = false, int phishingDifficulty = 0)
     {
-        for (int i = 0; i < 10; i ++)
+        for (int i = 0; i < 10; i ++) //arbitary number of loops, TODO: change this to detect when we should give up
         {
             List<int> validGeneratorsThisDifficulty = new List<int>();
 

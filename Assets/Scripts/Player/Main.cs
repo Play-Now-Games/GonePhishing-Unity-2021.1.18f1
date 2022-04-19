@@ -55,6 +55,18 @@ public class Main : MonoBehaviour
     private HealthDisplay _healthDisplay;
 
 
+    //Email generation variables
+    [Space(16)]
+    [SerializeField]
+    private bool _generateEmails;
+    private EmailGenerator _emailGenerator;
+    [SerializeField]
+    [Tooltip("Number of emails to initally generate.")]
+    private int _initalGenReal, _initalGenEasyPhishing, _initalGenMediumPhishing, _initalGenHardPhishing;
+
+
+
+
     private SoundsHolder _audioScript;
     ///////// PRIVATES /////////
 
@@ -77,8 +89,10 @@ public class Main : MonoBehaviour
 
         _time = GetComponent<DayTimer>();
 
-
+        //Get EmailGenerator
+        _emailGenerator = GetComponentInChildren<EmailGenerator>();
     }
+
 
     private void AwakeRandomizationEmail()
     {
@@ -145,7 +159,66 @@ public class Main : MonoBehaviour
     {
         selectedAnimator = selected.GetComponent<SelectedAnimator>();
 
+        if (_generateEmails)
+        {
+            InitalEmailGeneration();
+        }
+
         UICreation();
+    }
+    private void InitalEmailGeneration()
+    {
+        for (int i = 0; i < _initalGenReal; i++)
+        {
+            if (_emailGenerator.GenerateEmail(out Email_Scriptable email))
+            {
+                totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
+            }
+            else
+            {
+                //Trying to generate too many emails
+                Debug.LogError("Trying to generate too many emails. (Real emails, inital generation.)");
+            }
+        }
+
+        for (int i = 0; i < _initalGenEasyPhishing; i++)
+        {
+            if (_emailGenerator.GenerateEmail(out Email_Scriptable email, true, 1))
+            {
+                totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
+            }
+            else
+            {
+                //Trying to generate too many emails
+                Debug.LogError("Trying to generate too many emails. (Easy phishing emails, inital generation.)");
+            }
+        }
+
+        for (int i = 0; i < _initalGenMediumPhishing; i++)
+        {
+            if (_emailGenerator.GenerateEmail(out Email_Scriptable email, true, 2))
+            {
+                totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
+            }
+            else
+            {
+                //Trying to generate too many emails
+                Debug.LogError("Trying to generate too many emails. (Medium phishing emails, inital generation.)");
+            }
+        }
+
+        for (int i = 0; i < _initalGenReal; i++)
+        {
+            if (_emailGenerator.GenerateEmail(out Email_Scriptable email, true, 3))
+            {
+                totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
+            }
+            else
+            {
+                //Trying to generate too many emails
+                Debug.LogError("Trying to generate too many emails. (Hard phishing emails, inital generation.)");
+            }
+        }
     }
 
 
@@ -348,7 +421,7 @@ public class Main : MonoBehaviour
     public void AddEmails(Email_Scriptable[] originalArray)
     {
 
-        #region Add Phishing Emails
+        #region Add Emails
 
         if (originalArray.Length > 0)
         {

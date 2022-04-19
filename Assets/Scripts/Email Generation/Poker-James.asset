@@ -17,6 +17,8 @@ MonoBehaviour:
   title: Mr
   senderName: PokerPlayers
   senderAddress: <promotions@pokerplays.com>
+  hardFakeSenderAddress:
+  - <promotions@pokerpiays.com>
   mediumFakeFirstNames: []
   mediumFakeLastNames: []
   mediumFakeTitles: []
