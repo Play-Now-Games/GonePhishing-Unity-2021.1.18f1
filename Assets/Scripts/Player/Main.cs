@@ -170,54 +170,22 @@ public class Main : MonoBehaviour
     {
         for (int i = 0; i < _initalGenReal; i++)
         {
-            if (_emailGenerator.GenerateEmail(out Email_Scriptable email))
-            {
-                totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
-            }
-            else
-            {
-                //Trying to generate too many emails
-                Debug.LogError("Trying to generate too many emails. (Real emails, inital generation.)");
-            }
+            GenerateEmail();
         }
 
         for (int i = 0; i < _initalGenEasyPhishing; i++)
         {
-            if (_emailGenerator.GenerateEmail(out Email_Scriptable email, true, 1))
-            {
-                totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
-            }
-            else
-            {
-                //Trying to generate too many emails
-                Debug.LogError("Trying to generate too many emails. (Easy phishing emails, inital generation.)");
-            }
+            GenerateEmail(true, 1);
         }
 
         for (int i = 0; i < _initalGenMediumPhishing; i++)
         {
-            if (_emailGenerator.GenerateEmail(out Email_Scriptable email, true, 2))
-            {
-                totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
-            }
-            else
-            {
-                //Trying to generate too many emails
-                Debug.LogError("Trying to generate too many emails. (Medium phishing emails, inital generation.)");
-            }
+            GenerateEmail(true, 2);
         }
 
-        for (int i = 0; i < _initalGenReal; i++)
+        for (int i = 0; i < _initalGenHardPhishing; i++)
         {
-            if (_emailGenerator.GenerateEmail(out Email_Scriptable email, true, 3))
-            {
-                totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
-            }
-            else
-            {
-                //Trying to generate too many emails
-                Debug.LogError("Trying to generate too many emails. (Hard phishing emails, inital generation.)");
-            }
+            GenerateEmail(true, 3);
         }
     }
 
@@ -450,6 +418,19 @@ public class Main : MonoBehaviour
         }
         #endregion
 
+    }
+
+    public void GenerateEmail(bool phishing = false, int difficulty = 0)
+    {
+        if (_emailGenerator.GenerateEmail(out Email_Scriptable email, phishing, difficulty))
+        {
+            totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
+        }
+        else
+        {
+            //Trying to generate too many emails
+            Debug.LogError("Trying to generate too many emails. Phishing-Type: " + phishing + "   Difficulty: " + difficulty);
+        }
     }
 
     public Array AddArrayAtStart(object o, Array oldArray)
