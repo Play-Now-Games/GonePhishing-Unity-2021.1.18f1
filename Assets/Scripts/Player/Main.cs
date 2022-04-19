@@ -57,8 +57,7 @@ public class Main : MonoBehaviour
 
     //Email generation variables
     [Space(16)]
-    [SerializeField]
-    private bool _generateEmails;
+    public bool generateEmails;
     private EmailGenerator _emailGenerator;
     [SerializeField]
     [Tooltip("Number of emails to initally generate.")]
@@ -159,7 +158,7 @@ public class Main : MonoBehaviour
     {
         selectedAnimator = selected.GetComponent<SelectedAnimator>();
 
-        if (_generateEmails)
+        if (generateEmails)
         {
             InitalEmailGeneration();
         }

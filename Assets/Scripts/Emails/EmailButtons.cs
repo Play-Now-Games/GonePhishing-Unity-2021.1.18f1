@@ -175,28 +175,56 @@ public class EmailButtons : MonoBehaviour
         mainScript.LoseMoney(200);
 
         int rand = UnityEngine.Random.Range(0, 2);
-        
-        if (rand == 0 && mainScript.normalEmails.Length > 0)
+
+        if (mainScript.generateEmails)
         {
-            mainScript.AddEmails(mainScript.normalEmails);
+            if (rand == 0)
+            {
+                mainScript.GenerateEmail();
+            }
+            else
+            {
+                //Play Feedback sound is on the AddEmail Functions
+                switch (score.streak)
+                {
+                    case 0:
+                    case 1:
+                        mainScript.GenerateEmail(true, 1);
+                        break;
+                    case 2:
+                        mainScript.GenerateEmail(true, 2);
+                        break;
+                    case 3:
+                        mainScript.GenerateEmail(true, 3);
+                        break;
+                }
+            }
         }
         else
         {
-            //Play Feedback sound is on the AddEmail Functions
-            switch (score.streak)
+
+            if (rand == 0 && mainScript.normalEmails.Length > 0)
             {
-                case 0:
-                    mainScript.AddEmails(mainScript.easyPhishing);
-                    break;
-                case 1:
-                    mainScript.AddEmails(mainScript.easyPhishing);
-                    break;
-                case 2:
-                    mainScript.AddEmails(mainScript.mediumPhishing);
-                    break;
-                case 3:
-                    mainScript.AddEmails(mainScript.hardPhishing);
-                    break;
+                mainScript.AddEmails(mainScript.normalEmails);
+            }
+            else
+            {
+                //Play Feedback sound is on the AddEmail Functions
+                switch (score.streak)
+                {
+                    case 0:
+                        mainScript.AddEmails(mainScript.easyPhishing);
+                        break;
+                    case 1:
+                        mainScript.AddEmails(mainScript.easyPhishing);
+                        break;
+                    case 2:
+                        mainScript.AddEmails(mainScript.mediumPhishing);
+                        break;
+                    case 3:
+                        mainScript.AddEmails(mainScript.hardPhishing);
+                        break;
+                }
             }
         }
         
