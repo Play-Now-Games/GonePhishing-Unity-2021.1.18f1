@@ -16,8 +16,8 @@ public class Main : MonoBehaviour
     public SelectedAnimator selectedAnimator;
     public GameObject noEmail;
 
-    public int healthPoints;
-    public int maxHealthPoints;
+    //public int healthPoints;
+   // public int maxHealthPoints;
 
     public Email_Scriptable[] totalEmails;
 
@@ -44,7 +44,7 @@ public class Main : MonoBehaviour
     private GameObject[] _totalPopUps;
 
     [SerializeField]
-    private int _strike = 0;
+    //private int _strike = 0;
 
     private float time = 5;
     private float popUpLimiter = 0;
@@ -53,7 +53,7 @@ public class Main : MonoBehaviour
 
     private DayTimer _time;
 
-    private HealthDisplay _healthDisplay;
+    //private HealthDisplay _healthDisplay;
 
 
     //Email generation variables
@@ -78,8 +78,8 @@ public class Main : MonoBehaviour
         _audioScript = speakers.GetComponent<SoundsHolder>();
 
         //Get HealthDisplay
-        GameObject health = GameObject.FindGameObjectWithTag("HealthDisplay");
-        _healthDisplay = health.GetComponent<HealthDisplay>();
+        //GameObject health = GameObject.FindGameObjectWithTag("HealthDisplay");
+        //_healthDisplay = health.GetComponent<HealthDisplay>();
 
         //Scene ID James = 1
         if (SceneManager.GetActiveScene().buildIndex != 1)
@@ -254,70 +254,70 @@ public class Main : MonoBehaviour
 
 
     #region HP Related Functions
-    public void LoseHealth(int HpLost)
-    {
-        #region HP Related
-        healthPoints -= HpLost;
+    //public void LoseHealth(int HpLost)
+    //{
+    //    #region HP Related
+    //    healthPoints -= HpLost;
 
-        healthUpdate.Invoke();
+    //    healthUpdate.Invoke();
 
-        if (healthPoints <= 0)
-        {
-            EndGame(false);
-        }
+    //    if (healthPoints <= 0)
+    //    {
+    //        EndGame(false);
+    //    }
 
-        //PopUpFormula
-        popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
+    //    //PopUpFormula
+    //    popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
 
-        #endregion
+    //    #endregion
 
 
-        #region Call Animation
-        _healthDisplay.toAnimate = true;
-        #endregion
+    //    #region Call Animation
+    //    _healthDisplay.toAnimate = true;
+    //    #endregion
 
-    }
+    //}
 
-    public void GainHealth(int HpGain)
-    {
-        #region HP Related
-        if (healthPoints < 5)
-        {
-            healthPoints += HpGain;
-            popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
-        }
-        #endregion
-    }
+    //public void GainHealth(int HpGain)
+    //{
+    //    #region HP Related
+    //    if (healthPoints < 5)
+    //    {
+    //        healthPoints += HpGain;
+    //        popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
+    //    }
+    //    #endregion
+    //}
 
-    public void StrikeAdd(int value)
-    {
-        #region Strikes
-        _strike++;
+    //public void StrikeAdd(int value)
+    //{
+    //    #region Strikes
+    //    _strike++;
 
-        if(_strike >= 3)
-        {
-            GainHealth(1);
-            StrikeZero();
-        }
-        #endregion
-    }
+    //    if(_strike >= 3)
+    //    {
+    //        GainHealth(1);
+    //        StrikeZero();
+    //    }
+    //    #endregion
+    //}
 
-    public void StrikeZero()
-    {
-        _strike = 0;
-    }
+    //public void StrikeZero()
+    //{
+    //    _strike = 0;
+    //}
 
-    public void RestoreHealth(int HpRestored)
-    {
-        #region HP Related
-        healthPoints += HpRestored;
+    //public void RestoreHealth(int HpRestored)
+    //{
+    //    #region HP Related
+    //    healthPoints += HpRestored;
 
-        if (healthPoints > maxHealthPoints)
-            healthPoints = maxHealthPoints;
+    //    if (healthPoints > maxHealthPoints)
+    //        healthPoints = maxHealthPoints;
 
-        healthUpdate.Invoke();
-        #endregion
-    }
+    //    healthUpdate.Invoke();
+    //    #endregion
+    //}
     #endregion
 
     #region Money Related Functions
