@@ -5,6 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Generator", menuName = "ScriptableObjects/EmailGenerator")]
 public class EmailGenerator_Scriptable : ScriptableObject
 {
+    [Tooltip("Used to generate ID's for the emails, make this a unique multiple of 100.")]
+    public int GeneratorID = 100;
+    private int uniqueIDValue = 0;
+
     [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
     public string firstName, lastName, title, senderName, senderAddress;
     public string[] hardFakeSenderAddress;
@@ -406,6 +410,10 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
     private void GenerateReal(ref Email_Scriptable email)
     {
+        email.ID = GeneratorID + uniqueIDValue;
+        uniqueIDValue++;
+        email.difficulty = 0;
+
         email.sender = _senderName;
 
         email.senderAdress = _senderAddress;
@@ -446,6 +454,10 @@ public class EmailGenerator_Scriptable : ScriptableObject
     }
     private void GenerateFakeEasy(ref Email_Scriptable email)
     {
+        email.ID = GeneratorID + uniqueIDValue;
+        uniqueIDValue++;
+        email.difficulty = 1;
+
         email.sender = _senderName;
 
         email.senderAdress = _senderAddress;
@@ -507,6 +519,10 @@ public class EmailGenerator_Scriptable : ScriptableObject
     }
     private void GenerateFakeMedium(ref Email_Scriptable email)
     {
+        email.ID = GeneratorID + uniqueIDValue;
+        uniqueIDValue++;
+        email.difficulty = 2;
+
         email.sender = _senderName;
 
         email.senderAdress = _senderAddress;
@@ -583,6 +599,10 @@ public class EmailGenerator_Scriptable : ScriptableObject
     }
     private void GenerateFakeHard(ref Email_Scriptable email)
     {
+        email.ID = GeneratorID + uniqueIDValue;
+        uniqueIDValue++;
+        email.difficulty = 3;
+
         email.sender = _senderName;
 
         email.senderAdress = _senderAddress;

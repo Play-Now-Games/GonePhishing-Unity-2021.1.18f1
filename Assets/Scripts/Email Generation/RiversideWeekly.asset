@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 927fd1f77c7439b47ae6a8ee50e71a98, type: 3}
   m_Name: RiversideWeekly
   m_EditorClassIdentifier: 
+  GeneratorID: 600
   firstName: James
   lastName: Ferguson
   title: Mr.
