@@ -16,9 +16,6 @@ public class Main : MonoBehaviour
     public SelectedAnimator selectedAnimator;
     public GameObject noEmail;
 
-    //public int healthPoints;
-   // public int maxHealthPoints;
-
     public Email_Scriptable[] totalEmails;
 
     public int phishingAmount;
@@ -42,9 +39,6 @@ public class Main : MonoBehaviour
     ///////// PRIVATES /////////
     [SerializeField]
     private GameObject[] _totalPopUps;
-
-    [SerializeField]
-    //private int _strike = 0;
 
     private float time = 5;
     private float popUpLimiter = 0;
@@ -251,74 +245,6 @@ public class Main : MonoBehaviour
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
 
-
-
-    #region HP Related Functions
-    //public void LoseHealth(int HpLost)
-    //{
-    //    #region HP Related
-    //    healthPoints -= HpLost;
-
-    //    healthUpdate.Invoke();
-
-    //    if (healthPoints <= 0)
-    //    {
-    //        EndGame(false);
-    //    }
-
-    //    //PopUpFormula
-    //    popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
-
-    //    #endregion
-
-
-    //    #region Call Animation
-    //    _healthDisplay.toAnimate = true;
-    //    #endregion
-
-    //}
-
-    //public void GainHealth(int HpGain)
-    //{
-    //    #region HP Related
-    //    if (healthPoints < 5)
-    //    {
-    //        healthPoints += HpGain;
-    //        popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
-    //    }
-    //    #endregion
-    //}
-
-    //public void StrikeAdd(int value)
-    //{
-    //    #region Strikes
-    //    _strike++;
-
-    //    if(_strike >= 3)
-    //    {
-    //        GainHealth(1);
-    //        StrikeZero();
-    //    }
-    //    #endregion
-    //}
-
-    //public void StrikeZero()
-    //{
-    //    _strike = 0;
-    //}
-
-    //public void RestoreHealth(int HpRestored)
-    //{
-    //    #region HP Related
-    //    healthPoints += HpRestored;
-
-    //    if (healthPoints > maxHealthPoints)
-    //        healthPoints = maxHealthPoints;
-
-    //    healthUpdate.Invoke();
-    //    #endregion
-    //}
-    #endregion
 
     #region Money Related Functions
     public void GiveMoney(int value)
