@@ -168,6 +168,7 @@ public class Main : MonoBehaviour
     }
     private void InitalEmailGeneration()
     {
+        #region Generate Emails
         for (int i = 0; i < _initalGenReal; i++)
         {
             GenerateEmail();
@@ -187,6 +188,7 @@ public class Main : MonoBehaviour
         {
             GenerateEmail(true, 3);
         }
+        #endregion
 
         ShuffleEmails(ref totalEmails);
     }
