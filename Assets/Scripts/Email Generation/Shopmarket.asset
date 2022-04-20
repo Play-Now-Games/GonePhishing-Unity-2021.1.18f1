@@ -18,51 +18,72 @@ MonoBehaviour:
   senderName: Shopmarket
   senderAddress: Shopmarket <orders@shopmarket.co.uk>
   hardFakeSenderAddress:
-  - Shopmarket <orderreciept@shopmarket.co.uk>
+  - Shopmarket <no-reply@shopmarket.com>
   mediumFakeFirstNames: []
   mediumFakeLastNames: []
   mediumFakeTitles: []
-  mediumFakeSenderNames: []
-  mediumFakeSenderAddress: []
+  mediumFakeSenderNames:
+  - Shopmarket
+  mediumFakeSenderAddress:
+  - Shopmarket <orderss@shopmarket.co.uk>
   easyFakeFirstNames: []
   easyFakeLastNames: []
   easyFakeTitles: []
-  easyFakeSenderNames: []
+  easyFakeSenderNames:
+  - Shopmarket
   easyFakeSenderAddress:
   - Shopmarket <orders@shopmeerkat.co.uk>
-  logo: {fileID: 0}
-  mediumFakeLogo: {fileID: 0}
-  easyFakeLogo: {fileID: 0}
-  greetings: []
-  fakeGreetings: []
-  veryFakeGreetings: []
+  logo: {fileID: 21300000, guid: 18f551d382b1c054685b9495ca13f219, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 18f551d382b1c054685b9495ca13f219, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 611bc8be5756b8948b5b8bd6b14b38af, type: 3}
+  greetings:
+  - Hello shopper,
+  - Hi #firstName,
+  - Dear #title #lastName,
+  fakeGreetings:
+  - 'Hello shopper, '
+  veryFakeGreetings:
+  - Hello shopper,
   reuseBodies: 0
   bodies:
   - title: Order Confirmation #396-158-274
     body: "Order Number #396-158-274 thank you for shopping with us today! Please
-      see a summary of your order below. Total price: \xA3269.84"
+      see a summary of your order below. \n\nTotal price: \xA329.99\n\nYou have until
+      11/03/22 to make changes or cancel your order. If you would like to, please
+      click HERE. "
   hardFakeBodies:
-  - title: Order Confirmation #396-158-274
-    body: "Order Number #396-158-274 thank you for shopping with us today! Please
-      see a summary of your order below. Total price: \xA3269.84"
+  - title: Order Confirmation #692-478-135
+    body: "Order Number #692-478-135 thank you for shopping with us today! Please
+      see a summary of your order below. \n\nTotal price: \xA345.99\n\nYou have until
+      11/03/22 to make changes or cancel your order. If you would like to, please
+      click HERE. "
   mediumFakeBodies:
-  - title: Order Confirmation #396-158-274
-    body: "Order Number #396-158-274 thank you for shopping with us today! Please
-      see a summary of your order below. Total price: \xA3269.84"
+  - title: Order Confirmation #396-158-283
+    body: "Order Number #396-158-276 thank you for shopping with us today! Please
+      see a summary of your order below. \n\nTotal price: \xA3269.84\n\nYou have
+      until 11/03/22 to make changes or cancel your order. If you would like to,
+      please click HERE. "
   easyFakeBodies:
-  - title: Order Confirmation #396-158-274
-    body: "Order Number #396-158-274 thank you for shopping with us today! Please
-      see a summary of your order below. Total price: \xA3269.84"
+  - title: Please confirm your account
+    body: "You're most recent payment has failed. Have you recently changed bank,
+      phone number or credit card?. To ensure your service is not interrupted, please
+      update your billing information today. \n\nConfirm your account now"
   signoffs:
-  - "You have until 11/03/22 to make changes or cancel your order. If you would like
-    to, please click HERE. \n\nShopmarket Team "
+  - '
+
+
+    Shopmarket Team '
   mediumFakeSignoffs:
-  - "You have until 11/03/22 to make changes or cancel your order. If you would like
-    to, please click HERE. \n\nShopmarket Team "
+  - '
+
+
+    Shopmarket Team'
   easyFakeSignoffs:
-  - "You have until 11/03/22 to make changes or cancel your order. If you would like
-    to, please click HERE. \n\nShopmarket Team "
-  _chanceOfMediumInHard: 0.1
-  _chanceOfHardInMedium: 0.1
-  _chanceOfEasyInMedium: 0.1
-  _chanceOfMediumInEasy: 0.2
+  - '
+
+
+    Shopmarket Team '
+  _chanceOfMediumInHard: 0
+  _chanceOfHardInMedium: 0
+  _chanceOfEasyInMedium: 0
+  _chanceOfMediumInEasy: 0

@@ -14,52 +14,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstName: James
   lastName: Ferguson
-  title: Mr
-  senderName: PokerPlayers
-  senderAddress: <promotions@pokerplays.com>
+  title: Mr.
+  senderName: PokerPlays.com
+  senderAddress: PokerPlays.com <promotions@pokerplays.com>
   hardFakeSenderAddress:
-  - <promotions@pokerpiays.com>
+  - PokerPlays.com <promotions@pokerpiays.com>
   mediumFakeFirstNames: []
   mediumFakeLastNames: []
   mediumFakeTitles: []
   mediumFakeSenderNames:
-  - PokerPayz
+  - PokerPlays.com
   mediumFakeSenderAddress:
-  - <promotions@pokerpayz.com>
+  - PokerPlays.com <promotions@pokerpays.com>
   easyFakeFirstNames: []
   easyFakeLastNames: []
   easyFakeTitles: []
   easyFakeSenderNames:
-  - <promotions@pokerscams.com>
+  - PokerPayz.com
   easyFakeSenderAddress:
-  - PokerScams
+  - PokerPlays.com <fklsdgnsdkjlgns@phishmail.com>
   logo: {fileID: 21300000, guid: 17b61ad236362304ea529128dc815ed4, type: 3}
-  mediumFakeLogo: {fileID: 21300000, guid: 907db53ecf6ae154789a35494ee27007, type: 3}
-  easyFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 17b61ad236362304ea529128dc815ed4, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 907db53ecf6ae154789a35494ee27007, type: 3}
   greetings:
-  - Hey #firstName,
+  - Hi #firstName,
   fakeGreetings:
-  - Hey Player,
+  - hi Player,
   veryFakeGreetings:
-  - Hello gulible target,
+  - Hi
   reuseBodies: 0
   bodies:
   - title: In-Game Event!
-    body: From the 11th - 14th March, be sure to log in and try out our new 'High
-      Rollers' event where any earnings you win will be doubled!
-  hardFakeBodies: []
+    body: 'From the 11th - 14th March, be sure to log in and try out our new ''High
+      Rollers'' event where any earnings you win will be doubled!
+
+
+      Log-in:
+      www.pokerplays.com/high-rollers
+
+
+      We look forward to seeing you at our
+      tables!'
+  hardFakeBodies:
+  - title: In-Game Event!
+    body: 'From the 11th - 14th March, be sure to log in and try out our new ''High
+      Rollers'' event where any earnings you win will be doubled!
+
+
+      Log-in:
+      www.pokerplays.com/high-rollers
+
+
+      We look forward to seeing you at our
+      tables!'
   mediumFakeBodies:
-  - title: '(WARNING!) Amazing Deal! 24 Hours Only!!! '
-    body: "Don\u2019t miss out on this once in a lifetime deal! Claim \xA31000 worth
-      of FREE chips NOW!! "
-  easyFakeBodies: []
+  - title: (WOW!) Amazing Deal! Act fast!!
+    body: "Don\u2019t miss out on this once in a lifetime deal! \n\nClaim \xA31000
+      worth of FREE chips NOW!! \n\nClaim: click here\n\nPromotion ends in 24 hours."
+  easyFakeBodies:
+  - title: CONGRATULATION!
+    body: "You are the lucky winner of \xA310,000 worth of chips! To claim your prize,
+      please follow the link below:\n\nClaim Prize"
   signoffs:
-  - We look forward to seeing you at our tables!
+  - "PokerPlays.com\n\n\xA9 2001-2022 PokerPlays.com. All rights reserved."
   mediumFakeSignoffs:
-  - CLICK HERE to Claim! Promotion ends in 24 hours.
+  - PokerPlays.com
   easyFakeSignoffs:
-  - CLICK HERE to Claim! Promotion ends in 24 hours.
-  _chanceOfMediumInHard: 0.1
-  _chanceOfHardInMedium: 0.1
-  _chanceOfEasyInMedium: 0.1
-  _chanceOfMediumInEasy: 0.2
+  - PokerPayz.com
+  _chanceOfMediumInHard: 0
+  _chanceOfHardInMedium: 0
+  _chanceOfEasyInMedium: 0
+  _chanceOfMediumInEasy: 0

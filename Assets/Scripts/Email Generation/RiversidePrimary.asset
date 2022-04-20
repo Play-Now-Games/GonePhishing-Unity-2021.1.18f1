@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstName: James
   lastName: Ferguson
-  title: Mr
+  title: Mr.
   senderName: Steven Marsh
   senderAddress: Steven Marsh <headoffice@riversideprimaryschool.org>
   hardFakeSenderAddress:
@@ -28,56 +28,59 @@ MonoBehaviour:
   easyFakeFirstNames: []
   easyFakeLastNames: []
   easyFakeTitles: []
-  easyFakeSenderNames: []
+  easyFakeSenderNames:
+  - Head Teacher
   easyFakeSenderAddress:
-  - Stephen Marsh <headteacher@rlversldeprlmaryscho0l.com>
+  - ' <headteacher@rlversldescho0l.com>'
   logo: {fileID: 21300000, guid: 6964440b1fde7f9438fbd249505ecef1, type: 3}
   mediumFakeLogo: {fileID: 21300000, guid: 6964440b1fde7f9438fbd249505ecef1, type: 3}
-  easyFakeLogo: {fileID: 21300000, guid: 676620acd7b4cc140be2a1f8f6db5cf9, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 5d9e781595ca22e4c9815384de591483, type: 3}
   greetings:
-  - Dear Mr Ferguson,
+  - Dear #title #lastName,
   fakeGreetings:
   - Hi there,
   veryFakeGreetings:
-  - Hi j.ferguson@phishmail.com,
+  - j.ferguson@phishmail.com,
   reuseBodies: 0
   bodies:
   - title: Assembly Talk
     body: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
       love to have you talk to the kids about World War II and what your experiences
       were. Down below we have a form that should provide more details about what
-      would be needed of you."
+      would be needed of you.\n\nDownload form.PDF"
   hardFakeBodies:
   - title: Assembly Talk
     body: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
       love to have you talk to the kids about World War II and what your experiences
       were. Down below we have a form that should provide more details about what
-      would be needed of you."
+      would be needed of you.\n\nDownload form.PDF"
   mediumFakeBodies:
   - title: Assembly Talk
     body: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
       love to have you talk to the kids about World War II and what your experiences
       were. Down below we have a form that should provide more details about what
-      would be needed of you.\n\nDownload Form - PDF"
+      would be needed of you.\n\nDownload form.PDF"
   easyFakeBodies:
-  - title: Assembly Talk
-    body: "I am emailing you today on behalf of Riverside Primary School. We\u2019d
-      love to have you talk to the kids about World War II and what your experiences
-      were. Down below we have a form that should provide more details about what
-      would be needed of you.\n\nform.pdf.exe"
+  - title: Urgent Talk
+    body: "I'm e-mailing you from Riverside School. We\u2019d love to have you talk
+      to the us about your experiences in the past. Down below is a form, if you
+      could please fill it out as soon as possible, we'd love to have you come talk
+      to the kids.\n\nDownload form.PDF.exe"
   signoffs:
-  - 'Kind Regards, Steven Marsh
-
-    Head Teacher, Riverside Primary School'
+  - "Steven Marsh\nHead Teacher \nRiverside Primary School, 14 Riverside Way, DD1
+    1AB"
   mediumFakeSignoffs:
-  - 'Kind Regards, Steven Marsh
+  - 'Steven Marsh
 
-    Head Teacher, Riverside Primary School'
+    Head Teacher
+
+    Riverside Primary School'
   easyFakeSignoffs:
-  - 'Stephen Marsh
+  - 'Head Teacher of Riverside Primary School
 
-    Head Teacher, Riverside Primary School'
-  _chanceOfMediumInHard: 0.1
-  _chanceOfHardInMedium: 0.1
-  _chanceOfEasyInMedium: 0.1
-  _chanceOfMediumInEasy: 0.2
+
+'
+  _chanceOfMediumInHard: 0
+  _chanceOfHardInMedium: 0
+  _chanceOfEasyInMedium: 0
+  _chanceOfMediumInEasy: 0

@@ -14,27 +14,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstName: James
   lastName: Ferguson
-  title: Mr
-  senderName: Patricia Monroe
-  senderAddress: Patricia Monroe Patricia Monroe <alert@riversideweekiy.blog>
-  hardFakeSenderAddress: []
+  title: Mr.
+  senderName: Riverside Weekly
+  senderAddress: Riverside Weekly <update@riversideweekly.blog>
+  hardFakeSenderAddress:
+  - Riverside Weekly <update@riversideweekiy.blog>
   mediumFakeFirstNames: []
   mediumFakeLastNames: []
   mediumFakeTitles: []
-  mediumFakeSenderNames: []
-  mediumFakeSenderAddress: []
+  mediumFakeSenderNames:
+  - Riverside Weekly
+  mediumFakeSenderAddress:
+  - Riverside Weekly <RiversideWeekly@phishmail.com>
   easyFakeFirstNames: []
   easyFakeLastNames: []
   easyFakeTitles:
   - Mrs
-  easyFakeSenderNames: []
-  easyFakeSenderAddress: []
+  easyFakeSenderNames:
+  - Riverside Weekly
+  easyFakeSenderAddress:
+  - Riverside Weekly <weeklyriverside@riversideweekly.com>
   logo: {fileID: 21300000, guid: 6c95796d28d04d14e9bcd8f6a9865b5b, type: 3}
   mediumFakeLogo: {fileID: 21300000, guid: 6c95796d28d04d14e9bcd8f6a9865b5b, type: 3}
   easyFakeLogo: {fileID: 21300000, guid: 6c95796d28d04d14e9bcd8f6a9865b5b, type: 3}
-  greetings: []
-  fakeGreetings: []
-  veryFakeGreetings: []
+  greetings:
+  - Dear #title #lastName
+  fakeGreetings:
+  - 'Dear customer, '
+  veryFakeGreetings:
+  - Hello,
   reuseBodies: 0
   bodies:
   - title: Payment Issue
@@ -68,21 +76,22 @@ MonoBehaviour:
       of our small news outlet and hope to provide further enjoyment in the future."
   easyFakeBodies:
   - title: Urgent! Action Needed!
-    body: "I am emailing you from the Riverside Weekly. We have seen you have been
-      a client of ours for a while now and thank you greatly for your time and patronage.
-      Unfortunately, this email reaches you today as we regretfully inform you that
-      your most recent annual payment hasn\u2019t gone through, and we must ask for
-      a repayment to be made before the expiry date of you plan on the 3rd March.
-      Down below is a link for you to enter your details and a guide on how to go
-      through with the repayment. We would like to thank you for your continual support
-      of our small news outlet and hope to provide further enjoyment in the future."
+    body: 'You''re most recent payment has failed. Please update payment details
+      as soon as possible.
+
+
+      Update Details
+
+'
   signoffs:
-  - Kind Regards, Patricia Monroe Manager
+  - "Kind Regards, \n\nPatricia Monroe \nRiverside Weekly Manager"
   mediumFakeSignoffs:
-  - Kind Regards, Patricia Monroe Manager
+  - "Kind Regards,\n \nDavid Smith\nRiverside Weekly Manager"
   easyFakeSignoffs:
-  - Kind Regards, Patricia Monroe Manager
-  _chanceOfMediumInHard: 0.1
-  _chanceOfHardInMedium: 0.1
-  _chanceOfEasyInMedium: 0.1
-  _chanceOfMediumInEasy: 0.2
+  - 'Manager
+
+    Weekly Riverside'
+  _chanceOfMediumInHard: 0
+  _chanceOfHardInMedium: 0
+  _chanceOfEasyInMedium: 0
+  _chanceOfMediumInEasy: 0

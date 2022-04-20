@@ -2180,9 +2180,9 @@ MonoBehaviour:
   emailInterface: {fileID: 196765049}
   blankNoEmailToGenerate: {fileID: 11400000, guid: b940671a80fbe394ab3d3b2ca20a56fe, type: 2}
   personalEmailGenerators:
-  - {fileID: 11400000, guid: b1a18905c4c6aff4783d085e86ed438a, type: 2}
+  - {fileID: 11400000, guid: c37c7749ffbfa9f4da26191f796e01e5, type: 2}
   corporateEmailGenerators:
-  - {fileID: 11400000, guid: accc8a8464793d54ca431612bfd308bf, type: 2}
+  - {fileID: 11400000, guid: e458b958aa5894640b0e6777f1dd6d16, type: 2}
 --- !u!81 &1084311729
 AudioListener:
   m_ObjectHideFlags: 0
