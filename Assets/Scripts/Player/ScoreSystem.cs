@@ -27,7 +27,7 @@ public class ScoreSystem : MonoBehaviour
     [Tooltip("Reference to the timer object.")]
     private DayTimer _timer;
 
-    private bool _finished = false;
+    public bool _finished = false;
 
     void Start()
     {
