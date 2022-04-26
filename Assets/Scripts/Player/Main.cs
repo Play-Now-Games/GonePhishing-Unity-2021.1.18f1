@@ -421,7 +421,7 @@ public class Main : MonoBehaviour
 
         #region Search For Repetitive PopUps On Scene
 
-        if ((Pops.Length < (int)popUpLimiter) && (totalEmails.Length != 1))
+        if (totalEmails.Length != 1)
         {
             for (int i = 0; i < Pops.Length; i++)
             {

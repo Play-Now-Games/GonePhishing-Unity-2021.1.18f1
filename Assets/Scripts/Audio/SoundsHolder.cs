@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
+[RequireComponent(typeof(AudioSource))]
 public class SoundsHolder : MonoBehaviour
 {
 
@@ -83,5 +84,6 @@ public class SoundsHolder : MonoBehaviour
         _leftSide.PlayOneShot(_static[rand]);
         _rightSide.PlayOneShot(_static[rand]);
     }
+   
 
 }

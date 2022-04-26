@@ -45,6 +45,7 @@ public class FirstPersonController : MonoBehaviour
     private bool SwivelLeft = false;
     private bool SwivelRight = false;
     private int SwivelControlMarginPixels;
+    private float CameraSwivelAngle = 0;
 
     private int ExitCameraLockMarginPixelsX;
     private int ExitCameraLockMarginPixelsY;
@@ -72,6 +73,7 @@ public class FirstPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(!mainScript.dayEnded)
         {
             if (CurrentState == PlayerState.FreeCamera)
@@ -98,14 +100,16 @@ public class FirstPersonController : MonoBehaviour
                 }
 
                 // Swivel if player wants to and is within swivel limits
-                if (SwivelLeft && MainCamera.transform.rotation.eulerAngles.y > DefaultRotation.eulerAngles.y - MaxSwivel)
+                if (SwivelLeft && CameraSwivelAngle > -MaxSwivel)
                 {
-                    MainCamera.transform.Rotate(0, -SwivelSpeed * Time.deltaTime, 0);
+                    CameraSwivelAngle += -SwivelSpeed * Time.deltaTime;
                 }
-                else if (SwivelRight && MainCamera.transform.rotation.eulerAngles.y < DefaultRotation.eulerAngles.y + MaxSwivel)
+                else if (SwivelRight && CameraSwivelAngle < MaxSwivel)
                 {
-                    MainCamera.transform.Rotate(0, SwivelSpeed * Time.deltaTime, 0);
+                    CameraSwivelAngle += SwivelSpeed * Time.deltaTime;
                 }
+
+                MainCamera.transform.rotation = Quaternion.AngleAxis(CameraSwivelAngle, Vector3.up) * DefaultRotation;
 
                 // Get all beginning or ending mouse clicks or touch "clicks"
                 List<Click> clicks = clickManager.GetClicks();
@@ -218,7 +222,7 @@ public class FirstPersonController : MonoBehaviour
     public void ReturnCameraToOriginalPositionRotation()
     {
         StartMovingCamera(DefaultPosition, DefaultRotation);
-
+        CameraSwivelAngle = 0;
         CurrentState = PlayerState.CameraReturningFromLock;
     }
 
