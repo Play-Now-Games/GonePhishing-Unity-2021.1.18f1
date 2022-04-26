@@ -70,20 +70,11 @@ MonoBehaviour:
       phone number or credit card?. To ensure your service is not interrupted, please
       update your billing information today. \n\nConfirm your account now"
   signoffs:
-  - '
-
-
-    Shopmarket Team '
+  - 'Shopmarket Team '
   mediumFakeSignoffs:
-  - '
-
-
-    Shopmarket Team'
+  - Shopmarket Team
   easyFakeSignoffs:
-  - '
-
-
-    Shopmarket Team '
+  - 'Shopmarket Team '
   _chanceOfMediumInHard: 0
   _chanceOfHardInMedium: 0
   _chanceOfEasyInMedium: 0
