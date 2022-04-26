@@ -222,7 +222,7 @@ public class FirstPersonController : MonoBehaviour
     public void ReturnCameraToOriginalPositionRotation()
     {
         StartMovingCamera(DefaultPosition, DefaultRotation);
-
+        CameraSwivelAngle = 0;
         CurrentState = PlayerState.CameraReturningFromLock;
     }
 
