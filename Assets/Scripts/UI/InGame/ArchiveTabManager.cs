@@ -50,6 +50,9 @@ public class ArchiveTabManager : MonoBehaviour
             //Email Pos Based on Pos in the array
             childObject.transform.localPosition = new Vector3(0, -(gapBetweenEmails * i), 0);
 
+            //Remove Tag so the Main script doesn't delete this
+            childObject.tag = "Untagged";
+
             //Add Scriptable Object Here
             EmailHolder holder = childObject.GetComponent<EmailHolder>();
             holder.holder = archivedEmails[i];
