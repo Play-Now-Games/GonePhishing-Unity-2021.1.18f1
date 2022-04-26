@@ -14,6 +14,10 @@ public class TimeAnimation : MonoBehaviour
 
     private DayTimer _time;
 
+    private int _count = 0;
+    
+    public AudioSource sound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +53,12 @@ public class TimeAnimation : MonoBehaviour
             if (_angle > 170)
             {
                 _angle = 0;
+            }
+
+            if(_count == 0)
+            {
+                sound.Play();
+                _count++;
             }
         }
         
