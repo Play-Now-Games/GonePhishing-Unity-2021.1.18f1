@@ -274,18 +274,17 @@ public class Main : MonoBehaviour
         GameObject Content = GameObject.Find("Content");
 
         //Vectors to spawn -- 110 is the 100 + offset
-        Vector2 height = new Vector2(0, 2.5f);
+        float height = 300.0f;
 
         //-1 to work on
         for (int i = 0; i < totalEmails.Length - 1; i++)
         {
-            //Email Pos Based on Pos in the array
-            Vector2 Transfor = new Vector2(Content.transform.position.x - 15, Content.transform.position.y);
-            Vector2 emailNewPos = Transfor - (height * i);
 
             //Instantiate & Set Child
-            GameObject ChildObject = Instantiate(emailPrefab, new Vector3(emailNewPos.x, emailNewPos.y, 0), Quaternion.identity);
-            ChildObject.transform.parent = Content.transform;
+            GameObject ChildObject = Instantiate(emailPrefab, Content.transform);
+
+            //Email Pos Based on Pos in the array
+            ChildObject.transform.localPosition = new Vector3(0, -(height * i), 0);
 
             //Add Scriptable Object Here
             EmailHolder holder = ChildObject.GetComponent<EmailHolder>();
@@ -296,7 +295,7 @@ public class Main : MonoBehaviour
         #region Update Height - Scroll Bar
 
         RectTransform RectT = Content.GetComponent<RectTransform>();
-        RectT.sizeDelta = new Vector2(RectT.sizeDelta.x, height.y * totalEmails.Length);
+        RectT.sizeDelta = new Vector2(RectT.sizeDelta.x, height * totalEmails.Length);
 
         #endregion
     }

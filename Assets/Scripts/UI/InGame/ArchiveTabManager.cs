@@ -39,17 +39,16 @@ public class ArchiveTabManager : MonoBehaviour
         //Find By Name
         GameObject archiveContent = GameObject.Find("ArchiveContent");
 
-        Vector2 gapBetweenEmails = new Vector2(0, 2.5f);
+        float gapBetweenEmails = 300.0f;
 
         for (int i = 0; i < archivedEmails.Length; i++)
         {
-            //Email Pos Based on Pos in the array
-            Vector2 transfrom = new Vector2(archiveContent.transform.position.x - 15, archiveContent.transform.position.y);
-            Vector2 emailNewPos = transfrom - (gapBetweenEmails * i);
 
             //Instantiate & Set Child
-            GameObject childObject = Instantiate(emailPrefab, new Vector3(emailNewPos.x, emailNewPos.y, 0), Quaternion.identity);
-            childObject.transform.parent = archiveContent.transform;
+            GameObject childObject = Instantiate(emailPrefab, archiveContent.transform);
+
+            //Email Pos Based on Pos in the array
+            childObject.transform.localPosition = new Vector3(0, -(gapBetweenEmails * i), 0);
 
             //Add Scriptable Object Here
             EmailHolder holder = childObject.GetComponent<EmailHolder>();
@@ -64,7 +63,7 @@ public class ArchiveTabManager : MonoBehaviour
         #region Update Height - Scroll Bar
 
         RectTransform rectT = archiveContent.GetComponent<RectTransform>();
-        rectT.sizeDelta = new Vector2(rectT.sizeDelta.x, gapBetweenEmails.y * archivedEmails.Length);
+        rectT.sizeDelta = new Vector2(rectT.sizeDelta.x, gapBetweenEmails * archivedEmails.Length);
 
         #endregion
     }
