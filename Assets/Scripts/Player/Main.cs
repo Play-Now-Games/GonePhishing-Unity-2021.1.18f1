@@ -84,7 +84,7 @@ public class Main : MonoBehaviour
         //Scene ID James = 1
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            AwakeRandomizationEmail();
+            //AwakeRandomizationEmail();
         }
 
         _time = GetComponent<DayTimer>();
@@ -256,34 +256,33 @@ public class Main : MonoBehaviour
     #region HP Related Functions
     public void LoseHealth(int HpLost)
     {
-        #region HP Related
-        healthPoints -= HpLost;
-
-        healthUpdate.Invoke();
-
-        if (healthPoints <= 0)
+        if (healthPoints > 0)
         {
-            EndGame(false);
+            #region HP Related
+            healthPoints -= HpLost;
+
+            healthUpdate.Invoke();
+
+            //PopUpFormula
+            popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
+            #endregion
+
+
+            #region Call Animation
+            _healthDisplay.toAnimate = true;
+            #endregion
         }
-
-        //PopUpFormula
-        popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
-
-        #endregion
-
-
-        #region Call Animation
-        _healthDisplay.toAnimate = true;
-        #endregion
-
     }
 
     public void GainHealth(int HpGain)
     {
         #region HP Related
-        if (healthPoints < 5)
+        if (healthPoints < maxHealthPoints)
         {
             healthPoints += HpGain;
+
+            healthUpdate.Invoke();
+
             popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
         }
         #endregion
