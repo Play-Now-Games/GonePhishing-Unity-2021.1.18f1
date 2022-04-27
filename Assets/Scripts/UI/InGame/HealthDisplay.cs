@@ -36,13 +36,13 @@ public class HealthDisplay : MonoBehaviour
     public void UpdateHealthSprite()
     {
 
-        //if (healthStages.Length - 1 != _mainScript.maxHealthPoints)
-        //{
-        //    print("Warning: number of health sprites is not the same as the number of health points");
-        //}
+        if (healthStages.Length - 1 != _mainScript.maxHealthPoints)
+        {
+            print("Warning: number of health sprites is not the same as the number of health points");
+        }
 
-        //Image healthDisplayImage = gameObject.GetComponent<Image>();
-        //healthDisplayImage.sprite = healthStages[_mainScript.healthPoints];
+        Image healthDisplayImage = gameObject.GetComponent<Image>();
+        healthDisplayImage.sprite = healthStages[_mainScript.healthPoints];
 
     }
 
