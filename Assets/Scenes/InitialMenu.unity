@@ -825,11 +825,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'This game contains sensitive topics.
-
-
-    These topics can be related
-    to Gambling, Mental Health, Porn Addictions, and others.
+  m_Text: 'This game touches on sensitive topics related to scams and gambling.
 
 '
 --- !u!222 &1433647791
@@ -1202,12 +1198,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'This is a video game with simulated operating system UI elements for educational
-    purposes.
-
-    this is not a real OS.
+    purposes.  This is not a real operating system, it is just a representation.
 
 
-    All Rights Reserved.'
+    All
+    Rights Reserved.'
 --- !u!222 &2127630855
 CanvasRenderer:
   m_ObjectHideFlags: 0
