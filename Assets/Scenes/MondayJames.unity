@@ -5531,8 +5531,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxTimeBonus: 5
+  _1StarScoreThreshold: 0
   _2StarScoreThreshold: 1000
-  _3StarScoreThreshold: 2000
   streak: 0
   _timer: {fileID: 1084311726}
   _finished: 0
@@ -5603,15 +5603,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PraiseComments:
   - 'It looks like you''re doing a great job. Keep it up! '
-  - 'It looks as if you''re getting the hang of this. Well done! '
+  - 'It looks like you''re getting the hang of this. Well done! '
   - 'It looks like you don''t need my help. Keep going! '
   - 'Excellent work! '
   - Good job!
   MockComments:
   - It looks like you're trying to do a terrible job.  Would you like some help with
     that?
-  - 'It looks like you''ve fell for a phishing email. Would you like me to play the
-    game for you? '
+  - 'It looks like you''ve fallen for a phishing email. Would you like me to play
+    the game for you? '
   - Oops... Maybe you'll get the next one. Notice that I said maybe.
   - 'HAHAHAHAHAHAHAHA!!!!!!!! '
   - LOL!
