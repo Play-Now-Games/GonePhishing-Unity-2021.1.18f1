@@ -117,8 +117,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 480
-        height: 420
+        width: 833
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -136,10 +136,10 @@ TextureImporter:
       name: phishy_appears_good_1
       rect:
         serializedVersion: 2
-        x: 550
+        x: 830
         y: 0
-        width: 640
-        height: 690
+        width: 833
+        height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,9 +157,9 @@ TextureImporter:
       name: phishy_appears_good_2
       rect:
         serializedVersion: 2
-        x: 1190
+        x: 1667
         y: 0
-        width: 730
+        width: 833
         height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
