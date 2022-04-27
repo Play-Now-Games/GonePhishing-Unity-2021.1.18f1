@@ -12,11 +12,11 @@ public class ScoreSystem : MonoBehaviour
     [Tooltip("The initial time bonus before it drops off.")]
     private float _maxTimeBonus;
     [SerializeField]
-    [Tooltip("How much score the player needs to earn 2 initial stars, if they fail to earn 3.")]
-    private float _2StarScoreThreshold;
+    [Tooltip("How much score the player needs to earn 1 initial stars, if they fail to earn 2.")]
+    private float _1StarScoreThreshold;
     [SerializeField]
-    [Tooltip("How much score the player needs to earn all 3 initial stars.")]
-    private float _3StarScoreThreshold;
+    [Tooltip("How much score the player needs to earn both initial stars.")]
+    private float _2StarScoreThreshold;
 
     [HideInInspector]
     public uint streak = 0;
@@ -80,20 +80,24 @@ public class ScoreSystem : MonoBehaviour
     {
         Score *= CalculateTimeBonus();
 
+        // Un-set the perfect bonus if player never took action
+        if (Score == 0)
+            _isPerfect = false;
+
         #region Give stars
         Stars = 0;
 
-        if (Score >= _3StarScoreThreshold)
-        {
-            Stars = 3;
-        }
-        else if (Score >= _2StarScoreThreshold)
+        if (Score >= _2StarScoreThreshold)
         {
             Stars = 2;
         }
-        else
+        else if (Score >= _1StarScoreThreshold)
         {
             Stars = 1;
+        }
+        else
+        {
+            Stars = 0;
         }
 
         if (_isPerfect)
@@ -112,7 +116,7 @@ public class ScoreSystem : MonoBehaviour
             GUI.Label(new Rect(0, 0, 100, 50), "Time bonus: x" + CalculateTimeBonus());
             GUI.Label(new Rect(0, 50, 100, 50), "Final score: " + Score);
             GUI.Label(new Rect(0, 100, 100, 50), "Perfect bonus: " + _isPerfect);
-            GUI.Label(new Rect(0, 150, 100, 50), Stars + " stars out of 4");
+            GUI.Label(new Rect(0, 150, 100, 50), Stars + " stars out of 3");
         }
         else
         {
