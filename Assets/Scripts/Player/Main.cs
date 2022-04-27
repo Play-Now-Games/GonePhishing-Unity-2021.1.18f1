@@ -305,18 +305,6 @@ public class Main : MonoBehaviour
     {
         _strike = 0;
     }
-
-    public void RestoreHealth(int HpRestored)
-    {
-        #region HP Related
-        healthPoints += HpRestored;
-
-        if (healthPoints > maxHealthPoints)
-            healthPoints = maxHealthPoints;
-
-        healthUpdate.Invoke();
-        #endregion
-    }
     #endregion
 
     #region Money Related Functions
