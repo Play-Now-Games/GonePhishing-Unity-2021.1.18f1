@@ -10,10 +10,17 @@ public class EmailGenerator_Scriptable : ScriptableObject
     private int uniqueIDValue = 0;
 
     [Tooltip("Use #firstName, #lastName, #title, and #senderName in the text as apropriate.")]
-    public string firstName, lastName, title, senderName, senderAddress;
+    public string firstName, lastName, title, senderName;
+    [TextArea]
+    public string senderAddress;
+    [TextArea]
     public string[] hardFakeSenderAddress;
-    public string[] mediumFakeFirstNames, mediumFakeLastNames, mediumFakeTitles, mediumFakeSenderNames, mediumFakeSenderAddress;
-    public string[] easyFakeFirstNames, easyFakeLastNames, easyFakeTitles, easyFakeSenderNames, easyFakeSenderAddress;
+    public string[] mediumFakeFirstNames, mediumFakeLastNames, mediumFakeTitles, mediumFakeSenderNames;
+    [TextArea]
+    public string[] mediumFakeSenderAddress;
+    public string[] easyFakeFirstNames, easyFakeLastNames, easyFakeTitles, easyFakeSenderNames;
+    [TextArea]
+    public string[] easyFakeSenderAddress;
 
     private string _firstName, _lastName, _title, _senderName, _senderAddress;
 
@@ -25,8 +32,11 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
     [Space(10)]
 
+    [TextArea]
     public string[] greetings;
+    [TextArea]
     public string[] fakeGreetings;
+    [TextArea]
     public string[] veryFakeGreetings;
 
     [System.Serializable]
