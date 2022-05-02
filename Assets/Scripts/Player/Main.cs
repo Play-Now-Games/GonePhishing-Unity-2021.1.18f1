@@ -16,6 +16,9 @@ public class Main : MonoBehaviour
     public SelectedAnimator selectedAnimator;
     public GameObject noEmail;
 
+    public int healthPoints;
+    public int maxHealthPoints;
+
     public Email_Scriptable[] totalEmails;
 
     public int phishingAmount;
@@ -40,6 +43,9 @@ public class Main : MonoBehaviour
     [SerializeField]
     private GameObject[] _totalPopUps;
 
+    [SerializeField]
+    private int _strike = 0;
+
     private float time = 5;
     private float popUpLimiter = 0;
     [SerializeField]
@@ -47,7 +53,7 @@ public class Main : MonoBehaviour
 
     private DayTimer _time;
 
-    //private HealthDisplay _healthDisplay;
+    private HealthDisplay _healthDisplay;
 
 
     //Email generation variables
@@ -72,13 +78,13 @@ public class Main : MonoBehaviour
         _audioScript = speakers.GetComponent<SoundsHolder>();
 
         //Get HealthDisplay
-        //GameObject health = GameObject.FindGameObjectWithTag("HealthDisplay");
-        //_healthDisplay = health.GetComponent<HealthDisplay>();
+        GameObject health = GameObject.FindGameObjectWithTag("HealthDisplay");
+        _healthDisplay = health.GetComponent<HealthDisplay>();
 
         //Scene ID James = 1
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            AwakeRandomizationEmail();
+            //AwakeRandomizationEmail();
         }
 
         _time = GetComponent<DayTimer>();
@@ -245,6 +251,61 @@ public class Main : MonoBehaviour
 
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
 
+
+
+    #region HP Related Functions
+    public void LoseHealth(int HpLost)
+    {
+        if (healthPoints > 0)
+        {
+            #region HP Related
+            healthPoints -= HpLost;
+
+            healthUpdate.Invoke();
+
+            //PopUpFormula
+            popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
+            #endregion
+
+
+            #region Call Animation
+            _healthDisplay.toAnimate = true;
+            #endregion
+        }
+    }
+
+    public void GainHealth(int HpGain)
+    {
+        #region HP Related
+        if (healthPoints < maxHealthPoints)
+        {
+            healthPoints += HpGain;
+
+            healthUpdate.Invoke();
+
+            popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
+        }
+        #endregion
+    }
+
+    public void StrikeAdd(int value)
+    {
+        #region Strikes
+        _strike++;
+
+        if(_strike >= 3)
+        {
+            GainHealth(1);
+            StrikeZero();
+        }
+        #endregion
+    }
+
+    public void StrikeZero()
+    {
+        _strike = 0;
+    }
+    #endregion
 
     #region Money Related Functions
     public void GiveMoney(int value)
@@ -420,7 +481,7 @@ public class Main : MonoBehaviour
 
         #region Search For Repetitive PopUps On Scene
 
-        if (totalEmails.Length != 1)
+        if ((Pops.Length < (int)popUpLimiter) && (totalEmails.Length != 1))
         {
             for (int i = 0; i < Pops.Length; i++)
             {

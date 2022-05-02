@@ -155,6 +155,7 @@ public class EmailButtons : MonoBehaviour
     private void GoodFeedBackReal()
     {
         #region Good Feeback
+        mainScript.StrikeAdd(1);
         mainScript.GiveMoney(100);
 
         _soundsHolder.PlayGoodFeedback();
@@ -170,6 +171,7 @@ public class EmailButtons : MonoBehaviour
     private void BadFeedBackReal()
     {
         #region Bad feedBack
+        mainScript.LoseHealth(1);
         mainScript.LoseMoney(200);
 
         int rand = UnityEngine.Random.Range(0, 2);
@@ -236,6 +238,7 @@ public class EmailButtons : MonoBehaviour
     private void GoodFeedBackPhishing()
     {
         #region Good Feeback
+        mainScript.StrikeAdd(1);
         mainScript.GiveMoney(100);
 
         _soundsHolder.PlayGoodFeedback();
@@ -251,6 +254,7 @@ public class EmailButtons : MonoBehaviour
     private void BadFeedBackPhishing()
     {
         #region Bad feedBack
+        mainScript.LoseHealth(1);
         mainScript.LoseMoney(200);
 
         int rand = UnityEngine.Random.Range(0, 2);
