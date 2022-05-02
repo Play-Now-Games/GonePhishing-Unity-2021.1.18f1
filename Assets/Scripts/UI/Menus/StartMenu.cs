@@ -25,7 +25,7 @@ public class StartMenu : MonoBehaviour
     ////// PUBLIC /////////
 
     ////// PRIVATE /////////
-    private int _state = 1;
+    private static int _state = 1;
     ////// PRIVATE /////////
 
     private void Start()
