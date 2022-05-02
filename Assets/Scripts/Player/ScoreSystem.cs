@@ -27,8 +27,6 @@ public class ScoreSystem : MonoBehaviour
     [Tooltip("Reference to the timer object.")]
     private DayTimer _timer;
 
-    public bool _finished = false;
-
     void Start()
     {
         if (_timer == null)
@@ -105,24 +103,6 @@ public class ScoreSystem : MonoBehaviour
             Stars++;
         }
         #endregion
-
-        _finished = true;
-    }
-
-    void OnGUI()
-    {
-        if (_finished)
-        {
-            GUI.Label(new Rect(0, 0, 100, 50), "Time bonus: x" + CalculateTimeBonus());
-            GUI.Label(new Rect(0, 50, 100, 50), "Final score: " + Score);
-            GUI.Label(new Rect(0, 100, 100, 50), "Perfect bonus: " + _isPerfect);
-            GUI.Label(new Rect(0, 150, 100, 50), Stars + " stars out of 3");
-        }
-        else
-        {
-            GUI.Label(new Rect(0, 0, 100, 50), "Score: " + Score);
-            GUI.Label(new Rect(0, 50, 100, 50), "Multiplier: x" + _multiplier);
-        }
     }
 
 }
