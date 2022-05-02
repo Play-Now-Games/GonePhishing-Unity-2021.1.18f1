@@ -4216,7 +4216,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1259314562}
         m_TargetAssemblyTypeName: HealthDisplay, Assembly-CSharp
-        m_MethodName: UpdateHealthSprite
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5726,7 +5726,6 @@ MonoBehaviour:
   _2StarScoreThreshold: 1000
   streak: 0
   _timer: {fileID: 1084311726}
-  _finished: 0
 --- !u!4 &1828199968
 Transform:
   m_ObjectHideFlags: 0
