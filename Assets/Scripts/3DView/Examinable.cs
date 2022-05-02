@@ -38,14 +38,15 @@ public class Examinable : Interactable
     private Quaternion _heldRotation;
 
     // Start is called before the first frame update
-    void Start()
-    {
+
+    void Awake()
+    { 
         #region Try to find unset components
         if (Player == null)
         {
             try
             {
-                Player = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
+                Player = GameObject.Find("====Character/Camera====").GetComponent<FirstPersonController>();
             }
             catch
             {
@@ -53,6 +54,9 @@ public class Examinable : Interactable
             }
         }
         #endregion
+    }
+    void Start()
+    {
 
         _restingPosition = transform.position;
         _restingRotation = transform.rotation;
