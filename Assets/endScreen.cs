@@ -12,7 +12,6 @@ public class endScreen : MonoBehaviour
     public ScoreSystem scoreSystem;
     public VideoClip[] clip;
     public GameObject canvas;
-    public Button button;
     private VideoPlayer videoPlayer;
     public string thisScene;
     public string NextScene;
@@ -22,12 +21,7 @@ public class endScreen : MonoBehaviour
     void Start()
     {
         videoPlayer = GetComponent<VideoPlayer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        videoPlayer.loopPointReached += ReturnToMainMenu;
     }
 
     public void PlayEndVideo()
@@ -55,29 +49,25 @@ public class endScreen : MonoBehaviour
         }
     }
 
+    void ReturnToMainMenu(UnityEngine.Video.VideoPlayer vp)
+    {
+        SceneManager.LoadScene("InitialMenu");
+    }
+
     void NoStarts()
     {
-        Text text = button.GetComponentInChildren<Text>();
-        text.text = "Restart";
-
         videoPlayer.clip = clip[0];
         videoPlayer.Play();
     }
 
     void OneStarts()
     {
-        Text text = button.GetComponentInChildren<Text>();
-        text.text = "Next Level";
-
         videoPlayer.clip = clip[1];
         videoPlayer.Play();
     }
 
     void TwoStarts()
     {
-        Text text = button.GetComponentInChildren<Text>();
-        text.text = "Next Level";
-
         videoPlayer.clip = clip[2];
         videoPlayer.Play();
     }
@@ -85,34 +75,8 @@ public class endScreen : MonoBehaviour
 
     void ThreeStarts()
     {
-        Text text = button.GetComponentInChildren<Text>();
-        text.text = "Next Level";
-
         videoPlayer.clip = clip[3];
         videoPlayer.Play();
     }
 
-    public void ButtonFunction()
-    {
-        if(scoreSystem.Stars == 0)
-        {
-            RestartLevel();
-        }
-        else
-        {
-            NextLevel();
-        }
-    }
-
-    void RestartLevel()
-    {
-
-        SceneManager.LoadScene(thisScene);
-    }
-
-    void NextLevel()
-    {
-
-        SceneManager.LoadScene(NextScene);
-    }
 }
