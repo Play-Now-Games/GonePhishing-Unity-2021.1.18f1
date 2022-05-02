@@ -27,29 +27,31 @@ public class endScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(scoreSystem._finished)
+
+    }
+
+    public void PlayEndVideo()
+    {
+        canvas.SetActive(true);
+
+        Color AlphaText = videoTexture.color;
+        AlphaText.a = 1;
+        videoTexture.color = AlphaText;
+
+        switch (scoreSystem.Stars)
         {
-            canvas.SetActive(true);
-
-            Color AlphaText = videoTexture.color;
-            AlphaText.a = 1;
-            videoTexture.color = AlphaText;
-
-            switch (scoreSystem.Stars)
-            {
-                case 0:
-                    NoStarts();
-                    break;
-                case 1:
-                    OneStarts();
-                    break;
-                case 2:
-                    TwoStarts();
-                    break;
-                case 3:
-                    ThreeStarts();
-                    break;
-            }
+            case 0:
+                NoStarts();
+                break;
+            case 1:
+                OneStarts();
+                break;
+            case 2:
+                TwoStarts();
+                break;
+            case 3:
+                ThreeStarts();
+                break;
         }
     }
 
