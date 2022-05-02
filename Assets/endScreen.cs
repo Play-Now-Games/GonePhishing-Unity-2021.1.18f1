@@ -7,15 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class endScreen : MonoBehaviour
 {
-    public RawImage videoTexture;
-    public DayTimer timeScript;
     public ScoreSystem scoreSystem;
-    public VideoClip[] clip;
-    public GameObject canvas;
+    public string[] clip;
     private VideoPlayer videoPlayer;
-    public string thisScene;
-    public string NextScene;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +20,6 @@ public class endScreen : MonoBehaviour
 
     public void PlayEndVideo()
     {
-        canvas.SetActive(true);
-
-        Color AlphaText = videoTexture.color;
-        AlphaText.a = 1;
-        videoTexture.color = AlphaText;
 
         switch (scoreSystem.Stars)
         {
@@ -56,26 +45,26 @@ public class endScreen : MonoBehaviour
 
     void NoStarts()
     {
-        videoPlayer.clip = clip[0];
+        videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, clip[0]);
         videoPlayer.Play();
     }
 
     void OneStarts()
     {
-        videoPlayer.clip = clip[1];
+        videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, clip[1]);
         videoPlayer.Play();
     }
 
     void TwoStarts()
     {
-        videoPlayer.clip = clip[2];
+        videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, clip[2]);
         videoPlayer.Play();
     }
 
 
     void ThreeStarts()
     {
-        videoPlayer.clip = clip[3];
+        videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, clip[3]);
         videoPlayer.Play();
     }
 
