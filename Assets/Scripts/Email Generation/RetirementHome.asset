@@ -32,9 +32,9 @@ MonoBehaviour:
   easyFakeSenderNames: []
   easyFakeSenderAddress:
   - Riverside Retirement Home <applications.retireriverside@phishmail.com>
-  logo: {fileID: 21300000, guid: 64702ed66a9c0584880a5dbee579c624, type: 3}
-  mediumFakeLogo: {fileID: 21300000, guid: 64702ed66a9c0584880a5dbee579c624, type: 3}
-  easyFakeLogo: {fileID: 21300000, guid: 35d76ad3a834fd54b9e5635c0a1b2e3e, type: 3}
+  logo: {fileID: 21300000, guid: b8c3570040e4029458694b4d581c569d, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 27d11fc8b8007e64187b02f9cb26c3de, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 19aa87b80ccbe074b9a88be13051f4b4, type: 3}
   greetings:
   - Dear Mr. Ferguson,
   fakeGreetings:
@@ -77,7 +77,7 @@ MonoBehaviour:
   - "Kind Regards, \n\nSusan Millar, Riverside Retirement Home Manager"
   easyFakeSignoffs:
   - "Thanks. \n\nManager of Riverside Retirement House"
-  _chanceOfMediumInHard: 0
-  _chanceOfHardInMedium: 0
-  _chanceOfEasyInMedium: 0
-  _chanceOfMediumInEasy: 0
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2

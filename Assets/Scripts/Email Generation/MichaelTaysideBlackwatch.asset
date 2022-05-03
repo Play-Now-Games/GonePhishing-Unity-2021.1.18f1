@@ -34,9 +34,9 @@ MonoBehaviour:
   - Micheal
   easyFakeSenderAddress:
   - Micheal <gary@phishmail.com>
-  logo: {fileID: 21300000, guid: 5d9e781595ca22e4c9815384de591483, type: 3}
-  mediumFakeLogo: {fileID: 21300000, guid: 5d9e781595ca22e4c9815384de591483, type: 3}
-  easyFakeLogo: {fileID: 21300000, guid: 6f1b87749f765e1478d863f76e040414, type: 3}
+  logo: {fileID: 21300000, guid: 9d2a4582eaa9e8b4389776ef8fdb93a1, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 5397ba4207e161c42b162cb14e172742, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 092e559431753f649a809bf6ba26d052, type: 3}
   greetings:
   - Hey,
   fakeGreetings:
@@ -83,7 +83,7 @@ MonoBehaviour:
 
 
 '
-  _chanceOfMediumInHard: 0
-  _chanceOfHardInMedium: 0
-  _chanceOfEasyInMedium: 0
-  _chanceOfMediumInEasy: 0
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2

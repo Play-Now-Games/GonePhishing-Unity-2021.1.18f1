@@ -53,8 +53,6 @@ public class Main : MonoBehaviour
 
     private DayTimer _time;
 
-    private HealthDisplay _healthDisplay;
-
 
     //Email generation variables
     [Space(16)]
@@ -76,10 +74,6 @@ public class Main : MonoBehaviour
         //GetAudio Source
         GameObject speakers = GameObject.FindGameObjectWithTag("Speakers");
         _audioScript = speakers.GetComponent<SoundsHolder>();
-
-        //Get HealthDisplay
-        GameObject health = GameObject.FindGameObjectWithTag("HealthDisplay");
-        _healthDisplay = health.GetComponent<HealthDisplay>();
 
         //Scene ID James = 1
         if (SceneManager.GetActiveScene().buildIndex != 1)
@@ -267,10 +261,6 @@ public class Main : MonoBehaviour
             popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
             #endregion
 
-
-            #region Call Animation
-            _healthDisplay.toAnimate = true;
-            #endregion
         }
     }
 

@@ -34,8 +34,8 @@ MonoBehaviour:
   easyFakeSenderAddress:
   - ' <headteacher@rlversldescho0l.com>'
   logo: {fileID: 21300000, guid: 6964440b1fde7f9438fbd249505ecef1, type: 3}
-  mediumFakeLogo: {fileID: 21300000, guid: 6964440b1fde7f9438fbd249505ecef1, type: 3}
-  easyFakeLogo: {fileID: 21300000, guid: 5d9e781595ca22e4c9815384de591483, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: b3eac3c911d692046b6c961a1620b0e8, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 44846534726a5924bb04f89f1697721b, type: 3}
   greetings:
   - Dear #title #lastName,
   fakeGreetings:
@@ -81,7 +81,7 @@ MonoBehaviour:
 
 
 '
-  _chanceOfMediumInHard: 0
-  _chanceOfHardInMedium: 0
-  _chanceOfEasyInMedium: 0
-  _chanceOfMediumInEasy: 0
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2

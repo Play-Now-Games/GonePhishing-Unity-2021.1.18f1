@@ -34,9 +34,9 @@ MonoBehaviour:
   - Shopmarket
   easyFakeSenderAddress:
   - Shopmarket <orders@shopmeerkat.co.uk>
-  logo: {fileID: 21300000, guid: 18f551d382b1c054685b9495ca13f219, type: 3}
-  mediumFakeLogo: {fileID: 21300000, guid: 18f551d382b1c054685b9495ca13f219, type: 3}
-  easyFakeLogo: {fileID: 21300000, guid: 611bc8be5756b8948b5b8bd6b14b38af, type: 3}
+  logo: {fileID: 21300000, guid: aaba785db9e1aa5498648196bff2b334, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: de79c5a3577c4c440b36b2d5bd9740b6, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 0be187b4fa7e71f4fbe8b9cb5a31da65, type: 3}
   greetings:
   - Hello shopper,
   - Hi #firstName,
@@ -75,7 +75,7 @@ MonoBehaviour:
   - Shopmarket Team
   easyFakeSignoffs:
   - 'Shopmarket Team '
-  _chanceOfMediumInHard: 0
-  _chanceOfHardInMedium: 0
-  _chanceOfEasyInMedium: 0
-  _chanceOfMediumInEasy: 0
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2

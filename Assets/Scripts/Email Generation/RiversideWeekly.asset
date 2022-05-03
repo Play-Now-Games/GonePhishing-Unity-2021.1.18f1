@@ -35,9 +35,9 @@ MonoBehaviour:
   - Riverside Weekly
   easyFakeSenderAddress:
   - Riverside Weekly <weeklyriverside@riversideweekly.com>
-  logo: {fileID: 21300000, guid: 6c95796d28d04d14e9bcd8f6a9865b5b, type: 3}
-  mediumFakeLogo: {fileID: 21300000, guid: 6c95796d28d04d14e9bcd8f6a9865b5b, type: 3}
-  easyFakeLogo: {fileID: 21300000, guid: 6c95796d28d04d14e9bcd8f6a9865b5b, type: 3}
+  logo: {fileID: 21300000, guid: 039bbfcc977b66d428313b74706cd314, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 1245c61516b457e4ca1f80a55e2484cd, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: e8f388a02a0b9b4429e9ef8ecd8dd7ea, type: 3}
   greetings:
   - Dear #title #lastName
   fakeGreetings:
@@ -92,7 +92,7 @@ MonoBehaviour:
   - 'Manager
 
     Weekly Riverside'
-  _chanceOfMediumInHard: 0
-  _chanceOfHardInMedium: 0
-  _chanceOfEasyInMedium: 0
-  _chanceOfMediumInEasy: 0
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2
