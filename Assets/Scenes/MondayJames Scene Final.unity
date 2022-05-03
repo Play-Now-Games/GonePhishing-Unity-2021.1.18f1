@@ -595,7 +595,7 @@ RectTransform:
   m_Children:
   - {fileID: 2103872148}
   m_Father: {fileID: 618455783}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1857,7 +1857,6 @@ RectTransform:
   m_Children:
   - {fileID: 893838460}
   - {fileID: 623596828}
-  - {fileID: 1259314561}
   - {fileID: 195708763}
   m_Father: {fileID: 419167954}
   m_RootOrder: 4
@@ -4267,7 +4266,7 @@ MonoBehaviour:
   healthUpdate:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1259314562}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: HealthDisplay, Assembly-CSharp
         m_MethodName: 
         m_Mode: 1
@@ -4496,105 +4495,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9c1dea28a512a443a41960bee5c7fae, type: 3}
---- !u!1 &1259314560
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1259314561}
-  - component: {fileID: 1259314564}
-  - component: {fileID: 1259314563}
-  - component: {fileID: 1259314562}
-  m_Layer: 5
-  m_Name: ==HealthDisplay==
-  m_TagString: HealthDisplay
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1259314561
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259314560}
-  m_LocalRotation: {x: 6.548361e-11, y: -3.877408e-22, z: -0.000000017462296, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.4e-13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 618455783}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 460.3, y: 1.5846}
-  m_SizeDelta: {x: 86.26, y: 46.83}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1259314562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259314560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2322c707d9428a74a84945fd162b359d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthStages:
-  - {fileID: 21300000, guid: 6b1d5671d8ae44848bd01eb246d09adf, type: 3}
-  - {fileID: 21300000, guid: f69e48010ba3bfc41aadba3fbd393bcc, type: 3}
-  - {fileID: 21300000, guid: 12088f25980ef8b4eb805651f8de01af, type: 3}
-  - {fileID: 21300000, guid: 9e8947428d8ac634181b568e1f9bcefb, type: 3}
-  - {fileID: 21300000, guid: fa4fde625a8a3b14696993e6b8bb687b, type: 3}
-  - {fileID: 21300000, guid: e723ecde13a8f774fbb70e1bd804744d, type: 3}
-  toAnimate: 0
-  animationTotal: 0
-  angleAdd: 0
-  animationTimes: 0
---- !u!114 &1259314563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259314560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e723ecde13a8f774fbb70e1bd804744d, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1259314564
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259314560}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1297480537
 PrefabInstance:
   m_ObjectHideFlags: 0
