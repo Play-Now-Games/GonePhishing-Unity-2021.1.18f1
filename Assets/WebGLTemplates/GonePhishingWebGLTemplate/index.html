@@ -14,6 +14,10 @@
         var meta = document.createElement('meta');
         var canvas = document.querySelector("#unity-canvas");
         
+        var landscapeNote = document.createElement('div');
+        landscapeNote.innerHTML = 'This game is best experienced with your device in landscape orientation.';
+        document.getElementsByTagName('body')[0].appendChild(landscapeNote);
+        
         if (window.innerHeight > window.innerWidth) {
             // Portrait mode: scale the canvas so that it will look right when the user rotates to landscape
             
@@ -30,6 +34,8 @@
         else
         {
             // Assume user is in landscape mode
+            
+            landscapeNote.style.display = 'none';
             
             meta.name = 'viewport';
             meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
@@ -51,10 +57,15 @@
             
                 if (window.innerWidth > window.innerHeight)
                 {
+                    landscapeNote.style.display = 'none';
                     meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
                     canvas.style.width = window.innerWidth + 'px';
                     canvas.style.height = window.innerHeight + 'px';
                     document.getElementsByTagName('body')[0].style.margin = "0px";
+                }
+                else
+                {
+                    landscapeNote.style.display = 'block';
                 }
             
                 window.removeEventListener('resize', resizeForLandscape);
