@@ -36,7 +36,7 @@ MonoBehaviour:
   - Micheal <gary@phishmail.com>
   logo: {fileID: 21300000, guid: 9d2a4582eaa9e8b4389776ef8fdb93a1, type: 3}
   mediumFakeLogo: {fileID: 21300000, guid: 5397ba4207e161c42b162cb14e172742, type: 3}
-  easyFakeLogo: {fileID: 21300000, guid: 5397ba4207e161c42b162cb14e172742, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 092e559431753f649a809bf6ba26d052, type: 3}
   greetings:
   - Hey,
   fakeGreetings:
