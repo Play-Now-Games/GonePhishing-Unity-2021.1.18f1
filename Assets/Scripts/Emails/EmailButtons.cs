@@ -185,7 +185,6 @@ public class EmailButtons : MonoBehaviour
             }
             else
             {
-                //Play Feedback sound is on the AddEmail Functions
                 switch (score.streak)
                 {
                     case 0:
@@ -210,7 +209,6 @@ public class EmailButtons : MonoBehaviour
             }
             else
             {
-                //Play Feedback sound is on the AddEmail Functions
                 switch (score.streak)
                 {
                     case 0:
@@ -229,6 +227,8 @@ public class EmailButtons : MonoBehaviour
             }
         }
         #endregion
+
+        _soundsHolder.PlayBadFeedback();
 
         mainScript.UICreation();
         phishy.TriggerPhishyComment(true);
@@ -268,7 +268,6 @@ public class EmailButtons : MonoBehaviour
             }
             else
             {
-                //Play Feedback sound is on the AddEmail Functions
                 switch (score.streak)
                 {
                     case 0:
@@ -293,7 +292,6 @@ public class EmailButtons : MonoBehaviour
             }
             else
             {
-                //Play Feedback sound is on the AddEmail Functions
                 switch (score.streak)
                 {
                     case 0:
@@ -312,6 +310,8 @@ public class EmailButtons : MonoBehaviour
             }
         }
         #endregion
+
+        _soundsHolder.PlayBadFeedback();
 
         mainScript.UICreation();
         phishy.TriggerPhishyComment(true);
