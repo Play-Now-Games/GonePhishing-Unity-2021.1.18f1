@@ -47,10 +47,8 @@ public class FirstPersonController : MonoBehaviour
     private int SwivelControlMarginPixels;
     private float CameraSwivelAngle = 0;
 
-    private int ExitCameraLockMarginPixelsX;
-    private int ExitCameraLockMarginPixelsY;
-
-    private Interactable Selection = null;
+    private Interactable ClickingOn = null;
+    private Interactable LastClickedOn = null;
     private bool TryingToExitCameraLock = false;
 
     private ClickManager clickManager;
@@ -127,7 +125,7 @@ public class FirstPersonController : MonoBehaviour
                             if (clicked.transform.gameObject.GetComponent<Interactable>())
                             {
                                 // Player started clicking on an interactable
-                                Selection = clicked.transform.gameObject.GetComponent<Interactable>();
+                                ClickingOn = clicked.transform.gameObject.GetComponent<Interactable>();
                             }
                         }
                     }
@@ -139,15 +137,16 @@ public class FirstPersonController : MonoBehaviour
 
                         if (Physics.Raycast(mouseRay, out clicked))
                         {
-                            if (Selection != null && clicked.transform.gameObject.GetComponent<Interactable>() == Selection)
+                            if (ClickingOn != null && clicked.transform.gameObject.GetComponent<Interactable>() == ClickingOn)
                             {
                                 // Player clicked fully on a specific interactable
-                                Selection.OnClick();
-                                Selection = null;
+                                ClickingOn.OnClick();
+                                LastClickedOn = ClickingOn;
+                                ClickingOn = null;
                             }
                         }
 
-                        Selection = null;
+                        ClickingOn = null;
                     }
                 }
 
@@ -155,21 +154,32 @@ public class FirstPersonController : MonoBehaviour
             else if (CurrentState == PlayerState.LockCamera)
             {
 
-                ExitCameraLockMarginPixelsX = Mathf.RoundToInt(Screen.width / 100.0f * ExitCameraLockMargin);
-                ExitCameraLockMarginPixelsY = Mathf.RoundToInt(Screen.height / 100.0f * ExitCameraLockMargin);
-
                 List<Click> clicks = clickManager.GetClicks();
 
                 for (int i = 0; i < clicks.Count; i++)
                 {
                     if (clicks[i].phase == Click.ClickPhase.Begin)
                     {
+                        // Trying to exit if clicked anywhere other than the last clicked interactable.
+                        RaycastHit clicked;
+                        Ray mouseRay = MainCamera.ScreenPointToRay(clicks[i].position);
 
-                        // Check if player is trying to exit camera lock
-                        if (clicks[i].position.x < ExitCameraLockMarginPixelsX
-                            || clicks[i].position.x > Screen.width - ExitCameraLockMarginPixelsX
-                            || clicks[i].position.y < ExitCameraLockMarginPixelsY
-                            || clicks[i].position.y > Screen.height - ExitCameraLockMarginPixelsY)
+                        if (Physics.Raycast(mouseRay, out clicked))
+                        {
+                            if (clicked.transform.gameObject.GetComponent<Interactable>())
+                            {
+                                ClickingOn = clicked.transform.gameObject.GetComponent<Interactable>();
+                                if (ClickingOn != LastClickedOn)
+                                {
+                                    TryingToExitCameraLock = true;
+                                }
+                            }
+                            else
+                            {
+                                TryingToExitCameraLock = true;
+                            }
+                        }
+                        else
                         {
                             TryingToExitCameraLock = true;
                         }
@@ -178,10 +188,32 @@ public class FirstPersonController : MonoBehaviour
 
                     if (clicks[i].phase == Click.ClickPhase.End)
                     {
-                        if (clicks[i].position.x < ExitCameraLockMarginPixelsX
-                            || clicks[i].position.x > Screen.width - ExitCameraLockMarginPixelsX
-                            || clicks[i].position.y < ExitCameraLockMarginPixelsY
-                            || clicks[i].position.y > Screen.height - ExitCameraLockMarginPixelsY)
+                        // Unlock camera unless now clicking on last clicked interactable
+                        RaycastHit clicked;
+                        Ray mouseRay = MainCamera.ScreenPointToRay(clicks[i].position);
+
+                        if (Physics.Raycast(mouseRay, out clicked))
+                        {
+                            if (clicked.transform.gameObject.GetComponent<Interactable>())
+                            {
+                                ClickingOn = clicked.transform.gameObject.GetComponent<Interactable>();
+                                if (ClickingOn != LastClickedOn)
+                                {
+                                    if (TryingToExitCameraLock)
+                                    {
+                                        ReturnCameraToOriginalPositionRotation();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (TryingToExitCameraLock)
+                                {
+                                    ReturnCameraToOriginalPositionRotation();
+                                }
+                            }
+                        }
+                        else
                         {
                             if (TryingToExitCameraLock)
                             {
