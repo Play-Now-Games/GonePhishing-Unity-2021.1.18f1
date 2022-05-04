@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreSystem : MonoBehaviour
 {
@@ -9,14 +10,19 @@ public class ScoreSystem : MonoBehaviour
     public uint Stars { get; private set; }
 
     [SerializeField]
+    private MultiplierDisplay multiplierDisplay;
+    [SerializeField]
+    private Text scoreDisplay;
+
+    [SerializeField]
     [Tooltip("The initial time bonus before it drops off.")]
     private float _maxTimeBonus;
     [SerializeField]
-    [Tooltip("How much score the player needs to earn 2 initial stars, if they fail to earn 3.")]
-    private float _2StarScoreThreshold;
+    [Tooltip("How much score the player needs to earn 1 initial stars, if they fail to earn 2.")]
+    private float _1StarScoreThreshold;
     [SerializeField]
-    [Tooltip("How much score the player needs to earn all 3 initial stars.")]
-    private float _3StarScoreThreshold;
+    [Tooltip("How much score the player needs to earn both initial stars.")]
+    private float _2StarScoreThreshold;
 
     [HideInInspector]
     public uint streak = 0;
@@ -26,8 +32,6 @@ public class ScoreSystem : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to the timer object.")]
     private DayTimer _timer;
-
-    private bool _finished = false;
 
     void Start()
     {
@@ -40,12 +44,16 @@ public class ScoreSystem : MonoBehaviour
     public void AddScore(float amount)
     {
         Score += amount * _multiplier;
+
+        scoreDisplay.text = "Score: " + Score;
     }
 
     public void ScoreMultiplierStreakAdd()
     {
         streak++;
         #region Adjust multiplier
+        multiplierDisplay.UpdateMuliplierSprite(streak);
+
         switch (streak)
         {
             case 0:
@@ -65,6 +73,7 @@ public class ScoreSystem : MonoBehaviour
     public void ScoreMultiplierStreakReset()
     {
         streak = 0;
+        multiplierDisplay.UpdateMuliplierSprite(streak);
         _multiplier = 1.0f;
         _isPerfect = false;
     }
@@ -80,20 +89,24 @@ public class ScoreSystem : MonoBehaviour
     {
         Score *= CalculateTimeBonus();
 
+        // Un-set the perfect bonus if player never took action
+        if (Score == 0)
+            _isPerfect = false;
+
         #region Give stars
         Stars = 0;
 
-        if (Score >= _3StarScoreThreshold)
-        {
-            Stars = 3;
-        }
-        else if (Score >= _2StarScoreThreshold)
+        if (Score >= _2StarScoreThreshold)
         {
             Stars = 2;
         }
-        else
+        else if (Score >= _1StarScoreThreshold)
         {
             Stars = 1;
+        }
+        else
+        {
+            Stars = 0;
         }
 
         if (_isPerfect)
@@ -101,24 +114,6 @@ public class ScoreSystem : MonoBehaviour
             Stars++;
         }
         #endregion
-
-        _finished = true;
-    }
-
-    void OnGUI()
-    {
-        if (_finished)
-        {
-            GUI.Label(new Rect(0, 0, 100, 50), "Time bonus: x" + CalculateTimeBonus());
-            GUI.Label(new Rect(0, 50, 100, 50), "Final score: " + Score);
-            GUI.Label(new Rect(0, 100, 100, 50), "Perfect bonus: " + _isPerfect);
-            GUI.Label(new Rect(0, 150, 100, 50), Stars + " stars out of 4");
-        }
-        else
-        {
-            GUI.Label(new Rect(0, 0, 100, 50), "Score: " + Score);
-            GUI.Label(new Rect(0, 50, 100, 50), "Multiplier: x" + _multiplier);
-        }
     }
 
 }

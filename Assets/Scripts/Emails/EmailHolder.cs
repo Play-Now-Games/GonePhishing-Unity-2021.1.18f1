@@ -24,6 +24,11 @@ public class EmailHolder : MonoBehaviour
     public Text timeHour;
     public Text timeMin;
 
+    // Set by ArchiveTabManager if created by it.
+    [HideInInspector]
+    public bool archiveEmail = false;
+    [HideInInspector]
+    public ArchiveTabManager archiveTabManager;
     ///////// PUBLIC /////////
 
     ///////// PRIVATE /////////
@@ -143,9 +148,18 @@ public class EmailHolder : MonoBehaviour
         {
             //SetActive Issue fixed
             //make sure email is active so it can be updated
-            mainScript.selected.SetActive(true);
+            if (!archiveEmail)
+            {
+                mainScript.selected.SetActive(true);
 
-            mainScript.selectedEmail = holder;
+                mainScript.selectedEmail = holder;
+            }
+            else
+            {
+                archiveTabManager.selectedEmailDisplay.SetActive(true);
+
+                archiveTabManager.selectedEmail = holder;
+            }
 
             ClickChangeInfo();
 
@@ -158,7 +172,15 @@ public class EmailHolder : MonoBehaviour
     private void ClickUpdateBackground()
     {
         //Find all emails and set to unselected
-        GameObject emailHolderParent = GameObject.Find("Content");
+        GameObject emailHolderParent;
+        if (!archiveEmail)
+        {
+            emailHolderParent = GameObject.Find("Content");
+        }
+        else
+        {
+            emailHolderParent = GameObject.Find("ArchiveContent");
+        }
 
         EmailHolder[] emails = emailHolderParent.GetComponentsInChildren<EmailHolder>();
 
@@ -174,101 +196,23 @@ public class EmailHolder : MonoBehaviour
 
     public void ClickChangeInfo()
     {
-
-        #region Change Button References
-
-        answerButton.holderCopy = holder;
-
-        ignoreButton.holderCopy = holder;
-
-        #endregion
-
-        #region Get All Info And Change - IF's are mandatory to prevent crashes
-
-        GameObject BodyLogo = GameObject.Find("=Body-Image/Logo=");
-        if (BodyLogo)
+        if (!archiveEmail)
         {
-            Image Logo = BodyLogo.GetComponent<Image>();
-            if (Logo)
-            {
-                Logo.sprite = holder.logo;
-            }
+            #region Change Button References
+
+            answerButton.holderCopy = holder;
+
+            ignoreButton.holderCopy = holder;
+
+            #endregion
+
+            GameObject.Find("==Selected==").GetComponent<EmailDisplayScript>().UpdateDisplay(holder);
+        }
+        else
+        {
+
+            GameObject.Find("==SelectedArchive==").GetComponent<EmailDisplayScript>().UpdateDisplay(holder);
         }
 
-
-        GameObject BodyTittle = GameObject.Find("=Body-Tittle=");
-        if (BodyTittle)
-        {
-            Text Tittle = BodyTittle.GetComponent<Text>();
-            if (Tittle)
-            {
-                Tittle.text = holder.tittle;
-
-            }
-        }
-
-        GameObject BodySenderAdress = GameObject.Find("=Body-SenderAdress=");
-        if (BodySenderAdress)
-        {
-            Text Tittle = BodySenderAdress.GetComponent<Text>();
-            if (Tittle)
-            {
-                Tittle.text = holder.senderAdress;
-
-            }
-        }
-
-        GameObject BodyGreetins = GameObject.Find("=Body-Greetins=");
-        if (BodyGreetins)
-        {
-            Text Greetings = BodyGreetins.GetComponent<Text>();
-            if (Greetings)
-            {
-                Greetings.text = holder.greetings;
-            }
-        }
-
-        GameObject BodyContent = GameObject.Find("=Body-Content=");
-        if (BodyContent)
-        {
-            Text Content = BodyContent.GetComponent<Text>();
-            if (Content)
-            {
-                Content.text = holder.content;
-            }
-        }
-
-        GameObject BodyBye = GameObject.Find("=Body-Bye=");
-        if (BodyBye)
-        {
-            Text Bye = BodyBye.GetComponent<Text>();
-            if (Bye)
-            {
-                Bye.text = holder.bye;
-            }
-        }
-
-        GameObject BodyHour = GameObject.Find("=Body-TimeHour=");
-        if (BodyHour)
-        {
-            Text Hour = BodyHour.GetComponent<Text>();
-            if (Hour)
-            {
-                Hour.text = holder.timeHour;
-            }
-        }
-
-        GameObject BodyMin = GameObject.Find("=Body-TimeMin=");
-        if (BodyMin)
-        {
-            Text Min = BodyMin.GetComponent<Text>();
-            if (Min)
-            {
-                Min.text = holder.timeMin;
-            }
-        }
-
-        #endregion
-    
     }
 }

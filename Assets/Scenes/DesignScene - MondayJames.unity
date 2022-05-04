@@ -688,6 +688,8 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5e500b4e66d30f4d98d2135890dba7c, type: 3}
 --- !u!1 &387616649
+<<<<<<< HEAD:Assets/Scenes/MondayJames EmailGeneration.unity
+=======
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -799,6 +801,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 409482392}
   m_CullTransparentMesh: 1
 --- !u!1 &419167950
+>>>>>>> staging:Assets/Scenes/DesignScene - MondayJames.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -897,7 +900,13 @@ RectTransform:
   - {fileID: 872945508}
   - {fileID: 1831297698}
   - {fileID: 560065856}
+<<<<<<< HEAD:Assets/Scenes/MondayJames EmailGeneration.unity
+  - {fileID: 173148546}
+  - {fileID: 1923730988}
+  - {fileID: 1831297698}
+=======
   - {fileID: 1497110636}
+>>>>>>> staging:Assets/Scenes/DesignScene - MondayJames.unity
   m_Father: {fileID: 204520567}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1173,6 +1182,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 419167954}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &891675962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 891675964}
+  - component: {fileID: 891675963}
+  m_Layer: 0
+  m_Name: Email Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &891675963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891675962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2250f719735cc974aa9c6d5c8b90061c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outputEmails: []
+  firstName: Jadzia
+  lastName: Dax
+  title: Lieutenant
+  senderName: Garak
+  greetings:
+  - Dear #title #lastName,
+  - Hey #firstName!
+  bodies:
+  - This email is totally fake!
+  - This email is totally Real!
+  signoffs:
+  - 'Kind reguards,
+
+    #senderName'
+  - '#senderName'
+--- !u!4 &891675964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891675962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &909585726
 GameObject:
@@ -2515,6 +2583,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627190825}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD:Assets/Scenes/MondayJames EmailGeneration.unity
+=======
 --- !u!1 &1635829747
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,6 +2660,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635829747}
   m_CullTransparentMesh: 1
+>>>>>>> staging:Assets/Scenes/DesignScene - MondayJames.unity
 --- !u!1 &1678086128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,6 +2803,7 @@ Transform:
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 175.793, z: 0}
 --- !u!1 &1763720967
+<<<<<<< HEAD:Assets/Scenes/MondayJames EmailGeneration.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2788,6 +2860,249 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831297697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 419167954}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1062.4691, y: 407.4772}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1831297699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831297697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fda8b0209fdcdf4fb571459a97355b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PraiseComments: []
+  MockComments:
+  - It looks like you're trying to do a terrible job.  Would you like some help with
+    that?
+  EmailResponseCommentChance: 100
+  EmailResponseCommentPosition: {x: -50, y: -230}
+  DialogueBubble: {fileID: 3451908788116683739, guid: 1f6198ea86aa6004b977fc60e45a8fb9, type: 3}
+--- !u!95 &1831297700
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831297697}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fd0e1c4d8f7e6bf40a1015ca7e0fc886, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1831297701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831297697}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 915b08ffafe65af48939f6cd002f9daf, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1831297702
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831297697}
+  m_CullTransparentMesh: 1
+--- !u!1 &1850010491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1850010492}
+  - component: {fileID: 1850010494}
+  - component: {fileID: 1850010493}
+  m_Layer: 0
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1850010492
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850010491}
+  m_LocalRotation: {x: -7.275956e-12, y: 4.6566118e-10, z: 5.954347e-12, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000046491623}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 27508384}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.99993896, y: 0.000091552734}
+  m_SizeDelta: {x: 250, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1850010493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850010491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 41
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 48
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Ignore
+--- !u!222 &1850010494
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850010491}
+  m_CullTransparentMesh: 1
+--- !u!1 &1859251712
+=======
+>>>>>>> staging:Assets/Scenes/DesignScene - MondayJames.unity
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+<<<<<<< HEAD:Assets/Scenes/MondayJames EmailGeneration.unity
+  - component: {fileID: 1859251713}
+  - component: {fileID: 1859251717}
+  - component: {fileID: 1859251716}
+  - component: {fileID: 1859251715}
+  - component: {fileID: 1859251714}
+  m_Layer: 0
+  m_Name: =Answer=
+=======
+  - component: {fileID: 1763720968}
+  m_Layer: 0
+  m_Name: ===Walls===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1763720968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763720967}
+  m_LocalRotation: {x: -0, y: 0.9993727, z: -0, w: -0.035415854}
+  m_LocalPosition: {x: -855.38983, y: -456.12637, z: 1629.1157}
+  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_Children:
+  - {fileID: 6857758780224352920}
+  m_Father: {fileID: 1882694702}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 184.059, z: 0}
+--- !u!1 &1831297697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1831297698}
+  - component: {fileID: 1831297702}
+  - component: {fileID: 1831297701}
+  - component: {fileID: 1831297700}
+  - component: {fileID: 1831297699}
+  m_Layer: 5
+  m_Name: ==Phishy==
+>>>>>>> staging:Assets/Scenes/DesignScene - MondayJames.unity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+<<<<<<< HEAD:Assets/Scenes/MondayJames EmailGeneration.unity
+--- !u!224 &1859251713
+=======
+--- !u!224 &1831297698
+>>>>>>> staging:Assets/Scenes/DesignScene - MondayJames.unity
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD:Assets/Scenes/MondayJames EmailGeneration.unity
+=======
   m_GameObject: {fileID: 1831297697}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1}
@@ -2993,6 +3308,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+>>>>>>> staging:Assets/Scenes/DesignScene - MondayJames.unity
   m_GameObject: {fileID: 1859251712}
   m_LocalRotation: {x: -2.1827868e-11, y: 0.0000000013969835, z: 6.0111902e-12, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -21.000078}
@@ -3388,8 +3704,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD:Assets/Scenes/MondayJames EmailGeneration.unity
+  m_AnchoredPosition: {x: 385, y: 277}
+  m_SizeDelta: {x: 192, y: 108}
+=======
   m_AnchoredPosition: {x: 1346.4, y: 62.6}
   m_SizeDelta: {x: 128.6126, y: 72.3446}
+>>>>>>> staging:Assets/Scenes/DesignScene - MondayJames.unity
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1923730989
 MonoBehaviour:

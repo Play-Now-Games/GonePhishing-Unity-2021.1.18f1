@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d838299e9fc994682f3fd6337190f7, type: 3}
+  m_Name: A_Shopmarket
+  m_EditorClassIdentifier: 
+  ID: 99
+  logo: {fileID: 21300000, guid: aaba785db9e1aa5498648196bff2b334, type: 3}
+  sender: Shopmarket.co.uk
+  senderAdress: Shopmarket.co.uk <orders@shopmarket.co.uk>
+  tittle: Order #1436 Confirmed
+  greetings: Hello,
+  content: "Thank you for your order! We'll let you know once your item has been
+    dispatched. Please see a summary of your order below. Order Number #1436. Order
+    Total: \xA318.99. You have until 15/02/22 to make changes or cancel your order.
+    If you wish to, please click HERE."
+  bye: We hope to see you again soon. Shopmarket.co.uk
+  timeHour: 
+  timeMin: 
+  isPhishing: 0
+  difficulty: 0

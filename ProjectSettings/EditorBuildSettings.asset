@@ -10,8 +10,5 @@ EditorBuildSettings:
     guid: 415a0500a35de894ebd3fe1d3dffa7df
   - enabled: 1
     path: Assets/Scenes/MondayJames.unity
-    guid: bedfd3d040d82f242851384703fce8f9
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    guid: 89a16ad473fd47146b06b2437eb28246
   m_configObjects: {}

@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class Main : MonoBehaviour
 {
@@ -52,7 +53,16 @@ public class Main : MonoBehaviour
 
     private DayTimer _time;
 
-    private HealthDisplay _healthDisplay;
+
+    //Email generation variables
+    [Space(16)]
+    public bool generateEmails;
+    private EmailGenerator _emailGenerator;
+    [SerializeField]
+    [Tooltip("Number of emails to initally generate.")]
+    private int _initalGenReal, _initalGenEasyPhishing, _initalGenMediumPhishing, _initalGenHardPhishing;
+
+
 
 
     private SoundsHolder _audioScript;
@@ -65,20 +75,18 @@ public class Main : MonoBehaviour
         GameObject speakers = GameObject.FindGameObjectWithTag("Speakers");
         _audioScript = speakers.GetComponent<SoundsHolder>();
 
-        //Get HealthDisplay
-        GameObject health = GameObject.FindGameObjectWithTag("HealthDisplay");
-        _healthDisplay = health.GetComponent<HealthDisplay>();
-
         //Scene ID James = 1
         if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            AwakeRandomizationEmail();
+            //AwakeRandomizationEmail();
         }
 
         _time = GetComponent<DayTimer>();
 
-
+        //Get EmailGenerator
+        _emailGenerator = GetComponentInChildren<EmailGenerator>();
     }
+
 
     private void AwakeRandomizationEmail()
     {
@@ -145,9 +153,39 @@ public class Main : MonoBehaviour
     {
         selectedAnimator = selected.GetComponent<SelectedAnimator>();
 
+        if (generateEmails)
+        {
+            InitalEmailGeneration();
+        }
+
         UICreation();
     }
+    private void InitalEmailGeneration()
+    {
+        #region Generate Emails
+        for (int i = 0; i < _initalGenReal; i++)
+        {
+            GenerateEmail();
+        }
 
+        for (int i = 0; i < _initalGenEasyPhishing; i++)
+        {
+            GenerateEmail(true, 1);
+        }
+
+        for (int i = 0; i < _initalGenMediumPhishing; i++)
+        {
+            GenerateEmail(true, 2);
+        }
+
+        for (int i = 0; i < _initalGenHardPhishing; i++)
+        {
+            GenerateEmail(true, 3);
+        }
+        #endregion
+
+        ShuffleEmails(ref totalEmails);
+    }
 
     public void StartRemoveAt<T>(ref T[] arr, int index)
     {
@@ -212,34 +250,29 @@ public class Main : MonoBehaviour
     #region HP Related Functions
     public void LoseHealth(int HpLost)
     {
-        #region HP Related
-        healthPoints -= HpLost;
-
-        healthUpdate.Invoke();
-
-        if (healthPoints <= 0)
+        if (healthPoints > 0)
         {
-            EndGame(false);
+            #region HP Related
+            healthPoints -= HpLost;
+
+            healthUpdate.Invoke();
+
+            //PopUpFormula
+            popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
+            #endregion
+
         }
-
-        //PopUpFormula
-        popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
-
-        #endregion
-
-
-        #region Call Animation
-        _healthDisplay.toAnimate = true;
-        #endregion
-
     }
 
     public void GainHealth(int HpGain)
     {
         #region HP Related
-        if (healthPoints < 5)
+        if (healthPoints < maxHealthPoints)
         {
             healthPoints += HpGain;
+
+            healthUpdate.Invoke();
+
             popUpLimiter = ((healthPoints / 1.5f) * -1) + 4;
         }
         #endregion
@@ -261,18 +294,6 @@ public class Main : MonoBehaviour
     public void StrikeZero()
     {
         _strike = 0;
-    }
-
-    public void RestoreHealth(int HpRestored)
-    {
-        #region HP Related
-        healthPoints += HpRestored;
-
-        if (healthPoints > maxHealthPoints)
-            healthPoints = maxHealthPoints;
-
-        healthUpdate.Invoke();
-        #endregion
     }
     #endregion
 
@@ -304,18 +325,17 @@ public class Main : MonoBehaviour
         GameObject Content = GameObject.Find("Content");
 
         //Vectors to spawn -- 110 is the 100 + offset
-        Vector2 height = new Vector2(0, 2.5f);
+        float height = 300.0f;
 
         //-1 to work on
         for (int i = 0; i < totalEmails.Length - 1; i++)
         {
-            //Email Pos Based on Pos in the array
-            Vector2 Transfor = new Vector2(Content.transform.position.x - 15, Content.transform.position.y);
-            Vector2 emailNewPos = Transfor - (height * i);
 
             //Instantiate & Set Child
-            GameObject ChildObject = Instantiate(emailPrefab, new Vector3(emailNewPos.x, emailNewPos.y, 0), Quaternion.identity);
-            ChildObject.transform.parent = Content.transform;
+            GameObject ChildObject = Instantiate(emailPrefab, Content.transform);
+
+            //Email Pos Based on Pos in the array
+            ChildObject.transform.localPosition = new Vector3(0, -(height * i), 0);
 
             //Add Scriptable Object Here
             EmailHolder holder = ChildObject.GetComponent<EmailHolder>();
@@ -326,7 +346,7 @@ public class Main : MonoBehaviour
         #region Update Height - Scroll Bar
 
         RectTransform RectT = Content.GetComponent<RectTransform>();
-        RectT.sizeDelta = new Vector2(RectT.sizeDelta.x, height.y * totalEmails.Length);
+        RectT.sizeDelta = new Vector2(RectT.sizeDelta.x, height * totalEmails.Length);
 
         #endregion
     }
@@ -348,7 +368,7 @@ public class Main : MonoBehaviour
     public void AddEmails(Email_Scriptable[] originalArray)
     {
 
-        #region Add Phishing Emails
+        #region Add Emails
 
         if (originalArray.Length > 0)
         {
@@ -379,6 +399,19 @@ public class Main : MonoBehaviour
 
     }
 
+    public void GenerateEmail(bool phishing = false, int difficulty = 0)
+    {
+        if (_emailGenerator.GenerateEmail(out Email_Scriptable email, phishing, difficulty))
+        {
+            totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
+        }
+        else
+        {
+            //Trying to generate too many emails
+            Debug.LogWarning("Trying to generate too many emails. Phishing-Type: " + phishing + "   Difficulty: " + difficulty);
+        }
+    }
+
     public Array AddArrayAtStart(object o, Array oldArray)
     {
 
@@ -404,6 +437,19 @@ public class Main : MonoBehaviour
 
         #endregion
     
+    }
+
+    public void ShuffleEmails(ref Email_Scriptable[] array)
+    {
+        // Knuth shuffle algorithm
+        // -1 to avoid messing with last email in list which is not used
+        for (int i = 0; i < array.Length - 1; i++)
+        {
+            Email_Scriptable temp = array[i];
+            int r = Random.Range(i, array.Length - 1);
+            array[i] = array[r];
+            array[r] = temp;
+        }
     }
     #endregion
 
@@ -445,9 +491,9 @@ public class Main : MonoBehaviour
             {
                 
                 //Get Position
-                float x = UnityEngine.Random.Range(105, 128);
-                float y = UnityEngine.Random.Range(-383, -367);
-                float z = 583.3f;
+                float x = UnityEngine.Random.Range(140.8f, 161.2f);
+                float y = UnityEngine.Random.Range(-379.18f, -387.92f);
+                float z = 626.65f;
                 
                 Vector3 popUpNewPos = new Vector3(x, y, z);
 

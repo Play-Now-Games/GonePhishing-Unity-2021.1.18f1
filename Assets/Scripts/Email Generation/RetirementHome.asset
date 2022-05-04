@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927fd1f77c7439b47ae6a8ee50e71a98, type: 3}
+  m_Name: RetirementHome
+  m_EditorClassIdentifier: 
+  GeneratorID: 400
+  firstName: James
+  lastName: Ferguson
+  title: Mr.
+  senderName: Riverside Retirement Home
+  senderAddress: "Riverside Retirement Home \n<applications@retireriverside.net>"
+  hardFakeSenderAddress:
+  - "Riverside Retirement Home \n<applicatlons@retirerlverside.net>"
+  mediumFakeFirstNames: []
+  mediumFakeLastNames: []
+  mediumFakeTitles: []
+  mediumFakeSenderNames: []
+  mediumFakeSenderAddress:
+  - Riverside Retirement Home <applications@riversideretirement.com>
+  easyFakeFirstNames: []
+  easyFakeLastNames: []
+  easyFakeTitles: []
+  easyFakeSenderNames: []
+  easyFakeSenderAddress:
+  - Riverside Retirement Home <applications.retireriverside@phishmail.com>
+  logo: {fileID: 21300000, guid: b8c3570040e4029458694b4d581c569d, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 27d11fc8b8007e64187b02f9cb26c3de, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: 19aa87b80ccbe074b9a88be13051f4b4, type: 3}
+  greetings:
+  - Dear Mr. Ferguson,
+  fakeGreetings:
+  - Dear Mr. Fergusson,
+  veryFakeGreetings:
+  - Dear applicant,
+  reuseBodies: 0
+  bodies:
+  - title: Application
+    body: 'We are writing to you today to inform you that you have been accepted
+      into Riverside Retirement Home. We do need a few details from you first before
+      we can begin the moving in stage. Below is a link to a form we will need you
+      to sign and provide details. We are excited to be providing all your needs
+      in the future. '
+  hardFakeBodies:
+  - title: Application
+    body: 'We are writing to you today to inform you that you have been accepted
+      into Riverside Retirement Home. We do need a few details from you first before
+      we can begin the moving in stage. Below is a link to a form we will need you
+      to sign and provide details. We are excited to be providing all your needs
+      in the future. '
+  mediumFakeBodies:
+  - title: Application
+    body: 'We are writing to you today to inform you that you have been accepted
+      into Riverside Retirement Home. We do need a few details off you first before
+      we can begin the moving in stage. Below is a link to a form we will need you
+      to sign and provide details. We are excited to be providing all your needs
+      in the future. '
+  easyFakeBodies:
+  - title: Aplication
+    body: "We are writing to you to let you know that you have been acepted into
+      Riverside Retirement House. we do need a few small details off you 1st before
+      we can begin the moving in stage . Can you please sign and provide many details
+      in the form below , this MUST be completed in 24 HOURS or your application
+      will be unsuccessfull. We are so excited to be provide all your needs in the
+      near future. \n\napplication.pdf.exe"
+  signoffs:
+  - "Kind Regards, \n\nSusan Millar, Riverside Retirement Home Manager"
+  mediumFakeSignoffs:
+  - "Kind Regards, \n\nSusan Millar, Riverside Retirement Home Manager"
+  easyFakeSignoffs:
+  - "Thanks. \n\nManager of Riverside Retirement House"
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2

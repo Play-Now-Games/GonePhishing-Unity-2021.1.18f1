@@ -82,11 +82,11 @@ public class EmailButtons : MonoBehaviour
                         //Email.isPhishing == True
                         if (holderCopy.isPhishing)
                         {
-                            BadFeedBack();
+                            BadFeedBackPhishing();
                         }
                         else
                         {
-                            GoodFeedBack();
+                            GoodFeedBackReal();
                         }
 
                         break;
@@ -128,11 +128,11 @@ public class EmailButtons : MonoBehaviour
                         //Email.isPhishing == True
                         if (!holderCopy.isPhishing)
                         {
-                            BadFeedBack();
+                            BadFeedBackReal();
                         }
                         else
                         {
-                            GoodFeedBack();
+                            GoodFeedBackPhishing();
                         }
 
                         break;
@@ -152,7 +152,7 @@ public class EmailButtons : MonoBehaviour
         mainScript.selectedEmail = null; //Main will set selected to inactive when selectedEmail is null 
     }
 
-    private void GoodFeedBack()
+    private void GoodFeedBackReal()
     {
         #region Good Feeback
         mainScript.StrikeAdd(1);
@@ -168,40 +168,152 @@ public class EmailButtons : MonoBehaviour
         #endregion
     }
 
-    private void BadFeedBack()
+    private void BadFeedBackReal()
     {
         #region Bad feedBack
         mainScript.LoseHealth(1);
         mainScript.LoseMoney(200);
 
         int rand = UnityEngine.Random.Range(0, 2);
-        
-        if (rand == 0 && mainScript.normalEmails.Length > 0)
+
+        #region Add Email (if possible)
+        if (mainScript.generateEmails)
         {
-            mainScript.AddEmails(mainScript.normalEmails);
+            if (rand == 0)
+            {
+                mainScript.GenerateEmail();
+            }
+            else
+            {
+                switch (score.streak)
+                {
+                    case 0:
+                    case 1:
+                        mainScript.GenerateEmail(true, 1);
+                        break;
+                    case 2:
+                        mainScript.GenerateEmail(true, 2);
+                        break;
+                    case 3:
+                        mainScript.GenerateEmail(true, 3);
+                        break;
+                }
+            }
         }
         else
         {
-            //Play Feedback sound is on the AddEmail Functions
-            switch (score.streak)
+
+            if (rand == 0 && mainScript.normalEmails.Length > 0)
             {
-                case 0:
-                    mainScript.AddEmails(mainScript.easyPhishing);
-                    break;
-                case 1:
-                    mainScript.AddEmails(mainScript.easyPhishing);
-                    break;
-                case 2:
-                    mainScript.AddEmails(mainScript.mediumPhishing);
-                    break;
-                case 3:
-                    mainScript.AddEmails(mainScript.hardPhishing);
-                    break;
+                mainScript.AddEmails(mainScript.normalEmails);
+            }
+            else
+            {
+                switch (score.streak)
+                {
+                    case 0:
+                        mainScript.AddEmails(mainScript.easyPhishing);
+                        break;
+                    case 1:
+                        mainScript.AddEmails(mainScript.easyPhishing);
+                        break;
+                    case 2:
+                        mainScript.AddEmails(mainScript.mediumPhishing);
+                        break;
+                    case 3:
+                        mainScript.AddEmails(mainScript.hardPhishing);
+                        break;
+                }
             }
         }
-        
-        mainScript.UICreation();
+        #endregion
 
+        _soundsHolder.PlayBadFeedback();
+
+        mainScript.UICreation();
+        phishy.TriggerPhishyComment(true);
+        score.ScoreMultiplierStreakReset();
+        #endregion
+    }
+    private void GoodFeedBackPhishing()
+    {
+        #region Good Feeback
+        mainScript.StrikeAdd(1);
+        mainScript.GiveMoney(100);
+
+        _soundsHolder.PlayGoodFeedback();
+
+        //UI Creation
+        mainScript.UICreation();
+        phishy.TriggerPhishyComment(false);
+        score.AddScore(100);
+        score.ScoreMultiplierStreakAdd();
+        #endregion
+    }
+
+    private void BadFeedBackPhishing()
+    {
+        #region Bad feedBack
+        mainScript.LoseHealth(1);
+        mainScript.LoseMoney(200);
+
+        int rand = UnityEngine.Random.Range(0, 2);
+
+        #region Add Email (if possible)
+        if (mainScript.generateEmails)
+        {
+            if (rand == 0)
+            {
+                mainScript.GenerateEmail();
+            }
+            else
+            {
+                switch (score.streak)
+                {
+                    case 0:
+                    case 1:
+                        mainScript.GenerateEmail(true, 1);
+                        break;
+                    case 2:
+                        mainScript.GenerateEmail(true, 2);
+                        break;
+                    case 3:
+                        mainScript.GenerateEmail(true, 3);
+                        break;
+                }
+            }
+        }
+        else
+        {
+
+            if (rand == 0 && mainScript.normalEmails.Length > 0)
+            {
+                mainScript.AddEmails(mainScript.normalEmails);
+            }
+            else
+            {
+                switch (score.streak)
+                {
+                    case 0:
+                        mainScript.AddEmails(mainScript.easyPhishing);
+                        break;
+                    case 1:
+                        mainScript.AddEmails(mainScript.easyPhishing);
+                        break;
+                    case 2:
+                        mainScript.AddEmails(mainScript.mediumPhishing);
+                        break;
+                    case 3:
+                        mainScript.AddEmails(mainScript.hardPhishing);
+                        break;
+                }
+            }
+        }
+        #endregion
+
+        _soundsHolder.PlayBadFeedback();
+
+        mainScript.UICreation();
         phishy.TriggerPhishyComment(true);
         score.ScoreMultiplierStreakReset();
         #endregion

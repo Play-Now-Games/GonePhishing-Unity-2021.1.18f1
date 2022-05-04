@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927fd1f77c7439b47ae6a8ee50e71a98, type: 3}
+  m_Name: RiversideWeekly
+  m_EditorClassIdentifier: 
+  GeneratorID: 600
+  firstName: James
+  lastName: Ferguson
+  title: Mr.
+  senderName: Riverside Weekly
+  senderAddress: "Riverside Weekly \n<update@riversideweekly.blog>"
+  hardFakeSenderAddress:
+  - "Riverside Weekly \n<update@riversideweekiy.blog>"
+  mediumFakeFirstNames: []
+  mediumFakeLastNames: []
+  mediumFakeTitles: []
+  mediumFakeSenderNames:
+  - Riverside Weekly
+  mediumFakeSenderAddress:
+  - "Riverside Weekly \n<RiversideWeekly@phishmail.com>"
+  easyFakeFirstNames: []
+  easyFakeLastNames: []
+  easyFakeTitles:
+  - Mrs
+  easyFakeSenderNames:
+  - Riverside Weekly
+  easyFakeSenderAddress:
+  - Riverside Weekly <update@weaklyreeversid.com>
+  logo: {fileID: 21300000, guid: 039bbfcc977b66d428313b74706cd314, type: 3}
+  mediumFakeLogo: {fileID: 21300000, guid: 1245c61516b457e4ca1f80a55e2484cd, type: 3}
+  easyFakeLogo: {fileID: 21300000, guid: e8f388a02a0b9b4429e9ef8ecd8dd7ea, type: 3}
+  greetings:
+  - Dear #title #lastName
+  fakeGreetings:
+  - 'Dear customer, '
+  veryFakeGreetings:
+  - Hello,
+  reuseBodies: 0
+  bodies:
+  - title: Payment Issue
+    body: "I am emailing you from Riverside Weekly. We have seen you have been a
+      client of ours for a while now and thank you greatly for your time and patronage.
+      Unfortunately, this email reaches you today as we regretfully inform you that
+      your most recent annual payment hasn\u2019t gone through, and we must ask for
+      a repayment to be made before the expiry date of you plan on the 3rd March.
+      Down below is a link for you to enter your details and a guide on how to go
+      through with the repayment. We would like to thank you for your continual support
+      of our small news outlet and hope to provide further enjoyment in the future."
+  hardFakeBodies:
+  - title: Payment Issue
+    body: "I am emailing you from Riverside Weekly. We have seen you have been a
+      client of ours for a while now and thank you greatly for your time and patronage.
+      Unfortunately, this email reaches you today as we regretfully inform you that
+      your most recent annual payment hasn\u2019t gone through, and we must ask for
+      a repayment to be made before the expiry date of you plan on the 3rd March.
+      Down below is a link for you to enter your details and a guide on how to go
+      through with the repayment. We would like to thank you for your continual support
+      of our small news outlet and hope to provide further enjoyment in the future."
+  mediumFakeBodies:
+  - title: Payment Issue
+    body: "I am emailing you from the Riverside Weekly. Thank you for your time and
+      patronage. Unfortunately, this email reaches you today as we regretfully inform
+      you that your most recent annual payment hasn\u2019t gone through, and we must
+      ask for a repayment to be made before the expiry date of you plan on the 3rd
+      March. Down below is a link for you to enter your details and a guide on how
+      to go through with the repayment. We would like to thank you for your continual
+      support of our small news outlet and hope to provide further enjoyment in the
+      future."
+  easyFakeBodies:
+  - title: Urgent! Action Needed!
+    body: 'You''re most recent payment has failed. Please update payment details
+      as soon as possible.
+
+
+      Update Details: http://to.ly/Sc4M'
+  signoffs:
+  - "Kind Regards, \n\nPatricia Monroe \nRiverside Weekly Manager"
+  mediumFakeSignoffs:
+  - "Kind Regards,\n \nDavid Smith\nRiverside Weekly Manager"
+  easyFakeSignoffs:
+  - 'Thanks for Co-operating with us.
+
+
+    Weekly Riverside'
+  _chanceOfMediumInHard: 0.1
+  _chanceOfHardInMedium: 0.1
+  _chanceOfEasyInMedium: 0.1
+  _chanceOfMediumInEasy: 0.2
