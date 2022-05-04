@@ -16,31 +16,32 @@ MonoBehaviour:
   firstName: James
   lastName: Ferguson
   title: Mr.
-  senderName: Support Our Soldiers
-  senderAddress: Support Our Soldiers <news@supportoursoldiers.com>
+  senderName: Support For Soldiers
+  senderAddress: "Support For Soldiers \n<news@supportforsoldiers.com>"
   hardFakeSenderAddress:
-  - Support Our Soliders <news@supportoursoldiers.co.uk>
+  - "Support For Soldiers \n<news@supportforsoldiers.co.uk>"
   mediumFakeFirstNames: []
   mediumFakeLastNames: []
   mediumFakeTitles: []
   mediumFakeSenderNames:
-  - Support Our Soldiers
+  - Support Our Veterans
   mediumFakeSenderAddress:
-  - Support Our Soldiers <news@supportoursoliders.org>
+  - "Support Our Veterans \n<news@supportourveterans.org>"
   easyFakeFirstNames: []
   easyFakeLastNames:
   - Fergusson
   easyFakeTitles:
   - Mrs.
   easyFakeSenderNames:
-  - Support For Soldiers
+  - Caring Our Veterinarians
   easyFakeSenderAddress:
-  - Support For Soldiers <news@supportforsoldiers.com>
+  - "Caring Our Veterinarians \n<news@caringourveterinarians.com>"
   logo: {fileID: 21300000, guid: 1ede316ec006d624e9c35c4c3ae1b348, type: 3}
   mediumFakeLogo: {fileID: 21300000, guid: 9eac1ef5a04835743af435fb6f131656, type: 3}
   easyFakeLogo: {fileID: 21300000, guid: 84d629927589ec0419dd384984829d6f, type: 3}
   greetings:
   - Hello #firstName,
+  - Hello,
   fakeGreetings:
   - Hi supporter,
   veryFakeGreetings:
@@ -48,34 +49,34 @@ MonoBehaviour:
   reuseBodies: 0
   bodies:
   - title: Newsletter #246
-    body: "Please see our latest newsletter #246 below! Support Our Soldiers has
+    body: "Please see our latest newsletter #246 below! Support For Soldiers has
       been providing practical support to bereaved families and former forces personnel
-      since it\u2019s foundation in 2004. Thank you for your continued support! Please
+      since it\u2019s foundation in 1920. Thank you for your continued support! Please
       follow the link below to download the newsletter.\n\nDownload Newsletter.PDF"
   hardFakeBodies:
   - title: Newsletter #270
-    body: "Please see our latest newsletter #270 below! Support Our Soldiers has
+    body: "Please see our latest newsletter #270 below! Support For Soldiers has
       been providing practical support to bereaved families and former forces personnel
-      since it\u2019s foundation in 2004. Thank you for your continued support! Please
+      since it\u2019s foundation in 1920. Thank you for your continued support! Please
       follow the link below to download the newsletter.\n\nDownload Newsletter.PDF"
   mediumFakeBodies:
   - title: Newsletter #249
     body: "Please see our latest newsletter below! Support Our Soldiers has been
       providing practical support to bereaved families and former forces personnel
-      since it\u2019s foundation in 2004. Thank you for your continued support! Please
+      since it\u2019s foundation in 1939. Thank you for your continued support! Please
       follow the link below to download the newsletter.\n\nDownload Newsletter.PDF"
   easyFakeBodies:
   - title: Newsletter #255
     body: "Please see our latest newsletter below! Support For Soldiers has been
       providing practical support to bereaved families and former forces personnel
-      since it\u2019s foundation in 2004. Thank you for your continued support! Please
-      follow the link below to download the newsletter.\n\nDownload Newsletter.PDF"
+      since it\u2019s foundation in 2039. Thank you for your continued support! Please
+      follow the link below to download the newsletter.\n\nDownload Newsletter.exe"
   signoffs:
-  - "Thank you for your continued support. \n\nSupport Our Soliders Team"
+  - "Thank you for your continued support. \n\nSupport For Soliders Team"
   mediumFakeSignoffs:
-  - "Thank you for your continued support. \n\nSupport Our Soliders Team"
+  - "Thank you for your continued support. \n\nSupport Our Veterans Team"
   easyFakeSignoffs:
-  - "Thank you for your contineud support. \n\nSupport For Soliders Team"
+  - Caring Our Veterinarians
   _chanceOfMediumInHard: 0.1
   _chanceOfHardInMedium: 0.1
   _chanceOfEasyInMedium: 0.1

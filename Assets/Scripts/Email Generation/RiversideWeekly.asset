@@ -17,16 +17,16 @@ MonoBehaviour:
   lastName: Ferguson
   title: Mr.
   senderName: Riverside Weekly
-  senderAddress: Riverside Weekly <update@riversideweekly.blog>
+  senderAddress: "Riverside Weekly \n<update@riversideweekly.blog>"
   hardFakeSenderAddress:
-  - Riverside Weekly <update@riversideweekiy.blog>
+  - "Riverside Weekly \n<update@riversideweekiy.blog>"
   mediumFakeFirstNames: []
   mediumFakeLastNames: []
   mediumFakeTitles: []
   mediumFakeSenderNames:
   - Riverside Weekly
   mediumFakeSenderAddress:
-  - Riverside Weekly <RiversideWeekly@phishmail.com>
+  - "Riverside Weekly \n<RiversideWeekly@phishmail.com>"
   easyFakeFirstNames: []
   easyFakeLastNames: []
   easyFakeTitles:
@@ -34,7 +34,7 @@ MonoBehaviour:
   easyFakeSenderNames:
   - Riverside Weekly
   easyFakeSenderAddress:
-  - Riverside Weekly <weeklyriverside@riversideweekly.com>
+  - Riverside Weekly <update@weaklyreeversid.com>
   logo: {fileID: 21300000, guid: 039bbfcc977b66d428313b74706cd314, type: 3}
   mediumFakeLogo: {fileID: 21300000, guid: 1245c61516b457e4ca1f80a55e2484cd, type: 3}
   easyFakeLogo: {fileID: 21300000, guid: e8f388a02a0b9b4429e9ef8ecd8dd7ea, type: 3}
@@ -47,8 +47,8 @@ MonoBehaviour:
   reuseBodies: 0
   bodies:
   - title: Payment Issue
-    body: "I am emailing you from the Riverside Weekly. We have seen you have been
-      a client of ours for a while now and thank you greatly for your time and patronage.
+    body: "I am emailing you from Riverside Weekly. We have seen you have been a
+      client of ours for a while now and thank you greatly for your time and patronage.
       Unfortunately, this email reaches you today as we regretfully inform you that
       your most recent annual payment hasn\u2019t gone through, and we must ask for
       a repayment to be made before the expiry date of you plan on the 3rd March.
@@ -57,8 +57,8 @@ MonoBehaviour:
       of our small news outlet and hope to provide further enjoyment in the future."
   hardFakeBodies:
   - title: Payment Issue
-    body: "I am emailing you from the Riverside Weekly. We have seen you have been
-      a client of ours for a while now and thank you greatly for your time and patronage.
+    body: "I am emailing you from Riverside Weekly. We have seen you have been a
+      client of ours for a while now and thank you greatly for your time and patronage.
       Unfortunately, this email reaches you today as we regretfully inform you that
       your most recent annual payment hasn\u2019t gone through, and we must ask for
       a repayment to be made before the expiry date of you plan on the 3rd March.
@@ -67,29 +67,28 @@ MonoBehaviour:
       of our small news outlet and hope to provide further enjoyment in the future."
   mediumFakeBodies:
   - title: Payment Issue
-    body: "I am emailing you from the Riverside Weekly. We have seen you have been
-      a client of ours for a while now and thank you greatly for your time and patronage.
-      Unfortunately, this email reaches you today as we regretfully inform you that
-      your most recent annual payment hasn\u2019t gone through, and we must ask for
-      a repayment to be made before the expiry date of you plan on the 3rd March.
-      Down below is a link for you to enter your details and a guide on how to go
-      through with the repayment. We would like to thank you for your continual support
-      of our small news outlet and hope to provide further enjoyment in the future."
+    body: "I am emailing you from the Riverside Weekly. Thank you for your time and
+      patronage. Unfortunately, this email reaches you today as we regretfully inform
+      you that your most recent annual payment hasn\u2019t gone through, and we must
+      ask for a repayment to be made before the expiry date of you plan on the 3rd
+      March. Down below is a link for you to enter your details and a guide on how
+      to go through with the repayment. We would like to thank you for your continual
+      support of our small news outlet and hope to provide further enjoyment in the
+      future."
   easyFakeBodies:
   - title: Urgent! Action Needed!
     body: 'You''re most recent payment has failed. Please update payment details
       as soon as possible.
 
 
-      Update Details
-
-'
+      Update Details: http://to.ly/Sc4M'
   signoffs:
   - "Kind Regards, \n\nPatricia Monroe \nRiverside Weekly Manager"
   mediumFakeSignoffs:
   - "Kind Regards,\n \nDavid Smith\nRiverside Weekly Manager"
   easyFakeSignoffs:
-  - 'Manager
+  - 'Thanks for Co-operating with us.
+
 
     Weekly Riverside'
   _chanceOfMediumInHard: 0.1

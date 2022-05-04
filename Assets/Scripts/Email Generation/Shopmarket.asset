@@ -16,24 +16,28 @@ MonoBehaviour:
   firstName: James
   lastName: Ferguson
   title: Mr.
-  senderName: Shopmarket
-  senderAddress: Shopmarket <orders@shopmarket.co.uk>
+  senderName: Shopmarket.co.uk
+  senderAddress: "Shopmarket.co.uk \n<orders@shopmarket.co.uk>"
   hardFakeSenderAddress:
-  - Shopmarket <no-reply@shopmarket.com>
+  - "Shopmarket.co.uk \n<no-reply@shopmarket.com>"
   mediumFakeFirstNames: []
   mediumFakeLastNames: []
   mediumFakeTitles: []
   mediumFakeSenderNames:
   - Shopmarket
   mediumFakeSenderAddress:
-  - Shopmarket <orderss@shopmarket.co.uk>
+  - 'Shopmarket
+
+    <orders@sh0pmarket.co.uk>'
   easyFakeFirstNames: []
   easyFakeLastNames: []
   easyFakeTitles: []
   easyFakeSenderNames:
   - Shopmarket
   easyFakeSenderAddress:
-  - Shopmarket <orders@shopmeerkat.co.uk>
+  - 'Shopmeerkat.co.dz
+
+    <orders@shopmeerkat.co.uk>'
   logo: {fileID: 21300000, guid: aaba785db9e1aa5498648196bff2b334, type: 3}
   mediumFakeLogo: {fileID: 21300000, guid: de79c5a3577c4c440b36b2d5bd9740b6, type: 3}
   easyFakeLogo: {fileID: 21300000, guid: 0be187b4fa7e71f4fbe8b9cb5a31da65, type: 3}
@@ -47,34 +51,40 @@ MonoBehaviour:
   - Hello shopper,
   reuseBodies: 0
   bodies:
-  - title: Order Confirmation #396-158-274
-    body: "Order Number #396-158-274 thank you for shopping with us today! Please
-      see a summary of your order below. \n\nTotal price: \xA329.99\n\nYou have until
-      11/03/22 to make changes or cancel your order. If you would like to, please
-      click HERE. "
+  - title: Order #4857 Confirmed
+    body: "Thank you for your order! We'll let you know once your item has been dispatched.
+      Please see a summary of your order below. \n\nOrder Number #4857\nOrder Total:
+      \xA329.99\n\nYou have until 11/03/22 to make changes or cancel your order.
+      If you would like to, please click HERE. "
   hardFakeBodies:
-  - title: Order Confirmation #692-478-135
-    body: "Order Number #692-478-135 thank you for shopping with us today! Please
-      see a summary of your order below. \n\nTotal price: \xA345.99\n\nYou have until
+  - title: Order #5791 Confirmed
+    body: "Thank you for your order! We'll let you know once your item has been dispatched.
+      Please see a summary of your order below. \n\nOrder Number #5791\nOrder Total:
+      \xA334.99\n\nYou have until 11/03/22 to make changes or cancel your order.
+      If you would like to, please click HERE. "
+  mediumFakeBodies:
+  - title: Order #1261 Confirmed
+    body: "Order Number #9281 thank you for shopping with us today! Please see a
+      summary of your order below. \n\nTotal price: \xA3269.84\n\nYou have until
       11/03/22 to make changes or cancel your order. If you would like to, please
       click HERE. "
-  mediumFakeBodies:
-  - title: Order Confirmation #396-158-283
-    body: "Order Number #396-158-276 thank you for shopping with us today! Please
-      see a summary of your order below. \n\nTotal price: \xA3269.84\n\nYou have
-      until 11/03/22 to make changes or cancel your order. If you would like to,
-      please click HERE. "
   easyFakeBodies:
-  - title: Please confirm your account
-    body: "You're most recent payment has failed. Have you recently changed bank,
-      phone number or credit card?. To ensure your service is not interrupted, please
-      update your billing information today. \n\nConfirm your account now"
+  - title: Order Confirmed!
+    body: "Thank you for buying pet meerkat. We hope you have enjoy a happy lives
+      together. \n\nPrice of 1 Meerkat: \xA31269.58\n\nTo cancel order, pleases click
+      HERE"
   signoffs:
-  - 'Shopmarket Team '
+  - 'We hope to see you again soon.
+
+
+    Shopmarket.co.uk'
   mediumFakeSignoffs:
-  - Shopmarket Team
+  - 'Thanks for ordering,
+
+
+    Shopmarket'
   easyFakeSignoffs:
-  - 'Shopmarket Team '
+  - Shopmeerkat
   _chanceOfMediumInHard: 0.1
   _chanceOfHardInMedium: 0.1
   _chanceOfEasyInMedium: 0.1

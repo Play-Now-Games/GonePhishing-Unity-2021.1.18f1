@@ -17,23 +17,24 @@ MonoBehaviour:
   lastName: Ferguson
   title: Mr.
   senderName: PokerPlays.com
-  senderAddress: PokerPlays.com <promotions@pokerplays.com>
+  senderAddress: "PokerPlays.com \n<promotions@pokerplays.com>"
   hardFakeSenderAddress:
-  - PokerPlays.com <promotions@pokerpiays.com>
+  - "PokerPlays.com \n<promotions@pokerpiays.com>"
   mediumFakeFirstNames: []
   mediumFakeLastNames: []
   mediumFakeTitles: []
   mediumFakeSenderNames:
   - PokerPlays.com
   mediumFakeSenderAddress:
-  - PokerPlays.com <promotions@pokerpays.com>
-  easyFakeFirstNames: []
+  - "PokerPlays.com \n<promotions@pokerpays.com>"
+  easyFakeFirstNames:
+  - Jams
   easyFakeLastNames: []
   easyFakeTitles: []
   easyFakeSenderNames:
   - PokerPayz.com
   easyFakeSenderAddress:
-  - PokerPlays.com <fklsdgnsdkjlgns@phishmail.com>
+  - "PokerPayz.com \n<fklsdgnsdkjlgns@phishmail.com>"
   logo: {fileID: 21300000, guid: aa79be8cad3092242a355906223d91cc, type: 3}
   mediumFakeLogo: {fileID: 21300000, guid: 6302521cfa2cced498f7318c5f711b03, type: 3}
   easyFakeLogo: {fileID: 21300000, guid: 34defa1e01c35564f880f892faa1c2f3, type: 3}

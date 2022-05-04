@@ -17,9 +17,9 @@ MonoBehaviour:
   lastName: Ferguson
   title: Mr.
   senderName: Riverside Retirement Home
-  senderAddress: Riverside Retirement Home <applications@retireriverside.net>
+  senderAddress: "Riverside Retirement Home \n<applications@retireriverside.net>"
   hardFakeSenderAddress:
-  - Riverside Retirement Home <applicatlons@retirerlverside.net>
+  - "Riverside Retirement Home \n<applicatlons@retirerlverside.net>"
   mediumFakeFirstNames: []
   mediumFakeLastNames: []
   mediumFakeTitles: []
@@ -45,14 +45,14 @@ MonoBehaviour:
   bodies:
   - title: Application
     body: 'We are writing to you today to inform you that you have been accepted
-      into Riverside Retirement Home. We do need a few details off you first before
+      into Riverside Retirement Home. We do need a few details from you first before
       we can begin the moving in stage. Below is a link to a form we will need you
       to sign and provide details. We are excited to be providing all your needs
       in the future. '
   hardFakeBodies:
   - title: Application
     body: 'We are writing to you today to inform you that you have been accepted
-      into Riverside Retirement Home. We do need a few details off you first before
+      into Riverside Retirement Home. We do need a few details from you first before
       we can begin the moving in stage. Below is a link to a form we will need you
       to sign and provide details. We are excited to be providing all your needs
       in the future. '
@@ -64,7 +64,7 @@ MonoBehaviour:
       to sign and provide details. We are excited to be providing all your needs
       in the future. '
   easyFakeBodies:
-  - title: Application
+  - title: Aplication
     body: "We are writing to you to let you know that you have been acepted into
       Riverside Retirement House. we do need a few small details off you 1st before
       we can begin the moving in stage . Can you please sign and provide many details

@@ -17,72 +17,42 @@ MonoBehaviour:
   lastName: Ferguson
   title: Mr.
   senderName: Michael
-  senderAddress: Michael <michael@phishmail.com>
+  senderAddress: "Michael \n<michael@phishmail.com>"
   hardFakeSenderAddress:
-  - Michael <michael.p@phishmail.com>
+  - "Michael \n<michael@phishmail.com>"
   mediumFakeFirstNames: []
   mediumFakeLastNames: []
   mediumFakeTitles: []
-  mediumFakeSenderNames:
-  - Michael
-  mediumFakeSenderAddress:
-  - Michael <micheal@phishmail.com>
+  mediumFakeSenderNames: []
+  mediumFakeSenderAddress: []
   easyFakeFirstNames: []
   easyFakeLastNames: []
   easyFakeTitles: []
-  easyFakeSenderNames:
-  - Micheal
-  easyFakeSenderAddress:
-  - Micheal <gary@phishmail.com>
+  easyFakeSenderNames: []
+  easyFakeSenderAddress: []
   logo: {fileID: 21300000, guid: 9d2a4582eaa9e8b4389776ef8fdb93a1, type: 3}
   mediumFakeLogo: {fileID: 21300000, guid: 5397ba4207e161c42b162cb14e172742, type: 3}
   easyFakeLogo: {fileID: 21300000, guid: 092e559431753f649a809bf6ba26d052, type: 3}
   greetings:
-  - Hey,
+  - Hey old friend,
   fakeGreetings:
   - Hi old friend,
   veryFakeGreetings:
   - Hey fellow veteran,
   - Hey bro,
   reuseBodies: 0
-  bodies:
-  - title: Help!?
-    body: "Its Michael from the Tayside Blackwatch Division. I know it has been a
-      while but I was wondering if you could lend I some money. My wife has unfortunately
-      passed and I'm all alone now. \n\nAny donation would be fantastic, there is
-      a link below about where and how to sent the money.\n\nwww.giftme.com/michael"
+  bodies: []
   hardFakeBodies:
-  - title: Help!?
-    body: "Its Michael from the Tayside Blackwatch Division. I know it has been a
-      while but I was wondering if you could lend I some money. My wife has unfortunately
-      passed and I'm all alone now. \n\nAny donation would be fantastic, there is
-      a link below about where and how to sent the money.\n\nwww.giftme.com/michael"
-  mediumFakeBodies:
-  - title: Help!?
-    body: 'Its Michael from the Blackwatch division. I know it has been a while but
-      I was wondering if you could lend I some money as my wife has died recently
-      and I''m all alone now.
-
-
-      Any donation would be fantastic, there is a
-      link below about where and how to sent the money.
-
-
-      www.giftme.com/micheal'
-  easyFakeBodies:
   - title: Help!?
     body: "its Micheal from back in the day. I know it has been a while but I was
       wondering if you could send some money as my wives has died ! im all alone
-      now :( \n\nAnything would be fantastic, here's a link to my gift page.\n\nwww.giftme.com/gary"
+      now :( \n\nAnything would be fantastic, here's a link to my gift page.\n\nwww.giftme.com/michael"
+  mediumFakeBodies: []
+  easyFakeBodies: []
   signoffs:
-  - "Thanks, \n\nMichael"
-  mediumFakeSignoffs:
-  - "Thanks, \n\nMichael"
-  easyFakeSignoffs:
-  - 'your good old pal Micheal
-
-
-'
+  - Michael
+  mediumFakeSignoffs: []
+  easyFakeSignoffs: []
   _chanceOfMediumInHard: 0.1
   _chanceOfHardInMedium: 0.1
   _chanceOfEasyInMedium: 0.1
