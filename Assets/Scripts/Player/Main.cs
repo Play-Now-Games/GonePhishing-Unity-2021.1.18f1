@@ -491,9 +491,9 @@ public class Main : MonoBehaviour
             {
                 
                 //Get Position
-                float x = UnityEngine.Random.Range(105, 128);
-                float y = UnityEngine.Random.Range(-383, -367);
-                float z = 583.3f;
+                float x = UnityEngine.Random.Range(140.8f, 161.2f);
+                float y = UnityEngine.Random.Range(-378.16f, -387.92f);
+                float z = 626.65f;
                 
                 Vector3 popUpNewPos = new Vector3(x, y, z);
 
