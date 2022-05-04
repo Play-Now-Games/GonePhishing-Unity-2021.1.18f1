@@ -54,14 +54,14 @@ public class TimeAnimation : MonoBehaviour
             {
                 _angle = 0;
             }
-
-            if(_count == 0)
-            {
-                sound.Play();
-                _count++;
-            }
         }
-        
+
+        if (_time.CurrentTimeLimit - _time.CurrentTime < 10.0f && _count == 0)
+        {
+            sound.Play();
+            _count++;
+        }
+
     }
 
 }
