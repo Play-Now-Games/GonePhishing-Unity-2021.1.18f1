@@ -56,7 +56,7 @@ public class TimeAnimation : MonoBehaviour
             }
         }
 
-        if (_time.CurrentTimeLimit - _time.CurrentTime < 10.0f && _count == 0)
+        if (_time.CurrentTimeLimit - _time.CurrentTime < 8.0f && _count == 0)
         {
             sound.Play();
             _count++;
