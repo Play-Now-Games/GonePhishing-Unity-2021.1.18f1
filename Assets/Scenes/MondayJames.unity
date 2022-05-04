@@ -4508,11 +4508,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentTime: 0
   timing: 1
-  CurrentTimeLimit: 200
+  CurrentTimeLimit: 120
   StartTime:
     hours: 9
     minutes: 0
-  Timescale: 300
+  Timescale: 150
   DigitalClockText: {fileID: 2103872152}
   RoundingAmount: 5
   NotificationPrefab: {fileID: 5843612883177902684, guid: d36518dd21c22d3409cca79484e666c4, type: 3}
@@ -6593,9 +6593,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   multiplierDisplay: {fileID: 357861117}
   scoreDisplay: {fileID: 1724287020}
-  _maxTimeBonus: 5
-  _1StarScoreThreshold: 0
-  _2StarScoreThreshold: 1000
+  _maxTimeBonus: 2
+  _1StarScoreThreshold: 900
+  _2StarScoreThreshold: 1600
   streak: 0
   _timer: {fileID: 1084311726}
 --- !u!4 &1828199968
