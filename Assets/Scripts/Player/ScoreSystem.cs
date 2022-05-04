@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreSystem : MonoBehaviour
 {
 
     public float Score { get; private set; }
     public uint Stars { get; private set; }
+
+    [SerializeField]
+    private MultiplierDisplay multiplierDisplay;
+    [SerializeField]
+    private Text scoreDisplay;
 
     [SerializeField]
     [Tooltip("The initial time bonus before it drops off.")]
@@ -38,12 +44,16 @@ public class ScoreSystem : MonoBehaviour
     public void AddScore(float amount)
     {
         Score += amount * _multiplier;
+
+        scoreDisplay.text = "Score: " + Score;
     }
 
     public void ScoreMultiplierStreakAdd()
     {
         streak++;
         #region Adjust multiplier
+        multiplierDisplay.UpdateMuliplierSprite(streak);
+
         switch (streak)
         {
             case 0:
@@ -63,6 +73,7 @@ public class ScoreSystem : MonoBehaviour
     public void ScoreMultiplierStreakReset()
     {
         streak = 0;
+        multiplierDisplay.UpdateMuliplierSprite(streak);
         _multiplier = 1.0f;
         _isPerfect = false;
     }
