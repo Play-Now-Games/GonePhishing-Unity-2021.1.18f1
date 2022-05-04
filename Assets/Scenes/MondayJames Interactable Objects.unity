@@ -679,7 +679,7 @@ GameObject:
   m_Component:
   - component: {fileID: 206683977}
   m_Layer: 0
-  m_Name: ==Brochure Selected Location== (2)
+  m_Name: ==Brochure Selected Location==
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -942,6 +942,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284586928}
   m_CullTransparentMesh: 1
+--- !u!1 &293992105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293992106}
+  m_Layer: 0
+  m_Name: ==GiftCard Selected Location==
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &293992106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293992105}
+  m_LocalRotation: {x: -0.2572511, y: 0.10616284, z: -0.028446252, w: -0.96007407}
+  m_LocalPosition: {x: -828.8, y: -450.39, z: 1597.61}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 406081387}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 30, y: 347.38, z: 0}
 --- !u!1 &299835040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,7 +1403,8 @@ Transform:
   - {fileID: 206683977}
   - {fileID: 5861501736769091313}
   - {fileID: 5861501738124195962}
-  - {fileID: 3726791911119504442}
+  - {fileID: 1109594776}
+  - {fileID: 293992106}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4626,6 +4657,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 7, y: -5, z: 0}
+--- !u!1 &1109594775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109594776}
+  - component: {fileID: 1109594778}
+  - component: {fileID: 1109594777}
+  m_Layer: 0
+  m_Name: ===GiftCard===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1109594776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109594775}
+  m_LocalRotation: {x: -0.7028365, y: 0.077594064, z: -0.077594064, w: -0.7028365}
+  m_LocalPosition: {x: -829.17, y: -466.02, z: 1599.24}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3726791911119504442}
+  m_Father: {fileID: 406081387}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 90, y: 347.4, z: 0}
+--- !u!65 &1109594777
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109594775}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.8, y: 6.8, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1109594778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109594775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ded0388faae0a419a18b13b36b2a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  CameraOffset: 8
+  pickupTime: 0.8
+  _whenHeld: {fileID: 293992106}
 --- !u!1 &1114469947
 GameObject:
   m_ObjectHideFlags: 0
@@ -4765,7 +4858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1299790634}
   m_Layer: 0
-  m_Name: ==ThankYouCard Selected Location== (1)
+  m_Name: ==ThankYouCard Selected Location==
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8974,12 +9067,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8704584662401607969}
-  m_LocalRotation: {x: -0, y: 0.62524265, z: -0, w: 0.78043044}
-  m_LocalPosition: {x: -828.63, y: -465.8229, z: 1595.7}
-  m_LocalScale: {x: 783.58563, y: 783.5857, z: 783.58563}
+  m_LocalRotation: {x: -0.50000006, y: 0.5, z: -0.5, w: 0.50000006}
+  m_LocalPosition: {x: -0.24708888, y: -1.5637145, z: 0}
+  m_LocalScale: {x: 783.5856, y: 783.5857, z: 783.5855}
   m_Children: []
-  m_Father: {fileID: 406081387}
-  m_RootOrder: 11
+  m_Father: {fileID: 1109594776}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 77.4, z: 0}
 --- !u!23 &3788588895918496835
 MeshRenderer:
@@ -10039,7 +10132,7 @@ GameObject:
   - component: {fileID: 706484114567674641}
   - component: {fileID: 3124675648640809029}
   m_Layer: 0
-  m_Name: ===GifCards===
+  m_Name: GiftCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
