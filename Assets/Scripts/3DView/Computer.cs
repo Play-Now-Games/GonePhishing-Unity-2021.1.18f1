@@ -14,6 +14,10 @@ public class Computer : Interactable
 
     private CanvasGroup ComputerGui;
 
+
+    private DayTimer _timer;
+    private bool _clickedBefore = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,15 @@ public class Computer : Interactable
             {
                 Debug.LogError("No player object found!");
             }
+        }
+
+        try
+        {
+            _timer = Player.gameObject.GetComponent<DayTimer>();
+        }
+        catch
+        {
+            Debug.LogError("Could not find timer script on player object!");
         }
 
         try
@@ -59,6 +72,11 @@ public class Computer : Interactable
     public void UnlockGui()
     {
         ComputerGui.interactable = true;
+        if (!_clickedBefore)
+        {
+            _clickedBefore = true;
+            _timer.StartTiming();
+        }
     }
 
     public void LockGui()
