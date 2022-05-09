@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Computer : Interactable
 {
@@ -11,6 +12,9 @@ public class Computer : Interactable
     [Tooltip("When the camera locks onto this computer, it will be this distance away," +
         " in the computer's negative Z direction (opposite to the blue arrow in editor).")]
     public float CameraOffset;
+    [Tooltip("The image that covers the screen before the computer is first opened.")]
+    public Image BlankScreenImage;
+
 
     private CanvasGroup ComputerGui;
 
@@ -76,6 +80,7 @@ public class Computer : Interactable
         {
             _clickedBefore = true;
             _timer.StartTiming();
+            BlankScreenImage.color = new Color(0, 0, 0, 0);
         }
     }
 
