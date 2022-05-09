@@ -14,6 +14,8 @@ public class Computer : Interactable
     public float CameraOffset;
     [Tooltip("The image that covers the screen before the computer is first opened.")]
     public Image BlankScreenImage;
+    [Tooltip("The time it takes for the computer to visually wake up.")]
+    public float WakeupTime = 0.8f;
 
 
     private CanvasGroup ComputerGui;
@@ -21,6 +23,9 @@ public class Computer : Interactable
 
     private DayTimer _timer;
     private bool _clickedBefore = false;
+
+    private bool _wakingUp = false;
+    private float _wakingUpFor = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +70,21 @@ public class Computer : Interactable
         {
             LockGui();
         }
+
+        if (_wakingUp)
+        {
+            if (_wakingUpFor >= WakeupTime)
+            {
+                _wakingUp = false;
+                BlankScreenImage.color = new Color(0,0,0,0);
+            }
+            else
+            {
+                _wakingUpFor += Time.deltaTime;
+                //scale alpha towards 0 as wakingUpFor reaches wakeupTime
+                BlankScreenImage.color = new Color(0, 0, 0, (WakeupTime - _wakingUpFor) / WakeupTime);
+            }
+        }
     }
 
     public override void OnClick()
@@ -80,7 +100,7 @@ public class Computer : Interactable
         {
             _clickedBefore = true;
             _timer.StartTiming();
-            BlankScreenImage.color = new Color(0, 0, 0, 0);
+            _wakingUp = true;
         }
     }
 

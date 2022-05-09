@@ -2877,7 +2877,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1084311728}
   CameraOffset: 15
-  BlankScreenImage: {fileID: 0}
+  BlankScreenImage: {fileID: 1072798875}
+  WakeupTime: 0.8
 --- !u!65 &764950265
 BoxCollider:
   m_ObjectHideFlags: 0
