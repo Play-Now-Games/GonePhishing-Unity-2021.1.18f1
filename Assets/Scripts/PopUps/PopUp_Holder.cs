@@ -28,7 +28,6 @@ public class PopUp_Holder : MonoBehaviour
 
     public void GivePenality()
     {
-        Debug.Log("GivePenality");
         score.ScoreMultiplierStreakReset();
     }
 
