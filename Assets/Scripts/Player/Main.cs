@@ -16,12 +16,11 @@ public class Main : MonoBehaviour
 
     public int healthPoints;
     public int maxHealthPoints;
+    public int phishingAmount;
 
     [HideInInspector]
     public SelectedAnimator selectedAnimator;
 
-    public int phishingAmount;
-    
     public Email_Scriptable[] totalEmails;
     public Email_Scriptable[] normalEmails;
     public Email_Scriptable[] easyPhishing;
@@ -31,7 +30,6 @@ public class Main : MonoBehaviour
     public UnityEvent onGameEnd;
     public UnityEvent onGameEndWin;
     public UnityEvent onGameEndLoss;
-
     public UnityEvent healthUpdate;
 
     [HideInInspector]
@@ -44,21 +42,20 @@ public class Main : MonoBehaviour
 
     [SerializeField]
     private int _strike = 0;
+    [SerializeField]
+    private int currency = 0;
+    [SerializeField]
+    private int _initalGenReal, _initalGenEasyPhishing, _initalGenMediumPhishing, _initalGenHardPhishing;
 
     private float time = 5;
     private float popUpLimiter = 0;
-    [SerializeField]
-    private int currency = 0;
 
     private DayTimer _time;
-
 
     //Email generation variables
     // Done by Avery
     public bool generateEmails;
     private EmailGenerator _emailGenerator;
-    [SerializeField]
-    private int _initalGenReal, _initalGenEasyPhishing, _initalGenMediumPhishing, _initalGenHardPhishing;
     // Done by Avery
 
 
