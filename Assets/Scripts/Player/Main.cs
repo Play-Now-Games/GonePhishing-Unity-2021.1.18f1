@@ -12,19 +12,18 @@ public class Main : MonoBehaviour
     public Email_Scriptable selectedEmail = null;
     public GameObject emailPrefab;
     public GameObject selected;
-    [HideInInspector]
-    public SelectedAnimator selectedAnimator;
     public GameObject noEmail;
 
     public int healthPoints;
     public int maxHealthPoints;
 
-    public Email_Scriptable[] totalEmails;
+    [HideInInspector]
+    public SelectedAnimator selectedAnimator;
 
     public int phishingAmount;
-
+    
+    public Email_Scriptable[] totalEmails;
     public Email_Scriptable[] normalEmails;
-    //To Do: Delete _phishing
     public Email_Scriptable[] easyPhishing;
     public Email_Scriptable[] mediumPhishing;
     public Email_Scriptable[] hardPhishing;
@@ -55,13 +54,12 @@ public class Main : MonoBehaviour
 
 
     //Email generation variables
-    [Space(16)]
+    // Done by Avery
     public bool generateEmails;
     private EmailGenerator _emailGenerator;
     [SerializeField]
-    [Tooltip("Number of emails to initally generate.")]
     private int _initalGenReal, _initalGenEasyPhishing, _initalGenMediumPhishing, _initalGenHardPhishing;
-
+    // Done by Avery
 
 
 
@@ -160,6 +158,8 @@ public class Main : MonoBehaviour
 
         UICreation();
     }
+
+    //Done by Avery
     private void InitalEmailGeneration()
     {
         #region Generate Emails
@@ -186,6 +186,7 @@ public class Main : MonoBehaviour
 
         ShuffleEmails(ref totalEmails);
     }
+    //Done by Avery
 
     public void StartRemoveAt<T>(ref T[] arr, int index)
     {
@@ -246,7 +247,6 @@ public class Main : MonoBehaviour
     ///////// GENERAL FUNCTIONS FOR THE GAME /////////
 
 
-
     #region HP Related Functions
     public void LoseHealth(int HpLost)
     {
@@ -296,6 +296,7 @@ public class Main : MonoBehaviour
         _strike = 0;
     }
     #endregion
+
 
     #region Money Related Functions
     public void GiveMoney(int value)
