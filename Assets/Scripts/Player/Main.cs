@@ -397,19 +397,6 @@ public class Main : MonoBehaviour
 
     }
 
-    public void GenerateEmail(bool phishing = false, int difficulty = 0)
-    {
-        if (_emailGenerator.GenerateEmail(out Email_Scriptable email, phishing, difficulty))
-        {
-            totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
-        }
-        else
-        {
-            //Trying to generate too many emails
-            Debug.LogWarning("Trying to generate too many emails. Phishing-Type: " + phishing + "   Difficulty: " + difficulty);
-        }
-    }
-
     public Array AddArrayAtStart(object o, Array oldArray)
     {
 
@@ -434,9 +421,23 @@ public class Main : MonoBehaviour
         return oldArray;
 
         #endregion
-    
+
     }
 
+
+    //Done by Avery
+    public void GenerateEmail(bool phishing = false, int difficulty = 0)
+    {
+        if (_emailGenerator.GenerateEmail(out Email_Scriptable email, phishing, difficulty))
+        {
+            totalEmails = (Email_Scriptable[])AddArrayAtStart(email, totalEmails);
+        }
+        else
+        {
+            //Trying to generate too many emails
+            Debug.LogWarning("Trying to generate too many emails. Phishing-Type: " + phishing + "   Difficulty: " + difficulty);
+        }
+    }
     public void ShuffleEmails(ref Email_Scriptable[] array)
     {
         // Knuth shuffle algorithm
@@ -449,6 +450,8 @@ public class Main : MonoBehaviour
             array[r] = temp;
         }
     }
+    //Done by Avery
+
     #endregion
 
 

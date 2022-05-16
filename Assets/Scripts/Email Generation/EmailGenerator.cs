@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EmailGenerator : MonoBehaviour
 {
-    //for the test scene
-    public EmailGenerationTestInterface emailInterface;
-
     public Email_Scriptable blankNoEmailToGenerate;
 
     public EmailGenerator_Scriptable[] personalEmailGenerators;
@@ -38,72 +35,6 @@ public class EmailGenerator : MonoBehaviour
             validFakeEasyGenerators.Add(i);
             validFakeMediumGenerators.Add(i);
             validFakeHardGenerators.Add(i);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GenerateEmail(out Email_Scriptable email);
-            emailInterface.AddEmail(email);
-        }
-    }
-
-    // Button functions for test scene
-    // type: 0 = real, 1-3 = phishing with difficulty 1-3
-    public void GenerateEmailButton(int type)
-    {
-        if (type == 0)
-        {
-            GenerateEmail(out Email_Scriptable email);
-            emailInterface.AddEmail(email);
-        }
-        else if (type > 0 && type <=3)
-        {
-            GenerateEmail(out Email_Scriptable email, true, type);
-            emailInterface.AddEmail(email);
-        }
-        else
-        {
-            Debug.LogError("Invalid email type.");
-        }
-    }
-
-    public void GeneratePersonalEmailButton(int type)
-    {
-        if (type == 0)
-        {
-            GeneratePersonalEmail(out Email_Scriptable email);
-            emailInterface.AddEmail(email);
-        }
-        else if (type > 0 && type <= 3)
-        {
-            GeneratePersonalEmail(out Email_Scriptable email, true, type);
-            emailInterface.AddEmail(email);
-        }
-        else
-        {
-            Debug.LogError("Invalid email type.");
-        }
-    }
-
-    public void GenerateCorporateEmailButton(int type)
-    {
-        if (type == 0)
-        {
-            GenerateCorporateEmail(out Email_Scriptable email);
-            emailInterface.AddEmail(email);
-        }
-        else if (type > 0 && type <= 3)
-        {
-            GenerateCorporateEmail(out Email_Scriptable email, true, type);
-            emailInterface.AddEmail(email);
-        }
-        else
-        {
-            Debug.LogError("Invalid email type.");
         }
     }
 

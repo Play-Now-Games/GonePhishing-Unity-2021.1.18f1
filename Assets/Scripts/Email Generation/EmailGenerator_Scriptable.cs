@@ -684,19 +684,4 @@ public class EmailGenerator_Scriptable : ScriptableObject
 
         return output;
     }
-
-    private void StartRemoveAt<T>(ref T[] arr, int index)
-    {
-        #region Remove The Array Info
-
-        for (int i = index; i < arr.Length - 1; i++)
-        {
-            //Move elements to fill the gap
-            arr[i] = arr[i + 1];
-        }
-
-        //Remove the index
-        System.Array.Resize(ref arr, arr.Length - 1);
-        #endregion
-    }
 }
