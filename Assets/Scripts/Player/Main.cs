@@ -48,7 +48,7 @@ public class Main : MonoBehaviour
     private int _initalGenReal, _initalGenEasyPhishing, _initalGenMediumPhishing, _initalGenHardPhishing;
 
     private float time = 5;
-    private float popUpLimiter = 0;
+    private float popUpLimiter = 1000;
 
     private DayTimer _time;
 
@@ -222,12 +222,15 @@ public class Main : MonoBehaviour
         
         time -= Time.deltaTime;
 
-        if((time < 0) && (!dayEnded))
+
+        //SpawnPopUp();
+        
+        if ((time < 0) && (!dayEnded))
         {
             SpawnPopUp();
-            time = 5;
+            time = 2;
         }
-
+        
         #endregion
 
         if (totalEmails.Length == 1 && !dayEnded)
@@ -480,7 +483,7 @@ public class Main : MonoBehaviour
 
                 if (HolderInScene.ID == ToSpawn.ID)
                 {
-                    CanSpawn = false;
+                    //CanSpawn = false;
                     break;
                 }
             }
