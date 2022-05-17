@@ -1,0 +1,431 @@
+66c06b9,ella-t,Update version number,,2 hours ago
+609fdac,DiosMussolinos,Return to delivery,,Mon 13:56
+e1b73b2,DiosMussolinos,Merge branch 'staging' of https://github.com/Play-Now-Games/GonePhishing-Unity-2021.1.18f1 into staging,,Mon 13:54
+4df371f,DiosMussolinos,Little Update for video - DONT MAKE A DELIVERY WITH THAT,,Mon 13:54
+e35f34a,Avery,Removed Email Generation test functions and broken test scene,,Mon 12:31
+2135c6e,DiosMussolinos,.,,Fri 14:44
+2c53978,DiosMussolinos,.,,Fri 14:39
+df75ffe,DiosMussolinos,Removing Debugs, and empty folders,,Fri 14:10
+15f82ff,DiosMussolinos,Scene Baked And Clock Moving,,Wed May 11 15:06
+b26cc2c,DiosMussolinos,Baking,,Tue May 10 22:06
+e0c55cb,Avery,Changes into main scene,,Tue May 10 16:07
+0f9ee84,Avery,Compress Normal / Occlusion maps,,Tue May 10 16:02
+b747296,Avery,Updated Walls,,Tue May 10 15:42
+95a548c,Avery,Assorted Normal/Occlusion maps,,Tue May 10 15:29
+93b6d98,Avery,Clock Normal/Occlusion maps,,Tue May 10 15:18
+c1deabf,Avery,Speaker Normal/Occlusion maps,,Tue May 10 15:13
+c24ae81,Avery,PC Normal/Occlusion maps,,Tue May 10 15:08
+7874973,ella-t,Changed to spot light for better shadows,,Tue May 10 12:33
+a03dbc8,Avery,Updated taskbar pannel,,Tue May 10 12:22
+d6c3687,Avery,Updated Brochure Texture,,Mon May 9 18:47
+bd468ee,Avery,Notepad text issue fix,,Mon May 9 18:26
+61c0062,Avery,Better "fade in" visual for computer waking up.,,Mon May 9 18:25
+da17405,Avery,Basic visual indicator for computer starting,,Mon May 9 18:10
+091a0bf,Avery,Time now only starts after first click on computer,,Mon May 9 17:58
+c3e34dd,Avery,Merge branch 'staging' into Avery,,Mon May 9 16:03
+d245360,Avery,Merge branch 'staging' of https://github.com/DiosMussolinos/GonePhishing-Unity-2021.1.18f1 into staging,,Mon May 9 14:00
+7707fc1,Avery,Pop-up spawning re-fixed,,Mon May 9 13:58
+c5dabbc,ella-t,Fix clicking at the end of sound clip,,Mon May 9 13:35
+9430bfe,ella-t,Fix WebGL shadow render distance,,Mon May 9 12:35
+d4ffb77,ella-t,Update game window size,,Mon May 9 12:32
+7efdedc,Avery,Updated login screen,,Fri May 6 12:14
+ae481c6,Avery,Updated Tab buttons,,Fri May 6 11:50
+2747ed8,ella-t,Merge branch 'staging',,Wed May 4 16:20
+bcbe82b,ella-t,Change version number,,Wed May 4 16:20
+e0edcff,Avery,Update TimeAnimation.cs,,Wed May 4 16:17
+82e8610,Avery,Update TimeAnimation.cs,,Wed May 4 16:16
+66b7642,Avery,Timer sound fix,,Wed May 4 16:13
+7b6fff3,Avery,Final Score and time settings,,Wed May 4 16:02
+419241c,Avery,Score/multiplier display into main scene,,Wed May 4 15:55
+534b5ad,Avery,Merge branch 'Avery' into staging,,Wed May 4 15:52
+c8a54e2,Avery,Removed score given for closing pop-up,,Wed May 4 15:50
+d0c406a,Hughes83,Archive Emails / Email Tweaks,Added final archive emails and made changes to existing emails in generator
+,Wed May 4 15:50
+8f39236,Avery,Fix to stop pop-ups appearing behind sticky notes,,Wed May 4 15:42
+afdee9c,Avery,Score and multiplier displays functional,,Wed May 4 15:37
+9da8bee,Avery,Score and Multiplier display assets added,,Wed May 4 15:19
+463adc2,ella-t,Adjusted lighting for better shadow quality,,Wed May 4 14:04
+698b08f,Avery,Changes to main scene,,Wed May 4 13:37
+bab318c,Avery,Fixed pop-up spawn locations for new computer location,,Wed May 4 13:26
+22dcc85,Avery,Interactable Gift Card,,Wed May 4 13:16
+58e7784,Avery,Interactable Cards,,Wed May 4 11:40
+cd8e5cd,Avery,New Brochure model + interactable,,Wed May 4 11:32
+a6fb93f,Avery,New ThankYouCard model + interactable,Shadow issues particularly prevalent here. Collider solution imperfect.
+,Wed May 4 11:12
+b6d0281,Avery,New Dice Model,,Wed May 4 10:47
+ae65327,Avery,Poster (interactable),,Wed May 4 10:40
+1abdc6c,Avery,New newspaper model + interactable,,Tue May 3 23:16
+9e2329e,Avery,New Fan Model,,Tue May 3 22:58
+11d2fde,Avery,Notepad Adjustments,,Tue May 3 22:30
+35f7681,Avery,Resized computer collider,So it works better with new camera code. The collider was slightly to large.
+,Tue May 3 21:46
+beec74f,Avery,Camera Lock now exited by clicking anywhere other than the object,,Tue May 3 21:45
+b110a05,Avery,Fan Texture and Material,,Tue May 3 19:05
+f6d7945,Avery,Scene Layout changes,,Tue May 3 18:50
+69734b3,Avery,Final Scene Composition into main scene,,Tue May 3 18:14
+774d541,Avery,Merge branch 'Avery' into staging,,Tue May 3 17:26
+1c29a47,Avery,Super Fake generic logo,,Tue May 3 16:22
+8f091bc,Avery,Removed Health Indicator entirely,,Tue May 3 16:19
+1458430,Avery,Update MondayJames Scene Final.unity,,Tue May 3 16:01
+b83ad56,Avery,Final Scene Composition,,Tue May 3 16:00
+cc43e09,ella-t,TDD: version control diagram,,Tue May 3 14:53
+eb17525,Avery,Logo implementation,,Tue May 3 14:45
+e78a52c,ella-t,HTML: Added note to view in landscape,,Tue May 3 14:30
+2733ded,ella-t,Enable "bad feedback" sound effect,,Tue May 3 14:03
+38e7d7e,Avery,Computer Texture Fix,,Tue May 3 13:01
+3355f00,Avery,Final Logo imported (not implemented),,Tue May 3 12:31
+fd62b8d,Avery,Disactivate health visualization,Should probably remove code for this as well.
+,Mon May 2 21:15
+a6c4dd9,Avery,Merge branch 'Avery' into staging,,Mon May 2 20:38
+e6fc9e1,Avery,FIX: Login button size changing.,,Mon May 2 20:35
+8004b01,Avery,Some new logo art,,Mon May 2 20:07
+7b91c71,Avery,Merge branch 'staging' into Avery,,Mon May 2 13:55
+0eb2849,ella-t,Removed score system debug display,,Mon May 2 13:48
+ecdb70e,ella-t,Post-merge fixes to scene for EndVideo branch,,Mon May 2 13:41
+75bad80,ella-t,Merge branch 'EndVideo' into staging,,Mon May 2 13:37
+6f658dd,ella-t,Skip splash screens on main menu re-load,,Mon May 2 13:34
+ed74c9c,ella-t,Moved videos to StreamingAssets and camera render,,Mon May 2 13:28
+a6e791d,Avery,Examinable will now correctly find the FPC in not set.,,Mon May 2 11:57
+88e25bb,Avery,Generic "Examinable" script and example prefab,,Mon May 2 11:35
+46c480e,ella-t,Load InitialMenu scene after end video,,Mon May 2 11:13
+7729487,Avery,Changes moved to main scene,,Mon May 2 11:03
+aac6281,ella-t,Moved end video trigger to game end event,,Mon May 2 11:00
+7575366,Avery,Merge branch 'Avery' into staging,,Mon May 2 10:53
+c3a9796,ella-t,Merge branch 'PhishyArt' into staging,,Mon May 2 10:49
+01c4407,Avery,Update MondayJames Pop-UpControlSystem.unity,,Sat Apr 30 03:42
+aca10d6,Avery,Computer interface changes,,Sat Apr 30 02:36
+07cd7b1,Avery,Update MondayJames Pop-UpControlSystem.unity,,Sat Apr 30 01:22
+b50d68d,Avery,Scrollable emails, EmailDisplayScript.,,Sat Apr 30 01:22
+19467e3,Avery,remove redundant function,,Wed Apr 27 19:43
+db4d1d4,Avery,Revert "PopUpBack",This reverts commit 73ed60ffe40bbd8ae38e34a8071149573c16856f.
+,Wed Apr 27 19:33
+190e403,Avery,Health system back, display working, health will not end the game,,Wed Apr 27 18:14
+881fc0c,Avery,Revert "Commented out all the health system code",This reverts commit 9cbe5dcead4bc9a889aa0a4e191592f5a21824c5.
+,Wed Apr 27 17:24
+6b90257,Avery,Recover Health system code,,Wed Apr 27 17:24
+f07d0e2,DiosMussolinos,textures,,Wed Apr 27 14:28
+73ebd64,ella-t,Finish updating phishy art,,Wed Apr 27 13:30
+576d551,ella-t,Updated splash screen text,,Wed Apr 27 13:16
+7f80913,ella-t,Beginning to implement changes to phishy's art,,Wed Apr 27 13:03
+af63ccb,ella-t,Adjusted some Phishy dialogue,,Wed Apr 27 12:40
+956b329,ella-t,Update and fix score system,,Wed Apr 27 12:34
+b18e2a6,Avery,Archived emails no longer deleted when Inbox updated,,Wed Apr 27 00:52
+04f88b9,Avery,Update EmailPrefab.prefab,,Wed Apr 27 00:25
+b017196,Avery,Scrollbar Art added and scrollbar behavior improved.,,Wed Apr 27 00:22
+2535abe,Avery,Most final email art + refactored email scroll list generation.,New Bug: content not showing up in scroll list
+,Tue Apr 26 23:50
+5760352,Avery,New Taskbar Art + slight reorganization of taskbar objects,,Tue Apr 26 20:58
+bc1359e,Avery,FIX: Buttons no longer broken.,No idea how but the buttons EmailButtons script component had lost their references to the main script, phishy, and the score object.
+,Tue Apr 26 18:55
+017c33e,DiosMussolinos,Merge branch 'staging' of https://github.com/DiosMussolinos/GonePhishing-Unity-2021.1.18f1 into staging,,Tue Apr 26 15:00
+93f952c,DiosMussolinos,textures, small fiz on emails (SO),,Tue Apr 26 14:58
+747b2e5,Avery,Update main scene with archive tab,,Tue Apr 26 14:41
+b9b6f40,Avery,Update MondayJames ArchiveTest.unity,,Tue Apr 26 14:37
+a938eb4,Avery,Merge branch 'staging' into Archive-Folder,,Tue Apr 26 14:29
+ab1f67c,Avery,Archive Tab can now have content,,Tue Apr 26 14:27
+73ed60f,DiosMussolinos,PopUpBack,,Tue Apr 26 13:05
+94be5dc,ella-t,Merge branch 'staging' of https://github.com/DiosMussolinos/GonePhishing-Unity-2021.1.18f1 into staging,,Tue Apr 26 12:18
+702ed32,ella-t,Camera once again resets angle upon leaving lock,,Tue Apr 26 12:18
+b4d0521,DiosMussolinos,Time SFX,,Tue Apr 26 12:01
+8e3b345,ella-t,Improved camera rotation controls,,Tue Apr 26 11:15
+7ef041b,Avery,Tab switching now with "Sound"!,,Mon Apr 25 22:26
+551be6a,Avery,Basic Tab system,,Mon Apr 25 20:06
+cdd60f5,DiosMussolinos,new art in menu,,Mon Apr 25 18:25
+d86af6c,Gabriel Vergari,Final Screen & Level Design,,Thu Apr 21 22:50
+6ffa9c9,Avery,Update MondayJames.unity,,Wed Apr 20 21:46
+d2f381d,Avery,Merge branch 'Email-Generation' into staging,,Wed Apr 20 21:43
+397ce52,Hughes83,Import Files / Notepad Updated,,Wed Apr 20 21:41
+90712e2,Avery,bugfix: generated emails now get proper id's and difficulty levels,,Wed Apr 20 21:12
+5edf184,Avery,Email generators implemented into scene fully,TODO: bug with email IDs found
+,Wed Apr 20 21:04
+c2c7a83,Avery,Merge branch 'staging' into Email-Generation,,Wed Apr 20 20:38
+3848c35,Hughes83,Email Generator (Alpha Build),,Wed Apr 20 20:28
+771c0b3,Avery,Merge branch 'WebGLTemplate' into staging,,Wed Apr 20 19:36
+478b80c,Avery,Actually added the light,,Wed Apr 20 18:11
+ba57957,Avery,Added another light to the scene.,,Wed Apr 20 18:01
+34db26e,Avery,Fully removed all health related code,,Wed Apr 20 17:39
+9cbe5dc,Avery,Commented out all the health system code,,Wed Apr 20 17:35
+3a3a6ec,ella-t,Added template with better display on mobile,,Wed Apr 20 16:17
+8f399b2,Avery,Four separate feedback function instead of two. TODO: make them actually different,,Wed Apr 20 13:55
+419918d,Avery,Randomize order of initial emails.,,Tue Apr 19 23:37
+7fa351c,Hughes83,Existing emails added to generator (not final),,Tue Apr 19 08:26
+3b25501,Avery,Changed EmailButtons to use the generators for consequence emails if active.,,Tue Apr 19 01:29
+7862c4e,Avery,Public GenerateEmail function that can be used in EmailButtons,,Tue Apr 19 01:22
+091daf7,Avery,Email generation working with main function for initial emails.,,Tue Apr 19 01:12
+a849230,Avery,Email generator now selects a fake email address for hard emails instead of the real email address,,Mon Apr 18 13:15
+2e7de05,Avery,Merge branch 'staging' into Email-Generation,,Wed Mar 30 18:33
+d64ab76,ella-t,Merge branch 'staging',,Wed Mar 30 18:24
+5545b2a,ella-t,Update build settings to week 9,,Wed Mar 30 18:24
+f10994f,Gabriel Vergari,Yikes, missed this :v,,Tue Mar 29 14:46
+cab31c1,Gabriel Vergari,Code Optimization, New SFX, New 3D Objects,,Tue Mar 29 14:00
+fb2e44c,Avery,Tooltip Change,,Wed Mar 23 20:08
+2ce9250,ella-t,Update version ID,,Wed Mar 23 15:29
+5929301,ella-t,Merge branch 'staging',,Wed Mar 23 15:29
+880c05d,ella-t,Bugfixes and improvements to score gui,,Wed Mar 23 15:24
+cc27d2e,Avery,Better variable names,,Wed Mar 23 15:04
+322f9a8,ella-t,Finish merge of ScoreSystem,,Wed Mar 23 14:44
+9470cb1,ella-t,Merge branch 'ScoreSystem' into staging,,Wed Mar 23 14:40
+fee35ea,ella-t,IMGUI to display score,,Wed Mar 23 14:33
+9bf333b,Avery,Won't try to generate emails without an available body,,Wed Mar 23 14:28
+684cd11,Avery,Buttons!,,Wed Mar 23 13:12
+8e125a3,Avery,Email bodies now have associated title that are properly applied.,,Tue Mar 22 20:20
+92090d2,Avery,Separate senderAddress variables for,,Tue Mar 22 17:46
+6ecb102,Avery,Testing Generators,,Tue Mar 22 01:10
+23540d7,Avery,Method for checking if an email can generate an email of a given type,,Mon Mar 21 21:24
+52127ec,Avery,Used bodies will no longer be permanently deleted,,Mon Mar 21 21:19
+5e3a728,Avery,Email generators will not reuse bodies,,Mon Mar 21 20:56
+a0819a0,Avery,Chance for phishing email to select components from different difficulty levels,,Mon Mar 21 20:40
+c02ec6a,Avery,Fake and faintly fake name options,,Mon Mar 21 20:11
+01bc328,Avery,Testing buttons and variable difficultly,,Wed Mar 16 23:34
+a3f0fe8,Avery,Update Email Generation Testing.unity,,Wed Mar 16 22:46
+3bc4c3e,Avery,EmailGenerator scriptable objects,,Wed Mar 16 22:45
+c7704ab,Avery,Merge branch 'staging' into Email-Generation,,Wed Mar 16 21:35
+6a34572,Avery,Basic testing scene finally working,,Wed Mar 16 18:20
+7c51081,Gabriel Vergari,New Email System (EASY, MEDIUM, AND HARD),,Wed Mar 16 15:28
+d87b251,Gabriel Vergari,Email Changes,,Tue Mar 15 19:49
+5dfb848,Gabriel Vergari,Art, scene, and fixed animation,,Tue Mar 15 13:38
+ead2e6b,ella-t,Some neatness added to the code,,Tue Mar 15 12:53
+b179888,Avery,Merge branch 'staging' into Email-Generation,,Tue Mar 15 12:52
+516b0f0,Avery,Testing Emails Scene,,Tue Mar 15 12:09
+3def580,Gabriel Vergari,NewScene,,Tue Mar 15 12:08
+1291b1f,Avery,Merge branch 'staging' into Email-Generation,,Mon Mar 14 20:44
+a0b82ee,ella-t,Score system can be tested,,Mon Mar 14 17:10
+e0a7c65,ella-t,Final score calculation,,Mon Mar 14 16:47
+a0a7e80,ella-t,Initial commit,,Mon Mar 14 16:00
+672b969,Gabriel Vergari,Small Optimization - HP/Time Animation,,Mon Mar 14 13:13
+1b37daf,Gabriel Vergari,Quick Fix,,Wed Mar 9 14:41
+86a3868,ella-t,Merge branch 'staging',,Wed Mar 9 14:14
+52cc427,ella-t,Fixed camera bug, again,,Wed Mar 9 14:14
+65530a1,Hughes83,Logos added, formatted emails, notes updated,,Wed Mar 9 14:06
+ae7762f,ella-t,Fixed camera swivel,,Wed Mar 9 13:24
+4c374e7,ella-t,Added lighting,,Wed Mar 9 13:18
+8c90b9f,Avery,Merge branch 'Avery' into staging,,Wed Mar 9 12:56
+329155b,Avery,Separated default logo,,Wed Mar 9 12:55
+3c28d88,Avery,Merge branch 'staging' into Avery,,Wed Mar 9 12:33
+4eccb2c,Avery,Revert "Changes into main scene",This reverts commit 54e364a9c2cbd5c5a470ab4de2901e13a2d03b14.
+,Wed Mar 9 12:32
+42fa24f,ella-t,Tweaked some aesthetic scene values,,Wed Mar 9 12:31
+f8934d9,Avery,Logo in email prefab,,Wed Mar 9 12:24
+a7562db,ella-t,Email scriptable Image changed to Sprite,,Wed Mar 9 12:20
+e27554d,ella-t,Return of Phishy.,,Wed Mar 9 12:11
+f364f73,Avery,Experiments,,Wed Mar 9 11:16
+6f429de,Gabriel Vergari,bugs fixed,,Wed Mar 9 11:14
+4b49671,Avery,Merge branch 'staging' into Email-Generation,,Tue Mar 8 17:25
+54e364a,Avery,Changes into main scene,,Tue Mar 8 17:20
+108ce3b,Avery,Changes into main scene,,Tue Mar 8 17:17
+fb97d0c,Avery,Merge branch 'Avery' into staging,,Tue Mar 8 17:11
+2229ecf,Avery,Update New Art.unity,,Tue Mar 8 17:07
+63b5e12,Gabriel Vergari,Bugs... Winning condition/Button and other stuff,,Tue Mar 8 16:54
+2a9d391,Avery,Removed 3d files I was testing,,Tue Mar 8 16:09
+0f64ed1,Avery,Selected email background implemented,,Tue Mar 8 15:52
+da4bc68,Gabriel Vergari,I hate myself version 33. Tested and more shit fixed... OH GOD, LET ME END THIS,,Tue Mar 8 15:40
+bda2155,Gabriel Vergari,another bug, i hate myself,,Tue Mar 8 15:18
+57f7128,Avery,Merge branch 'staging' into Avery,,Tue Mar 8 15:18
+eabfca5,Gabriel Vergari,Bug Fixed, Winning condition Changed,,Tue Mar 8 15:12
+224e30e,Avery,New art onto EmailPrefab,,Tue Mar 8 15:12
+99af52e,Avery,Added Tittle bar,,Tue Mar 8 15:07
+acd5187,Avery,New art assets, scene juggling, some art implementation,Should have been more than one commit...
+,Tue Mar 8 13:46
+d418c60,Avery,Merge branch 'staging' into Avery,,Tue Mar 8 13:36
+18a8707,Gabriel Vergari,Merge branch 'staging' of https://github.com/DiosMussolinos/GonePhishing-Unity-2021.1.18f1 into staging,,Tue Mar 8 12:24
+fcea134,Gabriel Vergari,new scene with audios + Audio Holder,,Tue Mar 8 12:23
+40e6156,Avery,Merge branch 'staging' into Avery,,Tue Mar 8 12:05
+c0cfa79,Avery,Notepad model,,Tue Mar 8 12:02
+9d0c13b,ella-t,Completed merge of WebGL bugfix branch,,Tue Mar 8 11:49
+4fc5653,ella-t,Merge branch 'Ella' into staging,,Tue Mar 8 11:46
+d3417d4,Hughes83,Design scene created with added email addresses and example notes,,Tue Mar 8 11:41
+bb2acc6,Avery,Removed redundant scene,,Tue Mar 8 11:38
+a22a47c,ella-t,Fixed some bugs I created in the previous commits,,Tue Mar 8 11:35
+ca9d55f,Avery,notepad added to main scene,,Tue Mar 8 11:34
+c65c1a7,Avery,Merge branch 'Avery' into staging,,Tue Mar 8 11:28
+efbae39,Avery,Update Notes Object.unity,,Tue Mar 8 11:24
+8b602da,ella-t,Fixed Z-fighting on webGL build,MondayJames-WebGLBugfix has some objects moved slightly around (computer canvas, screen background quad)
+,Tue Mar 8 11:21
+c87eb4a,ella-t,Fixed splash screen depending on frame rate,,Tue Mar 8 10:49
+ebe704e,ella-t,Updated build settings,,Tue Mar 8 10:01
+8571eba,ella-t,Added lighting settings,,Tue Mar 8 09:48
+fb4c866,Gabriel Vergari,Scene Update,,Mon Mar 7 18:52
+d71ae20,Avery,Notepad animation now works better with the FPC,,Mon Mar 7 18:25
+76387fc,Avery,Public function in the FPC to check for camera lock,,Mon Mar 7 18:15
+9ed22b4,Avery,Notepad pickup animation,,Mon Mar 7 18:13
+baf2f98,Avery,Forgot to save scene again...,,Mon Mar 7 15:38
+d13666b,Avery,Notepad Basics,,Mon Mar 7 15:37
+6e9fa7b,Avery,Update EmailGenerator.cs,,Mon Mar 7 12:20
+72c5345,Avery,Email Generator uses proper scriptable,,Mon Mar 7 11:39
+3fe166c,Avery,Merge branch 'staging' into Email-Generation,,Mon Mar 7 11:30
+b8a0051,Gabriel Vergari,Randomizer of which email to add,,Fri Mar 4 09:15
+8257c67,Gabriel Vergari,right position of the emision cube,,Wed Mar 2 18:31
+1257c10,Gabriel Vergari,Merge branch 'staging' of https://github.com/DiosMussolinos/GonePhishing-Unity-2021.1.18f1 into staging,,Wed Mar 2 18:26
+f8a6595,Gabriel Vergari,Trying to do Heat Shader,,Wed Mar 2 18:26
+2dcda16,ella-t,Updated health art,,Wed Mar 2 17:24
+a1b9692,ella-t,Finished merging Phishy branch,,Wed Mar 2 17:20
+50b1691,ella-t,Merge branch 'Ella' into staging,,Wed Mar 2 17:18
+e7cda32,Gabriel Vergari,animation mistake. sorry xD,,Wed Mar 2 16:57
+18b94ab,Gabriel Vergari,Update Some Emails For Testing,,Wed Mar 2 16:51
+9cf6677,Gabriel Vergari,Update EmailButtons.cs,,Wed Mar 2 16:49
+99aed2b,Gabriel Vergari,Merge branch 'staging' into Gabriel,,Wed Mar 2 16:44
+8620a4e,Gabriel Vergari,FeedBack,,Wed Mar 2 16:43
+71af863,Avery,Merge branch 'staging' into Email-Generation,,Wed Mar 2 16:36
+da0cb79,Avery,Moved new scripts into slightly more logical locations,,Wed Mar 2 16:35
+d2b2cea,Avery,Merge branch 'staging' into Email-Generation,,Wed Mar 2 16:31
+8d3e3b4,ella-t,Phishy comments on gameplay (currently unused),,Wed Mar 2 16:30
+8fc8883,ella-t,Dialogue bubble for Phishy,,Wed Mar 2 15:20
+8acad20,Avery,Update MondayJames.unity,,Wed Mar 2 15:12
+3f59366,Avery,Scene changes that I kept forgetting to save,,Wed Mar 2 14:52
+3a3a566,Avery,Email response animation.,Buttons now delete the selected email in all cases.
+,Wed Mar 2 14:39
+374aee4,Avery,New script that scales child RectTransforms,,Wed Mar 2 13:18
+87856a3,Avery,Buttons inactive when no email is selected,,Wed Mar 2 13:01
+03ae9fd,Avery,SetActive Issue with email display fixed. Buttons made separate from the selected email.,,Wed Mar 2 12:56
+c65a515,ella-t,Phishy appears,,Wed Mar 2 12:21
+3637a37,ella-t,Squashed commit of the following:,commit afabf17cd085edbf450e343208e94774f7d41ce4
+Merge: 520cfcc 6d767cb
+Author: Gabriel Vergari <gabrielvergari@hotmail.com>
+Date:   Tue Mar 1 21:26:19 2022 +0000
+
+    Merge branch 'Gabriel' into staging
+
+commit 6d767cb573dd0f7ed26320c04818bf3f2b26920b
+Author: Gabriel Vergari <gabrielvergari@hotmail.com>
+Date:   Tue Mar 1 17:06:48 2022 +0000
+
+    Opening menu
+
+commit ce4fcc609e0a8598016a77d55930595782d136db
+Merge: d88c016 5a1ce19
+Author: Gabriel Vergari <gabrielvergari@hotmail.com>
+Date:   Tue Mar 1 13:39:37 2022 +0000
+
+    Merge branch 'staging' into Gabriel
+
+commit d88c016c0484847dccbf76ec42435226acbef01e
+Author: Gabriel Vergari <gabrielvergari@hotmail.com>
+Date:   Tue Mar 1 11:14:46 2022 +0000
+
+    New Scene - Menus
+,Wed Mar 2 10:07
+61e2984,ella-t,Updated from staging.  Click and hold class NYI,,Wed Mar 2 10:05
+afabf17,Gabriel Vergari,Merge branch 'Gabriel' into staging,,Tue Mar 1 21:26
+6d767cb,Gabriel Vergari,Opening menu,,Tue Mar 1 17:06
+520cfcc,Avery,Restored Reference to Camera in computer canvas (Fixing app bug),,Tue Mar 1 15:36
+f5b7fc0,Avery,Merge branch 'Avery' into staging,,Tue Mar 1 15:32
+ab95074,Avery,Apps should now be fully touch compatible? (untested),,Tue Mar 1 15:28
+269c755,Avery,Apps now track how they where selected and if by a touch which touch,,Tue Mar 1 15:01
+175bb3b,ella-t,Added health display,,Tue Mar 1 14:49
+8c77169,ella-t,Manage health display,,Tue Mar 1 14:45
+02465b8,Avery,Click Manager now distinguishes mouse from touch clicks and tracks fingerID for touch,,Tue Mar 1 14:41
+0222ad5,Avery,AppManager now uses ClickManger (touch compatible!),,Tue Mar 1 14:03
+94a77d8,Avery,Refactored Ella's touch-compatible "clicks" code into a ClickManager class,,Tue Mar 1 13:53
+ce4fcc6,Gabriel Vergari,Merge branch 'staging' into Gabriel,,Tue Mar 1 13:39
+5a1ce19,Gabriel Vergari,missed this PopUp,,Tue Mar 1 13:06
+bcf06c4,Gabriel Vergari,Merge branch 'staging' of https://github.com/DiosMussolinos/GonePhishing-Unity-2021.1.18f1 into staging,,Tue Mar 1 12:53
+81cebfb,Gabriel Vergari,New PopUps,,Tue Mar 1 12:53
+cac3e65,ella-t,Clean up merge of computer clock notification branch,,Tue Mar 1 12:50
+370b729,ella-t,Merge branch 'Ella' into staging,,Tue Mar 1 12:43
+395ad15,Gabriel Vergari,Merge branch 'staging' of https://github.com/DiosMussolinos/GonePhishing-Unity-2021.1.18f1 into staging,,Tue Mar 1 12:39
+629fbbf,Gabriel Vergari,Changes with Jordan,,Tue Mar 1 12:38
+c4abc87,ella-t,Updated lighting,,Tue Mar 1 12:28
+d88c016,Gabriel Vergari,New Scene - Menus,,Tue Mar 1 11:14
+c61f36c,Hughes83,Adding Emails again,,Mon Feb 28 17:16
+04f01c5,Hughes83,Email Assets Added,7 emails added to 'Scripts/Emails/James' folder
+,Mon Feb 28 16:52
+1355cfe,Avery,Merge branch 'staging' into Email-Generation,,Mon Feb 28 16:41
+a013abf,Avery,Merge branch 'main' into Email-Generation,,Mon Feb 28 16:41
+fcb40c6,Avery,Apps also stay inside the screen while being resized,Again based on the size of the parent canvas
+,Mon Feb 28 15:57
+a639608,Avery,Apps stay inside the screen when being moved,Apps are bound inside the computer-canvas so fine-tune by changing the size of the parent canvas.
+,Mon Feb 28 15:45
+3f59c4e,Avery,Avery Branch testing scene,,Mon Feb 28 11:58
+093f863,ella-t,Merge branch 'Ella' of https://github.com/DiosMussolinos/GonePhishing-Unity-2021.1.18f1 into Ella,,Mon Feb 28 11:55
+1ad7d75,ella-t,Added time limit change notification,,Mon Feb 28 11:55
+5a328f4,Avery,Fixed Silly Bug,,Mon Feb 28 11:49
+22f1b98,Avery,Copied assets into one scene.,,Mon Feb 28 11:44
+6687b67,Avery,Merge branch 'Ella' into staging,,Mon Feb 28 11:28
+f1a4b6c,Avery,Separate "Ella Branch" scene to save work into staging,,Mon Feb 28 11:18
+7c9949d,Avery,Delete "App Testing" scene,,Mon Feb 28 11:07
+5b5edce,Avery,Smaller NotesApp prefab,,Mon Feb 28 11:06
+7731db3,Avery,Merge branch 'Avery' into staging,,Mon Feb 28 10:55
+b0f6192,Gabriel Vergari,Comment var,,Mon Feb 28 10:16
+a0a7026,Gabriel Vergari,Organizing & Testing - I was bored,,Sat Feb 26 18:21
+cb19757,Gabriel Vergari,Remove Testing,,Thu Feb 24 17:12
+2787fbc,Gabriel Vergari,EmailsBugs & PopUps,,Thu Feb 24 16:54
+a346ff6,Avery,Index-based RemoveNoteAt and AddNoteAt functions,,Thu Feb 24 10:43
+3141acb,Avery,Bugfix: disappearing notes,Fixed disappearing notes bug by making sure each rectTransfrom in resizeWtihApp has it's size updated when minimising/maximising.
+,Thu Feb 24 10:39
+89b08f5,Avery,Adaptive App render order + only select one App at a time,,Thu Feb 24 00:25
+94eea07,Avery,Built out NotesApp class,Added notes as a list of strings and AddNote/RemoveNote functions
+,Thu Feb 24 00:01
+cd66cdc,Avery,Update NotesApp.prefab,,Wed Feb 23 23:40
+0914937,Avery,RectTransforms set to resize with an App will maintain offset from edges,Assumes such transforms are top-left anchored
+,Wed Feb 23 23:37
+914372b,Avery,Image to indicate how to resize an app,,Wed Feb 23 23:15
+618bc0e,Avery,Can now resize minimised apps properly,,Wed Feb 23 23:05
+3fe3877,Avery,Resizable apps,Clicking and dragging on the lower left-hand corner of an app will resize it.
+Minimum width and height values can be set.
+,Wed Feb 23 22:46
+952ea0b,Avery,Renamed NotesApp prefab,,Wed Feb 23 20:52
+2ed6fe7,Avery,Figured out and fixed inheritance weirdness,,Wed Feb 23 20:03
+ab63d80,Avery,Minor Prefab adjustments,,Wed Feb 23 19:55
+4fc6802,Gabriel Vergari,3D World,,Wed Feb 23 19:15
+0047227,DiosMussolinos,Merge pull request #1 from DiosMussolinos/Gabriel,Gabriel,Wed Feb 23 19:12
+8e610d6,Gabriel Vergari,3D World,,Wed Feb 23 19:05
+d317e71,Avery,App Position Doesn't break when minimising/maximising.,,Wed Feb 23 19:00
+d77d463,Avery,Click and drag Apps,Maintaining distance from mouse while dragging.
+
+Currently only for mouse clicks
+,Wed Feb 23 18:53
+a96d183,Avery,AppManager class,Currently just finds all App components in child objects and sets their "parentCanvas" variable.
+,Wed Feb 23 17:41
+b540aac,Avery,Scene weridness,,Wed Feb 23 14:43
+abf52e0,ella-t,Digital clock rounding,,Wed Feb 23 14:37
+a16bb74,Gabriel Vergari,Fixed - Array Update Error,,Wed Feb 23 14:28
+d7e906f,ella-t,Win condition for clear inbox,,Wed Feb 23 14:23
+048ea55,ella-t,On-screen clock,,Wed Feb 23 14:18
+5c7844d,ella-t,Support for win conditions,,Wed Feb 23 14:02
+99ac189,Avery,Minimisable App Script and Prefab,,Wed Feb 23 13:49
+3c50191,ella-t,Added lose conditions (time limit, HP),,Wed Feb 23 13:47
+8bd7337,ella-t,Lock computer GUI on time limit,,Wed Feb 23 13:30
+6643840,ella-t,Disable 3DView control on time limit reached,,Wed Feb 23 13:24
+aa60db9,ella-t,Added timelimit event,,Wed Feb 23 13:11
+9d0e3e5,Gabriel Vergari,PopUps - Template,,Wed Feb 23 13:05
+ea56143,ella-t,String output that's actually formatted like digital time,,Wed Feb 23 12:57
+de79bf0,ella-t,Digital timer output,,Wed Feb 23 12:51
+f978900,ella-t,Initial commit,,Wed Feb 23 12:25
+89659b0,Avery,Framework,,Mon Feb 21 16:32
+4e80d53,Avery,Downgrade,This seems to work
+,Mon Feb 21 15:57
+168ffd8,Gabriel Vergari,Typo Corrected :(,,Thu Feb 17 23:43
+580b4d2,Gabriel Vergari,Email Random & HP & Feedback Buttons & Adding/Removing Emails & Organization,This version of the project was saved on my hard drive, as i tested for 1 hour and didnt manage to find any bug.
+
+Ps. The feedback of emails in general are not finished as IT WASNT DECIDED YET!
+,Thu Feb 17 23:33
+2b4dd55,Gabriel Vergari,Avery&Gabriel&Code Merged,,Wed Feb 16 18:47
+4209232,ella-t,Added GUI to 3D environment scene,,Wed Feb 16 15:34
+fd5660d,ella-t,Merged FirstPersonView into staging,,Wed Feb 16 15:32
+12b25c2,ella-t,Merge branch 'staging' of https://github.com/DiosMussolinos/GonePhishing-Unity-2021.2.11f1 into staging,,Wed Feb 16 15:26
+e54e7e6,Gabriel Vergari,Merge branch 'staging' of https://github.com/DiosMussolinos/GonePhishing-Unity-2021.2.11f1 into staging,,Wed Feb 16 15:22
+9d90005,Gabriel Vergari,Email Organization & Spawn,,Wed Feb 16 15:20
+df0e135,ella-t,Merged Smoother-Camera-Motion,,Wed Feb 16 15:08
+b612b88,ella-t,Merge branch 'Smoother-Camera-Motion' into FirstPersonView,,Wed Feb 16 15:07
+2b34b3a,Avery,Smooth camera movement,,Wed Feb 16 14:39
+9d88c25,ella-t,Added touch input,,Wed Feb 16 14:35
+f3cd91e,ella-t,Better clicking logic requiring full mouse press,,Wed Feb 16 13:25
+228d046,ella-t,Inspector tooltips,,Wed Feb 16 13:15
+2408054,ella-t,Lock/unlock computer GUI,,Wed Feb 16 12:58
+65b13f9,Avery,Don't defocus when clicking on computer.,Stopped the camera from defocusing on the computer when the player clicks on the computer.
+,Wed Feb 16 12:42
+936263e,ella-t,Computer OnClick: Lock player camera to view it,,Wed Feb 16 11:43
+00ef7d5,ella-t,Player can click interactable objects,,Tue Feb 15 16:51
+dc5cbb5,ella-t,First person camera with left-right turning capability,,Tue Feb 15 16:31
+a0e0bc4,Gabriel Vergari,2021.2.11f1,,Tue Feb 15 13:41
+3c07339,Gabriel Vergari,Project 3D Reboot,,Tue Feb 15 13:00
+6147396,Gabriel Vergari,?,,Mon Feb 14 15:58
+213ad0c,Gabriel Vergari,Unity Version 2021.2.11f1,Download, and work in Unity 2021.2.11f1
+,Mon Feb 14 12:21
+9a620b6,Gabriel Vergari,NONCODE_SlidesProps,,Mon Feb 7 20:02
+da449f0,Gabriel Vergari,NONCODE_SlidesProps,,Mon Feb 7 20:00
+5b10def,Gabriel Vergari,Non-Code Related Folder,,Wed Feb 2 18:34
+971f268,Gabriel Vergari,New Version 2020.3.27f1,,Wed Feb 2 17:44
+28f09cd,Gabriel Vergari,First Organization,,Tue Feb 1 18:13
+4af01f3,Gabriel Vergari,First commit,,Tue Feb 1 12:45
+b6a3a6e,DiosMussolinos,Initial commit,,Tue Feb 1 12:30
